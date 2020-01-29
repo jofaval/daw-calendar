@@ -1,0 +1,72 @@
+#timeTable #timeTbody {
+    max-height: 415px;
+    overflow: auto;
+}
+
+#timeTable tr {
+    cursor: pointer;
+    font-size: 0.88em;
+}
+
+#timeTable tr:not(:last-child) {
+    border-bottom: 5px solid transparent
+    /*rgba(146, 208, 233, 0.5)*/
+    ;
+}
+
+#timeTable table,
+#timeTable tr {
+    width: 100%;
+}
+
+#timeTable td {
+    margin-left: 15px;
+}
+
+#timeTable tr:hover {
+    background: #3f4042;
+}
+/*.timeTable*/
+
+#timeTableWeek {
+    max-height: 415px;
+    overflow: auto;
+}
+
+#timeTableWeek #calTitle.weekTitle {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    /*background: rgba(0, 0, 0, 0.05);*/
+    padding: 1em 0;
+}
+/*#timeTableWeek .month-mover {
+    background-color: rgba(255, 255, 255, .1) !important;
+    margin: 0 1rem;
+}
+
+#timeTableWeek .month-mover:hover {
+    background-color: rgba(0, 0, 0, .1) !important;
+}*/
+/*#timeTableWeek .weekTitle {
+    position: fixed;
+}*/
+
+#timeTableWeek #timeTbody {
+    margin-bottom: 1em;
+}
+
+#timeTableWeek #monthYear {
+    font-size: 1rem;
+    display: inline;
+}
+
+.month-mover {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+/*.a-date.current {
+border: none !important;
+border-bottom: thin solid #fffc23 !important;
+box-shadow: 0 10px 0.5vh -0.5vh rgba(0, 0, 0, 0.35);
+}*/
