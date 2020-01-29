@@ -23,27 +23,6 @@
             padding-bottom: 40px;
             height: calc(100vh - 56px);
         }
-
-        .form-group {
-            position: relative;
-            margin: 1.5rem;
-        }
-
-        .form-control-placeholder {
-            position: absolute;
-            top: 0;
-            padding: 7px 0 0 13px;
-            transition: all 200ms;
-            opacity: 0.5;
-        }
-
-        .form-control:focus + .form-control-placeholder,
-        .form-control:valid + .form-control-placeholder {
-            font-size: 75%;
-            transform: translate3d(0, -100%, 0);
-            opacity: 1;
-            color: white;
-        }
     </style>
 </head>
 
@@ -83,13 +62,14 @@
             </div>
 
             <div class="form-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="">
-                <label class="form-control-placeholder" for="inputEmail">Email</label>
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
 
             <div class="form-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                <label class="form-control-placeholder" for="inputPassword">Password</label>
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
 
             <div class="checkbox mb-3 text-white text-center">
