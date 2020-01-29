@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="mini-event-calendar.min.css" />
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <style>
+        #timeTable #timeTbody {
+            max-height: 415px;
+            overflow: auto;
+        }
+        
+        #timeTable tr {
+            cursor: pointer;
+            font-size: 0.88em;
+        }
+        
+        #timeTable tr:not(:last-child) {
+            border-bottom: 5px solid transparent
+            /*rgba(146, 208, 233, 0.5)*/
+            ;
+        }
+        
+        #timeTable table,
+        #timeTable tr {
+            width: 100%;
+        }
+        
+        #timeTable td {
+            margin-left: 15px;
+        }
+        
+        #timeTable tr:hover {
+            background: #3f4042;
+        }
+        /*.timeTable*/
+        
+        #timeTableWeek {
+            max-height: 415px;
+            overflow: auto;
+        }
+        
+        #timeTableWeek #calTitle.weekTitle {
+            margin-top: 1em;
+            margin-bottom: 1em;
+            /*background: rgba(0, 0, 0, 0.05);*/
+            padding: 1em 0;
+        }
+        /*#timeTableWeek .month-mover {
+            background-color: rgba(255, 255, 255, .1) !important;
+            margin: 0 1rem;
+        }
+        
+        #timeTableWeek .month-mover:hover {
+            background-color: rgba(0, 0, 0, .1) !important;
+        }*/
+        /*#timeTableWeek .weekTitle {
+            position: fixed;
+        }*/
+        
+        #timeTableWeek #timeTbody {
+            margin-bottom: 1em;
+        }
+        
+        #timeTableWeek #monthYear {
+            font-size: 1rem;
+            display: inline;
+        }
+        
+        body {
+            background-color: #1f1f22;
+        }
+        
+        .month-mover {
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        nav {
+            background-color: #343a40 !important;
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+        /*.a-date.current {
+        border: none !important;
+        border-bottom: thin solid #fffc23 !important;
+        box-shadow: 0 10px 0.5vh -0.5vh rgba(0, 0, 0, 0.35);
+      }*/
+        
+        @media screen and (prefer-color-scheme: light) {
+            body {
+                background-color: #dbdbdb;
+                color: #1f1f22;
+            }
+            .navbar {
+                background-color: #eeeeee !important;
+            }
+            .nav-link {
+                color: rgba(0, 0, 0, 0.75) !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Schedules<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link selected" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown08">
+                        <a class="dropdown-item" href="#">Classroom</a>
+                        <a class="dropdown-item" href="#">Teacher</a>
+                        <a class="dropdown-item" href="#">Schedule</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="container col-md-10">
+        <div class="row">
+            <div id="timeTableWeek" class="col row"></div>
+        </div>
+    </section>
+    <div class="d-none d-md-block">
+        <br />
+        <br />
+        <br />
+    </div>
+    <div class="container col-md-10">
+        <section class="row">
+            <div id="calendar" class="col-md-7"></div>
+            <div id="timeTable" class="col-md-4 offset-md-1"></div>
+        </section>
+        <div class="d-none d-md-block">
+            <br />
+            <br />
+            <br />
+        </div>
+        <section class="row">
+            <form action="">
+                <input type="text" />
+                <input type="text" />
+                <input type="submit" value="" />
+            </form>
+        </section>
+    </div>
+</body>
+
+<script src="./jquery.slim.min.js"></script>
+<script src="./utils.js"></script>
+<script src="./time-table.js"></script>
+<script src="./mini-event-calendar.js"></script>
+<script src="./calendar-controls.js"></script>
+<script>
+    localStorage.setItem("theme", "light");
+    $(document).ready(function name(params) {
+        $("*").css("transition", "all 0.2s ease-in-out");
+    });
+
+    var sampleEvents = [{
+        title: "Soulful sundays bay area",
+        date: new Date().setDate(new Date().getDate() - 7), // last week
+        link: "#"
+    }, {
+        title: "London Comicon",
+        date: new Date().getTime(), // today
+        link: "#"
+    }, {
+        title: "Youth Athletic Camp",
+        date: new Date().setDate(new Date().getDate() + 31), // next month
+        link: "#"
+    }];
+
+    var calendar = $("#calendar");
+    var calendarControls = new CalendarControls(calendar, sampleEvents);
+
+    var sampleEventsTimeTable = [{
+        eventTitle: "Are you sure about that?",
+        startHour: "8:50"
+    }, {
+        eventTitle: "Are you sure about that?",
+        startHour: "15:00"
+    }];
+
+    var timeTable = $("#timeTable");
+    this.timeTable.TT({
+        events: sampleEventsTimeTable,
+        schedule: schedule
+    });
+
+    //weekly calendar;
+
+    var weekDate = new Date();
+
+    var newTimeTable = $("#timeTableWeek");
+
+    /*newTimeTable.TT({
+      events: sampleEventsTimeTable,
+      schedule: schedule,
+      day: weekDate,
+      showDay: false,
+      showSchedule: true
+    });
+
+    for (let index = 1; index < 7; index++) {
+      weekDate.setDate(weekDate.getDate() + 1);
+      newTimeTable = $("#timeTable" + (index + 1));
+
+      newTimeTable.TT({
+        events: sampleEventsTimeTable,
+        schedule: schedule,
+        day: weekDate,
+        showDay: false,
+        showSchedule: false
+      });
+    }*/
+    var testDate = new Date( /*2020, 11,28*/ );
+    testDate.setDate(testDate.getDate() + 5);
+    //console.log(testDate);
+
+    var weekEvents = {
+        "29/01/2020": [{
+            eventTitle: "Are you sure about that?",
+            startHour: "8:50"
+        }, {
+            eventTitle: "Are you sure about that?",
+            startHour: "15:00"
+        }],
+        "30/02/2020": [{
+            eventTitle: "Are you sure about that?",
+            startHour: "8:50"
+        }, {
+            eventTitle: "Are you sure about that?",
+            startHour: "15:00"
+        }],
+    };
+
+    newTimeTable.TT({
+        events: sampleEventsTimeTable,
+        schedule: schedule,
+        day: testDate,
+        showDay: false,
+        showSchedule: false,
+        weekFormat: true
+    });
+</script>
+
+</html>
