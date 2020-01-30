@@ -10,15 +10,6 @@
     <link rel="stylesheet" href="main.css">
     <style>
         main {
-            /*display: -ms-flexbox;
-            display: -webkit-box;
-            display: flex;
-            -ms-flex-align: center;
-            -ms-flex-pack: center;
-            -webkit-box-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            justify-content: center;*/
             padding-top: 40px;
             padding-bottom: 40px;
             height: calc(100vh - 56px);
@@ -71,26 +62,26 @@
 
             <div class="form-row d-flex justify-content-around align-items-center">
                 <div class="form-group col-md-2">
-                    <label for="exampleInputUsername1">Username</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter Username">
+                    <label for="exampleInputUsername1">Username (*)</label>
+                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter Username" required>
                     <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
                 </div>
 
                 <div class="form-group col-md">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputPassword1">Password (*)</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                     <small id="nameHelp" class="form-text text-muted">Alphanumeric combination, 8 to 24 characters.</small>
                 </div>
 
                 <div class="form-group col-md">
-                    <label for="exampleInputName1">Full Name</label>
-                    <input type="text" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Enter name">
+                    <label for="exampleInputName1">Full Name (*)</label>
+                    <input type="text" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Enter name" required>
                     <small id="nameHelp" class="form-text text-muted">Enter your full name<!--, the one you are legally recognized with-->.</small>
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="exampleInputEmail1">Email address (*)</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
 
@@ -99,6 +90,9 @@
                 </div>
             </div>
         </form>
+        <div>
+            <br><br>
+        </div>
         <form class="form-signin col-md" method="POST">
             <div class="text-center mb-4 text-white">
                 <h3>Classroom</h3>
@@ -106,25 +100,25 @@
 
             <div class="form-row d-flex justify-content-around align-items-center">
                 <div class="form-group col-md-1">
-                    <label for="exampleInputUsername1">Name</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter Username">
-                    <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
+                    <label for="exampleInputUsername1">Name (*)</label>
+                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="208" required>
+                    <small id="usernameHelp" class="form-text text-muted">Classroom name.</small>
                 </div>
                 
                 <div class="form-group col-md">
                     <label for="exampleFormControlTextarea1">Short description (optional)</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter Username">
-                    <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
+                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Every student is going to pass">
+                    <small id="usernameHelp" class="form-text text-muted">Short description about it's details.</small>
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="exampleInputUsername1">State</label>
+                    <label for="exampleInputUsername1">State (*)</label>
                     <select class="form-control" id="exampleFormControlSelect1">
                         <option>Perfect</option>
                         <option>On repair</option>
                         <option>Left out</option>
                     </select>
-                    <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
+                    <small id="usernameHelp" class="form-text text-muted">How's the classroom?</small>
                 </div>
 
                 <div class="form-group col-md-1">
@@ -132,6 +126,9 @@
                 </div>
             </div>
         </form>
+        <div>
+            <br>
+        </div>
         <form class="form-signin col-md" method="POST">
             <div class="text-center mb-4 text-white">
                 <h3>Schedule</h3>
@@ -139,15 +136,15 @@
 
             <div class="form-row d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-1">
-                    <label for="exampleFormControlTextarea1">Start hour</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter Username">
-                    <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
+                    <label for="exampleFormControlTextarea1">Start hour (*)</label>
+                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="7:55" required>
+                    <small id="usernameHelp" class="form-text text-muted">Event starts at.</small>
                 </div>
                 
                 <div class="form-group col-md-1">
-                        <label for="exampleFormControlTextarea1">End hour</label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter Username">
-                        <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
+                        <label for="exampleFormControlTextarea1">End hour (*)</label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="8:50" required>
+                        <small id="usernameHelp" class="form-text text-muted">Event ends at.</small>
                     </div>
 
                 <div class="form-group col-md-1">
