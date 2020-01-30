@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="./styles/bootstrap.min.css" />
     <link rel="stylesheet" href="./styles/jquery-ui.min.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+    <style>
+      .ui-dialog {
+        height: 50% !important;
+        width: 50% !important;
+      }
+    </style>
   </head>
   <body>
     <div id="modal" title="Contact form">
@@ -75,6 +81,11 @@
   <script>
     var modal = $("#modal");
     modal.dialog({
+      open: function() {
+          console.log("test");
+          
+          $(".ui-dialog-titlebar-close").remove();
+      },
       close: function() {
         $(this).remove();
       },
@@ -83,10 +94,8 @@
       closeOnEscape: true,
       closeText: "Test",
       resizable: false,
-      title: "La cagaste way",
+      title: "La cagaste way"
     });
-    modal.css("width", "35vh");
-    modal.css("height", "35%");
     modal.dialog("open");
     modal.dialog("moveToTop");
   </script>
