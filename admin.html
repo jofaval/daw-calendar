@@ -14,11 +14,11 @@
             padding-bottom: 40px;
             height: calc(100vh - 56px);
         }
-
+        
         .form-signin {
             color: white;
         }
-
+        
         .form-signin label {
             color: white;
         }
@@ -62,31 +62,31 @@
 
             <div class="form-row d-flex justify-content-around align-items-center">
                 <div class="form-group col-md-2">
-                    <label for="exampleInputUsername1">Username (*)</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter Username" required>
-                    <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
+                    <label for="inputTeacherUsername">Username (*)</label>
+                    <input type="text" class="form-control" id="inputTeacherUsername" aria-describedby="teacherUsernameHelp" placeholder="Enter Username" required>
+                    <small id="teacherUsernameHelp" class="form-text text-muted">✓ Is available.</small>
                 </div>
 
                 <div class="form-group col-md">
-                    <label for="exampleInputPassword1">Password (*)</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-                    <small id="nameHelp" class="form-text text-muted">Alphanumeric combination, 8 to 24 characters.</small>
+                    <label for="inputTeacherPassword">Password (*)</label>
+                    <input type="password" class="form-control" id="inputTeacherPassword" aria-describedby="teacherPasswordHelp" placeholder="Password" required>
+                    <small id="teacherPasswordHelp" class="form-text text-muted">Alphanumeric combination, 8 to 24 characters.</small>
                 </div>
 
                 <div class="form-group col-md">
-                    <label for="exampleInputName1">Full Name (*)</label>
-                    <input type="text" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Enter name" required>
-                    <small id="nameHelp" class="form-text text-muted">Enter your full name<!--, the one you are legally recognized with-->.</small>
+                    <label for="inputTeacherName">Full Name (*)</label>
+                    <input type="text" class="form-control" id="inputTeacherName" aria-describedby="teacherNameHelp" placeholder="Enter name" required>
+                    <small id="teacherNameHelp" class="form-text text-muted">Enter your full name<!--, the one you are legally recognized with-->.</small>
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="exampleInputEmail1">Email address (*)</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="inputTeacherEmail">Email address (*)</label>
+                    <input type="email" class="form-control" id="inputTeacherEmail" aria-describedby="teacherEmailHelp" placeholder="Enter email" required>
+                    <small id="teacherEmailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
 
                 <div class="form-group col-md-1">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+                    <button class="btn btn-lg btn-primary btn-block" name="teacherAdd" type="submit">Add</button>
                 </div>
             </div>
         </form>
@@ -100,29 +100,29 @@
 
             <div class="form-row d-flex justify-content-around align-items-center">
                 <div class="form-group col-md-1">
-                    <label for="exampleInputUsername1">Name (*)</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="208" required>
-                    <small id="usernameHelp" class="form-text text-muted">Classroom name.</small>
+                    <label for="inputClassroomName">Name (*)</label>
+                    <input type="text" class="form-control" id="inputClassroomName" aria-describedby="classroomNameHelp" placeholder="208" required>
+                    <small id="classroomNameHelp" class="form-text text-muted">Code class.</small>
                 </div>
-                
+
                 <div class="form-group col-md">
-                    <label for="exampleFormControlTextarea1">Short description (optional)</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Every student is going to pass">
-                    <small id="usernameHelp" class="form-text text-muted">Short description about it's details.</small>
+                    <label for="inputClasroomDescription">Short description (optional)</label>
+                    <input type="text" class="form-control" id="inputClasroomDescription" aria-describedby="classroomDescriptionHelp" placeholder="Every student is going to pass">
+                    <small id="classroomDescriptionHelp" class="form-text text-muted">Short description about it's details.</small>
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="exampleInputUsername1">State (*)</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <label for="selectClasroomState">State (*)</label>
+                    <select class="form-control" id="selectClasroomState" aria-describedby="clasroomStateHelp">
                         <option>Perfect</option>
                         <option>On repair</option>
                         <option>Left out</option>
                     </select>
-                    <small id="usernameHelp" class="form-text text-muted">How's the classroom?</small>
+                    <small id="clasroomStateHelp" class="form-text text-muted">How's the classroom?</small>
                 </div>
 
                 <div class="form-group col-md-1">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+                    <button class="btn btn-lg btn-primary btn-block" name="classroomAdd" type="submit">Add</button>
                 </div>
             </div>
         </form>
@@ -136,19 +136,19 @@
 
             <div class="form-row d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-1">
-                    <label for="exampleFormControlTextarea1">Start hour (*)</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="7:55" required>
-                    <small id="usernameHelp" class="form-text text-muted">Event starts at.</small>
+                    <label for="inputScheduleStartHour">Start hour (*)</label>
+                    <input type="text" class="form-control" id="inputScheduleStartHour" aria-describedby="scheduleStartHourHelp" placeholder="7:55" required>
+                    <small id="scheduleStartHourHelp" class="form-text text-muted">Event starts at.</small>
                 </div>
-                
-                <div class="form-group col-md-1">
-                        <label for="exampleFormControlTextarea1">End hour (*)</label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="8:50" required>
-                        <small id="usernameHelp" class="form-text text-muted">Event ends at.</small>
-                    </div>
 
                 <div class="form-group col-md-1">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+                    <label for="inputScheduleEndHour">End hour (*)</label>
+                    <input type="text" class="form-control" id="inputScheduleEndHour" aria-describedby="scheduleEndHourHelp" placeholder="7:55" required>
+                    <small id="scheduleEndHourHelp" class="form-text text-muted">Event ends at.</small>
+                </div>
+
+                <div class="form-group col-md-1">
+                    <button class="btn btn-lg btn-primary btn-block" name="scheduleAdd" type="submit">Add</button>
                 </div>
             </div>
         </form>
