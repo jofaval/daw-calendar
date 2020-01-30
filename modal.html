@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="./styles/jquery-ui.min.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div id="modal" title="Contact form">
+      <h1>hahahaha lol xDDDD</h1>
+    </div>
+    <div
+      style="position: absolute; height: 184px; width: 639.6px; top: 264.8px; left: 270.5px;"
+      tabindex="-1"
+      role="dialog"
+      class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable"
+      aria-describedby="modal"
+      aria-labelledby="ui-id-1"
+    >
+      <div
+        class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"
+      >
+        <span id="ui-id-1" class="ui-dialog-title">Contact form</span
+        ><button type="button" class="ui-dialog-titlebar-close"></button>
+      </div>
+      <div
+        id="modal"
+        class="ui-dialog-content ui-widget-content"
+        style="width: 607.6px; min-height: 83.6px; max-height: none; height: 126px;"
+      >
+        <h1>hahahaha lol xDDDD</h1>
+      </div>
+      <div
+        class="ui-resizable-handle ui-resizable-n"
+        style="z-index: 90;"
+      ></div>
+      <div
+        class="ui-resizable-handle ui-resizable-e"
+        style="z-index: 90;"
+      ></div>
+      <div
+        class="ui-resizable-handle ui-resizable-s"
+        style="z-index: 90;"
+      ></div>
+      <div
+        class="ui-resizable-handle ui-resizable-w"
+        style="z-index: 90;"
+      ></div>
+      <div
+        class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"
+        style="z-index: 90;"
+      ></div>
+      <div
+        class="ui-resizable-handle ui-resizable-sw"
+        style="z-index: 90;"
+      ></div>
+      <div
+        class="ui-resizable-handle ui-resizable-ne"
+        style="z-index: 90;"
+      ></div>
+      <div
+        class="ui-resizable-handle ui-resizable-nw"
+        style="z-index: 90;"
+      ></div>
+    </div>
+  </body>
+  <script src="./scripts/libs/jquery.min.js"></script>
+  <script src="./scripts/libs/jquery-ui.min.js"></script>
+  <script src="./scripts/libs/bootstrap.min.js"></script>
+  <script src="./scripts/libs/bootstrap.bundle.min.js"></script>
+  <script>
+    var modal = $("#modal");
+    modal.dialog({
+      close: function() {
+        $(this).remove();
+      },
+      draggable: false,
+      modal: true,
+      closeOnEscape: true,
+      closeText: "Test",
+      resizable: false,
+      title: "La cagaste way",
+    });
+    modal.css("width", "35vh");
+    modal.css("height", "35%");
+    modal.dialog("open");
+    modal.dialog("moveToTop");
+  </script>
+</html>
