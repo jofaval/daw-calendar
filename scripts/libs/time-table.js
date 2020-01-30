@@ -32,9 +32,15 @@ function populateTimeTable(settings, weekDates, timeTable, timeTableTpl, daysOfW
             weekDates = getWeekFromDate(settings.day);
         }
 
+<<<<<<< HEAD
         var weekTitle = addWeekTitle(weekDates, timeTable);
         addMovePrevWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, weekTitle);
         addMoveNextWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, weekTitle);
+=======
+        addWeekTitle(weekDates, timeTable);
+        addMovePrevWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek);
+        addMoveNextWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek);
+>>>>>>> 15b650b37ac2a2c09423075a8c09d5582f227a56
 
         settings.showSchedule = true;
 
@@ -58,7 +64,11 @@ function populateTimeTable(settings, weekDates, timeTable, timeTableTpl, daysOfW
     }
 }
 
+<<<<<<< HEAD
 function addMoveNextWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, weekTitle) {
+=======
+function addMoveNextWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek) {
+>>>>>>> 15b650b37ac2a2c09423075a8c09d5582f227a56
     var weekMoveNext = $(`<button type="button" class="month-mover next" style="transition: all 0.2s ease-in-out 0s;">
     <svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg" style="transition: all 0.2s ease-in-out 0s;"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" style="transition: all 0.2s ease-in-out 0s;"></path></svg>
   </button>`);
@@ -70,7 +80,11 @@ function addMoveNextWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWee
     weekTitle.append(weekMoveNext);
 }
 
+<<<<<<< HEAD
 function addMovePrevWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, weekTitle) {
+=======
+function addMovePrevWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek) {
+>>>>>>> 15b650b37ac2a2c09423075a8c09d5582f227a56
     var weekMovePrev = $(`<button type="button" class="month-mover prev" style="transition: all 0.2s ease-in-out 0s;">
 				<svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg" style="transition: all 0.2s ease-in-out 0s;"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" style="transition: all 0.2s ease-in-out 0s;"></path></svg>
 			</button>`);
