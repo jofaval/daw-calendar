@@ -5,108 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="main.css" />
+    <style></style>
   </head>
   <body>
-    
-<div class="container"><h1>Bootstrap  tab panel example (using nav-pills)  </h1></div>
-<div id="exTab1" class="container">	
-<ul  class="nav nav-pills">
-			<li class="active">
-        <a  href="#1a" data-toggle="tab">Overview</a>
-			</li>
-			<li><a href="#2a" data-toggle="tab">Using nav-pills</a>
-			</li>
-			<li><a href="#3a" data-toggle="tab">Applying clearfix</a>
-			</li>
-  		<li><a href="#4a" data-toggle="tab">Background color</a>
-			</li>
-		</ul>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark"
+      style="transition: all 0.2s ease-in-out 0s;"
+    >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarsExample08"
+        aria-controls="navbarsExample08"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="transition: all 0.2s ease-in-out 0s;"
+      >
+        <span
+          class="navbar-toggler-icon"
+          style="transition: all 0.2s ease-in-out 0s;"
+        ></span>
+      </button>
 
-			<div class="tab-content clearfix">
-			  <div class="tab-pane active" id="1a">
-          <h3>Content's background color is the same for the tab</h3>
-				</div>
-				<div class="tab-pane" id="2a">
-          <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
-				</div>
-        <div class="tab-pane" id="3a">
-          <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
-				</div>
-          <div class="tab-pane" id="4a">
-          <h3>We use css to change the background color of the content to be equal to the tab</h3>
-				</div>
-			</div>
-  </div>
-
-
-<hr></hr>
-<div class="container"><h2>Example tab 2 (using standard nav-tabs)</h2></div>
-
-<div id="exTab2" class="container">	
-<ul class="nav nav-tabs">
-			<li class="active">
-        <a  href="#1" data-toggle="tab">Overview</a>
-			</li>
-			<li><a href="#2" data-toggle="tab">Without clearfix</a>
-			</li>
-			<li><a href="#3" data-toggle="tab">Solution</a>
-			</li>
-		</ul>
-
-			<div class="tab-content ">
-			  <div class="tab-pane active" id="1">
-          <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
-				</div>
-				<div class="tab-pane" id="2">
-          <h3>Notice the gap between the content and tab after applying a background color</h3>
-				</div>
-        <div class="tab-pane" id="3">
-          <h3>add clearfix to tab-content (see the css)</h3>
-				</div>
-			</div>
-  </div>
-
-<hr></hr>
-
-<div class="container"><h2>Example 3 </h2></div>
-<div id="exTab3" class="container">	
-<ul  class="nav nav-pills">
-			<li class="active">
-        <a  href="#1b" data-toggle="tab">Overview</a>
-			</li>
-			<li><a href="#2b" data-toggle="tab">Using nav-pills</a>
-			</li>
-			<li><a href="#3b" data-toggle="tab">Applying clearfix</a>
-			</li>
-  		<li><a href="#4a" data-toggle="tab">Background color</a>
-			</li>
-		</ul>
-
-			<div class="tab-content clearfix">
-			  <div class="tab-pane active" id="1b">
-          <h3>Same as example 1 but we have now styled the tab's corner</h3>
-				</div>
-				<div class="tab-pane" id="2b">
-          <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
-				</div>
-        <div class="tab-pane" id="3b">
-          <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
-				</div>
-          <div class="tab-pane" id="4b">
-          <h3>We use css to change the background color of the content to be equal to the tab</h3>
-				</div>
-			</div>
-  </div>
-
-
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <div
+        class="collapse navbar-collapse justify-content-md-center"
+        id="navbarsExample08"
+        style="transition: all 0.2s ease-in-out 0s;"
+      >
+        <ul class="navbar-nav" style="transition: all 0.2s ease-in-out 0s;">
+          <li
+            class="nav-item active"
+            style="transition: all 0.2s ease-in-out 0s;"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              style="transition: all 0.2s ease-in-out 0s;"
+              >Schedules<span
+                class="sr-only"
+                style="transition: all 0.2s ease-in-out 0s;"
+                >(current)</span
+              ></a
+            >
+          </li>
+          <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+            <a
+              class="nav-link selected"
+              href="#"
+              style="transition: all 0.2s ease-in-out 0s;"
+              >Home</a
+            >
+          </li>
+          <li
+            class="nav-item dropdown"
+            style="transition: all 0.2s ease-in-out 0s;"
+          >
+            <a
+              class="nav-link dropdown-toggle"
+              href="http://example.com"
+              id="dropdown08"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="transition: all 0.2s ease-in-out 0s;"
+              >Create</a
+            >
+            <div
+              class="dropdown-menu"
+              aria-labelledby="dropdown08"
+              style="transition: all 0.2s ease-in-out 0s;"
+            >
+              <a
+                class="dropdown-item"
+                href="#"
+                style="transition: all 0.2s ease-in-out 0s;"
+                >Classroom</a
+              >
+              <a
+                class="dropdown-item"
+                href="#"
+                style="transition: all 0.2s ease-in-out 0s;"
+                >Teacher</a
+              >
+              <a
+                class="dropdown-item"
+                href="#"
+                style="transition: all 0.2s ease-in-out 0s;"
+                >Schedule</a
+              >
+            </div>
+          </li>
+          <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+            <a
+              class="nav-link"
+              href="#"
+              style="transition: all 0.2s ease-in-out 0s;"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main role="main">
+      <section class="container">
+        <div class="row">
+          <div
+            class="d-flex flex-column align-content-center justify-space-center col-md-2"
+            id="tab-nav "
+          >
+            <button class="btn btn-primary" tab-id="test1">test1</button>
+            <button class="btn btn-primary" tab-id="test2">test2</button>
+            <button class="btn btn-primary" tab-id="test3">test3</button>
+            <button class="btn btn-primary" tab-id="test4">test4</button>
+            <button class="btn btn-primary" tab-id="test5">test5</button>
+          </div>
+          <div class="col-md" id="tab-content">
+            <div class="tab-content"><h1>Test 1</h1></div>
+            <div class="tab-content"><h1>Test 2</h1></div>
+            <div class="tab-content"><h1>Test 3</h1></div>
+            <div class="tab-content"><h1>Test 4</h1></div>
+            <div class="tab-content"><h1>Test 5</h1></div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
-  <!--script src="jquery.slim.min.js"></script>
+  <script src="jquery.slim.min.js"></script>
   <script src="bootstrap.min.js"></script>
-  <script src="bootstrap.bundle.min.js"></script-->
+  <script src="bootstrap.bundle.min.js"></script>
+  <script src="tabs.js"></script>
 </html>
