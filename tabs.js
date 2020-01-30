@@ -1,16 +1,25 @@
 $(document).ready(function() {
-  console.log("hola");
+  hideTabContent(1);
   $(".tab-nav").each(function() {
     $(this).on("click", function() {
-      var current = $(this);
-      var id = current.prop("id");
-      $(".tab-content").each(function () {
-          console.log($(this).fadeOut);
-          
-        $(this).hide();
-      });
-      var content = $("#content-" + id);
-      content.fadeIn(300);
+      onTabNavClick($(this));
     });
   });
+  $(".tab-nav")
+    .first()
+    .trigger("click");
 });
+
+function onTabNavClick(current) {
+  var id = current.prop("id");
+  hideTabContent();
+  var content = $("#content-" + id);
+  content.show();
+}
+
+function hideTabContent(duration = 200) {
+  $(".tab-content").each(function() {
+    var current = $(this);
+    current.hide();
+  });
+}
