@@ -68,22 +68,28 @@
             <div class="text-center mb-4 text-white">
                 <h3>Calendar SignIn</h3>
             </div>
+            <div class="form-group">
+                <label for="exampleInputUsername1">Username (*)</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter Username" required>
+                <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
+            </div>
 
             <div class="form-group">
-                <label for="exampleInputName1">Full Name</label>
-                <input type="text" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Enter name">
+                <label for="exampleInputPassword1">Password (*)</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                <small id="nameHelp" class="form-text text-muted">Alphanumeric combination, 8 to 24 characters.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputName1">Full Name (*)</label>
+                <input type="text" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Enter name" required>
                 <small id="nameHelp" class="form-text text-muted">Enter your full name, the one you are legally recognized with.</small>
             </div>
 
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="exampleInputEmail1">Email address (*)</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                <small id="emailHelp" class="form-text text-muted">We'll send an email to sign you up.</small>
             </div>
 
             <div class="checkbox mb-3 text-white text-center">
