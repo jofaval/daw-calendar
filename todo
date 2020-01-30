@@ -1,9 +1,11 @@
 Create tabbed cruds - WIP
-Create password with visibility
+Create password with visibility - DONE
 Create username check
-Fixe ids
+Fixed ids - DONE
 Organize by files - DONE
 Create basic php scripts
 Clean timetable library
 Clean code
 Implement MVC paradigm
+Remove text when input has content
+Textarea saved on database
