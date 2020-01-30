@@ -19,6 +19,7 @@ function defaultAjaxErrorAction(data) {
     console.log("La petición ha fallado");
     console.log("Resultado :");
     console.log(data);
+    sendNotification("Ha surgido un error al realizar la operación", true);
 }
 
 function printDateWithFormat(givenDate, format = "d/m/Y") {
@@ -38,8 +39,6 @@ function minNumberOfDigits(number, numberOfDigits = 2) {
     return number.toLocaleString("es", {
         minimumIntegerDigits: numberOfDigits,
     });
-
-
 }
 
 function getWeekFromDate(dayDate) {
@@ -81,6 +80,13 @@ function getWeekFromDate(dayDate) {
     console.log(weekDates);
 
     return weekDates;
+}
+
+function sendNotification(message, error = false) {
+
+    setTimeout(() => {
+
+    }, timeout);
 }
 
 var schedule = [
