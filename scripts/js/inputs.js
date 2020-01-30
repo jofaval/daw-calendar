@@ -27,3 +27,13 @@ $("#show_hide_password a").on('click', function(event) {
         $('#show_hide_password i').addClass("fa-eye");
     }
 });
+
+var removeText = $("<div>X</div>");
+removeText.on("click", function() {
+    var current = $(this);
+    current.prev().val("");
+});
+
+$("input:text").on("keypress", function() {
+    $(this).next(removeText.clone());
+})
