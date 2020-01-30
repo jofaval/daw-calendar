@@ -1,69 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="timeTable"></div>
-  </body>
-  <script src="./jquery.min.js"></script>
-  <script src="./utils.js"></script>
-  <script src="./time-table.js"></script>
-  <script src="./mini-event-calendar.js"></script>
-  <script src="./calendar-controls.js"></script>
-  <script>
-    var $timeTable = $("#timeTable");
+    <input type="text" id="test">
+</body>
+<script src="./scripts/libs/jquery.min.js"></script>
+<script src="./scripts/js/utils.js"></script>
+<script src="./scripts/js/formValidation.js"></script>
+<script>
+    var test = $("#test");
+    addFilterToInputKey(test, FILTER_REGEX_EMAIL);
+    inputMaxLength(test, 24);
+</script>
 
-    var sampleEventsTimeTable = [
-      {
-        eventTitle: "Are you sure about that?",
-        startHour: "8:50"
-      },
-      {
-        eventTitle: "Are you sure about that?",
-        startHour: "15:00"
-      }
-    ];
-
-    $timeTable.TT({
-      events: sampleEventsTimeTable,
-      schedule: schedule,
-      day: new Date(2020, 11, 28),
-      showDay: false,
-      showSchedule: false,
-      weekFormat: true
-    });
-
-    function getWeeksStartAndEndInMonth(month, year, start) {
-      var weeks = [],
-        firstDate = new Date(year, month, 1),
-        lastDate = new Date(year, month + 1, 0),
-        numDays = lastDate.getDate();
-
-      var start = 1;
-      var end = 7 - firstDate.getDay();
-      if (start === "monday") {
-        if (firstDate.getDay() === 0) {
-          end = 1;
-        } else {
-          end = 7 - firstDate.getDay() + 1;
-        }
-      }
-      while (start <= numDays) {
-        weeks.push({ start: start, end: end });
-        start = end + 1;
-        end = end + 7;
-        end = start === 1 && end === 8 ? 1 : end;
-        if (end > numDays) {
-          end = numDays;
-        }
-      }
-      return weeks;
-    }
-
-    getWeeksStartAndEndInMonth("monday");
-  </script>
 </html>
