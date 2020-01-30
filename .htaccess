@@ -1,0 +1,29 @@
+<Directory "./libs">
+    Options -Indexes
+    DirectoryIndex disabled
+</Directory>
+
+<Directory "./logs">
+    Options -Indexes
+    DirectoryIndex disabled
+</Directory>
+
+<Directory "./scripts">
+    Options -Indexes
+    DirectoryIndex disabled
+</Directory>
+
+<Directory "./styles">
+    Options -Indexes
+    DirectoryIndex disabled
+</Directory>
+
+<Directory "./templates">
+    Options -Indexes
+    DirectoryIndex disabled
+</Directory>
+
+RewriteRule /admin /index.php?ctl=admin
+RewriteRule /signin /index.php?ctl=signin
+RewriteRule /signup /index.php?ctl=signup
+RewriteRule /calendar /index.php?ctl=calendar
