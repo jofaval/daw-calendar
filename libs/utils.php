@@ -20,3 +20,17 @@ function getAcademicYear($date) {
 
     return $year;
 }
+
+function capitalizeText($string, $everyWord = false) {
+    if ($everyWord) {
+        $explodedString = preg_split("/\s/", $string);
+        foreach ($explodedString as $key => $value) {
+            $explodedString[$key][0] = strtoupper($value[0]);
+        }
+        $string = implode(" ", $explodedString);
+    } else {
+        $string[0] = strtoupper($string[0]);
+    }
+    
+    return $string;
+}
