@@ -8,6 +8,8 @@
     <title>LogIn</title>
     <link rel="stylesheet" href="./styles/bootstrap.min.css" />
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/floating-label.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         main {
             display: -ms-flexbox;
@@ -23,14 +25,13 @@
             padding-bottom: 40px;
             height: calc(100vh - 56px);
         }
-
+        
         .form-signin {
             color: white;
         }
-
-        .form-signin label {
+        /*.form-signin label {
             color: white;
-        }
+        }*/
     </style>
 </head>
 
@@ -68,28 +69,35 @@
             <div class="text-center mb-4 text-white">
                 <h3>Calendar SignIn</h3>
             </div>
-            <div class="form-group">
-                <label for="exampleInputUsername1">Username (*)</label>
-                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter Username" required>
+
+            <div class="form-label-group">
+                <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Enter name" required>
+                <label for="inputName">Full Name (*)</label>
+                <small id="nameHelp" class="form-text text-muted">Enter your full name, the one you are legally
+                    recognized with.</small>
+            </div>
+
+            <div class="form-label-group">
+                <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter Username" required>
+                <label for="inputUsername">Username (*)</label>
                 <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
             </div>
 
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password (*)</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-                <small id="nameHelp" class="form-text text-muted">Alphanumeric combination, 8 to 24 characters.</small>
+            <div class="form-label-group d-flex justify-content-center align-items-center flex-wrap" id="show_hide_password">
+                <input type="password" class="form-control col-md-11" id="inputPassword" aria-describedby="passwordHelp" placeholder="Password">
+                <label for="inputPassword">Password (*)</label>
+                <a href="" class="input-group-addon password-hide col-md-1 bg-primary d-flex justify-content-center align-items-center rounded">
+                    <i class="fa fa-eye-slash text-white" aria-hidden="true"></i>
+                </a>
+                <small id="passwordHelp" class="form-text text-muted w-100">Alphanumeric combination, 8 to 24
+                    characters.</small>
             </div>
 
-            <div class="form-group">
-                <label for="exampleInputName1">Full Name (*)</label>
-                <input type="text" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Enter name" required>
-                <small id="nameHelp" class="form-text text-muted">Enter your full name, the one you are legally recognized with.</small>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address (*)</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                <small id="emailHelp" class="form-text text-muted">We'll send an email to sign you up.</small>
+            <div class="form-label-group">
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" aria-describedby="emailHelp" required="" autofocus="">
+                <label for="inputEmail">Email address</label>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
             </div>
 
             <div class="checkbox mb-3 text-white text-center">
@@ -102,9 +110,10 @@
     </main>
 </body>
 
-    <script src="./scripts/libs/jquery.min.js"></script>
-    <script src="./scripts/libs/bootstrap.min.js"></script>
-    <script src="./scripts/libs/bootstrap.bundle.min.js"></script>
-    <script src="./scripts/js/utils.js"></script>
+<script src="./scripts/libs/jquery.min.js"></script>
+<script src="./scripts/libs/bootstrap.min.js"></script>
+<script src="./scripts/libs/bootstrap.bundle.min.js"></script>
+<script src="./scripts/js/utils.js"></script>
+<script src="./scripts/js/inputs.js"></script>
 
 </html>
