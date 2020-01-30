@@ -1,0 +1,9 @@
+.removeContent {
+	display: inline-block;
+	position: absolute;
+	top: 0.35rem;
+	left: calc(100% - 1.5rem);
+	cursor: pointer;
+    width: 1rem;
+    z-index: 3;
+}
