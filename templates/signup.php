@@ -2,6 +2,7 @@
 <?php $optionalCSS = ["login.css", "floating-label.css", "inputs.css"]; ?>
 <?php $optionalScripts = ["js/inputs.js"]; ?>
 <?php $title = "SignUp"; ?>
+<?php $mainClasses = ""; ?>
 <?php $showFooter = false; ?>
 <?php $showHeader = false; ?>
 

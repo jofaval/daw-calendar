@@ -2,6 +2,7 @@
 <?php $optionalCSS = []; ?>
 <?php $optionalScripts = []; ?>
 <?php $title = "Access"; ?>
+<?php $mainClasses = ""; ?>
 <?php $showFooter = true; ?>
 <?php $showHeader = true; ?>
 

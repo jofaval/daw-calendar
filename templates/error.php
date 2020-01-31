@@ -2,6 +2,7 @@
 <?php $optionalCSS = ["login.css"]; ?>
 <?php $optionalScripts = []; ?>
 <?php $title = "Error"; ?>
+<?php $mainClasses = ""; ?>
 <?php $showFooter = true; ?>
 <?php $showHeader = true; ?>
 

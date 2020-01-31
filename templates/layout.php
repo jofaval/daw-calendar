@@ -45,7 +45,7 @@
         </nav>
     <?php endif; ?>
 
-    <main role="main">
+    <main role="main" class="<?php echo $mainClasses; ?>">
         <?php echo $contenido ?>
     </main>
 

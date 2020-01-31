@@ -2,6 +2,7 @@
 <?php $optionalCSS = ["mini-event-calendar.min.css", "timetable.css"]; ?>
 <?php $optionalScripts = ["libs/time-table.js", "libs/mini-event-calendar.js", "js/calendar-controls.js", "js/calendar.js",]; ?>
 <?php $title = "Booking area"; ?>
+<?php $mainClasses = ""; ?>
 <?php $showFooter = false; ?>
 <?php $showHeader = false; ?>
 
