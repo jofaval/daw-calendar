@@ -44,4 +44,8 @@ class Model extends PDO
                 
         return $result;
     }
+
+    public function isTokenValid($token) {
+        return true;
+    }
 }
