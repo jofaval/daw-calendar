@@ -3,7 +3,9 @@
 <head>
 <title>Información Alimentos</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="<?php echo 'css/'.Config::$mvc_vis_css ?>" />
+<?php foreach (Config::$mvc_vis_css as $css_link) : ?>
+    <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
+<?php endforeach; ?>
 
 </head>
 <body>
@@ -29,4 +31,8 @@
 <div align="center">- pie de página -</div>
 </div>
 </body>
+
+<?php foreach (Config::$mvc_vis_scripts as $script_link) : ?>
+    <script src="./scripts/<?php echo $script_link ?>"></script>
+<?php endforeach; ?>
 </html>
