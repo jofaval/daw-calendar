@@ -15,12 +15,12 @@ if (isset($_REQUEST["operationType"])) {
                 break;
 
             default:
-                errorAction(0);
+                errorAction(-1);
                 break;
         }
     } catch (\Throwable $th) {
         //throw $th;
     }
 } else {
-    errorAction(0);
+    errorAction(-1);
 }
