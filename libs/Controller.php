@@ -1,5 +1,5 @@
 <?php
-include ('libs/utils.php');
+include ('utils.php');
 
 class Controller
 {
