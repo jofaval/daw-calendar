@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .button-rgb-container {
+            width: 500px;
+            height: 250px;
+        }
+        .button-rgb,
+        .button-rgb-bg-1,
+        .button-rgb-bg-2 {
+            background: gray;
+            padding: 1rem 4rem;
+            position: absolute;
+            border: none;
+            outline: none;
+            overflow: visible;
+        }
+
+        .button-rgb {
+            z-index: 4;
+            padding: 1rem 4rem;
+            margin-left: 1rem;
+        }
+
+        .button-rgb-bg-1 {
+            background: pink;
+            margin: -1rem -1rem 0 0;
+        }
+
+        .button-rgb-bg-2 {
+            background: green;
+            margin: 1rem 0 0 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="button-rgb-container">
+        <button class="button-rgb">Test</button>
+        <div class="button-rgb-bg-1"></div>
+        <div class="button-rgb-bg-2"></div>
+    </div>
+</body>
+
+</html>
