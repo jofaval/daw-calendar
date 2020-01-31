@@ -1,6 +1,7 @@
 <!--Page configuration-->
 <?php $optionalCSS = ["login.css", "floating-label.css", "inputs.css"]; ?>
 <?php $optionalScripts = ["js/inputs.js"]; ?>
+<?php $title = "LogIn"; ?>
 <?php $showFooter = false; ?>
 <?php $showHeader = false; ?>
 
@@ -8,7 +9,7 @@
 
 <form class="form-signin">
     <div class="text-center mb-4 text-white">
-        <h3>Calendar LogIn</h3>
+        <h3>LogIn</h3>
     </div>
 
     <div class="form-label-group">

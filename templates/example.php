@@ -1,6 +1,7 @@
 <!--Page configuration-->
 <?php $optionalCSS = ["style.css"]; ?>
 <?php $optionalScripts = ["js/script.js"]; ?>
+<?php $title = "Example"; ?>
 <?php $showFooter = true; ?>
 <?php $showHeader = true; ?>
 

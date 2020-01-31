@@ -1,6 +1,7 @@
 <!--Page configuration-->
 <?php $optionalCSS = []; ?>
 <?php $optionalScripts = []; ?>
+<?php $title = "Error"; ?>
 <?php $showFooter = true; ?>
 <?php $showHeader = true; ?>
 

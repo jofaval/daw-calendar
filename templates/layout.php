@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Información Alimentos</title>
+    <title><?php echo $title; ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <?php foreach (Config::$mvc_vis_css as $css_link) : ?>
         <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
