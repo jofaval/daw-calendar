@@ -1,18 +1,19 @@
 <?php
 // web/index.php
 // carga del modelo y los controladores
-require_once __DIR__ . '/../app/Config.php';
-require_once __DIR__ . '/../app/Model.php';
-require_once __DIR__ . '/../app/Controller.php';
+require_once __DIR__ . './libs/Config.php';
+require_once __DIR__ . './libs/Model.php';
+require_once __DIR__ . './libs/Controller.php';
 
 // enrutamiento
 $map = array(
-    'inicio' => array('controller' =>'Controller', 'action' =>'inicio'),
-    'listar' => array('controller' =>'Controller', 'action' =>'listar'),
-    'insertar' => array('controller' =>'Controller', 'action' =>'insertar'),
-    'buscar' => array('controller' =>'Controller', 'action' =>'buscarPorNombre'),
-    'ver' => array('controller' =>'Controller', 'action' =>'ver'),
+    'login' => array('controller' =>'Controller', 'action' =>'login'),
+    'calendar' => array('controller' =>'Controller', 'action' =>'calendar'),
+    'signup' => array('controller' =>'Controller', 'action' =>'signup'),
+    'admin' => array('controller' =>'Controller', 'action' =>'admin'),
+    'unsigned' => array('controller' =>'Controller', 'action' =>'unsigned'),
     'error' => array('controller' =>'Controller', 'action' =>'error')
+    'access' => array('controller' =>'Controller', 'action' =>'access')
 );
 // Parseo de la ruta
 if (isset($_GET['ctl'])) {

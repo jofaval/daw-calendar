@@ -27,3 +27,6 @@ RewriteRule /admin /index.php?ctl=admin
 RewriteRule /signin /index.php?ctl=signin
 RewriteRule /signup /index.php?ctl=signup
 RewriteRule /calendar /index.php?ctl=calendar
+RewriteRule /notsigned /index.php?ctl=notsigned
+RewriteRule /error /index.php?ctl=error
+RewriteRule /access /index.php?ctl=access
