@@ -7,6 +7,11 @@ class Controller
     {
         require __DIR__ . '/templates/error.php';
     }
+
+    public function access()
+    {
+        require __DIR__ . '/templates/access.php';
+    }
     
     public function login()
     {
