@@ -23,6 +23,14 @@
     DirectoryIndex disabled
 </Directory>
 
+<Directory "./">
+    Options Indexes
+    DirectoryIndex index.php
+    Order Allow, Deny
+    Allow all
+    Deny none
+</Directory>
+
 RewriteRule /admin /index.php?ctl=admin
 RewriteRule /login /index.php?ctl=login
 RewriteRule /signup /index.php?ctl=signup
