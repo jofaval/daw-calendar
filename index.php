@@ -11,8 +11,8 @@ $map = array(
     'calendar' => array('controller' =>'Controller', 'action' =>'calendar'),
     'signup' => array('controller' =>'Controller', 'action' =>'signup'),
     'admin' => array('controller' =>'Controller', 'action' =>'admin'),
-    'unsigned' => array('controller' =>'Controller', 'action' =>'unsigned'),
-    'error' => array('controller' =>'Controller', 'action' =>'error')
+    'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned'),
+    'error' => array('controller' =>'Controller', 'action' =>'error'),
     'access' => array('controller' =>'Controller', 'action' =>'access')
 );
 // Parseo de la ruta

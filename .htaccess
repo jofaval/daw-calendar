@@ -24,7 +24,7 @@
 </Directory>
 
 RewriteRule /admin /index.php?ctl=admin
-RewriteRule /signin /index.php?ctl=signin
+RewriteRule /login /index.php?ctl=login
 RewriteRule /signup /index.php?ctl=signup
 RewriteRule /calendar /index.php?ctl=calendar
 RewriteRule /notsigned /index.php?ctl=notsigned
