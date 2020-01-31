@@ -38,3 +38,4 @@ RewriteRule /calendar /index.php?ctl=calendar
 RewriteRule /notsigned /index.php?ctl=notsigned
 RewriteRule /error /index.php?ctl=error
 RewriteRule /access /index.php?ctl=access
+RewriteRule /confirmEmail /index.php?ctl=confirmEmail

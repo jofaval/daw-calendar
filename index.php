@@ -14,7 +14,8 @@ $map = array(
     'admin' => array('controller' =>'Controller', 'action' =>'admin'),
     'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned'),
     'error' => array('controller' =>'Controller', 'action' =>'error'),
-    'access' => array('controller' =>'Controller', 'action' =>'access')
+    'access' => array('controller' =>'Controller', 'action' =>'access'),
+    'confirmEmail' => array('controller' =>'Controller', 'action' =>'confirmEmail'),
 );
 // Parseo de la ruta
 if (isset($_GET['ctl'])) {
