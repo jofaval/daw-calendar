@@ -1,9 +1,12 @@
+<!--Page configuration-->
+<?php $optionalCSS = []; ?>
+<?php $optionalScripts = []; ?>
+<?php $showFooter = true; ?>
+<?php $showHeader = true; ?>
+
 <?php ob_start() ?>
 
-<div class="row">
-
-<h3> Ha habido un error </h3>
-
+<h3> An error has occured. </h3>
 
 <?php $contenido = ob_get_clean() ?>
 
