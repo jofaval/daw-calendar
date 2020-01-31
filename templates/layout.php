@@ -15,43 +15,45 @@
 
 <body>
 
-    <?php if ($showHeader): ?>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="transition: all 0.2s ease-in-out 0s;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation" style="transition: all 0.2s ease-in-out 0s;">
-            <span class="navbar-toggler-icon" style="transition: all 0.2s ease-in-out 0s;"></span>
-        </button>
+    <?php if ($showHeader) : ?>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="transition: all 0.2s ease-in-out 0s;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation" style="transition: all 0.2s ease-in-out 0s;">
+                <span class="navbar-toggler-icon" style="transition: all 0.2s ease-in-out 0s;"></span>
+            </button>
 
-        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08" style="transition: all 0.2s ease-in-out 0s;">
-            <ul class="navbar-nav" style="transition: all 0.2s ease-in-out 0s;">
-                <li class="nav-item active" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link" href="./home" style="transition: all 0.2s ease-in-out 0s;">Schedules<span class="sr-only" style="transition: all 0.2s ease-in-out 0s;">(current)</span></a>
-                </li>
-                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link selected" href="./calendar" style="transition: all 0.2s ease-in-out 0s;">Calendar</a>
-                </li>
-                <li class="nav-item dropdown" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link dropdown-toggle" href="./admin" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="transition: all 0.2s ease-in-out 0s;">Admin panel</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown08" style="transition: all 0.2s ease-in-out 0s;">
-                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Classroom</a>
-                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Teacher</a>
-                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedule</a>
-                    </div>
-                </li>
-                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link" href="./logout" style="transition: all 0.2s ease-in-out 0s;">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08" style="transition: all 0.2s ease-in-out 0s;">
+                <ul class="navbar-nav" style="transition: all 0.2s ease-in-out 0s;">
+                    <li class="nav-item active" style="transition: all 0.2s ease-in-out 0s;">
+                        <a class="nav-link" href="./home" style="transition: all 0.2s ease-in-out 0s;">Schedules<span class="sr-only" style="transition: all 0.2s ease-in-out 0s;">(current)</span></a>
+                    </li>
+                    <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                        <a class="nav-link selected" href="./calendar" style="transition: all 0.2s ease-in-out 0s;">Calendar</a>
+                    </li>
+                    <li class="nav-item dropdown" style="transition: all 0.2s ease-in-out 0s;">
+                        <a class="nav-link dropdown-toggle" href="./admin" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="transition: all 0.2s ease-in-out 0s;">Admin panel</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown08" style="transition: all 0.2s ease-in-out 0s;">
+                            <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Classroom</a>
+                            <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Teacher</a>
+                            <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedule</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                        <a class="nav-link" href="./logout" style="transition: all 0.2s ease-in-out 0s;">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     <?php endif; ?>
 
-    <?php echo $contenido ?>
+    <main role="main">
+        <?php echo $contenido ?>
+    </main>
 
-    <?php if ($showFooter): ?>
-    <div id="pie">
-        <hr />
-        <div align="center">- pie de página -</div>
-    </div>
+    <?php if ($showFooter) : ?>
+        <div id="pie">
+            <hr />
+            <div align="center">- pie de página -</div>
+        </div>
     <?php endif; ?>
 </body>
 
