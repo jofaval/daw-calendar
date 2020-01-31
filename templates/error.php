@@ -1,5 +1,5 @@
 <!--Page configuration-->
-<?php $optionalCSS = []; ?>
+<?php $optionalCSS = ["login.css"]; ?>
 <?php $optionalScripts = []; ?>
 <?php $title = "Error"; ?>
 <?php $showFooter = true; ?>
