@@ -15,6 +15,7 @@
 
 <body>
 
+    <?php if ($showHeader): ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="transition: all 0.2s ease-in-out 0s;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation" style="transition: all 0.2s ease-in-out 0s;">
             <span class="navbar-toggler-icon" style="transition: all 0.2s ease-in-out 0s;"></span>
@@ -42,15 +43,16 @@
             </ul>
         </div>
     </nav>
+    <?php endif; ?>
 
-    <div id="contenido">
-        <?php echo $contenido ?>
-    </div>
+    <?php echo $contenido ?>
 
+    <?php if ($showFooter): ?>
     <div id="pie">
         <hr />
         <div align="center">- pie de página -</div>
     </div>
+    <?php endif; ?>
 </body>
 
 <?php foreach (Config::$mvc_vis_scripts as $script_link) : ?>
