@@ -7,6 +7,9 @@
     <?php foreach (Config::$mvc_vis_css as $css_link) : ?>
         <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
     <?php endforeach; ?>
+    <?php foreach ($optionalCSS as $css_link) : ?>
+        <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
+    <?php endforeach; ?>
 
 </head>
 
@@ -51,6 +54,9 @@
 </body>
 
 <?php foreach (Config::$mvc_vis_scripts as $script_link) : ?>
+    <script src="./scripts/<?php echo $script_link ?>"></script>
+<?php endforeach; ?>
+<?php foreach ($optionalScripts as $script_link) : ?>
     <script src="./scripts/<?php echo $script_link ?>"></script>
 <?php endforeach; ?>
 
