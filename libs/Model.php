@@ -4,13 +4,22 @@ include_once ('Config.php');
 class Model extends PDO
 {
     protected $conexion;
+    public static $instance = null;
 
     public function __construct()
     {
-        $this->conexion = new PDO('mysql:host=' . Config::$mvc_bd_hostname . ';dbname=' . Config::$mvc_bd_nombre . '', Config::$mvc_bd_usuario, Config::$mvc_bd_clave);
-        // Realiza el enlace con la BD en utf-8
-        $this->conexion->exec("set names utf8");
-        $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+    }
+
+    public static function getInstance() {
+        if (self::$instance == null) {
+            self::$instance = new Model();
+            self::$instance->conexion = new PDO('mysql:host=' . Config::$mvc_bd_hostname . ';dbname=' . Config::$mvc_bd_nombre . '', Config::$mvc_bd_usuario, Config::$mvc_bd_clave);
+            // Realiza el enlace con la BD en utf-8
+            self::$instance->conexion->exec("set names utf8");
+            self::$instance->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        return self::$instance;
     }
 
     public function dameAlimentos()
@@ -36,4 +45,3 @@ class Model extends PDO
         return $result;
     }
 }
-?>

@@ -21,7 +21,7 @@ class Controller
     public function listar()
     {
         try {
-            $m = new Model();
+            $m = Model::getInstance();
             $params = array(
                 'alimentos' => $m->dameAlimentos()
             );
@@ -60,7 +60,7 @@ class Controller
                 if (validarDatos($nombre, $energia, $proteina, $hc, $fibra, $grasa)) {
 
                     // Si no ha habido problema creo modelo y hago inserción
-                    $m = new Model();
+                    $m = Model::getInstance();
                     if ($m->insertarAlimento($nombre, $energia, $proteina, $hc, $fibra, $grasa)) {
                         header('Location: index.php?ctl=listar');
                     } else {
@@ -104,7 +104,7 @@ class Controller
                 'nombre' => '',
                 'resultado' => array()
             );
-            $m = new Model();
+            $m = Model::getInstance();
             if (isset($_POST['buscar'])) {
                 $nombre = recoge("nombre");
                 $params['nombre'] = $nombre;
@@ -129,7 +129,7 @@ class Controller
             throw new Exception('Página no encontrada');
         }
         $id = recoge('id');
-        $m = new Model();
+        $m = Model::getInstance();
         $alimento = $m->dameAlimento($id);
         $params = $alimento;
         }catch (Exception $e) {
