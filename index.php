@@ -8,7 +8,7 @@ require_once __DIR__ . './libs/Controller.php';
 
 // enrutamiento
 $map = array(
-    'login' => array('controller' =>'Controller', 'action' =>'login'),
+    'signin' => array('controller' =>'Controller', 'action' =>'signin'),
     'calendar' => array('controller' =>'Controller', 'action' =>'calendar'),
     'signup' => array('controller' =>'Controller', 'action' =>'signup'),
     'admin' => array('controller' =>'Controller', 'action' =>'admin'),
