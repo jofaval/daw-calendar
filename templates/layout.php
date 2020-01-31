@@ -1,38 +1,57 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+
 <head>
-<title>Información Alimentos</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<?php foreach (Config::$mvc_vis_css as $css_link) : ?>
-    <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
-<?php endforeach; ?>
+    <title>Información Alimentos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <?php foreach (Config::$mvc_vis_css as $css_link) : ?>
+        <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
+    <?php endforeach; ?>
 
 </head>
+
 <body>
-<div id="cabecera">
-<h1>Información de alimentos</h1>
-</div>
 
-<div id="menu">
-<hr/>
-<a href="./admin">Admin panel</a> |
-<a href="./signin">Sign in</a> |
-<a href="./signup">Sign up</a> |
-<a href="./calendar">Calendar</a>
-<hr/>
-</div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="transition: all 0.2s ease-in-out 0s;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation" style="transition: all 0.2s ease-in-out 0s;">
+            <span class="navbar-toggler-icon" style="transition: all 0.2s ease-in-out 0s;"></span>
+        </button>
 
-<div id="contenido">
-<?php echo $contenido ?>
-</div>
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08" style="transition: all 0.2s ease-in-out 0s;">
+            <ul class="navbar-nav" style="transition: all 0.2s ease-in-out 0s;">
+                <li class="nav-item active" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link" href="./home" style="transition: all 0.2s ease-in-out 0s;">Schedules<span class="sr-only" style="transition: all 0.2s ease-in-out 0s;">(current)</span></a>
+                </li>
+                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link selected" href="./calendar" style="transition: all 0.2s ease-in-out 0s;">Calendar</a>
+                </li>
+                <li class="nav-item dropdown" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link dropdown-toggle" href="./admin" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="transition: all 0.2s ease-in-out 0s;">Admin panel</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown08" style="transition: all 0.2s ease-in-out 0s;">
+                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Classroom</a>
+                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Teacher</a>
+                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedule</a>
+                    </div>
+                </li>
+                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link" href="./logout" style="transition: all 0.2s ease-in-out 0s;">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<div id="pie">
-<hr/>
-<div align="center">- pie de página -</div>
-</div>
+    <div id="contenido">
+        <?php echo $contenido ?>
+    </div>
+
+    <div id="pie">
+        <hr />
+        <div align="center">- pie de página -</div>
+    </div>
 </body>
 
 <?php foreach (Config::$mvc_vis_scripts as $script_link) : ?>
     <script src="./scripts/<?php echo $script_link ?>"></script>
 <?php endforeach; ?>
+
 </html>
