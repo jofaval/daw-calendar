@@ -33,7 +33,7 @@ class Validacion
     public function rules($rule = array(), $data)
     {
         if (! is_array($rule)) {
-            $this->mensaje = "las reglas deben de estar en formato de arreglo";
+            $this->mensaje = "the rules must be in arrangement format";
             return $this;
         }
         foreach ($rule as $key => $rules) {
@@ -44,7 +44,7 @@ class Validacion
                         foreach ($reglas as $clave => $valores) {
                             $validator = $this->_getInflectedName($valores);
                             if (!is_callable(array($this,$validator))) {
-                                throw new BadMethodCallException("No se encontro el metodo $valores");
+                                throw new BadMethodCallException("Didn't found the method $valores");
                             }
                             $respuesta = $this->$validator($rules['name'], $valor);
                         }
@@ -53,7 +53,7 @@ class Validacion
                 }
             } else {
                 
-                $this->mensaje[$rules['name']] = "el campo {$rules['name']} no esta dentro de la regla de validación o en el formulario";
+                $this->mensaje[$rules['name']] = "The field {$rules['name']} is not inside a validartion rule nor in the form";
             }
         }
         if (!empty($this->mensaje)) {
@@ -98,7 +98,7 @@ class Validacion
         if (isset($valor) && ! empty($valor)) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            $this->mensaje[$campo][] = "The field $campo must be filled";
             return false;
         }
     }
@@ -114,7 +114,7 @@ class Validacion
         if (is_numeric($valor)) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "el campo $campo debe de ser numerico";
+            $this->mensaje[$campo][] = "The field $campo must be numeric";
             return false;
         }
     }
@@ -130,7 +130,7 @@ class Validacion
         if (preg_match("/^[a-z]+([\.]?[a-z0-9_-]+)*@[a-z]+([\.-]+[a-z0-9]+)*\.[a-z]{2,}$/", $valor)) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "el campo $campo de estar en el formato de email usuario@servidor.com";
+            $this->mensaje[$campo][] = "The field $campo must follow the email pattern user@domain.com";
             return false;
         }
     }
@@ -139,7 +139,7 @@ class Validacion
         if (isset($valor) && preg_match("/^\d\d\d\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$/", $valor)) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            $this->mensaje[$campo][] = "The field $campo must follow the datetime pattern 2020-02-02 20:20:20";
             return false;
         }
     }
@@ -148,7 +148,7 @@ class Validacion
         if (isset($valor) && preg_match("/^[a-zñ\ \º\ª]+$/iu", $valor)) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            $this->mensaje[$campo][] = "The field $campo must be a name";
             return false;
         }
     }
@@ -157,7 +157,7 @@ class Validacion
         if (isset($valor) && preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/i", $valor)) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            $this->mensaje[$campo][] = "The field $campo must be alphanumeric, only certain special characters are allowed";
             return false;
         }
     }
@@ -166,7 +166,7 @@ class Validacion
         if (isset($valor) && in_array($valor, ["perfect", "on_repair", "left_out"])) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            $this->mensaje[$campo][] = "The field $campo must be either \"perfect\", \"on_repair\" or \"left_out\"";
             return false;
         }
     }
@@ -175,7 +175,7 @@ class Validacion
         if (isset($valor) && preg_match("/^[a-zñ\ \º\ª]+$/ium", $valor)) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            $this->mensaje[$campo][] = "The field $campo must be a text";
             return false;
         }
     }
@@ -184,7 +184,7 @@ class Validacion
         if (isset($valor) && preg_match("/^[a-z0-9_-]{3,24}$/i", $valor)) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            $this->mensaje[$campo][] = "The field $campo must be alphanumeric with \"_\" and \"-\" as an exception";
             return false;
         }
     }
