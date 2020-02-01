@@ -18,6 +18,10 @@ class Config
         "js/utils.js",
     ];
     static public $emailSender = "no-reply@iesabastos.org";
+    static public $ACCESS_LEVEL_GUEST = 0;
+    static public $ACCESS_LEVEL_NOT_ACTIVATED = 1;
+    static public $ACCESS_LEVEL_TEACHER = 2;
+    static public $ACCESS_LEVEL_ADMIN = 3;
 }
 
 ?>

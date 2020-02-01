@@ -12,23 +12,23 @@ $sessions = Sessions::getInstance();
 
 /*
 * Access
-* 0 - Guest
-* 1 - Not activated account
-* 2 - Teacher
-* 3 - Admin
+* 0 - Guest - ACCESS_LEVEL_GUEST
+* 1 - Not activated account - ACCESS_LEVEL_NOT_ACTIVATED
+* 2 - Teacher - ACCESS_LEVEL_TEACHER
+* 3 - Admin - ACCESS_LEVEL_ADMIN
 */
 
 // enrutamiento
 $map = array(
-    'signin' => array('controller' =>'Controller', 'action' =>'signin', 'access' => 0),
-    'signout' => array('controller' =>'Controller', 'action' =>'signout', 'access' => 2),
-    'signup' => array('controller' =>'Controller', 'action' =>'signup', 'access' => 0),
-    'calendar' => array('controller' =>'Controller', 'action' =>'calendar', 'access' => 2),
-    'admin' => array('controller' =>'Controller', 'action' =>'admin', 'access' => 3),
-    'access' => array('controller' =>'Controller', 'action' =>'access', 'access' => 0),
-    'confirmEmail' => array('controller' =>'Controller', 'action' =>'confirmEmail', 'access' => 1),
-    'error' => array('controller' =>'Controller', 'action' =>'error', 'access' => 0),
-    'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned', 'access' => 0),
+    'signin' => array('controller' =>'Controller', 'action' =>'signin', 'access' => Config::$ACCESS_LEVEL_GUEST),
+    'signout' => array('controller' =>'Controller', 'action' =>'signout', 'access' => Config::$ACCESS_LEVEL_TEACHER),
+    'signup' => array('controller' =>'Controller', 'action' =>'signup', 'access' => Config::$ACCESS_LEVEL_GUEST),
+    'calendar' => array('controller' =>'Controller', 'action' =>'calendar', 'access' => Config::$ACCESS_LEVEL_TEACHER),
+    'admin' => array('controller' =>'Controller', 'action' =>'admin', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'access' => array('controller' =>'Controller', 'action' =>'access', 'access' => Config::$ACCESS_LEVEL_GUEST),
+    'confirmEmail' => array('controller' =>'Controller', 'action' =>'confirmEmail', 'access' => Config::$ACCESS_LEVEL_NOT_ACTIVATED),
+    'error' => array('controller' =>'Controller', 'action' =>'error', 'access' => Config::$ACCESS_LEVEL_GUEST),
+    'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned', 'access' => Config::$ACCESS_LEVEL_GUEST),
 );
 
 // Parseo de la ruta
