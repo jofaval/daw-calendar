@@ -137,29 +137,29 @@ class Controller
     public function admin()
     {
         //Teacher
-        if (isset($_REQUEST["createTeacher"])) {
+        if (isset($_REQUEST["createTeacher"])) { //Create
             $result = tryCatch("Controller", "signupFunctionality");
-        } else if (isset($_REQUEST["updateTeacher"])) {
+        } else if (isset($_REQUEST["updateTeacher"])) { //Update
             $result = tryCatch("Controller", "updateTeacherFunctionality");
-        } else if (isset($_REQUEST["deleteTeacher"])) {
+        } else if (isset($_REQUEST["deleteTeacher"])) { //Delete
             $result = tryCatch("Controller", "deleteTeacherFunctionality");
         }
         
         //Classroom
-        if (isset($_REQUEST["createClassroom"])) {
+        if (isset($_REQUEST["createClassroom"])) { //Create
             $result = tryCatch("Controller", "createClassroomFunctionality");
-        } else if (isset($_REQUEST["updateClassroom"])) {
+        } else if (isset($_REQUEST["updateClassroom"])) { //Update
             $result = tryCatch("Controller", "updateClassroomFunctionality");
-        } else if (isset($_REQUEST["deleteClassroom"])) {
+        } else if (isset($_REQUEST["deleteClassroom"])) { //Delete
             $result = tryCatch("Controller", "deleteClassroomFunctionality");
         }
 
         //Schedule
-        if (isset($_REQUEST["createSchedule"])) {
+        if (isset($_REQUEST["createSchedule"])) { //Create
             $result = tryCatch("Controller", "createScheduleFunctionality");
-        } else if (isset($_REQUEST["updateSchedule"])) {
+        } else if (isset($_REQUEST["updateSchedule"])) { //Update
             $result = tryCatch("Controller", "updateScheduleFunctionality");
-        } else if (isset($_REQUEST["deleteSchedule"])) {
+        } else if (isset($_REQUEST["deleteSchedule"])) { //Delete
             $result = tryCatch("Controller", "deleteScheduleFunctionality");
         }
 
