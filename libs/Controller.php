@@ -74,6 +74,53 @@ class Controller
             return false;
         }
     }
+    
+    public function signup()
+    {
+        $result = tryCatch("Controller", "signupFunctionality");
+          
+        if ($result) {
+            header("Location: signin/");
+        } else {
+            require __DIR__ . '/templates/signup.php';
+        }
+        
+    }
+
+    public function signupFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $datos = $_POST;
+        $validacion = new Validacion();
+        $regla = array(
+            array(
+                'name' => 'inputName',
+                'regla' => 'no-empty,name'
+            ),
+            array(
+                'name' => 'inputUsername',
+                'regla' => 'no-empty,username'
+            ),
+            array(
+                'name' => 'inputPassword',
+                'regla' => 'no-empty,password'
+            ),
+            array(
+                'name' => 'inputEmail',
+                'regla' => 'no-empty,email'
+            )
+        );
+        $validaciones = $validacion->rules($regla, $datos);
+
+        $signup = $model->signup();
+        if ($signup !== false) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>
