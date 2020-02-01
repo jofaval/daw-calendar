@@ -202,18 +202,6 @@ class Controller
         
         $regla = array(
             array(
-                'name' => 'inputTeacherUsername',
-                'regla' => 'no-empty,name'
-            ),
-            array(
-                'username' => 'inputTeacherPassword',
-                'regla' => 'no-empty,username'
-            ),
-            array(
-                'password' => 'inputTeacherName',
-                'regla' => 'no-empty,password'
-            ),
-            array(
                 'email' => 'inputTeacherEmail',
                 'regla' => 'no-empty,email'
             )
@@ -222,8 +210,6 @@ class Controller
 
         $model->deleteTeacher();
     }
-
-    
 }
 
 ?>

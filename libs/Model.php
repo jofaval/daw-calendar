@@ -100,7 +100,7 @@ class Model extends PDO
     }
 
     public function isTokenValid($username, $token) {
-        $queryResult = query("SELECT expirationDate FROM tokens WHERE token=:token and username=:username"), ["token"=>$token, "username"=>$username];
+        $queryResult = query("SELECT expirationDate FROM tokens WHERE token=:token and username=:username", ["token"=>$token, "username"=>$username]);
         if (count($queryResult) !== 0) {
             return isDateInTime($queryResult[0]["expirationDate"]);
         }
@@ -122,13 +122,8 @@ class Model extends PDO
     }
 
     public function deleteTeacher() {
-        $username = recoge("inputUsername");
-        
         $params = [
-            "name" => recoge("inputName"),
             "email" => recoge("inputEmail"),
-            "username" => $username,
-            "password" => blowfishCrypt(recoge("inputPassword"), $username),
         ];
 
         return cudOperation("DELETE FROM users WHERE email=:email", $params);
