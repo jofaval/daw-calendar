@@ -46,9 +46,22 @@ class Model extends PDO
         return $result->execute();
     }
 
-    private function delete($deleteString, $params = [])
+    private function update($updateString, $params = [])
     {
-        $result = $this->conexion->query($deleteString);
+        $result = $this->conexion->query($updateString);
+
+        if (!empty($params)) {
+            foreach ($params as $key => $value) {
+                $result->bindParam(":$key", $value);
+            }
+        }
+
+        return $result->execute();
+    }
+
+    private function insert($insertString, $params = [])
+    {
+        $result = $this->conexion->query($insertString);
 
         if (!empty($params)) {
             foreach ($params as $key => $value) {
