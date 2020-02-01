@@ -73,7 +73,7 @@ class Model extends PDO
             $params["password"] = blowfishCrypt($password, $username);
             $params["fullname"] = $fullname;
             $params["email"] = $email;
-            $signUp = cudOperation("INSERT INTO FROM users VALUES (:username, :password, :fullname, :email)", $params);
+            $signUp = cudOperation("INSERT INTO FROM users (username, password, fullname, email, type) VALUES (:username, :password, :fullname, :email, 2)", $params);
             generateToken($username);
             return $signUp;
         }
