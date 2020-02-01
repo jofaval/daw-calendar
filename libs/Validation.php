@@ -154,6 +154,6 @@ $regla = array(
     
 );
 $validaciones = $validacion->rules($regla, $datos);
-print_r($validaciones);
+//print_r($validaciones);
 
 ?>

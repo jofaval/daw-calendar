@@ -2,6 +2,8 @@
 
 require_once("utils.php");
 require_once("exceptions.php");
+require_once("Controller.php");
+require_once("Model.php");
 
 if (isset($_REQUEST["operationType"])) {
     $operationType = recoge("operationType");
@@ -41,7 +43,6 @@ function throwIfExceptionIfDoesntExist($elems) {
             throw new Throwable("$elem doesn't exist");
         }
     }
-    
 }
 
 function returnError()

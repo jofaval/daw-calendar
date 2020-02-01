@@ -41,10 +41,7 @@ class CalendarControls {
   }
 
   onMonthChanged(month, year) {
-    //console.log(globalDate);
     globalDate = new Date(year, month, 2);
-    //console.log(month);
-    //console.log(globalDate);
   }
 
   updateOnDayClick(scope) {
@@ -61,7 +58,7 @@ class CalendarControls {
       globalDate.getMonth(),
       dayInNumber
     );
-    //console.log(newDate);
+
     var timeTable = $("#timeTable");
     timeTable.TT({
       events: this.events,

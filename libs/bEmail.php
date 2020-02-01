@@ -6,3 +6,5 @@ class Email {
         mail($addressee,$subject,$message,[$headers],[$parameters]);
     }
 }
+
+?>

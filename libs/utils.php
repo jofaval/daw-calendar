@@ -3,9 +3,9 @@
 function getAcademicYear($date) {
     $time=strtotime($dateValue);
 
-    $month=date("F",$time);
+    $month=date("F", $time);
 
-    $year=date("Y",$time);
+    $year=date("Y", $time);
 
     switch ($month) {
         case '01':
@@ -39,10 +39,11 @@ function recoge($var)
 {
     if (isset($_REQUEST[$var]))
         $tmp=strip_tags(sinEspacios($_REQUEST[$var]));
-        else
-            $tmp= "";
+    else {
+        $tmp= "";
+    }
             
-            return $tmp;
+    return $tmp;
 }
 
 function sinEspacios($frase) {

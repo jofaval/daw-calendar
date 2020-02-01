@@ -44,7 +44,6 @@ class Controller
         } else {
             require __DIR__ . '/templates/signin.php';
         }
-        
     }
 
     public function signinFunctionality() {
@@ -52,8 +51,6 @@ class Controller
         $validation = Validation::getInstance();
         $sessions = Sessions::getInstance();
         
-        $datos = $_POST;
-        $validacion = new Validacion();
         $regla = array(
             array(
                 'name' => 'username',
@@ -64,7 +61,7 @@ class Controller
                 'regla' => 'no-empty,password'
             )
         );
-        $validaciones = $validacion->rules($regla, $datos);
+        $validations = $validation->rules($regla, $_POST);
 
         $signin = $model->signin();
         if ($signin !== false) {
@@ -93,8 +90,6 @@ class Controller
         $validation = Validation::getInstance();
         $sessions = Sessions::getInstance();
         
-        $datos = $_POST;
-        $validacion = new Validacion();
         $regla = array(
             array(
                 'name' => 'inputName',
@@ -113,7 +108,7 @@ class Controller
                 'regla' => 'no-empty,email'
             )
         );
-        $validaciones = $validacion->rules($regla, $datos);
+        $validation = $validacion->rules($regla, $_POST);
 
         $signup = $model->signup();
         if ($signup !== false) {

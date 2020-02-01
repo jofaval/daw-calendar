@@ -19,4 +19,5 @@ class Config
     ];
     static public $emailSender = "no-reply@iesabastos.org";
 }
+
 ?>
