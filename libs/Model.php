@@ -33,33 +33,7 @@ class Model extends PDO
         return $result->fetchAll();
     }
 
-    private function insert($insertString, $params = [])
-    {
-        $result = $this->conexion->query($insertString);
-
-        if (!empty($params)) {
-            foreach ($params as $key => $value) {
-                $result->bindParam(":$key", $value);
-            }
-        }
-
-        return $result->execute();
-    }
-
-    private function update($updateString, $params = [])
-    {
-        $result = $this->conexion->query($updateString);
-
-        if (!empty($params)) {
-            foreach ($params as $key => $value) {
-                $result->bindParam(":$key", $value);
-            }
-        }
-
-        return $result->execute();
-    }
-
-    private function insert($insertString, $params = [])
+    private function cudOperation($insertString, $params = [])
     {
         $result = $this->conexion->query($insertString);
 
