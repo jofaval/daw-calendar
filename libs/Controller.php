@@ -274,6 +274,66 @@ class Controller
 
         $model->deleteClassroom();
     }
+
+    public function createScheduleFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $regla = array(
+            array(
+                'start_hour' => 'inputScheduleStartHour',
+                'regla' => 'no-empty,datetime'
+            ),
+            array(
+                'end_hour' => 'inputScheduleEndHour',
+                'regla' => 'no-empty,datetime'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+        $model->createSchedule();
+    }
+
+    public function updateScheduleFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $regla = array(
+            array(
+                'start_hour' => 'inputScheduleStartHour',
+                'regla' => 'no-empty,datetime'
+            ),
+            array(
+                'end_hour' => 'inputScheduleEndHour',
+                'regla' => 'no-empty,datetime'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+        $model->updateSchedule();
+    }
+
+    public function deleteScheduleFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $regla = array(
+            array(
+                'start_hour' => 'inputScheduleStartHour',
+                'regla' => 'no-empty,datetime'
+            ),
+            array(
+                'end_hour' => 'inputScheduleEndHour',
+                'regla' => 'no-empty,datetime'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+        $model->deleteSchedule();
+    }
 }
 
 ?>
