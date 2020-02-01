@@ -167,6 +167,61 @@ class Controller
     }
 
 
+    public function updateTeacherFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'inputName',
+                'regla' => 'no-empty,name'
+            ),
+            array(
+                'username' => 'inputUsername',
+                'regla' => 'no-empty,username'
+            ),
+            array(
+                'password' => 'inputPassword',
+                'regla' => 'no-empty,password'
+            ),
+            array(
+                'email' => 'inputEmail',
+                'regla' => 'no-empty,email'
+            )
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+        $model->updateTeacher();
+    }
+
+    public function deleteTeacherFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'inputName',
+                'regla' => 'no-empty,name'
+            ),
+            array(
+                'username' => 'inputUsername',
+                'regla' => 'no-empty,username'
+            ),
+            array(
+                'password' => 'inputPassword',
+                'regla' => 'no-empty,password'
+            ),
+            array(
+                'email' => 'inputEmail',
+                'regla' => 'no-empty,email'
+            )
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+        $model->deleteTeacher();
+    }
 }
 
 ?>
