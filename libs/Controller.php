@@ -133,6 +133,11 @@ class Controller
     {
         require __DIR__ . '/templates/calendar.php';
     }
+
+    public function admin()
+    {
+        require __DIR__ . '/templates/admin.php';
+    }
 }
 
 ?>
