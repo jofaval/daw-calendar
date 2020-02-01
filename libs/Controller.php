@@ -37,7 +37,10 @@ class Controller
     
     public function signin()
     {
-        $result = tryCatch("Controller", "signinFunctionality");
+        $result = false;
+        if (isset($_REQUEST["signin"])) {
+            $result = tryCatch("Controller", "signinFunctionality");
+        }
           
         if ($result) {
             header("Location: calendar/");
@@ -132,6 +135,33 @@ class Controller
 
     public function admin()
     {
+        //Teacher
+        if (isset($_REQUEST["createTeacher"])) {
+            $result = tryCatch("Controller", "signupFunctionality");
+        } else if (isset($_REQUEST["updateTeacher"])) {
+            $result = tryCatch("Controller", "updateTeacherFunctionality");
+        } else if (isset($_REQUEST["deleteTeacher"])) {
+            $result = tryCatch("Controller", "deleteTeacherFunctionality");
+        }
+        
+        //Classroom
+        if (isset($_REQUEST["createClassroom"])) {
+            $result = tryCatch("Controller", "createClassroomFunctionality");
+        } else if (isset($_REQUEST["updateClassroom"])) {
+            $result = tryCatch("Controller", "updateClassroomFunctionality");
+        } else if (isset($_REQUEST["deleteClassroom"])) {
+            $result = tryCatch("Controller", "deleteClassroomFunctionality");
+        }
+
+        //Schedule
+        if (isset($_REQUEST["createSchedule"])) {
+            $result = tryCatch("Controller", "createScheduleFunctionality");
+        } else if (isset($_REQUEST["updateSchedule"])) {
+            $result = tryCatch("Controller", "updateScheduleFunctionality");
+        } else if (isset($_REQUEST["deleteSchedule"])) {
+            $result = tryCatch("Controller", "deleteScheduleFunctionality");
+        }
+
         require __DIR__ . '/templates/admin.php';
     }
 }
