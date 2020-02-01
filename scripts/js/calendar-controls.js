@@ -32,6 +32,10 @@ class CalendarControls {
     this.updateCalendar();
   }
 
+  loadEvents(events) {
+    
+  }
+
   updateCalendar() {
     this.calendarHTML.MEC({
       events: this.events,

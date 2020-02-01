@@ -10,15 +10,9 @@ function request(requestLocation, requestType = "POST", params = {}, success = d
 }
 
 function defaultAjaxSuccessAction(data) {
-    console.log("La petición ha tenido éxito");
-    console.log("Resultado :");
-    console.log(data);
 }
 
 function defaultAjaxErrorAction(data) {
-    console.log("La petición ha fallado");
-    console.log("Resultado :");
-    console.log(data);
     sendNotification("Ha surgido un error al realizar la operación", true);
 }
 
@@ -49,41 +43,19 @@ function getWeekFromDate(dayDate) {
     if (dayInNumber >= 1) {
         startingNumber = 0 - dayInNumber;
     }
-    //console.log("Day in number: " + dayInNumber);
-
-    //var timestamp = workDate.getDate();
-    //console.log("Timestamp: " + timestamp);
-    //var base = 60 * 60 * 24;
+    
     var currentDateInFor = workDate;
     currentDateInFor.setDate(currentDateInFor.getDate() + (startingNumber));
     for (var index = 0; index < 7; index++) {
-        //currentDateInFor.setDate(timestamp + (startingNumber));
         currentDateInFor.setDate(currentDateInFor.getDate() + 1);
         weekDates.push(new Date(currentDateInFor.getTime()));
-        //timestamp++;
-        //currentDateInFor.setDate(timestamp);
-        //weekDates.push(new Date(workDate.getTime() + (base * startingNumber)));
-        //console.log("Number: " + startingNumber);
-        //console.log("Timestampt: " + (timestamp + (startingNumber)));
-        //console.log("Date: " + workDate);
         startingNumber++;
     }
-
-    /*console.log(weekDates);
-    console.log(
-        "Semana del " +
-        printDateWithFormat(weekDates[0], "d/m/Y") +
-        " - " +
-        printDateWithFormat(weekDates[weekDates.length - 1], "d/m/Y")
-    );*/
-
-    console.log(weekDates);
 
     return weekDates;
 }
 
 function sendNotification(message, error = false) {
-
     setTimeout(() => {
 
     }, timeout);
