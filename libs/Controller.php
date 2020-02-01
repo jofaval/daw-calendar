@@ -38,11 +38,41 @@ class Controller
     {
         $result = tryCatch("Controller", "loginFunctionality");
           
-        require __DIR__ . '/templates/login.php';
+        if ($result) {
+            header("Location: calendar/");
+        } else {
+            require __DIR__ . '/templates/login.php';
+        }
+        
     }
 
     public function loginFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $datos = $_POST;
+        $validacion = new Validacion();
+        $regla = array(
+            array(
+                'name' => 'username',
+                'regla' => 'no-empty,username'
+            ),
+            array(
+                'name' => 'password',
+                'regla' => 'no-empty,password'
+            )
+        );
+        $validaciones = $validacion->rules($regla, $datos);
 
+        $login = $model->login();
+        if ($login !== false) {
+            setSession("username", $login["username"]);
+            setSession("access", $login["access"]);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
