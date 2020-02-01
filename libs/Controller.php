@@ -121,6 +121,13 @@ class Controller
             return false;
         }
     }
+
+    public function signout() {
+        $sessions = Sessions::getInstance();
+
+        $sessions->removeSession("username");
+        $sessions->setSession("access", 0);
+    }
 }
 
 ?>
