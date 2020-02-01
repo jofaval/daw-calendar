@@ -54,6 +54,12 @@ class Model extends PDO
         return cudOperation("UPDATE FROM $entityType SET enabled=:enabled WHERE $identification=:$identification", $params);
     }
 
+    private function login($username, $password)
+    {
+        $params["username"] = $username;
+        return query("SELECT access, password FROM users WHERE username=:username", $params);
+    }
+
     public function isTokenValid($token) {
         return true;
     }
