@@ -110,28 +110,27 @@ class Model extends PDO
 
     public function updateTeacher() {
         $username = recoge("username");
-
+        
         $params = [
-            "name" => recoge("name"),
-            "email" => recoge("email"),
-            "username" => recoge("username"),
-            "password" => blowfishCrypt(recoge("password"), $username),
-        ]
+            "name" => recoge("inputName"),
+            "email" => recoge("inputEmail"),
+            "username" => recoge("inputUsername"),
+            "password" => blowfishCrypt(recoge("inputPassword"), $username),
+        ];
 
         return cudOperation("UPDATE FROM users SET name=:name, username=:username, password=:password WHERE email=:email type=2", $params);
     }
 
     public function deleteTeacher() {
-        $username = recoge("username");
+        $username = recoge("inputUsername");
         
         $params = [
-            "name" => recoge("name"),
-            "email" => recoge("email"),
-            "username" => recoge("username"),
-            "password" => blowfishCrypt(recoge("password"), $username),
-        ]
+            "name" => recoge("inputName"),
+            "email" => recoge("inputEmail"),
+            "username" => $username,
+            "password" => blowfishCrypt(recoge("inputPassword"), $username),
+        ];
 
         return cudOperation("DELETE FROM users WHERE email=:email", $params);
     }
-
 }
