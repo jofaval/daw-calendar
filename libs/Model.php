@@ -46,6 +46,13 @@ class Model extends PDO
         return $result->execute();
     }
 
+    private function disable($entityType, $params, $enabled)
+    {
+        $params["enabled"] = $enabled;
+        $identification = array_keys()[0];
+        return cudOperation("UPDATE FROM $entityType SET enabled=:enabled WHERE $identification=:$identification", $params);
+    }
+
     public function isTokenValid($token) {
         return true;
     }
