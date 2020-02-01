@@ -100,15 +100,15 @@ class Controller
                 'regla' => 'no-empty,name'
             ),
             array(
-                'username' => 'inputUsername',
+                'name' => 'inputUsername',
                 'regla' => 'no-empty,username'
             ),
             array(
-                'password' => 'inputPassword',
+                'name' => 'inputPassword',
                 'regla' => 'no-empty,password'
             ),
             array(
-                'email' => 'inputEmail',
+                'name' => 'inputEmail',
                 'regla' => 'no-empty,email'
             )
         );
@@ -178,15 +178,15 @@ class Controller
                 'regla' => 'no-empty,name'
             ),
             array(
-                'username' => 'inputTeacherPassword',
+                'name' => 'inputTeacherPassword',
                 'regla' => 'no-empty,username'
             ),
             array(
-                'password' => 'inputTeacherName',
+                'name' => 'inputTeacherName',
                 'regla' => 'no-empty,password'
             ),
             array(
-                'email' => 'inputTeacherEmail',
+                'name' => 'inputTeacherEmail',
                 'regla' => 'no-empty,email'
             )
         );
@@ -202,7 +202,7 @@ class Controller
         
         $regla = array(
             array(
-                'email' => 'inputTeacherEmail',
+                'name' => 'inputTeacherEmail',
                 'regla' => 'no-empty,email'
             )
         );
@@ -222,11 +222,11 @@ class Controller
                 'regla' => 'no-empty,name'
             ),
             array(
-                'description' => 'inputClasroomDescription',
+                'name' => 'inputClasroomDescription',
                 'regla' => 'no-empty,text'
             ),
             array(
-                'state' => 'selectClasroomState',
+                'name' => 'selectClasroomState',
                 'regla' => 'no-empty,state'
             ),
         );
@@ -246,11 +246,11 @@ class Controller
                 'regla' => 'no-empty,name'
             ),
             array(
-                'description' => 'inputClasroomDescription',
+                'name' => 'inputClasroomDescription',
                 'regla' => 'no-empty,text'
             ),
             array(
-                'state' => 'selectClasroomState',
+                'name' => 'selectClasroomState',
                 'regla' => 'no-empty,state'
             ),
         );
@@ -282,11 +282,11 @@ class Controller
         
         $regla = array(
             array(
-                'start_hour' => 'inputScheduleStartHour',
+                'name' => 'inputScheduleStartHour',
                 'regla' => 'no-empty,datetime'
             ),
             array(
-                'end_hour' => 'inputScheduleEndHour',
+                'name' => 'inputScheduleEndHour',
                 'regla' => 'no-empty,datetime'
             ),
         );
@@ -302,11 +302,11 @@ class Controller
         
         $regla = array(
             array(
-                'start_hour' => 'inputScheduleStartHour',
+                'name' => 'inputScheduleStartHour',
                 'regla' => 'no-empty,datetime'
             ),
             array(
-                'end_hour' => 'inputScheduleEndHour',
+                'name' => 'inputScheduleEndHour',
                 'regla' => 'no-empty,datetime'
             ),
         );
@@ -322,11 +322,11 @@ class Controller
         
         $regla = array(
             array(
-                'start_hour' => 'inputScheduleStartHour',
+                'name' => 'inputScheduleStartHour',
                 'regla' => 'no-empty,datetime'
             ),
             array(
-                'end_hour' => 'inputScheduleEndHour',
+                'name' => 'inputScheduleEndHour',
                 'regla' => 'no-empty,datetime'
             ),
         );
