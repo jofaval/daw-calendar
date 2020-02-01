@@ -9,6 +9,7 @@ class Config
     static public $mvc_vis_css = [
         "bootstrap.min.css",
         "main.css",
+        "jquery-ui.min.css",
     ];
     static public $mvc_vis_scripts = [
         "libs/jquery.min.js",
