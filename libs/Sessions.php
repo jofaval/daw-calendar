@@ -2,17 +2,36 @@
 
 class Sessions {
 
-    public function __construct(){
-        if(!isset($_SESSION)) {
-            $this->initSession();
+    public static $instance = null;
+
+    public static function getInstance() {
+        if (self::$instance == null) {
+            self::$instance = new Sessions();
+            self::$instance->initSession();
         }
+
+        return self::$instance;
     }
 
-    public function initSession(){
+    public function __construct() {
+        
+    }
+
+    private function initSession() {
         session_start();
+        startingParams();
+        initializeValues();
     }
 
-    public function getSessionID(){
+    private function startingParams() {
+
+    }
+
+    private function initializeValues() {
+
+    }
+
+    public function getSessionID() {
         return session_id();
     }
 
