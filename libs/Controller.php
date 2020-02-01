@@ -34,19 +34,19 @@ class Controller
         return $params;
     }
     
-    public function login()
+    public function signin()
     {
-        $result = tryCatch("Controller", "loginFunctionality");
+        $result = tryCatch("Controller", "signinFunctionality");
           
         if ($result) {
             header("Location: calendar/");
         } else {
-            require __DIR__ . '/templates/login.php';
+            require __DIR__ . '/templates/signin.php';
         }
         
     }
 
-    public function loginFunctionality() {
+    public function signinFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
         $sessions = Sessions::getInstance();
@@ -65,10 +65,10 @@ class Controller
         );
         $validaciones = $validacion->rules($regla, $datos);
 
-        $login = $model->login();
-        if ($login !== false) {
-            setSession("username", $login["username"]);
-            setSession("access", $login["access"]);
+        $signin = $model->signin();
+        if ($signin !== false) {
+            setSession("username", $signin["username"]);
+            setSession("access", $signin["access"]);
             return true;
         } else {
             return false;
