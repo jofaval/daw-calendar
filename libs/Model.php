@@ -90,7 +90,7 @@ class Model extends PDO
         $params = [
             "token" => $token,
             "username" => $username,
-            "expirationDate" => date('Y-m-d', strtotime(date() . ' + 2 days')),
+            "expirationDate" => addDays(date(), 2),
             "isTraded" => false,
         ];
 
