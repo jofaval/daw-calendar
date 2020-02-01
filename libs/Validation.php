@@ -15,6 +15,16 @@ class Validacion
 
     public $mensaje;
 
+    public static $instance = null;
+
+    public static function getInstance() {
+        if (self::$instance == null) {
+            self::$instance = new Validacion();
+        }
+
+        return self::$instance;
+    }
+
     /**
      * Metodo para indicar la regla de validacion
      * El método retorna un valor verdadero si la validación es correcta, de lo contrario retorna el objeto
@@ -22,7 +32,6 @@ class Validacion
      */
     public function rules($rule = array(), $data)
     {
-        
         if (! is_array($rule)) {
             $this->mensaje = "las reglas deben de estar en formato de arreglo";
             return $this;
@@ -34,10 +43,7 @@ class Validacion
                     if ($indice === $rules['name']) {
                         foreach ($reglas as $clave => $valores) {
                             $validator = $this->_getInflectedName($valores);
-                            if (! is_callable(array(
-                                $this,
-                                $validator
-                            ))) {
+                            if (!is_callable(array($this,$validator))) {
                                 throw new BadMethodCallException("No se encontro el metodo $valores");
                             }
                             $respuesta = $this->$validator($rules['name'], $valor);
