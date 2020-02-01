@@ -127,6 +127,8 @@ class Controller
 
         $sessions->removeSession("username");
         $sessions->setSession("access", 0);
+
+        header("Location: /signin");
     }
 
     public function calendar()
