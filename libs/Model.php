@@ -62,10 +62,10 @@ class Model extends PDO
 
     function generateToken($username) {
         $token = "";
-        
+
         do {
             $token = generateRandomKey();
-        }while(count(query("SELECT token FROM tokens WHERE token=:token"), ["token"=>$token]) !== 0);
+        }while(count(query("SELECT token FROM tokens WHERE token=:token and username=:username"), ["token"=>$token, "username"=>$username]) !== 0);
 
         $params = [
             "token" => $token,
