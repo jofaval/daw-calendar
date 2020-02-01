@@ -70,7 +70,7 @@ class Model extends PDO
             "username" => $username
         ];
         if (count(query("SELECT username FROM users WHERE username=:username"), ) !== 0) {
-            $params["password"] = $password;
+            $params["password"] = blowfishCrypt($password, $username);
             $params["fullname"] = $fullname;
             $params["email"] = $email;
             $signUp = cudOperation("INSERT INTO FROM users VALUES (:username, :password, :fullname, :email)", $params);
@@ -107,4 +107,5 @@ class Model extends PDO
 
         return false;
     }
+
 }
