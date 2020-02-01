@@ -21,13 +21,13 @@ $sessions = Sessions::getInstance();
 // enrutamiento
 $map = array(
     'signin' => array('controller' =>'Controller', 'action' =>'signin', 'access' => 0),
-    'calendar' => array('controller' =>'Controller', 'action' =>'calendar', 'access' => 2),
     'signup' => array('controller' =>'Controller', 'action' =>'signup', 'access' => 0),
+    'calendar' => array('controller' =>'Controller', 'action' =>'calendar', 'access' => 2),
     'admin' => array('controller' =>'Controller', 'action' =>'admin', 'access' => 3),
-    'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned', 'access' => 0),
-    'error' => array('controller' =>'Controller', 'action' =>'error', 'access' => 0),
     'access' => array('controller' =>'Controller', 'action' =>'access', 'access' => 0),
     'confirmEmail' => array('controller' =>'Controller', 'action' =>'confirmEmail', 'access' => 1),
+    'error' => array('controller' =>'Controller', 'action' =>'error', 'access' => 0),
+    'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned', 'access' => 0),
 );
 
 // Parseo de la ruta
