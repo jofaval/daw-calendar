@@ -68,9 +68,9 @@
         <div class="form-group col-md-3">
             <label for="selectClasroomState">State (*)</label>
             <select class="form-control" id="selectClasroomState" aria-describedby="clasroomStateHelp">
-                <option>Perfect</option>
-                <option>On repair</option>
-                <option>Left out</option>
+                <option value="perfect">Perfect</option>
+                <option value="on_repair">On repair</option>
+                <option value="left_out">Left out</option>
             </select>
             <small id="clasroomStateHelp" class="form-text text-muted">How's the classroom?</small>
         </div>
