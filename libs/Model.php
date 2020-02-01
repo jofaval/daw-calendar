@@ -128,4 +128,40 @@ class Model extends PDO
 
         return cudOperation("DELETE FROM users WHERE email=:email", $params);
     }
+
+    public function createClassroom() {
+        $params = [
+            "name" => recoge("inputClassroomName"),
+            "description" => recoge("inputClasroomDescription"),
+            "state" => recoge("selectClasroomState"),
+        ];
+
+        $queryResult = query("SELECT name FROM name WHERE name=:name", $params);
+        if (count($queryResult) === 0) {
+            $params["description"] = $description;
+            $params["state"] = $state;
+
+            return cudOperation("INSERT INTO classrooms (name, description, state) VALUES (name, description, state)", $params);
+        }
+
+        return false;
+    }
+
+    public function updateClassroom() {
+        $params = [
+            "name" => recoge("inputClassroomName"),
+            "description" => recoge("inputClasroomDescription"),
+            "state" => recoge("selectClasroomState"),
+        ];
+
+        return cudOperation("UPDATE FROM classrooms SET name=:name, description=:description, state=:state WHERE name=:name", $params);
+    }
+
+    public function deleteClassroom() {
+        $params = [
+            "name" => recoge("inputClassroomName"),
+        ];
+
+        return cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
+    }
 }
