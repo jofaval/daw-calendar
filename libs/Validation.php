@@ -134,6 +134,60 @@ class Validacion
             return false;
         }
     }
+
+    protected function _datetime($campo, $valor) {
+        if (isset($valor) && preg_match("/^\d\d\d\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$/", $valor)) {
+            return true;
+        } else {
+            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            return false;
+        }
+    }
+
+    protected function _name($campo, $valor) {
+        if (isset($valor) && preg_match("/^[a-zñ\ \º\ª]+$/iu", $valor)) {
+            return true;
+        } else {
+            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            return false;
+        }
+    }
+
+    protected function _password($campo, $valor) {
+        if (isset($valor) && preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/i", $valor)) {
+            return true;
+        } else {
+            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            return false;
+        }
+    }
+
+    protected function _state($campo, $valor) {
+        if (isset($valor) && in_array($valor, ["perfect", "on_repair", "left_out"])) {
+            return true;
+        } else {
+            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            return false;
+        }
+    }
+
+    protected function _text($campo, $valor) {
+        if (isset($valor) && preg_match("/^[a-zñ\ \º\ª]+$/ium", $valor)) {
+            return true;
+        } else {
+            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            return false;
+        }
+    }
+
+    protected function _username($campo, $valor) {
+        if (isset($valor) && preg_match("/^[a-z0-9_-]{3,24}$/i", $valor)) {
+            return true;
+        } else {
+            $this->mensaje[$campo][] = "el campo $campo debe de estar lleno";
+            return false;
+        }
+    }
 }
 
 // el uso de la clase es muy sencillo os dejo las pruebas que realice a la clase
