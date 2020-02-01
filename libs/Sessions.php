@@ -28,7 +28,7 @@ class Sessions {
     }
 
     private function initializeValues() {
-
+        setSession("access", 0);
     }
 
     public function getSessionID() {

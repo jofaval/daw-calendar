@@ -8,41 +8,50 @@ require_once __DIR__ . './libs/exceptions.php';
 require_once __DIR__ . './libs/Model.php';
 require_once __DIR__ . './libs/Controller.php';
 
+$sessions = Sessions::getInstance();
+
+/*
+* Access
+* 0 - Guest
+* 1 - Not activated account
+* 2 - Teacher
+* 3 - Admin
+*/
+
 // enrutamiento
 $map = array(
-    'signin' => array('controller' =>'Controller', 'action' =>'signin'),
-    'calendar' => array('controller' =>'Controller', 'action' =>'calendar'),
-    'signup' => array('controller' =>'Controller', 'action' =>'signup'),
-    'admin' => array('controller' =>'Controller', 'action' =>'admin'),
-    'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned'),
-    'error' => array('controller' =>'Controller', 'action' =>'error'),
-    'access' => array('controller' =>'Controller', 'action' =>'access'),
-    'confirmEmail' => array('controller' =>'Controller', 'action' =>'confirmEmail'),
+    'signin' => array('controller' =>'Controller', 'action' =>'signin', 'access' => 0),
+    'calendar' => array('controller' =>'Controller', 'action' =>'calendar', 'access' => 2),
+    'signup' => array('controller' =>'Controller', 'action' =>'signup', 'access' => 0),
+    'admin' => array('controller' =>'Controller', 'action' =>'admin', 'access' => 3),
+    'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned', 'access' => 0),
+    'error' => array('controller' =>'Controller', 'action' =>'error', 'access' => 0),
+    'access' => array('controller' =>'Controller', 'action' =>'access', 'access' => 0),
+    'confirmEmail' => array('controller' =>'Controller', 'action' =>'confirmEmail', 'access' => 1),
 );
+
 // Parseo de la ruta
 if (isset($_GET['ctl'])) {
     if (isset($map[$_GET['ctl']])) {
         $ruta = $_GET['ctl'];
     } else {
-        header('Status: 404 Not Found');
-        echo '<html><body><h1>Error 404: No existe la ruta <i>' .
-            $_GET['ctl'] .'</p></body></html>';
-            exit;
+        header('Location: ./error/');
+        exit;
     }
 } else {
-    $ruta = 'inicio';
+    header('Location: ./login/');
 }
-$controlador = $map[$ruta];
+
 // Ejecución del controlador asociado a la ruta
+$controlador = $map[$ruta];
 if (method_exists($controlador['controller'],$controlador['action'])) {
-    call_user_func(array(new $controlador['controller'],
-        $controlador['action']));
+    if ($sessions->getsession("access") >= $controlador['access']) {
+        call_user_func(array(new $controlador['controller'], $controlador['action']));
+    } else {
+        header('Location: ./access/');
+    }
 } else {
-    header('Status: 404 Not Found');
-    echo '<html><body><h1>Error 404: El controlador <i>' .
-        $controlador['controller'] .
-        '->' .
-        $controlador['action'] .
-        '</i> no existe</h1></body></html>';
+    header('Location: ./error/');
+    exit;
 }
 ?>
