@@ -128,6 +128,11 @@ class Controller
         $sessions->removeSession("username");
         $sessions->setSession("access", 0);
     }
+
+    public function calendar()
+    {
+        require __DIR__ . '/templates/calendar.php';
+    }
 }
 
 ?>
