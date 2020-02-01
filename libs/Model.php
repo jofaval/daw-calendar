@@ -63,6 +63,22 @@ class Model extends PDO
         return $signin;
     }
 
+    private function signup($username, $password, $fullname, $email)
+    {
+        $params = [
+            "username" => $username
+        ];
+        if (count(query("SELECT username FROM users WHERE username=:username"), ) !== 0) {
+            $params["password"] = $password;
+            $params["fullname"] = $fullname;
+            $params["email"] = $email;
+            $signUp = cudOperation("INSERT INTO FROM users VALUES (:username, :password, :fullname, :email)", $params);
+            generateToken($username);
+            return $signUp;
+        }
+        return false;
+    }
+
     function generateToken($username) {
         $token = "";
 
