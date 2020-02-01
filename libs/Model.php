@@ -33,6 +33,19 @@ class Model extends PDO
         return $result->fetchAll();
     }
 
+    private function insert($insertString, $params = [])
+    {
+        $result = $this->conexion->query($insertString);
+
+        if (!empty($params)) {
+            foreach ($params as $key => $value) {
+                $result->bindParam(":$key", $value);
+            }
+        }
+
+        return $result->execute();
+    }
+
     public function isTokenValid($token) {
         return true;
     }
