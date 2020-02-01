@@ -1,5 +1,6 @@
 <?php
 include ('utils.php');
+include ('bEmail.php');
 
 class Controller
 {
