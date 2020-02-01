@@ -210,6 +210,70 @@ class Controller
 
         $model->deleteTeacher();
     }
+
+    public function createClassroomFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'inputClassroomName',
+                'regla' => 'no-empty,name'
+            ),
+            array(
+                'description' => 'inputClasroomDescription',
+                'regla' => 'no-empty,text'
+            ),
+            array(
+                'state' => 'selectClasroomState',
+                'regla' => 'no-empty,state'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+        $model->createClassroom();
+    }
+
+    public function updateClassroomFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'inputClassroomName',
+                'regla' => 'no-empty,name'
+            ),
+            array(
+                'description' => 'inputClasroomDescription',
+                'regla' => 'no-empty,text'
+            ),
+            array(
+                'state' => 'selectClasroomState',
+                'regla' => 'no-empty,state'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+        $model->updateClassroom();
+    }
+
+    public function deleteClassroomFunctionality() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        $sessions = Sessions::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'inputClassroomName',
+                'regla' => 'no-empty,name'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+        $model->deleteClassroom();
+    }
 }
 
 ?>
