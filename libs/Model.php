@@ -60,6 +60,25 @@ class Model extends PDO
         return query("SELECT access, password FROM users WHERE username=:username", $params);
     }
 
+    function generateToken($username) {
+        $token = "";
+        
+        do {
+            $token = generateRandomKey();
+        }while(count(query("SELECT token FROM tokens WHERE token=:token"), ["token"=>$token]) !== 0);
+
+        $params = [
+            "token" => $token,
+            "username" => $username,
+            "expirationDate" => date('Y-m-d', strtotime(date() . ' + 2 days')),
+            "isTraded" => false,
+        ];
+
+        cudOperation("INSERT INTO tokens VALUES(:token, :username, :expirationDate)", $params);
+
+        return $token;
+    }
+
     public function isTokenValid($token) {
         return true;
     }

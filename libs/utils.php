@@ -50,3 +50,14 @@ function sinEspacios($frase) {
     $texto = trim(preg_replace('/ +/', ' ', $frase));
     return $texto;
 }
+
+function generateRandomKey($length = 75) {
+    $token = '';
+    $keys = array_merge(range(0, 9), range('a', 'z'), range('A', 'Z'));
+
+    for ($i = 0; $i < $length; $i++) {
+        $token .= $keys[array_rand($keys)];
+    }
+
+    return $token;
+}
