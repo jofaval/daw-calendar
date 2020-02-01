@@ -1,6 +1,7 @@
 <?php
 include_once ('Config.php');
 include_once ('bCrypt.php');
+include_once ('bDate.php');
 
 class Model extends PDO
 {
@@ -98,7 +99,12 @@ class Model extends PDO
         return $token;
     }
 
-    public function isTokenValid($token) {
-        return true;
+    public function isTokenValid($username, $token) {
+        $queryResult = query("SELECT expirationDate FROM tokens WHERE token=:token and username=:username"), ["token"=>$token, "username"=>$username];
+        if (count($queryResult) !== 0) {
+            return isDateInTime($queryResult[0]["expirationDate"]);
+        }
+
+        return false;
     }
 }

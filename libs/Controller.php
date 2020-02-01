@@ -24,7 +24,8 @@ class Controller
     public function confirmEmailFunctionality() {
         $tokenCode = recoge("token");
         $model = Model::getInstance();
-        $token = $model->isTokenValid($tokenCode);
+        $sessions = Sessions::getInstance();
+        $token = $model->isTokenValid($sessions->getSession("username"), $tokenCode);
 
         $params = [
             "isInTime" => $token,
