@@ -67,9 +67,9 @@ class Controller
         $validations = $validation->rules($regla, $_POST);
 
         $signin = $model->signin();
-        if ($signin !== false) {
-            setSession("username", $signin["username"]);
-            setSession("access", $signin["access"]);
+        if (blowfishCrypt($password, $username) == $signin[0]["password"]) {
+            setSession("username", $username);
+            setSession("access", $signin[0]["access"]);
             return true;
         } else {
             return false;

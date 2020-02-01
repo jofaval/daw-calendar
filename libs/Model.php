@@ -49,15 +49,18 @@ class Model extends PDO
 
     private function disable($entityType, $params, $enabled)
     {
+        $params = [];
         $params["enabled"] = $enabled;
         $identification = array_keys()[0];
         return cudOperation("UPDATE FROM $entityType SET enabled=:enabled WHERE $identification=:$identification", $params);
     }
 
-    private function login($username, $password)
+    private function signin($username)
     {
+        $params = [];
         $params["username"] = $username;
-        return query("SELECT access, password FROM users WHERE username=:username", $params);
+        $signin = query("SELECT access, password FROM users WHERE username=:username", $params);
+        return $signin;
     }
 
     function generateToken($username) {
