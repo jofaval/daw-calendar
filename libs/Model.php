@@ -1,5 +1,6 @@
 <?php
 include_once ('Config.php');
+include_once ('bCrypt.php');
 
 class Model extends PDO
 {
