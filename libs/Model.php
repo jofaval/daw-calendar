@@ -46,6 +46,19 @@ class Model extends PDO
         return $result->execute();
     }
 
+    private function delete($deleteString, $params = [])
+    {
+        $result = $this->conexion->query($deleteString);
+
+        if (!empty($params)) {
+            foreach ($params as $key => $value) {
+                $result->bindParam(":$key", $value);
+            }
+        }
+
+        return $result->execute();
+    }
+
     public function isTokenValid($token) {
         return true;
     }
