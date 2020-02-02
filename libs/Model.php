@@ -31,7 +31,7 @@ class Model extends PDO
             }
         }
 
-        return $result->fetchAll();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function cudOperation($insertString, $params = []) {
