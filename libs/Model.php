@@ -204,4 +204,8 @@ class Model extends PDO
 
         $this->query("SELECT * FROM horario_seleccionado WHERE MONTH(fecha_seleccionada)=:month and YEAR(fecha_seleccionada)=:year", $params);
     }
+
+    public function getTeachers() {
+        $this->query("SELECT * FROM users WHERE type=2 and enabled=true");
+    }
 }

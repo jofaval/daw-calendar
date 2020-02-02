@@ -347,6 +347,12 @@ class Controller
 
         $model->getEventsFromMonth();
     }
+
+    public function getTeachers() {
+        $model = Model::getInstance();
+
+        $model->getTeachers();
+    }
 }
 
 ?>

@@ -29,4 +29,20 @@ class AjaxController {
             returnError();
         }
     }
+
+    public function getTeachers() {
+        try {
+            $requiredParams = [
+                "month", "year"
+            ];
+            throwIfExceptionIfDoesntExist($requiredParams);
+            if (method_exists()) {
+                echo call_user_func("Controller", __FUNCTION__);
+            } else {
+                returnError();
+            }
+        } catch (Throwable $th) {
+            returnError();
+        }
+    }
 }
