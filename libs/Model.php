@@ -208,4 +208,8 @@ class Model extends PDO
     public function getTeachers() {
         $this->query("SELECT * FROM users WHERE type=2 and enabled=true");
     }
+
+    public function getClassrooms() {
+        $this->query("SELECT * FROM classrooms WHERE enabled=true");
+    }
 }

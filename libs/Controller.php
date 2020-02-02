@@ -353,6 +353,12 @@ class Controller
 
         $model->getTeachers();
     }
+
+    public function getClassrooms() {
+        $model = Model::getInstance();
+
+        $model->getClassrooms();
+    }
 }
 
 ?>
