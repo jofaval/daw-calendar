@@ -7,6 +7,7 @@ require_once __DIR__ . './libs/Validation.php';
 require_once __DIR__ . './libs/bExceptions.php';
 require_once __DIR__ . './libs/Model.php';
 require_once __DIR__ . './libs/Controller.php';
+require_once __DIR__ . './libs/AjaxController.php';
 
 $sessions = Sessions::getInstance();
 
@@ -29,6 +30,7 @@ $map = array(
     'confirmEmail' => array('controller' =>'Controller', 'action' =>'confirmEmail', 'access' => Config::$ACCESS_LEVEL_NOT_ACTIVATED),
     'error' => array('controller' =>'Controller', 'action' =>'error', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned', 'access' => Config::$ACCESS_LEVEL_GUEST),
+    'getMonthFromEvents' => array('controller' =>'AjaxController', 'action' =>'getMonthFromEvents', 'access' => Config::$ACCESS_LEVEL_TEACHER),
 );
 
 // Parseo de la ruta
