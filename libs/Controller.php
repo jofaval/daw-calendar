@@ -120,7 +120,7 @@ class Controller
     public function signout() {
         $sessions = Sessions::getInstance();
 
-        $sessions->removeSession("username");
+        $sessions->deleteSession("username");
         $sessions->setSession("access", 0);
 
         header("Location: /signin");
