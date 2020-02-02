@@ -22,7 +22,7 @@ class Model extends PDO
         return self::$instance;
     }
 
-    private function query($queryString, $params = []) {
+    public function query($queryString, $params = []) {
         $result = $this->conexion->query($queryString);
 
         if (!empty($params)) {
@@ -34,7 +34,7 @@ class Model extends PDO
         return $result->fetchAll();
     }
 
-    private function cudOperation($insertString, $params = []) {
+    public function cudOperation($insertString, $params = []) {
         $result = $this->conexion->query($insertString);
 
         if (!empty($params)) {
@@ -46,41 +46,41 @@ class Model extends PDO
         return $result->execute();
     }
 
-    private function disable($entityType, $params, $enabled) {
+    public function disable($entityType, $params, $enabled) {
         $params = [];
         $params["enabled"] = $enabled;
         $identification = array_keys()[0];
-        return cudOperation("UPDATE FROM $entityType SET enabled=:enabled WHERE $identification=:$identification", $params);
+        return $this->cudOperation("UPDATE FROM $entityType SET enabled=:enabled WHERE $identification=:$identification", $params);
     }
 
-    private function signin($username) {
+    public function signin($username) {
         $params = [];
         $params["username"] = $username;
-        $signin = query("SELECT access, password FROM users WHERE username=:username", $params);
+        $signin = $this->query("SELECT access, password FROM users WHERE username=:username", $params);
         return $signin;
     }
 
-    private function signup($username, $password, $fullname, $email) {
+    public function signup($username, $password, $fullname, $email) {
         $params = [
             "username" => $username
         ];
-        if (count(query("SELECT username FROM users WHERE username=:username"), ) !== 0) {
+        if (count($this->query("SELECT username FROM users WHERE username=:username"), ) !== 0) {
             $params["password"] = blowfishCrypt($password, $username);
             $params["fullname"] = $fullname;
             $params["email"] = $email;
-            $signUp = cudOperation("INSERT INTO FROM users (username, password, fullname, email, type) VALUES (:username, :password, :fullname, :email, 2)", $params);
+            $signUp = $this->cudOperation("INSERT INTO FROM users (username, password, fullname, email, type) VALUES (:username, :password, :fullname, :email, 2)", $params);
             generateToken($username);
             return $signUp;
         }
         return false;
     }
 
-    function generateToken($username) {
+    public function generateToken($username) {
         $token = "";
 
         do {
             $token = generateRandomKey();
-        }while(count(query("SELECT token FROM tokens WHERE token=:token and username=:username"), ["token"=>$token, "username"=>$username]) !== 0);
+        }while(count($this->query("SELECT token FROM tokens WHERE token=:token and username=:username"), ["token"=>$token, "username"=>$username]) !== 0);
 
         $params = [
             "token" => $token,
@@ -89,13 +89,13 @@ class Model extends PDO
             "isTraded" => false,
         ];
 
-        cudOperation("INSERT INTO tokens VALUES(:token, :username, :expirationDate)", $params);
+        $this->cudOperation("INSERT INTO tokens VALUES(:token, :username, :expirationDate)", $params);
 
         return $token;
     }
 
     public function isTokenValid($username, $token) {
-        $queryResult = query("SELECT expirationDate FROM tokens WHERE token=:token and username=:username", ["token"=>$token, "username"=>$username]);
+        $queryResult = $this->query("SELECT expirationDate FROM tokens WHERE token=:token and username=:username", ["token"=>$token, "username"=>$username]);
         if (count($queryResult) !== 0) {
             return isDateInTime($queryResult[0]["expirationDate"]);
         }
@@ -113,7 +113,7 @@ class Model extends PDO
             "password" => blowfishCrypt(recoge("inputPassword"), $username),
         ];
 
-        return cudOperation("UPDATE FROM users SET name=:name, username=:username, password=:password WHERE email=:email type=2", $params);
+        return $this->cudOperation("UPDATE FROM users SET name=:name, username=:username, password=:password WHERE email=:email type=2", $params);
     }
 
     public function deleteTeacher() {
@@ -121,7 +121,7 @@ class Model extends PDO
             "email" => recoge("inputEmail"),
         ];
 
-        return cudOperation("DELETE FROM users WHERE email=:email", $params);
+        return $this->cudOperation("DELETE FROM users WHERE email=:email", $params);
     }
 
     public function createClassroom() {
@@ -131,12 +131,12 @@ class Model extends PDO
             "state" => recoge("selectClasroomState"),
         ];
 
-        $queryResult = query("SELECT name FROM name WHERE name=:name", $params);
+        $queryResult = $this->query("SELECT name FROM name WHERE name=:name", $params);
         if (count($queryResult) === 0) {
             $params["description"] = $description;
             $params["state"] = $state;
 
-            return cudOperation("INSERT INTO classrooms (name, description, state) VALUES (name, description, state)", $params);
+            return $this->cudOperation("INSERT INTO classrooms (name, description, state) VALUES (name, description, state)", $params);
         }
 
         return false;
@@ -149,7 +149,7 @@ class Model extends PDO
             "state" => recoge("selectClasroomState"),
         ];
 
-        return cudOperation("UPDATE FROM classrooms SET name=:name, description=:description, state=:state WHERE name=:name", $params);
+        return $this->cudOperation("UPDATE FROM classrooms SET name=:name, description=:description, state=:state WHERE name=:name", $params);
     }
 
     public function deleteClassroom() {
@@ -157,7 +157,7 @@ class Model extends PDO
             "name" => recoge("inputClassroomName"),
         ];
 
-        return cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
+        return $this->cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
     }
 
     public function createSchedule() {
@@ -167,12 +167,12 @@ class Model extends PDO
             "state" => recoge("selectClasroomState"),
         ];
 
-        $queryResult = query("SELECT name FROM name WHERE name=:name", $params);
+        $queryResult = $this->query("SELECT name FROM name WHERE name=:name", $params);
         if (count($queryResult) === 0) {
             $params["description"] = $description;
             $params["state"] = $state;
 
-            return cudOperation("INSERT INTO classrooms (name, description, state) VALUES (name, description, state)", $params);
+            return $this->cudOperation("INSERT INTO classrooms (name, description, state) VALUES (name, description, state)", $params);
         }
 
         return false;
@@ -185,7 +185,7 @@ class Model extends PDO
             "state" => recoge("selectClasroomState"),
         ];
 
-        return cudOperation("UPDATE FROM classrooms SET name=:name, description=:description, state=:state WHERE name=:name", $params);
+        return $this->cudOperation("UPDATE FROM classrooms SET name=:name, description=:description, state=:state WHERE name=:name", $params);
     }
 
     public function deleteSchedule() {
@@ -193,6 +193,6 @@ class Model extends PDO
             "name" => recoge("inputClassroomName"),
         ];
 
-        return cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
+        return $this->cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
     }
 }
