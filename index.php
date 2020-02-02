@@ -11,9 +11,7 @@ require_once __DIR__ . './libs/AjaxController.php';
 
 $sessions = Sessions::getInstance();
 
-if ($sessions->doesSessionExists("username")) {
-    header('Location: ./calendar/');
-} else {
+if (!$sessions->doesSessionExists("username")) {
     header('Location: ./login/');
 }
 
@@ -37,6 +35,9 @@ $map = array(
     'error' => array('controller' =>'Controller', 'action' =>'error', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'notsigned' => array('controller' =>'Controller', 'action' =>'notsigned', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'getMonthFromEvents' => array('controller' =>'AjaxController', 'action' =>'getMonthFromEvents', 'access' => Config::$ACCESS_LEVEL_TEACHER),
+    'getTeachers' => array('controller' =>'AjaxController', 'action' =>'getTeachers', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'getClassrooms' => array('controller' =>'AjaxController', 'action' =>'getClassrooms', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'getSchedules' => array('controller' =>'AjaxController', 'action' =>'getSchedules', 'access' => Config::$ACCESS_LEVEL_ADMIN),
 );
 
 // Parseo de la ruta
