@@ -11,6 +11,12 @@ require_once __DIR__ . './libs/AjaxController.php';
 
 $sessions = Sessions::getInstance();
 
+if ($sessions->doesSessionExists("username")) {
+    header('Location: ./calendar/');
+} else {
+    header('Location: ./login/');
+}
+
 /*
 * Access
 * 0 - Guest - ACCESS_LEVEL_GUEST
@@ -42,7 +48,7 @@ if (isset($_GET['ctl'])) {
         exit;
     }
 } else {
-    header('Location: ./login/');
+    header('Location: ./calendar/');
 }
 
 // Ejecución del controlador asociado a la ruta
