@@ -212,4 +212,9 @@ class Model extends PDO
     public function getClassrooms() {
         $this->query("SELECT * FROM classrooms WHERE enabled=true");
     }
+
+    public function getSchedules() {
+        $params = ["year" => getAcademicYear(date())];
+        $this->query("SELECT * FROM schedules WHERE enabled=true and YEAR(year)=:year", $params);
+    }
 }

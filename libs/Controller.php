@@ -359,6 +359,12 @@ class Controller
 
         $model->getClassrooms();
     }
+
+    public function getSchedules() {
+        $model = Model::getInstance();
+
+        $model->getSchedules();
+    }
 }
 
 ?>
