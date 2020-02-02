@@ -20,8 +20,6 @@ class AjaxController {
                 "month", "year"
             ];
             throwIfExceptionIfDoesntExist($requiredParams);
-            $select = recoge("month");
-            $from = recoge("year");
             if (method_exists()) {
                 echo call_user_func("Controller", __FUNCTION__);
             } else {
