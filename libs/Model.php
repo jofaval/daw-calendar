@@ -196,7 +196,7 @@ class Model extends PDO
         return $this->cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
     }
 
-    public function getMonthFromEvents() {
+    public function getEventsFromMonth() {
         $params = [
             "month" => recoge("month"),
             "year" => recoge("year"),

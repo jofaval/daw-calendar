@@ -329,7 +329,7 @@ class Controller
         $model->deleteSchedule();
     }
 
-    public function getMonthFromEvents() {
+    public function getEventsFromMonth() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
         
@@ -345,7 +345,7 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->getMonthFromEvents();
+        $model->getEventsFromMonth();
     }
 }
 

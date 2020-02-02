@@ -14,7 +14,7 @@ class AjaxController {
         echo $json;
     }
 
-    public function getMonthFromEvents() {
+    public function getEventsFromMonth() {
         try {
             $requiredParams = [
                 "month", "year"
