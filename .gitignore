@@ -2,3 +2,5 @@ test.html
 !SQL/
 SQL/*
 *backup.*
+!.vscode/
+.vscode/*
