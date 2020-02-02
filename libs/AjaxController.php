@@ -10,7 +10,7 @@ if (isset($_REQUEST["operationType"])) {
     try {
         $params = "";
         switch ($operationType) {
-            case 'query':
+            /*case 'query':
                 $requiredParams = [
                     "select", "from"
                 ];
@@ -22,19 +22,19 @@ if (isset($_REQUEST["operationType"])) {
                 $from = recoge("from");
                 $where = recoge("where");
                 $params = json_encode(recoge("params"));
-                break;
+                break;*/
 
             default:
-                errorAction(-1);
+            returnError();
                 break;
         }
 
         echo $params;
     } catch (Error $th) {
-        errorAction(-1);
+        returnError();
     }
 } else {
-    errorAction(-1);
+    returnError();
 }
 
 function throwIfExceptionIfDoesntExist($elems) {
