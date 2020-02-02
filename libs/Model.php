@@ -22,8 +22,7 @@ class Model extends PDO
         return self::$instance;
     }
 
-    private function query($queryString, $params = [])
-    {
+    private function query($queryString, $params = []) {
         $result = $this->conexion->query($queryString);
 
         if (!empty($params)) {
@@ -35,8 +34,7 @@ class Model extends PDO
         return $result->fetchAll();
     }
 
-    private function cudOperation($insertString, $params = [])
-    {
+    private function cudOperation($insertString, $params = []) {
         $result = $this->conexion->query($insertString);
 
         if (!empty($params)) {
@@ -48,24 +46,21 @@ class Model extends PDO
         return $result->execute();
     }
 
-    private function disable($entityType, $params, $enabled)
-    {
+    private function disable($entityType, $params, $enabled) {
         $params = [];
         $params["enabled"] = $enabled;
         $identification = array_keys()[0];
         return cudOperation("UPDATE FROM $entityType SET enabled=:enabled WHERE $identification=:$identification", $params);
     }
 
-    private function signin($username)
-    {
+    private function signin($username) {
         $params = [];
         $params["username"] = $username;
         $signin = query("SELECT access, password FROM users WHERE username=:username", $params);
         return $signin;
     }
 
-    private function signup($username, $password, $fullname, $email)
-    {
+    private function signup($username, $password, $fullname, $email) {
         $params = [
             "username" => $username
         ];
