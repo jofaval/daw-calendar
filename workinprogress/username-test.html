@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LogIn</title>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/inputs.css">
+    <link rel="stylesheet" href="../styles/floating-label.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .page-link {
+            background: none;
+            color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .page-link:hover {
+            color: #212529;
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .page-link:focus {
+            box-shadow: 0 0 0 .2rem rgba(255, 193, 7, .5);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="transition: all 0.2s ease-in-out 0s;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08"
+            aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"
+            style="transition: all 0.2s ease-in-out 0s;">
+            <span class="navbar-toggler-icon" style="transition: all 0.2s ease-in-out 0s;"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08"
+            style="transition: all 0.2s ease-in-out 0s;">
+            <ul class="navbar-nav" style="transition: all 0.2s ease-in-out 0s;">
+                <li class="nav-item active" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedules<span
+                            class="sr-only" style="transition: all 0.2s ease-in-out 0s;">(current)</span></a>
+                </li>
+                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link selected" href="#" style="transition: all 0.2s ease-in-out 0s;">Home</a>
+                </li>
+                <li class="nav-item dropdown" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"
+                        style="transition: all 0.2s ease-in-out 0s;">Create</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown08"
+                        style="transition: all 0.2s ease-in-out 0s;">
+                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Classroom</a>
+                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Teacher</a>
+                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedule</a>
+                    </div>
+                </li>
+                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link" href="#" style="transition: all 0.2s ease-in-out 0s;">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main" class="flex-column">
+        <form>
+            <div class="form-group row text-white">
+                <div class="col-sm-10 d-flex flex-row">
+                    <input type="text" class="form-control" id="staticEmail" value="username">
+                    <!--
+                        fa fa-check
+                        fa fa-check
+                    -->
+                    <a id="usernameCheck" class="d-flex justify-content-center align-items-center col-md-2"><i class="fa fa-times"></i></i></a>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+<script src="../scripts/libs/jquery.min.js"></script>
+<script src="../scripts/libs/bootstrap.min.js"></script>
+<script src="../scripts/libs/bootstrap.bundle.min.js"></script>
+<script src="../scripts/js/utils.js"></script>
+<script src="../scripts/js/inputs.js"></script>
+
+</html>
