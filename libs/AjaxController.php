@@ -33,7 +33,7 @@ class AjaxController {
     public function getTeachers() {
         try {
             if (method_exists()) {
-                echo call_user_func("Controller", __FUNCTION__);
+                echo json_encode(call_user_func("Controller", __FUNCTION__));
             } else {
                 returnError();
             }
@@ -45,7 +45,7 @@ class AjaxController {
     public function getClassrooms() {
         try {
             if (method_exists()) {
-                echo call_user_func("Controller", __FUNCTION__);
+                echo json_encode(call_user_func("Controller", __FUNCTION__));
             } else {
                 returnError();
             }
@@ -57,7 +57,7 @@ class AjaxController {
     public function getSchedules() {
         try {
             if (method_exists()) {
-                echo call_user_func("Controller", __FUNCTION__);
+                echo json_encode(call_user_func("Controller", __FUNCTION__));
             } else {
                 returnError();
             }
