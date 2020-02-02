@@ -328,6 +328,25 @@ class Controller
 
         $model->deleteSchedule();
     }
+
+    public function getMonthFromEvents() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'month',
+                'regla' => 'no-empty,numeric'
+            ),
+            array(
+                'name' => 'year',
+                'regla' => 'no-empty,numeric'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+        $model->getMonthFromEvents();
+    }
 }
 
 ?>

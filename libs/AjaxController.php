@@ -23,6 +23,14 @@ if (isset($_REQUEST["operationType"])) {
                 $where = recoge("where");
                 $params = json_encode(recoge("params"));
                 break;*/
+            case 'getMonthFromEvents':
+                $requiredParams = [
+                    "month", "year"
+                ];
+                throwIfExceptionIfDoesntExist($requiredParams);
+                $select = recoge("month");
+                $from = recoge("year");
+            break;
 
             default:
             returnError();
