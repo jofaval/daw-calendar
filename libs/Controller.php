@@ -133,6 +133,18 @@ class Controller
     public function admin() {
         //Teacher
         if (isset($_REQUEST["createTeacher"])) { //Create
+            $_POST["inputName"] = $_POST["inputTeacherName"];
+            unset($_POST["inputTeacherName"]);
+            
+            $_POST["inputUsername"] = $_POST["inputTeacherUsername"];
+            unset($_POST["inputTeacherUsername"]);
+            
+            $_POST["inputPassword"] = $_POST["inputTeacherPassword"];
+            unset($_POST["inputTeacherPassword"]);
+            
+            $_POST["inputEmail"] = $_POST["inputTeacherEmail"];
+            unset($_POST["inputTeacherEmail"]);
+            
             $result = tryCatch("Controller", "signupFunctionality");
         } else if (isset($_REQUEST["updateTeacher"])) { //Update
             $result = tryCatch("Controller", "updateTeacherFunctionality");
