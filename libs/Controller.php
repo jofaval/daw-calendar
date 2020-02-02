@@ -4,18 +4,15 @@ include ('bEmail.php');
 
 class Controller
 {
-    public function error()
-    {
+    public function error() {
         require __DIR__ . '/templates/error.php';
     }
 
-    public function access()
-    {
+    public function access() {
         require __DIR__ . '/templates/access.php';
     }
 
-    public function confirmEmail()
-    {
+    public function confirmEmail() {
         $params = tryCatch("Controller", "confirmEmailFunctionality");
 
         require __DIR__ . '/templates/email.php';
@@ -36,8 +33,7 @@ class Controller
         return $params;
     }
     
-    public function signin()
-    {
+    public function signin() {
         $result = false;
         if (isset($_REQUEST["signin"])) {
             $result = tryCatch("Controller", "signinFunctionality");
@@ -77,8 +73,7 @@ class Controller
         }
     }
     
-    public function signup()
-    {
+    public function signup() {
         $result = tryCatch("Controller", "signupFunctionality");
           
         if ($result) {
@@ -131,13 +126,11 @@ class Controller
         header("Location: /signin");
     }
 
-    public function calendar()
-    {
+    public function calendar() {
         require __DIR__ . '/templates/calendar.php';
     }
 
-    public function admin()
-    {
+    public function admin() {
         //Teacher
         if (isset($_REQUEST["createTeacher"])) { //Create
             $result = tryCatch("Controller", "signupFunctionality");
