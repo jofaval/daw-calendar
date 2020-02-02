@@ -144,6 +144,15 @@ class Validacion
         }
     }
 
+    protected function _date($campo, $valor) {
+        if (isset($valor) && preg_match("/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/", $valor)) {
+            return true;
+        } else {
+            $this->mensaje[$campo][] = "The field $campo must follow the datetime pattern 2020-12-13";
+            return false;
+        }
+    }
+
     protected function _name($campo, $valor) {
         if (isset($valor) && preg_match("/^[a-zñ\ \º\ª]+$/iu", $valor)) {
             return true;
