@@ -365,6 +365,71 @@ class Controller
 
         return $model->getSchedules();
     }
+
+    public function createEvent() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'title',
+                'regla' => 'no-empty,name'
+            ),
+            array(
+                'name' => 'startHour',
+                'regla' => 'no-empty,datetime'
+            ),
+            array(
+                'name' => 'date',
+                'regla' => 'no-empty,date'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+       return $model->createEvent();
+    }
+
+    public function updateEvent() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'title',
+                'regla' => 'no-empty,name'
+            ),
+            array(
+                'name' => 'startHour',
+                'regla' => 'no-empty,datetime'
+            ),
+            array(
+                'name' => 'date',
+                'regla' => 'no-empty,date'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+       return $model->updateEvent();
+    }
+
+    public function deleteEvent() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'startHour',
+                'regla' => 'no-empty,datetime'
+            ),
+            array(
+                'name' => 'date',
+                'regla' => 'no-empty,date'
+            ),
+        );
+        $validation = $validacion->rules($regla, $_POST);
+
+       return $model->deleteEvent();
+    }
 }
 
 ?>

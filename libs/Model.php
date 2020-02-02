@@ -217,4 +217,40 @@ class Model extends PDO
         $params = ["year" => getAcademicYear(date())];
        return $this->query("SELECT * FROM schedules WHERE enabled=true and YEAR(year)=:year", $params);
     }
+
+    public function createEvent() {
+        $sessions = Sessions::getInstance();
+
+        $params = [
+            "title" => recoge("title"),
+            "startHour" => recoge("startHour"),
+            "date" => recoge("date"),
+            "username" => $sessions->getSession("username")
+        ];
+
+        if (count($this->query("SELECT name FROM events WHERE startHour=:startHour and date=:date", $params)) === 0) {
+            return $this->query("INSERT INTO FROM events (title, startHour, date, username) WHERE startHour=:startHour and date=:date", $params);
+        }
+        
+        return false;
+    }
+
+    public function updateEvent() {
+        $params = [
+            "title" => recoge("title"),
+            "startHour" => recoge("startHour"),
+            "date" => recoge("date"),
+        ];
+
+        return $this->query("UPDATE FROM events SET title=:title WHERE startHour=:startHour and date=:date", $params);
+    }
+
+    public function deleteEvent() {
+        $params = [
+            "startHour" => recoge("startHour"),
+            "date" => recoge("date"),
+        ];
+
+       return $this->query("DELETE FROM events WHERE startHour=:startHour and date=:date", $params);
+    }
 }
