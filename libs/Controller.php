@@ -186,7 +186,7 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->updateTeacher();
+       return $model->updateTeacher();
     }
 
     public function deleteTeacherFunctionality() {
@@ -202,7 +202,7 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->deleteTeacher();
+       return $model->deleteTeacher();
     }
 
     public function createClassroomFunctionality() {
@@ -226,7 +226,7 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->createClassroom();
+       return $model->createClassroom();
     }
 
     public function updateClassroomFunctionality() {
@@ -250,7 +250,7 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->updateClassroom();
+       return $model->updateClassroom();
     }
 
     public function deleteClassroomFunctionality() {
@@ -266,7 +266,7 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->deleteClassroom();
+       return $model->deleteClassroom();
     }
 
     public function createScheduleFunctionality() {
@@ -286,7 +286,7 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->createSchedule();
+       return $model->createSchedule();
     }
 
     public function updateScheduleFunctionality() {
@@ -306,7 +306,7 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->updateSchedule();
+       return $model->updateSchedule();
     }
 
     public function deleteScheduleFunctionality() {
@@ -326,7 +326,7 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->deleteSchedule();
+       return $model->deleteSchedule();
     }
 
     public function getEventsFromMonth() {
@@ -345,25 +345,25 @@ class Controller
         );
         $validation = $validacion->rules($regla, $_POST);
 
-        $model->getEventsFromMonth();
+        return $model->getEventsFromMonth();
     }
 
     public function getTeachers() {
         $model = Model::getInstance();
 
-        $model->getTeachers();
+        return $model->getTeachers();
     }
 
     public function getClassrooms() {
         $model = Model::getInstance();
 
-        $model->getClassrooms();
+        return $model->getClassrooms();
     }
 
     public function getSchedules() {
         $model = Model::getInstance();
 
-        $model->getSchedules();
+        return $model->getSchedules();
     }
 }
 
