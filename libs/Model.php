@@ -202,19 +202,19 @@ class Model extends PDO
             "year" => recoge("year"),
         ];
 
-        $this->query("SELECT * FROM horario_seleccionado WHERE MONTH(fecha_seleccionada)=:month and YEAR(fecha_seleccionada)=:year", $params);
+       return $this->query("SELECT * FROM horario_seleccionado WHERE MONTH(fecha_seleccionada)=:month and YEAR(fecha_seleccionada)=:year", $params);
     }
 
     public function getTeachers() {
-        $this->query("SELECT * FROM users WHERE type=2 and enabled=true");
+       return $this->query("SELECT * FROM users WHERE type=2 and enabled=true");
     }
 
     public function getClassrooms() {
-        $this->query("SELECT * FROM classrooms WHERE enabled=true");
+       return $this->query("SELECT * FROM classrooms WHERE enabled=true");
     }
 
     public function getSchedules() {
         $params = ["year" => getAcademicYear(date())];
-        $this->query("SELECT * FROM schedules WHERE enabled=true and YEAR(year)=:year", $params);
+       return $this->query("SELECT * FROM schedules WHERE enabled=true and YEAR(year)=:year", $params);
     }
 }
