@@ -161,7 +161,6 @@ class Controller
         require __DIR__ . '/templates/admin.php';
     }
 
-
     public function updateTeacherFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
