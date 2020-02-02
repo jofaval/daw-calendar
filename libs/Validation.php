@@ -127,10 +127,10 @@ class Validacion
      */
     protected function _email($campo, $valor)
     {
-        if (preg_match("/^[a-z]+([\.]?[a-z0-9_-]+)*@[a-z]+([\.-]+[a-z0-9]+)*\.[a-z]{2,}$/", $valor)) {
+        if (preg_match("/^[a-z]+([\.]?[a-z0-9_-]+)*@iesabastos\.org$/", $valor)) {
             return true;
         } else {
-            $this->mensaje[$campo][] = "The field $campo must follow the email pattern user@domain.com";
+            $this->mensaje[$campo][] = "The field $campo must follow the email pattern user@iesabastos.org";
             return false;
         }
     }
