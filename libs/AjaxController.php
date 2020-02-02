@@ -1,6 +1,25 @@
 <?php
 
 class AjaxController {
+    private function genericAjaxReturn($functionName, $requiredParams = []) {
+        try {
+            if (!empty($requiredParams)) {
+                throwIfExceptionIfDoesntExist($requiredParams);
+            }
+            if (method_exists("Controller", $functionName)) {
+                $result = call_user_func("Controller", $functionName);
+                if ($result === false) {
+                    returnError();
+                }
+                echo json_encode($result);
+            } else {
+                returnError();
+            }
+        } catch (Throwable $th) {
+            returnError();
+        }
+    }
+
     private function throwIfExceptionIfDoesntExist($elems) {
         foreach ($elems as $elem) {
             if (isset($_REQUEST[$elem])) {
@@ -15,70 +34,30 @@ class AjaxController {
     }
 
     public function getEventsFromMonth() {
-        try {
-            $requiredParams = [
-                "month", "year"
-            ];
-            throwIfExceptionIfDoesntExist($requiredParams);
-            if (method_exists()) {
-                $result = call_user_func("Controller", __FUNCTION__);
-                if ($result === false) {
-                    returnError();
-                }
-                echo json_encode($result);
-            } else {
-                returnError();
-            }
-        } catch (Throwable $th) {
-            returnError();
-        }
+        genericAjaxReturn(__FUNCTION__, ["month", "year"]);
     }
 
     public function getTeachers() {
-        try {
-            if (method_exists()) {
-                $result = call_user_func("Controller", __FUNCTION__);
-                if ($result === false) {
-                    returnError();
-                }
-                echo json_encode($result);
-            } else {
-                returnError();
-            }
-        } catch (Throwable $th) {
-            returnError();
-        }
+        genericAjaxReturn(__FUNCTION__);
     }
 
     public function getClassrooms() {
-        try {
-            if (method_exists()) {
-                $result = call_user_func("Controller", __FUNCTION__);
-                if ($result === false) {
-                    returnError();
-                }
-                echo json_encode($result);
-            } else {
-                returnError();
-            }
-        } catch (Throwable $th) {
-            returnError();
-        }
+        genericAjaxReturn(__FUNCTION__);
     }
 
     public function getSchedules() {
-        try {
-            if (method_exists()) {
-                $result = call_user_func("Controller", __FUNCTION__);
-                if ($result === false) {
-                    returnError();
-                }
-                echo json_encode($result);
-            } else {
-                returnError();
-            }
-        } catch (Throwable $th) {
-            returnError();
-        }
+        genericAjaxReturn(__FUNCTION__);
+    }
+
+    public function createEvent() {
+        genericAjaxReturn(__FUNCTION__, ["title", "startHour", "date"]);
+    }
+    
+    public function updateEvent() {
+        genericAjaxReturn(__FUNCTION__, ["title", "startHour", "date"]);
+    }
+    
+    public function deleteEvent() {
+        genericAjaxReturn(__FUNCTION__, ["startHour", "date"]);
     }
 }
