@@ -6,7 +6,8 @@
 
 class Model {
     constructor() {
-        this.todos = JSON.parse(localStorage.getItem('todos')) || []
+        this.currentEvents = [];
+        
     }
 
     bindTodoListChanged(callback) {

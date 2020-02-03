@@ -1,4 +1,4 @@
-function request(requestLocation, requestType = "POST", params = {}, success = defaultAjaxSuccessAction, error = defaultAjaxErrorAction, async = false) {
+function request(requestLocation, requestType = "POST", params = {}, success = defaultAjaxSuccessAction, error = defaultAjaxErrorAction, async = true) {
     $.ajax({
         url: requestLocation,
         data: params,
@@ -43,4 +43,17 @@ function queryDatabase(requestLocation, success, message = "Ha surgido un error 
         function() {
             sendNotification(message, true);
         });
+}
+
+function genericAjaxRequest(requestName, params, success, error = null) {
+    if (error == null) {
+        error = function(data) {
+            sendNotification(message, true);
+        };
+    }
+    var requestParams = {};
+
+    $.extend(requestParams, {"ctl": requestName}, params);
+
+    request(requestLocation, "POST", requestParams, success, error);
 }
