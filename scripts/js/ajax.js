@@ -9,8 +9,7 @@ function request(requestLocation, requestType = "POST", params = {}, success = d
     });
 }
 
-function defaultAjaxSuccessAction(data) {
-}
+function defaultAjaxSuccessAction(data) {}
 
 function defaultAjaxErrorAction(data) {
     sendNotification("Ha surgido un error al realizar la operación", true);
@@ -40,20 +39,22 @@ function queryDatabase(requestLocation, success, message = "Ha surgido un error 
                 ["key", "value"],
             ],
         }, success,
-        function() {
+        function () {
             sendNotification(message, true);
         });
 }
 
 function genericAjaxRequest(requestName, params, success, error = null) {
     if (error == null) {
-        error = function(data) {
+        error = function (data) {
             sendNotification(message, true);
         };
     }
     var requestParams = {};
 
-    $.extend(requestParams, {"ctl": requestName}, params);
+    $.extend(requestParams, {
+        "ctl": requestName
+    }, params);
 
     request(requestLocation, "POST", requestParams, success, error);
 }
