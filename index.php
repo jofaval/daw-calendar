@@ -11,10 +11,6 @@ require_once __DIR__ . './libs/AjaxController.php';
 
 $sessions = Sessions::getInstance();
 
-if (!$sessions->doesSessionExists("username")) {
-    header('Location: ./login/');
-}
-
 /*
 * Access
 * 0 - Guest - ACCESS_LEVEL_GUEST
@@ -40,10 +36,11 @@ $map = array(
     'getSchedules' => array('controller' =>'AjaxController', 'action' =>'getSchedules', 'access' => Config::$ACCESS_LEVEL_ADMIN),
 );
 
+$ctl = $_GET['ctl'];
 // Parseo de la ruta
-if (isset($_GET['ctl'])) {
-    if (isset($map[$_GET['ctl']])) {
-        $ruta = $_GET['ctl'];
+if (isset($ctl)) {
+    if (isset($map[$ctl])) {
+        $ruta = $ctl;
     } else {
         header('Location: ./error/');
         exit;
@@ -51,6 +48,10 @@ if (isset($_GET['ctl'])) {
 } else {
     header('Location: ./calendar/');
 }
+
+/*if (!$sessions->doesSessionExists("username") && ($ctl!="singin")) {
+    header('Location: ./notsigned/');
+}*/
 
 // Ejecución del controlador asociado a la ruta
 $controlador = $map[$ruta];
