@@ -19,29 +19,60 @@
             color: #ffc107;
             border-color: #ffc107;
         }
-
+        
         .page-link:hover {
             color: #212529;
             background-color: #ffc107;
             border-color: #ffc107;
         }
-
+        
         .page-link:focus {
             box-shadow: 0 0 0 .2rem rgba(255, 193, 7, .5);
+        }
+        
+        .sorting::after,
+        .sorting_asc::after,
+        .sorting_asc_disabled::after,
+        .sorting_desc::after,
+        .sorting_desc_disabled::after {
+            content: "\f0dd";
+            font: normal normal normal 14px/1 FontAwesome;
+            font-weight: 900;
+            right: 16px;
+            font-size: 1rem;
+            display: inline-block;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .sorting::before,
+        .sorting_asc::before,
+        .sorting_asc_disabled::before,
+        .sorting_desc::before,
+        .sorting_desc_disabled::before {
+            right: 1em;
+            content: "\f0de";
+            font: normal normal normal 14px/1 FontAwesome;
+            font-weight: 900;
+            font-size: 1rem;
+            display: inline-block;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="transition: all 0.2s ease-in-out 0s;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08"
-            aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"
-            style="transition: all 0.2s ease-in-out 0s;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation" style="transition: all 0.2s ease-in-out 0s;">
             <span class="navbar-toggler-icon" style="transition: all 0.2s ease-in-out 0s;"></span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08"
-            style="transition: all 0.2s ease-in-out 0s;">
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08" style="transition: all 0.2s ease-in-out 0s;">
             <ul class="navbar-nav" style="transition: all 0.2s ease-in-out 0s;">
                 <li class="nav-item active" style="transition: all 0.2s ease-in-out 0s;">
                     <a class="nav-link" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedules<span
@@ -51,11 +82,8 @@
                     <a class="nav-link selected" href="#" style="transition: all 0.2s ease-in-out 0s;">Home</a>
                 </li>
                 <li class="nav-item dropdown" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"
-                        style="transition: all 0.2s ease-in-out 0s;">Create</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown08"
-                        style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="transition: all 0.2s ease-in-out 0s;">Create</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown08" style="transition: all 0.2s ease-in-out 0s;">
                         <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Classroom</a>
                         <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Teacher</a>
                         <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedule</a>
@@ -81,8 +109,7 @@
                     <div class="row">
                         <div class="col-md-12 px-0">
                             <div class="btn-toolbar" role="toolbar">
-                                <div class="btn-group col-md-12 btn-group-justified d-flex align-items-center justify-content-center"
-                                    role="group">
+                                <div class="btn-group col-md-12 btn-group-justified d-flex align-items-center justify-content-center" role="group">
                                     <div class="btn-group" role="group">
                                         <button id="list" class="btn btn-primary" data-original-title="Refreshr"><i
                                                 class="fa fa-refresh fa-lg" aria-hidden="true"></i></button>
@@ -115,11 +142,11 @@
                 <table class="table table-light table-striped table-bordered">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col-1">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Actions</th>
+                            <th class="th sorting_desc" scope="col-1">#</th>
+                            <th class="th sorting_desc" scope="col">First</th>
+                            <th class="th sorting_desc" scope="col">Last</th>
+                            <th class="th sorting_desc" scope="col">Handle</th>
+                            <th class="th sorting_desc" scope="col">Actions </th>
                         </tr>
                     </thead>
                     <tbody>
