@@ -4,24 +4,36 @@
  * Manages the data of the application.
  */
 
- let calendarController;
+let calendarController;
 
 class Model {
     constructor() {
         this.currentEvents = [];
         this.currentDate = new Date();
-        getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function (data) {
+        getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function(data) {
             this.currentEvents = data;
         });
     }
 
-    addEvent(title, startHour, date) {
-        
+    addEvent(title, startHour, date, success) {
+        createEvent(title, startHour, date, function(data) {
+            this.currentEvents = data;
+            success(data);
+        });
     }
 
-    removeEvent(startHour, date) {
-        
+    removeEvent(startHour, date, success) {
+        removeEvent(title, startHour, date, function(data) {
+            this.currentEvents = data;
+            success(data);
+        });
     }
+
+    editEvent(startHour, date, success) {
+
+    }
+
+
 }
 
 /**
