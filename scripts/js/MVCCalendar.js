@@ -13,27 +13,32 @@ class Model {
         getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function(data) {
             this.currentEvents = data;
         });
+        this.instace = this;
     }
 
     addEvent(title, startHour, date, success) {
+        var instance = this.instance;
         createEvent(title, startHour, date, function(data) {
-            this.currentEvents = data;
+            instance.currentEvents = data;
             success(data);
         });
     }
 
     removeEvent(startHour, date, success) {
+        var instance = this.instance;
         removeEvent(title, startHour, date, function(data) {
-            this.currentEvents = data;
+            instance.currentEvents = data;
             success(data);
         });
     }
 
     editEvent(startHour, date, success) {
-
+        var instance = this.instance;
+        editEvent(startHour, date, function(data) {
+            instance.currentEvents = data;
+            success(data);
+        });
     }
-
-
 }
 
 /**
@@ -43,7 +48,7 @@ class Model {
  */
 class View {
     constructor() {
-        this.app = this.getElement('#root')
+        this.app = $('root');
         this.form = this.createElement('form')
         this.input = this.createElement('input')
         this.input.type = 'text'
