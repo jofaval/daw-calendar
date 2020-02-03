@@ -4,6 +4,8 @@
  * Manages the data of the application.
  */
 
+ let calendarController;
+
 class Model {
     constructor() {
         this.currentEvents = [];
@@ -255,4 +257,4 @@ class Controller {
     }
 }
 
-const app = new Controller(new Model(), new View());
+calendarController = new Controller(new Model(), new View());
