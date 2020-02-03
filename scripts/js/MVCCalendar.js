@@ -19,7 +19,11 @@ class Model {
     addEvent(title, startHour, date, success) {
         var instance = this.instance;
         createEvent(title, startHour, date, function(data) {
-            instance.currentEvents = data;
+            instance.currentEvents.push({
+                "title": title,
+                "startHour": startHour,
+                "date": date,
+            });
             success(data);
         });
     }
@@ -32,9 +36,28 @@ class Model {
         });
     }
 
-    editEvent(startHour, date, success) {
+    updateEvent(title, startHour, date, success) {
         var instance = this.instance;
-        editEvent(startHour, date, function(data) {
+        updateEvent(title, startHour, date, function(data) {
+            instance.currentEvents = data;
+            instance.currentEvents.forEach(element => {
+                element.startHour
+            });
+            success(data);
+        });
+    }
+
+    getEventsFromWeek(date, days) {
+        var instance = this.instance;
+        getEventsFromWeek(date, days, function(data) {
+            instance.currentEvents = data;
+            success(data);
+        });
+    }
+    
+    getEventsFromDay(date, days) {
+        var instance = this.instance;
+        getEventsFromDay(date, days, function(data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -212,26 +235,8 @@ class Controller {
         // Display initial todos
         this.onTodoListChanged(this.model.todos)
     }
+    
 
-    onTodoListChanged = todos => {
-        this.view.displayTodos(todos)
-    }
-
-    handleAddTodo = todoText => {
-        this.model.addTodo(todoText)
-    }
-
-    handleEditTodo = (id, todoText) => {
-        this.model.editTodo(id, todoText)
-    }
-
-    handleDeleteTodo = id => {
-        this.model.deleteTodo(id)
-    }
-
-    handleToggleTodo = id => {
-        this.model.toggleTodo(id)
-    }
 }
 
 calendarController = new Controller(new Model(), new View());
