@@ -58,3 +58,45 @@ function genericAjaxRequest(requestName, params, success, error = null) {
 
     request(requestLocation, "POST", requestParams, success, error);
 }
+
+function getEventsFromMonth(month, year, success) {
+    genericAjaxRequest(getEventsFromMonth.name, {
+        "month": month,
+        "year": year,
+    }, success);
+}
+
+function createEvent(title, startHour, date, success) {
+    genericAjaxReturn(createEvent.name, {
+        "title": title,
+        "startHour": startHour,
+        "date": date,
+    }, success);
+}
+
+function updateEvent(title, startHour, date, success) {
+    genericAjaxReturn(updateEvent.name, {
+        "title": title,
+        "startHour": startHour,
+        "date": date,
+    }, success);
+}
+
+function deleteEvent(startHour, date, success) {
+    genericAjaxReturn(deleteEvent.name, {
+        "startHour": startHour,
+        "date": date,
+    }, success);
+}
+
+function getTeachers(success) {
+    genericAjaxReturn(getTeachers.name, {}, success);
+}
+
+function getClassrooms(success) {
+    genericAjaxReturn(getClassrooms.name, {}, success);
+}
+
+function getSchedules(success) {
+    genericAjaxReturn(getSchedules.name, {}, success);
+}
