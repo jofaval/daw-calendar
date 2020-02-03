@@ -1,6 +1,8 @@
 <?php
 include ('utils.php');
 include ('bEmail.php');
+include ('Validation.php');
+include ('Sessions.php');
 
 class Controller
 {
@@ -63,10 +65,12 @@ class Controller
         );
         $validations = $validation->rules($regla, $_POST);
 
-        $signin = $model->signin();
+        $username = recoge("username");
+        $password = recoge("password");
+        $signin = $model->signin($username);
         if (blowfishCrypt($password, $username) == $signin[0]["password"]) {
-            setSession("username", $username);
-            setSession("access", $signin[0]["access"]);
+            $sessions->setSession("username", $username);
+            $sessions->setSession("access", $signin[0]["access"]);
             return true;
         } else {
             return false;
@@ -107,9 +111,9 @@ class Controller
                 'regla' => 'no-empty,email'
             )
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
-        $signup = $model->signup();
+        $signup = $model->signup(recoge("inputName"), recoge("inputUsername"), recoge("inputPassword"), recoge("inputEmail"));
         if ($signup !== false) {
             return true;
         } else {
@@ -176,7 +180,6 @@ class Controller
     public function updateTeacherFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        $sessions = Sessions::getInstance();
         
         $regla = array(
             array(
@@ -196,7 +199,7 @@ class Controller
                 'regla' => 'no-empty,email'
             )
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->updateTeacher();
     }
@@ -204,7 +207,6 @@ class Controller
     public function deleteTeacherFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        $sessions = Sessions::getInstance();
         
         $regla = array(
             array(
@@ -212,7 +214,7 @@ class Controller
                 'regla' => 'no-empty,email'
             )
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->deleteTeacher();
     }
@@ -220,7 +222,6 @@ class Controller
     public function createClassroomFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        $sessions = Sessions::getInstance();
         
         $regla = array(
             array(
@@ -236,7 +237,7 @@ class Controller
                 'regla' => 'no-empty,state'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->createClassroom();
     }
@@ -244,7 +245,6 @@ class Controller
     public function updateClassroomFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        $sessions = Sessions::getInstance();
         
         $regla = array(
             array(
@@ -260,7 +260,7 @@ class Controller
                 'regla' => 'no-empty,state'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->updateClassroom();
     }
@@ -268,7 +268,6 @@ class Controller
     public function deleteClassroomFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        $sessions = Sessions::getInstance();
         
         $regla = array(
             array(
@@ -276,7 +275,7 @@ class Controller
                 'regla' => 'no-empty,name'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->deleteClassroom();
     }
@@ -284,7 +283,6 @@ class Controller
     public function createScheduleFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        $sessions = Sessions::getInstance();
         
         $regla = array(
             array(
@@ -296,7 +294,7 @@ class Controller
                 'regla' => 'no-empty,datetime'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->createSchedule();
     }
@@ -304,7 +302,6 @@ class Controller
     public function updateScheduleFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        $sessions = Sessions::getInstance();
         
         $regla = array(
             array(
@@ -316,7 +313,7 @@ class Controller
                 'regla' => 'no-empty,datetime'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->updateSchedule();
     }
@@ -324,7 +321,6 @@ class Controller
     public function deleteScheduleFunctionality() {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        $sessions = Sessions::getInstance();
         
         $regla = array(
             array(
@@ -336,7 +332,7 @@ class Controller
                 'regla' => 'no-empty,datetime'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->deleteSchedule();
     }
@@ -355,7 +351,7 @@ class Controller
                 'regla' => 'no-empty,numeric'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
         return $model->getEventsFromMonth();
     }
@@ -396,7 +392,7 @@ class Controller
                 'regla' => 'no-empty,date'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->createEvent();
     }
@@ -419,7 +415,7 @@ class Controller
                 'regla' => 'no-empty,date'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->updateEvent();
     }
@@ -438,7 +434,7 @@ class Controller
                 'regla' => 'no-empty,date'
             ),
         );
-        $validation = $validacion->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
        return $model->deleteEvent();
     }
