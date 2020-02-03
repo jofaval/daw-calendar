@@ -39,14 +39,14 @@ function queryDatabase(requestLocation, success, message = "Ha surgido un error 
                 ["key", "value"],
             ],
         }, success,
-        function () {
+        function() {
             sendNotification(message, true);
         });
 }
 
 function genericAjaxRequest(requestName, params, success, error = null) {
     if (error == null) {
-        error = function (data) {
+        error = function(data) {
             sendNotification(message, true);
         };
     }
