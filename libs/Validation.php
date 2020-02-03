@@ -6,7 +6,7 @@
  *
  * @author Carlos Belisario
  */
-class Validacion
+class Validation
 {
 
     protected $_atributos;
@@ -19,7 +19,7 @@ class Validacion
 
     public static function getInstance() {
         if (self::$instance == null) {
-            self::$instance = new Validacion();
+            self::$instance = new Validation();
         }
 
         return self::$instance;
@@ -204,7 +204,7 @@ class Validacion
 $_POST['campo1'] = "d";
 $_POST['campo2'] = "usuariohotmail.com";
 $datos = $_POST;
-$validacion = new Validacion();
+$validacion = new Validation();
 $regla = array(
     array(
         'name' => 'campo2',
