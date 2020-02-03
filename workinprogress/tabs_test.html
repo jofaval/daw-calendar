@@ -79,6 +79,27 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        
+        #tabSelector .btn-warning {
+            border: none;
+        }
+        
+        .tabActive {
+            transform: scale(1.15);
+            z-index: 2;
+        }
+        
+        .nextToActive {
+            background: #c09000;
+        }
+        
+        .nextToNextToActive {
+            background: #a37a00;
+        }
+        
+        .nextToNextToNextToActive {
+            background: #856300;
+        }
     </style>
 </head>
 
@@ -112,10 +133,11 @@
         </div>
     </nav>
     <main role="main" class="flex-column">
-        <div class="w-75 btn-group d-flex align-content-center justify-space-around">
+        <div class="w-75 btn-group d-flex align-content-center justify-space-around" id="tabSelector">
             <button class="col-md btn btn-warning btn-lg">Teacher</button>
             <button class="col-md btn btn-warning btn-lg">Classroom</button>
             <button class="col-md btn btn-warning btn-lg">Schedule</button>
+            <button class="col-md btn btn-warning btn-lg">Non-school days</button>
         </div>
         <div class="w-75">&nbsp;</div>
         <section class="w-75">
@@ -158,11 +180,11 @@
                 <table class="table table-light table-striped table-bordered">
                     <thead class="thead-dark">
                         <tr>
-                            <th class="th sorting_desc" scope="col-1">#</th>
-                            <th class="th sorting_desc" scope="col">First</th>
-                            <th class="th sorting_desc" scope="col">Last</th>
-                            <th class="th sorting_desc" scope="col">Handle</th>
-                            <th class="th sorting_desc" scope="col">Actions </th>
+                            <th class="th" scope="col-md-1">#</th>
+                            <th class="th" scope="col-md-2">Name</th>
+                            <th class="th" scope="col-md-2">Description</th>
+                            <th class="th" scope="col-md-2">State</th>
+                            <th class="th" scope="col-md-2">Actions </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -224,11 +246,11 @@
                     </tbody>
                     <tfoot class="thead-dark">
                         <tr>
-                            <th scope="col-1">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Actions</th>
+                            <th class="th" scope="col-md-1">#</th>
+                            <th class="th" scope="col-md-2">Name</th>
+                            <th class="th" scope="col-md-2">Description</th>
+                            <th class="th" scope="col-md-2">State</th>
+                            <th class="th" scope="col-md-2">Actions </th>
                         </tr>
                     </tfoot>
                 </table>
@@ -259,5 +281,30 @@
 <script src="../scripts/libs/bootstrap.bundle.min.js"></script>
 <script src="../scripts/js/utils.js"></script>
 <script src="../scripts/js/inputs.js"></script>
+<script>
+    $("#tabSelector .btn").click(function() {
+        $(".tabActive").removeClass("tabActive");
+        var scope = $(this);
+
+        scope.removeClass("nextToActive");
+        scope.removeClass("nextToNextToActive");
+        scope.removeClass("nextToNextToNextToActive");
+
+        if (scope.prev().parent().prop("id") == "tabSelector")
+            scope.prev().addClass("nextToActive");
+        if (scope.next().parent().prop("id") == "tabSelector")
+            scope.next().addClass("nextToActive");
+        if (scope.next().next().parent().prop("id") == "tabSelector")
+            scope.next().next().addClass("nextToNextToActive");
+        if (scope.prev().prev().parent().prop("id") == "tabSelector")
+            scope.prev().prev().addClass("nextToNextToActive");
+        if (scope.next().next().next().parent().prop("id") == "tabSelector")
+            scope.next().next().next().addClass("nextToNextToNextToActive");
+        if (scope.prev().prev().prev().parent().prop("id") == "tabSelector")
+            scope.prev().prev().prev().addClass("nextToNextToNextToActive");
+
+        scope.addClass("tabActive");
+    });
+</script>
 
 </html>
