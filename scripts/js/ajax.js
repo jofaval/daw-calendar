@@ -100,3 +100,11 @@ function getClassrooms(success) {
 function getSchedules(success) {
     genericAjaxReturn(getSchedules.name, {}, success);
 }
+
+function getEventsFromWeek(date, days) {
+
+}
+
+function getEventsFromDay(date, days) {
+
+}
