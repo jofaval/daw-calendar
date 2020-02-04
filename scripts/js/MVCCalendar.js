@@ -26,6 +26,13 @@ class Model {
         return instance;
     }
 
+    /* Event
+    {
+        title: "Soulful sundays bay area",
+        date: new Date().setDate(new Date().getDate() - 7), // last week
+        link: "#"
+    }*/
+
     addEvent(title, startHour, date, success) {
         var instance = this.instance;
         AjaxController.createEvent(title, startHour, date, function (data) {
@@ -162,7 +169,7 @@ class Controller {
 
         this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
         this.calendarControls.onDayClick(function (params) {
-            
+
             var dayInNumber = parseInt(current.text());
 
             var newDate = new Date(
@@ -174,12 +181,12 @@ class Controller {
 
             var timeTable = $("#timeTable");
             timeTable.TT({
-            events: this.events,
-            schedule: schedule,
-            day: newDate
+                events: this.events,
+                schedule: schedule,
+                day: newDate
             });
             console.log("test");
-            
+
         });
     }
 
