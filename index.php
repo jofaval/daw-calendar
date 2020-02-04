@@ -36,7 +36,9 @@ $map = array(
     'deleteEvent' => array('controller' =>'AjaxController', 'action' =>'deleteEvent', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'getTeachers' => array('controller' =>'AjaxController', 'action' =>'getTeachers', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'getClassrooms' => array('controller' =>'AjaxController', 'action' =>'getClassrooms', 'access' => Config::$ACCESS_LEVEL_ADMIN),
-    'getSchedules' => array('controller' =>'AjaxController', 'action' =>'getSchedules', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'getSchedules' => array('controller' =>'AjaxController', 'action' =>'getSchedules', 'access' => Config::$ACCESS_LEVEL_TEACHER),
+    'getEventsFromDay' => array('controller' =>'AjaxController', 'action' =>'getEventsFromDay', 'access' => Config::$ACCESS_LEVEL_TEACHER),
+    'getEventsFromWeek' => array('controller' =>'AjaxController', 'action' =>'getEventsFromWeeks', 'access' => Config::$ACCESS_LEVEL_TEACHER),
 );
 
 $ctl = $_GET['ctl'];
