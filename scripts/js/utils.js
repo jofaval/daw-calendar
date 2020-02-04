@@ -47,3 +47,16 @@ var schedule = [
     ["20:50", "21:10"],
     ["21:10", "22:05"]
 ];
+
+function printDateWithFormat(givenDate, format = "d/m/Y") {
+    format = format.replace("y", givenDate.getYear());
+    format = format.replace("Y", givenDate.getFullYear());
+
+    format = format = format.toLowerCase();
+
+    format = format.replace("d", minNumberOfDigits(givenDate.getUTCDate()));
+
+    format = format.replace("m", minNumberOfDigits(givenDate.getMonth() + 1));
+
+    return format;
+}
