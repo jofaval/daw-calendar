@@ -53,4 +53,4 @@
 
 <?php $contenido = ob_get_clean() ?>
 
-<?php include 'layout.php' ?>
+<?php include_once'layout.php' ?>

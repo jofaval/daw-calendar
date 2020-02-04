@@ -1,8 +1,8 @@
 <?php
-include ('utils.php');
-include ('bEmail.php');
-include ('Validation.php');
-include ('Sessions.php');
+include_once('utils.php');
+include_once('bEmail.php');
+include_once('Validation.php');
+include_once('Sessions.php');
 
 class Controller
 {

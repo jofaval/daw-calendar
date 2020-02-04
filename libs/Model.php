@@ -71,7 +71,7 @@ class Model extends PDO
         $params = [
             "username" => $username
         ];
-        if (count($this->query("SELECT username FROM users WHERE username=:username"),) !== 0) {
+        if (count($this->query("SELECT username FROM users WHERE username=:username", $params)) !== 0) {
             $params["password"] = blowfishCrypt($password, $username);
             $params["fullname"] = $fullname;
             $params["email"] = $email;
