@@ -107,6 +107,7 @@ class View {
         this.monthlyCalendarContainer.append(monthlyRow);
 
         this.mainContainer.append(this.weeklyCalendarContainer, this.monthlyCalendarContainer);
+        this.weeklyCalendarContainer.hide();
     }
 
     fadeOutItem(item, miliseconds = 250) {
@@ -114,6 +115,11 @@ class View {
         setTimeout(() => {
             item.hide();
         }, miliseconds);
+    }
+
+    fadeInItem(item, miliseconds = 250) {
+        item.show();
+        item.fadeIn(250);
     }
 
     instance = null;
