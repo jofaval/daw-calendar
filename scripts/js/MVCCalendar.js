@@ -101,12 +101,12 @@ class View {
         //Monthly calendar
         this.monthlyCalendarContainer = $('<section class="container col-md-10"></section>');
         var monthlyRow = $("<div class='row'></div");
-        this.monthCalendar = $('<div id="calendar" class="col-md-8"></div>');
-        this.timeTableDay = $('<div id="timeTableWeek" class="col-md row"></div>');
+        this.monthCalendar = $('<div id="calendar" class="col-md-8 px-0"></div>');
+        this.timeTableDay = $('<div id="timeTable" class="col-md ml-md-5 px-0"></div>');
         monthlyRow.append(this.monthCalendar, this.timeTableDay);
         this.monthlyCalendarContainer.append(monthlyRow);
 
-        this.mainContainer.append(this.weeklyCalendar, this.monthlyCalendar);
+        this.mainContainer.append(this.weeklyCalendarContainer, this.monthlyCalendarContainer);
     }
 
     instance = null;
