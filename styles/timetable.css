@@ -4,7 +4,7 @@
 }
 
 #timeTable tr {
-    cursor: pointer;
+    /*cursor: pointer;*/
     font-size: 0.88em;
 }
 
@@ -23,9 +23,9 @@
     margin-left: 15px;
 }
 
-#timeTable tr:hover {
+/*#timeTable tr:hover {
     background: #3f4042;
-}
+}*/
 /*.timeTable*/
 
 #timeTableWeek {
