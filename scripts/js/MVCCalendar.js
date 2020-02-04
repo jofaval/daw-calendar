@@ -124,7 +124,7 @@ class View {
         }, miliseconds);
     }
 
-    fadeInItem(item, miliseconds = 250) {
+    fadeInItem(item) {
         item.show();
         item.fadeIn(250);
     }
@@ -194,8 +194,8 @@ class Controller {
         //console.log("Day  - " + dayInNumber);
 
         controller.view.timeTableDay.TT({
-            events: this.events,
-            schedule: schedule,
+            events: controller.model.getEventsFromDay(newDate),
+            schedule: controller.model.getSchedule(),
             day: newDate
         });
     }
