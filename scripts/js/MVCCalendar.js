@@ -168,8 +168,8 @@ class Controller {
         });
 
         this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
-        this.calendarControls.setOnDayClick(onDayClick);
-        this.calendarControls.setOnMonthChanged(onMonthChanged);
+        this.calendarControls.setOnDayClick(this.onDayClick);
+        this.calendarControls.setOnMonthChanged(this.onMonthChanged);
     }
 
     onDayClick() {
@@ -191,8 +191,8 @@ class Controller {
         console.log("test");
     }
 
-    onMonthChanged() {
-        this.model = new Date(this.model.getFullYear(), this.model.getMonth, 2);
+    onMonthChanged(month, year) {
+        this.model.currentDate = new Date(month, year, 2);
         console.log(this.model);
         
     }
