@@ -7,6 +7,15 @@
 let calendarController;
 
 class Model {
+    constructor() {
+        this.currentEvents = [];
+        this.currentDate = new Date();
+        getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function (data) {
+            this.currentEvents = data;
+        });
+        this.instace = this;
+    }
+
     instance = null;
 
     getInstance() {
@@ -15,15 +24,6 @@ class Model {
         }
 
         return instance;
-    }
-
-    constructor() {
-        this.currentEvents = [];
-        this.currentDate = new Date();
-        getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function (data) {
-            this.currentEvents = data;
-        });
-        this.instace = this;
     }
 
     addEvent(title, startHour, date, success) {
@@ -88,16 +88,6 @@ class Model {
  * Visual representation of the model.
  */
 class View {
-    instance = null;
-
-    getInstance() {
-        if (instance == null) {
-            instance = new View();
-        }
-
-        return instance;
-    }
-
     constructor() {
         this.mainContainer = $('main');
 
@@ -118,6 +108,16 @@ class View {
 
         this.mainContainer.append(this.weeklyCalendar, this.monthlyCalendar);
     }
+
+    instance = null;
+
+    getInstance() {
+        if (instance == null) {
+            instance = new View();
+        }
+
+        return instance;
+    }
 }
 
 /**
@@ -129,16 +129,6 @@ class View {
  * @param view
  */
 class Controller {
-    instance = null;
-
-    getInstance() {
-        if (instance == null) {
-            instance = new Controller();
-        }
-
-        return instance;
-    }
-
     constructor(model, view) {
         this.model = model;
         this.view = view;
@@ -157,7 +147,17 @@ class Controller {
             weekFormat: false
         });
 
-        var calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
+        this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
+    }
+
+    instance = null;
+
+    getInstance() {
+        if (instance == null) {
+            instance = new Controller();
+        }
+
+        return instance;
     }
 }
 
