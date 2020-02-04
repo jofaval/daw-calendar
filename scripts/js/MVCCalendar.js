@@ -149,6 +149,8 @@ class View {
  * @param view
  */
 class Controller {
+    instance = null;
+
     constructor(model, view) {
         this.model = model;
         this.view = view;
@@ -168,44 +170,46 @@ class Controller {
         });
 
         this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
-        this.calendarControls.setOnDayClick(this.onDayClick);
-        this.calendarControls.setOnMonthChanged(this.onMonthChanged);
+        var controller = this;
+        this.calendarControls.setOnDayClick(function () {
+            controller.onDayClick($(this), controller);
+        });
+        this.calendarControls.setOnMonthChanged(function (month, year) {
+            controller.onMonthChanged(month, year, controller);
+        });
     }
 
-    onDayClick() {
+    onDayClick(current, controller) {
         var dayInNumber = parseInt(current.text());
 
         var newDate = new Date(
-            model.currentDate.getFullYear(),
-            model.currentDate.getMonth(),
+            controller.model.currentDate.getFullYear(),
+            controller.model.currentDate.getMonth(),
             dayInNumber
         );
         console.log(newDate);
 
-        var timeTable = $("#timeTable");
-        timeTable.TT({
+        controller.view.timeTableDay.TT({
             events: this.events,
             schedule: schedule,
             day: newDate
         });
-        console.log("test");
     }
 
-    onMonthChanged(month, year) {
-        this.model.currentDate = new Date(month, year, 2);
-        console.log(this.model);
+    onMonthChanged(month, year, controller) {
+        controller.model.currentDate = new Date(year, month, 2);
+        console.log(controller.model.currentDate);
         
     }
 
-    instance = null;
-
-    getInstance() {
-        if (instance == null) {
-            instance = new Controller();
+    static getInstance() {
+        if (!Controller.instance) {
+            Controller.instance = new Controller(new Model(), new View());
         }
 
-        return instance;
+        return Controller.instance;
     }
 }
 
-calendarController = new Controller(new Model(), new View());
+//calendarController = new Controller(new Model(), new View());
+calendarController = Controller.getInstance();

@@ -6,10 +6,13 @@ class CalendarControls {
     this.updateCalendar();
   }
 
-  setOnDayClick(onDayClick) {
-    $(".a-date").click(function () {
-      onDayClick(scope);
-    });
+  setOnDayClick(onDayClick = null) {
+    if (onDayClick != null) {
+      this.onDayClick = onDayClick;
+      $(".a-date").click(onDayClick);
+    } else {
+      $(".a-date").click(this.onDayClick);
+    }
   }
 
   updateCalendar() {
@@ -18,10 +21,12 @@ class CalendarControls {
       from_monday: this.from_monday,
       onMonthChanged: this.onMonthChanged
     });
+    //this.setOnDayClick(this.onDayClick);
   }
 
   setOnMonthChanged(onMonthChanged) {
     this.onMonthChanged = onMonthChanged;
     this.updateCalendar();
+    this.setOnDayClick();
   }
 }
