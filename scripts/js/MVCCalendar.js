@@ -103,7 +103,7 @@ class View {
         var monthlyRow = $("<div class='row'></div");
         this.monthCalendar = $('<div id="calendar" class="col-md-8"></div>');
         this.timeTableDay = $('<div id="timeTableWeek" class="col-md row"></div>');
-        this.monthlyRow.append(this.monthCalendar, this.timeTableDay);
+        monthlyRow.append(this.monthCalendar, this.timeTableDay);
         this.monthlyCalendarContainer.append(monthlyRow);
 
         this.mainContainer.append(this.weeklyCalendar, this.monthlyCalendar);
@@ -141,7 +141,7 @@ class Controller {
         });
 
         view.timeTableDay.TT({
-            events: model.getEventsFromDay(mode.currentDate.getUTCDate()),
+            events: model.getEventsFromDay(model.currentDate.getUTCDate()),
             schedule: model.schedule,
             day: model.currentDate,
             weekFormat: false
