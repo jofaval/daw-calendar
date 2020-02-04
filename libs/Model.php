@@ -269,7 +269,7 @@ class Model extends PDO
             "date" => recoge("date"),
         ];
 
-        return $this->query("UPDATE FROM events SET title=:title WHERE startHour=:startHour and date=:date", $params);
+        return $this->cudOperation("UPDATE FROM events SET title=:title WHERE startHour=:startHour and date=:date", $params);
     }
 
     public function deleteEvent()
@@ -279,6 +279,6 @@ class Model extends PDO
             "date" => recoge("date"),
         ];
 
-        return $this->query("DELETE FROM events WHERE startHour=:startHour and date=:date", $params);
+        return $this->cudOperation("DELETE FROM events WHERE startHour=:startHour and date=:date", $params);
     }
 }
