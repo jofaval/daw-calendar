@@ -19,8 +19,8 @@ class Sessions {
 
     private function initSession() {
         session_start();
-        startingParams();
-        initializeValues();
+        $this->startingParams();
+        $this->initializeValues();
     }
 
     private function startingParams() {
@@ -28,7 +28,7 @@ class Sessions {
     }
 
     private function initializeValues() {
-        setSession("access", 0);
+        $this->setSession("access", 0);
     }
 
     public function getSessionID() {
@@ -59,7 +59,7 @@ class Sessions {
         if(is_array($_SESSION[$session_name])) {
             array_push($_SESSION[$session_name], $data);
         } else {
-            setSession($session_name, $data);
+            $this->setSession($session_name, $data);
         }
     }
 }
