@@ -60,8 +60,7 @@ class Model extends PDO
 
     public function signin($username)
     {
-        $params = [];
-        $params["username"] = $username;
+        $params = ["username" => $username];
         $signin = $this->query("SELECT access, password FROM users WHERE username=:username", $params);
         return $signin;
     }
@@ -112,43 +111,40 @@ class Model extends PDO
         return false;
     }
 
-    public function updateTeacher()
+    public function updateTeacher($inputTeacherUsername, $inputTeacherPassword, $inputTeacherName, $inputTeacherEmail)
     {
         $username = recoge("username");
 
         $params = [
-            "name" => recoge("inputName"),
-            "email" => recoge("inputEmail"),
-            "username" => recoge("inputUsername"),
-            "password" => blowfishCrypt(recoge("inputPassword"), $username),
+            "name" => $inputTeacherName,
+            "email" => $inputTeacherEmail,
+            "username" => $inputTeacherUsername,
+            "password" => blowfishCrypt($inputTeacherPassword, $username),
         ];
 
         return $this->cudOperation("UPDATE FROM users SET name=:name, username=:username, password=:password WHERE email=:email type=2", $params);
     }
 
-    public function deleteTeacher()
+    public function deleteTeacher($inputTeacherEmail)
     {
         $params = [
-            "email" => recoge("inputEmail"),
+            "email" => $inputTeacherEmail,
         ];
 
         return $this->cudOperation("DELETE FROM users WHERE email=:email", $params);
     }
 
-    public function createClassroom()
-    {
-        $description = recoge("inputClasroomDescription");
-        $state = recoge("selectClasroomState");
+    public function createClassroom($inputClassroomName, $inputClasroomDescription, $selectClasroomState)  {
         $params = [
-            "name" => recoge("inputClassroomName"),
-            "description" => recoge("inputClasroomDescription"),
-            "state" => recoge("selectClasroomState"),
+            "name" => $inputClassroomName,
+            "description" => $inputClasroomDescription,
+            "state" => $selectClasroomState,
         ];
 
         $queryResult = $this->query("SELECT name FROM name WHERE name=:name", $params);
         if (count($queryResult) === 0) {
-            $params["description"] = $description;
-            $params["state"] = $state;
+            $params["description"] = $inputClasroomDescription;
+            $params["state"] = $selectClasroomState;
 
             return $this->cudOperation("INSERT INTO classrooms (name, description, state) VALUES (name, description, state)", $params);
         }
@@ -156,21 +152,21 @@ class Model extends PDO
         return false;
     }
 
-    public function updateClassroom()
+    public function updateClassroom($inputClassroomName, $inputClasroomDescription, $selectClasroomState)
     {
         $params = [
-            "name" => recoge("inputClassroomName"),
-            "description" => recoge("inputClasroomDescription"),
-            "state" => recoge("selectClasroomState"),
+            "name" => $inputClassroomName,
+            "description" => $inputClasroomDescription,
+            "state" => $selectClasroomState,
         ];
 
         return $this->cudOperation("UPDATE FROM classrooms SET name=:name, description=:description, state=:state WHERE name=:name", $params);
     }
 
-    public function deleteClassroom()
+    public function deleteClassroom($inputClassroomName)
     {
         $params = [
-            "name" => recoge("inputClassroomName"),
+            "name" => $inputClassroomName,
         ];
 
         return $this->cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
@@ -243,14 +239,14 @@ class Model extends PDO
         return $this->query("SELECT * FROM schedules WHERE enabled=true and YEAR(year)=:year", $params);
     }
 
-    public function createEvent()
+    public function createEvent($title, $startHour, $date)
     {
         $sessions = Sessions::getInstance();
 
         $params = [
-            "title" => recoge("title"),
-            "startHour" => recoge("startHour"),
-            "date" => recoge("date"),
+            "title" => $title,
+            "startHour" => $startHour,
+            "date" => $date,
             "username" => $sessions->getSession("username")
         ];
 
@@ -261,22 +257,22 @@ class Model extends PDO
         return false;
     }
 
-    public function updateEvent()
+    public function updateEvent($title, $startHour, $date)
     {
         $params = [
-            "title" => recoge("title"),
-            "startHour" => recoge("startHour"),
-            "date" => recoge("date"),
+            "title" => $title,
+            "startHour" => $startHour,
+            "date" => $date,
         ];
 
         return $this->cudOperation("UPDATE FROM events SET title=:title WHERE startHour=:startHour and date=:date", $params);
     }
 
-    public function deleteEvent()
+    public function deleteEvent($startHour, $date)
     {
         $params = [
-            "startHour" => recoge("startHour"),
-            "date" => recoge("date"),
+            "startHour" => $startHour,
+            "date" => $date,
         ];
 
         return $this->cudOperation("DELETE FROM events WHERE startHour=:startHour and date=:date", $params);
@@ -291,20 +287,20 @@ class Model extends PDO
         return $this->query("SELECT * FROM schedules WHERE year=:selectedYear", $params);
     }
 
-    public function getEventsFromDay()
+    public function getEventsFromDay($selectedDay)
     {
         $params = [
-            "selectedDay" => recoge("selectedDay")
+            "selectedDay" => $selectedDay
         ];
         
         return $this->query("SELECT * FROM events WHERE selectedDay=:selectedDay", $params);
     }
 
-    public function getEventsFromWeek()
+    public function getEventsFromWeek($startingDate, $endingDate)
     {
         $params = [
-            "startingDate" => recoge("startingDate"),
-            "endingDate" => recoge("endingDate"),
+            "startingDate" => $startingDate,
+            "endingDate" => $endingDate,
         ];
 
         return $this->query("SELECT * FROM events WHERE selectedDay>=:startingDate AND selectedDay<=:endingDate", $params);

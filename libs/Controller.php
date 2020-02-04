@@ -216,7 +216,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateTeacher();
+            return $model->updateTeacher(recoge("inputTeacherUsername"), recoge("inputTeacherPassword"), recoge("inputTeacherName"), recoge("inputTeacherEmail"));
         }
         return false;
     }
@@ -235,7 +235,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteTeacher();
+            return $model->deleteTeacher(recoge("inputTeacherEmail"));
         }
 
         return false;
@@ -263,7 +263,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createClassroom();
+            return $model->createClassroom(recoge("inputClassroomName"), recoge("inputClasroomDescription"), recoge("selectClasroomState"));
         }
 
         return false;
@@ -291,7 +291,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateClassroom();
+            return $model->updateClassroom(recoge("inputClassroomName"), recoge("inputClasroomDescription"), recoge("selectClasroomState"));
         }
 
         return false;
@@ -311,7 +311,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteClassroom();
+            return $model->deleteClassroom(recoge("inputClassroomName"));
         }
 
         return false;
@@ -331,11 +331,15 @@ class Controller
                 'name' => 'inputScheduleEndHour',
                 'regla' => 'no-empty,datetime'
             ),
+            array(
+                'name' => 'year',
+                'regla' => 'no-empty,datetime'
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createSchedule();
+            return $model->createSchedule(recoge("inputScheduleStartHour"), recoge("inputScheduleEndHour"), recoge("year"));
         }
 
         return false;
@@ -359,7 +363,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateSchedule();
+            return $model->updateSchedule(recoge("inputScheduleStartHour"), recoge("inputScheduleEndHour"));
         }
 
         return false;
@@ -383,7 +387,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteSchedule();
+            return $model->deleteSchedule(recoge("inputScheduleStartHour"), recoge("inputScheduleEndHour"));
         }
 
         return false;
@@ -407,7 +411,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromMonth();
+            return $model->getEventsFromMonth(recoge("month"), recoge("year"));
         }
 
         return false;
@@ -456,7 +460,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createEvent();
+            return $model->createEvent(recoge("title"), recoge("startHour"), recoge("date"));
         }
 
         return false;
@@ -484,7 +488,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateEvent();
+            return $model->updateEvent(recoge("title"), recoge("startHour"), recoge("date"));
         }
 
         return false;
@@ -508,7 +512,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteEvent();
+            return $model->deleteEvent(recoge("startHour"), recoge("date"));
         }
 
         return false;
@@ -528,7 +532,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getSchedule();
+            return $model->getSchedule(recoge("selectedYear"));
         }
 
         return false;
@@ -548,7 +552,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromDay();
+            return $model->getEventsFromDay(recoge("selectedDay"));
         }
 
         return false;
@@ -572,7 +576,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromWeek();
+            return $model->getEventsFromWeek(recoge("startingDate"), recoge("endingDate"));
         }
 
         return false;
