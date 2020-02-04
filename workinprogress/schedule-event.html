@@ -20,6 +20,14 @@
         .card-icon:hover {
             background: rgba(0, 0, 0, 0.25) !important;
         }
+
+        .card.free {
+            background: rgb(63, 140, 255) !important;
+        }
+
+        .card.yours {
+            background: rgb(255, 178, 63) !important;
+        }
     </style>
 </head>
 
@@ -172,19 +180,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card free mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-dark m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-dark m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-dark">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
                                                         <div class="align-middle">8:50</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">9:45</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-dark">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-light"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -193,19 +210,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card yours mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-dark m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-dark m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-dark">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">9:45</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">10:40</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-dark">Booked by
+                                                                    <a href=""
+                                                                        class="teacher-name text-dark"><b>you</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -214,19 +240,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">11:00</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">11:55</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -235,19 +270,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">11:55</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">12:50</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -256,19 +300,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">12:50</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">13:45</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -277,19 +330,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">14:05</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">15:00</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -298,19 +360,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">15:00</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">15:55</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -319,19 +390,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">15:55</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">16:50</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -340,19 +420,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">16:50</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">17:45</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -361,19 +450,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">18:05</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">19:00</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -382,19 +480,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">19:00</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">19:55</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -403,19 +510,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">19:55</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">20:50</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -424,19 +540,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">20:50</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">21:10</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -445,19 +570,28 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="card mb-3">
-                                                <div class="row no-gutters">
+                                            <div class="card mb-3 mr-3 bg-dark">
+                                                <span
+                                                    class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-times"></i></a>
+                                                    <a class="card-icon text-light m-1 p-2 rounded"><i
+                                                            class="fa fa-pencil"></i></a>
+                                                </span>
+                                                <div class="row no-gutters text-light">
                                                     <div
-                                                        class="col-md-4 row d-flex justify-content-center align-content-center flex-column">
-                                                        <div class="align-middle">7:55</div>
-                                                        <div class="align-middle">8:50</div>
+                                                        class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
+                                                        <div class="align-middle">21:10</div>
+                                                        <div class="align-middle">-</div>
+                                                        <div class="align-middle">22:05</div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10 col-9 px-0">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Profesores</h5>
-                                                            <p class="card-text"><small class="text-muted">Last
-                                                                    updated 3 mins
-                                                                    ago</small></p>
+                                                            <p class="card-title">Climate change lecture</p>
+                                                            <p class="card-text"><small class="text-light">Booked by
+                                                                    <a href="email@iesabastos.org"
+                                                                        class="teacher-name text-warning"><b>Teacher</b></a></small>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
