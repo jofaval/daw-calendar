@@ -168,26 +168,33 @@ class Controller {
         });
 
         this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
-        this.calendarControls.onDayClick(function (params) {
+        this.calendarControls.setOnDayClick(onDayClick);
+        this.calendarControls.setOnMonthChanged(onMonthChanged);
+    }
 
-            var dayInNumber = parseInt(current.text());
+    onDayClick() {
+        var dayInNumber = parseInt(current.text());
 
-            var newDate = new Date(
-                model.currentDate.getFullYear(),
-                model.currentDate.getMonth(),
-                dayInNumber
-            );
-            console.log(newDate);
+        var newDate = new Date(
+            model.currentDate.getFullYear(),
+            model.currentDate.getMonth(),
+            dayInNumber
+        );
+        console.log(newDate);
 
-            var timeTable = $("#timeTable");
-            timeTable.TT({
-                events: this.events,
-                schedule: schedule,
-                day: newDate
-            });
-            console.log("test");
-
+        var timeTable = $("#timeTable");
+        timeTable.TT({
+            events: this.events,
+            schedule: schedule,
+            day: newDate
         });
+        console.log("test");
+    }
+
+    onMonthChanged() {
+        this.model = new Date(this.model.getFullYear(), this.model.getMonth, 2);
+        console.log(this.model);
+        
     }
 
     instance = null;
