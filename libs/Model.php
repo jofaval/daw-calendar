@@ -281,4 +281,32 @@ class Model extends PDO
 
         return $this->cudOperation("DELETE FROM events WHERE startHour=:startHour and date=:date", $params);
     }
+
+    public function getSchedule()
+    {
+        $params = [
+            "selectedYear" => recoge("selectedYear")
+        ];
+        
+        return $this->query("SELECT * FROM schedules WHERE year=:selectedYear", $params);
+    }
+
+    public function getEventsFromDay()
+    {
+        $params = [
+            "selectedDay" => recoge("selectedDay")
+        ];
+        
+        return $this->query("SELECT * FROM events WHERE selectedDay=:selectedDay", $params);
+    }
+
+    public function getEventsFromWeek()
+    {
+        $params = [
+            "startingDate" => recoge("startingDate"),
+            "endingDate" => recoge("endingDate"),
+        ];
+
+        return $this->query("SELECT * FROM events WHERE selectedDay>=:startingDate AND selectedDay<=:endingDate", $params);
+    }
 }

@@ -438,6 +438,55 @@ class Controller
 
        return $model->deleteEvent();
     }
+
+    public function getSchedule() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'selectedYear',
+                'regla' => 'no-empty,date'
+            ),
+        );
+        $validation = $validation->rules($regla, $_POST);
+
+        return $model->getSchedule();
+    }
+
+    public function getEventsFromDay() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'selectedDay',
+                'regla' => 'no-empty,date'
+            ),
+        );
+        $validation = $validation->rules($regla, $_POST);
+
+        return $model->getEventsFromDay();
+    }
+
+    public function getEventsFromWeek() {
+        $model = Model::getInstance();
+        $validation = Validation::getInstance();
+        
+        $regla = array(
+            array(
+                'name' => 'startingDate',
+                'regla' => 'no-empty,datetime'
+            ),
+            array(
+                'name' => 'endingDate',
+                'regla' => 'no-empty,date'
+            ),
+        );
+        $validation = $validation->rules($regla, $_POST);
+
+        return $model->getEventsFromWeek();
+    }
 }
 
 ?>

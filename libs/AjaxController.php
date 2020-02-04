@@ -60,4 +60,16 @@ class AjaxController {
     public function deleteEvent() {
         $this->genericAjaxReturn(__FUNCTION__, ["startHour", "date"]);
     }
+    
+    public function getSchedule() {
+        $this->genericAjaxReturn(__FUNCTION__, ["selectedYear"]);
+    }
+    
+    public function getEventsFromDay() {
+        $this->genericAjaxReturn(__FUNCTION__, ["selectedDay"]);
+    }
+
+    public function getEventsFromWeek() {
+        $this->genericAjaxReturn(__FUNCTION__, ["startingDate", "endingDate"]);
+    }
 }
