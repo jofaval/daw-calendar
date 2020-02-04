@@ -7,7 +7,7 @@ class CalendarControls {
   }
 
   setOnDayClick(onDayClick) {
-    $(".month-mover").click(function () {
+    $(".a-date").click(function () {
       onDayClick(scope);
     });
   }
@@ -22,6 +22,6 @@ class CalendarControls {
 
   setOnMonthChanged(onMonthChanged) {
     this.onMonthChanged = onMonthChanged;
-    updateCalendar();
+    this.updateCalendar();
   }
 }
