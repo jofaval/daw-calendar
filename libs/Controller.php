@@ -6,21 +6,25 @@ include_once('Sessions.php');
 
 class Controller
 {
-    public function error() {
+    public function error()
+    {
         require __DIR__ . '/templates/error.php';
     }
 
-    public function access() {
+    public function access()
+    {
         require __DIR__ . '/templates/access.php';
     }
 
-    public function confirmEmail() {
+    public function confirmEmail()
+    {
         $params = tryCatch("Controller", "confirmEmailFunctionality");
 
         require __DIR__ . '/templates/email.php';
     }
 
-    public function confirmEmailFunctionality() {
+    public function confirmEmailFunctionality()
+    {
         $tokenCode = recoge("token");
         $model = Model::getInstance();
         $sessions = Sessions::getInstance();
@@ -34,13 +38,14 @@ class Controller
 
         return $params;
     }
-    
-    public function signin() {
+
+    public function signin()
+    {
         $result = false;
         if (isset($_REQUEST["signin"])) {
             $result = tryCatch("Controller", "signinFunctionality");
         }
-          
+
         if ($result) {
             header("Location: ./index.php?ctl=calendar/");
         } else {
@@ -48,11 +53,12 @@ class Controller
         }
     }
 
-    public function signinFunctionality() {
+    public function signinFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
         $sessions = Sessions::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'username',
@@ -63,36 +69,39 @@ class Controller
                 'regla' => 'no-empty,password'
             )
         );
-        $validations = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST);
 
-        $username = recoge("username");
-        $password = recoge("password");
-        $signin = $model->signin($username);
-        if (blowfishCrypt($password, $username) == $signin[0]["password"]) {
-            $sessions->setSession("username", $username);
-            $sessions->setSession("access", $signin[0]["access"]);
-            return true;
-        } else {
-            return false;
+        if ($validation === true) {
+            $username = recoge("username");
+            $password = recoge("password");
+            $signin = $model->signin($username);
+            if (blowfishCrypt($password, $username) == $signin[0]["password"]) {
+                $sessions->setSession("username", $username);
+                $sessions->setSession("access", $signin[0]["access"]);
+                return true;
+            }
         }
+
+        return false;
     }
-    
-    public function signup() {
+
+    public function signup()
+    {
         $result = tryCatch("Controller", "signupFunctionality");
-          
+
         if ($result) {
             header("Location: ./index.php?ctl=signin/");
         } else {
             require __DIR__ . '/templates/signup.php';
         }
-        
     }
 
-    public function signupFunctionality() {
+    public function signupFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
         $sessions = Sessions::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'inputName',
@@ -113,15 +122,17 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-        $signup = $model->signup(recoge("inputName"), recoge("inputUsername"), recoge("inputPassword"), recoge("inputEmail"));
-        if ($signup !== false) {
-            return true;
-        } else {
-            return false;
+        if ($validation === true) {
+            $signup = $model->signup(recoge("inputName"), recoge("inputUsername"), recoge("inputPassword"), recoge("inputEmail"));
+            if ($signup !== false) {
+                return true;
+            }
         }
+        return false;
     }
 
-    public function signout() {
+    public function signout()
+    {
         $sessions = Sessions::getInstance();
 
         $sessions->deleteSession("username");
@@ -130,32 +141,34 @@ class Controller
         header("Location: ./index.php?ctl=signin");
     }
 
-    public function calendar() {
+    public function calendar()
+    {
         require __DIR__ . '/templates/calendar.php';
     }
 
-    public function admin() {
+    public function admin()
+    {
         //Teacher
         if (isset($_REQUEST["createTeacher"])) { //Create
             $_POST["inputName"] = $_POST["inputTeacherName"];
             unset($_POST["inputTeacherName"]);
-            
+
             $_POST["inputUsername"] = $_POST["inputTeacherUsername"];
             unset($_POST["inputTeacherUsername"]);
-            
+
             $_POST["inputPassword"] = $_POST["inputTeacherPassword"];
             unset($_POST["inputTeacherPassword"]);
-            
+
             $_POST["inputEmail"] = $_POST["inputTeacherEmail"];
             unset($_POST["inputTeacherEmail"]);
-            
+
             $result = tryCatch("Controller", "signupFunctionality");
         } else if (isset($_REQUEST["updateTeacher"])) { //Update
             $result = tryCatch("Controller", "updateTeacherFunctionality");
         } else if (isset($_REQUEST["deleteTeacher"])) { //Delete
             $result = tryCatch("Controller", "deleteTeacherFunctionality");
         }
-        
+
         //Classroom
         if (isset($_REQUEST["createClassroom"])) { //Create
             $result = tryCatch("Controller", "createClassroomFunctionality");
@@ -177,10 +190,11 @@ class Controller
         require __DIR__ . '/templates/admin.php';
     }
 
-    public function updateTeacherFunctionality() {
+    public function updateTeacherFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'inputTeacherUsername',
@@ -201,13 +215,17 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->updateTeacher();
+        if ($validation === true) {
+            return $model->updateTeacher();
+        }
+        return false;
     }
 
-    public function deleteTeacherFunctionality() {
+    public function deleteTeacherFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'inputTeacherEmail',
@@ -216,13 +234,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->deleteTeacher();
+        if ($validation === true) {
+            return $model->deleteTeacher();
+        }
+
+        return false;
     }
 
-    public function createClassroomFunctionality() {
+    public function createClassroomFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'inputClassroomName',
@@ -239,13 +262,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->createClassroom();
+        if ($validation === true) {
+            return $model->createClassroom();
+        }
+
+        return false;
     }
 
-    public function updateClassroomFunctionality() {
+    public function updateClassroomFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'inputClassroomName',
@@ -262,13 +290,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->updateClassroom();
+        if ($validation === true) {
+            return $model->updateClassroom();
+        }
+
+        return false;
     }
 
-    public function deleteClassroomFunctionality() {
+    public function deleteClassroomFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'inputClassroomName',
@@ -277,13 +310,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->deleteClassroom();
+        if ($validation === true) {
+            return $model->deleteClassroom();
+        }
+
+        return false;
     }
 
-    public function createScheduleFunctionality() {
+    public function createScheduleFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'inputScheduleStartHour',
@@ -296,13 +334,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->createSchedule();
+        if ($validation === true) {
+            return $model->createSchedule();
+        }
+
+        return false;
     }
 
-    public function updateScheduleFunctionality() {
+    public function updateScheduleFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'inputScheduleStartHour',
@@ -315,13 +358,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->updateSchedule();
+        if ($validation === true) {
+            return $model->updateSchedule();
+        }
+
+        return false;
     }
 
-    public function deleteScheduleFunctionality() {
+    public function deleteScheduleFunctionality()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'inputScheduleStartHour',
@@ -334,13 +382,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->deleteSchedule();
+        if ($validation === true) {
+            return $model->deleteSchedule();
+        }
+
+        return false;
     }
 
-    public function getEventsFromMonth() {
+    public function getEventsFromMonth()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'month',
@@ -353,31 +406,39 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-        return $model->getEventsFromMonth();
+        if ($validation === true) {
+            return $model->getEventsFromMonth();
+        }
+
+        return false;
     }
 
-    public function getTeachers() {
+    public function getTeachers()
+    {
         $model = Model::getInstance();
 
         return $model->getTeachers();
     }
 
-    public function getClassrooms() {
+    public function getClassrooms()
+    {
         $model = Model::getInstance();
 
         return $model->getClassrooms();
     }
 
-    public function getSchedules() {
+    public function getSchedules()
+    {
         $model = Model::getInstance();
 
         return $model->getSchedules();
     }
 
-    public function createEvent() {
+    public function createEvent()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'title',
@@ -394,13 +455,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->createEvent();
+        if ($validation === true) {
+            return $model->createEvent();
+        }
+
+        return false;
     }
 
-    public function updateEvent() {
+    public function updateEvent()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'title',
@@ -417,13 +483,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->updateEvent();
+        if ($validation === true) {
+            return $model->updateEvent();
+        }
+
+        return false;
     }
 
-    public function deleteEvent() {
+    public function deleteEvent()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'startHour',
@@ -436,13 +507,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-       return $model->deleteEvent();
+        if ($validation === true) {
+            return $model->deleteEvent();
+        }
+
+        return false;
     }
 
-    public function getSchedule() {
+    public function getSchedule()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'selectedYear',
@@ -451,13 +527,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-        return $model->getSchedule();
+        if ($validation === true) {
+            return $model->getSchedule();
+        }
+
+        return false;
     }
 
-    public function getEventsFromDay() {
+    public function getEventsFromDay()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'selectedDay',
@@ -466,13 +547,18 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-        return $model->getEventsFromDay();
+        if ($validation === true) {
+            return $model->getEventsFromDay();
+        }
+
+        return false;
     }
 
-    public function getEventsFromWeek() {
+    public function getEventsFromWeek()
+    {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'startingDate',
@@ -485,8 +571,10 @@ class Controller
         );
         $validation = $validation->rules($regla, $_POST);
 
-        return $model->getEventsFromWeek();
+        if ($validation === true) {
+            return $model->getEventsFromWeek();
+        }
+
+        return false;
     }
 }
-
-?>
