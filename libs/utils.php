@@ -1,7 +1,7 @@
 <?php
 
 function getAcademicYear($date) {
-    $time=strtotime($dateValue);
+    $time=strtotime($date);
 
     $month=date("F", $time);
 
