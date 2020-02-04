@@ -171,9 +171,12 @@ class Controller {
 
         this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
         var controller = this;
-        this.calendarControls.setOnDayClick(function () {
+
+        this.calendarControls.onDayClick = function () {
+            console.log("test");
             controller.onDayClick($(this), controller);
-        });
+        };
+
         this.calendarControls.setOnMonthChanged(function (month, year) {
             controller.onMonthChanged(month, year, controller);
         });
@@ -198,8 +201,7 @@ class Controller {
 
     onMonthChanged(month, year, controller) {
         controller.model.currentDate = new Date(year, month, 2);
-        console.log(controller.model.currentDate);
-        
+        controller.calendarControls.setOnDayClick();
     }
 
     static getInstance() {
