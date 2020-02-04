@@ -7,6 +7,16 @@
 let calendarController;
 
 class Model {
+    instance = null;
+
+    getInstance() {
+        if (instance == null) {
+            instance = new Model();
+        }
+
+        return instance;
+    }
+
     constructor() {
         this.currentEvents = [];
         this.currentDate = new Date();
@@ -78,6 +88,16 @@ class Model {
  * Visual representation of the model.
  */
 class View {
+    instance = null;
+
+    getInstance() {
+        if (instance == null) {
+            instance = new View();
+        }
+
+        return instance;
+    }
+
     constructor() {
         this.mainContainer = $('main');
 
@@ -109,6 +129,16 @@ class View {
  * @param view
  */
 class Controller {
+    instance = null;
+
+    getInstance() {
+        if (instance == null) {
+            instance = new Controller();
+        }
+
+        return instance;
+    }
+
     constructor(model, view) {
         this.model = model;
         this.view = view;
