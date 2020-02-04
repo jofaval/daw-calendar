@@ -1,21 +1,4 @@
-function request(requestLocation, requestType = "POST", params = {}, success = defaultAjaxSuccessAction, error = defaultAjaxErrorAction, async = true) {
-    $.ajax({
-        url: requestLocation,
-        data: params,
-        type: requestType,
-        async: async,
-        success: success,
-        error: error,
-    });
-}
-
-function defaultAjaxSuccessAction(data) {}
-
-function defaultAjaxErrorAction(data) {
-    sendNotification("Ha surgido un error al realizar la operación", true);
-}
-
-function queryDatabase(requestLocation, success, message = "Ha surgido un error al realizar la operación") {
+/*function queryDatabase(requestLocation, success, message = "Ha surgido un error al realizar la operación") {
     request(requestLocation, "POST", {
             select: "",
             from: "table",
@@ -29,69 +12,83 @@ function queryDatabase(requestLocation, success, message = "Ha surgido un error 
         function() {
             sendNotification(message, true);
         });
-}
+}*/
 
-function genericAjaxRequest(requestName, params, success, error = null) {
-    if (error == null) {
-        error = function(data) {
-            sendNotification(message, true);
-        };
+class AjaxController {
+    static request(requestLocation, requestType = "POST", params = {}, success = defaultAjaxSuccessAction, error = defaultAjaxErrorAction, async = true) {
+        $.ajax({
+            url: 'index.php?ctl=requestLocation',
+            data: params,
+            type: requestType,
+            async: async,
+            success: success,
+            error: error,
+        });
     }
-    var requestParams = {};
+    
+    static defaultAjaxSuccessAction(data) {}
+    
+    static defaultAjaxErrorAction(data) {
+        sendNotification("Ha surgido un error al realizar la operación", true);
+    }
 
-    $.extend(requestParams, {
-        "ctl": requestName
-    }, params);
-
-    request(requestLocation, "POST", requestParams, success, error);
-}
-
-function getEventsFromMonth(month, year, success) {
-    genericAjaxRequest(getEventsFromMonth.name, {
-        "month": month,
-        "year": year,
-    }, success);
-}
-
-function createEvent(title, startHour, date, success) {
-    genericAjaxReturn(createEvent.name, {
-        "title": title,
-        "startHour": startHour,
-        "date": date,
-    }, success);
-}
-
-function updateEvent(title, startHour, date, success) {
-    genericAjaxReturn(updateEvent.name, {
-        "title": title,
-        "startHour": startHour,
-        "date": date,
-    }, success);
-}
-
-function deleteEvent(startHour, date, success) {
-    genericAjaxReturn(deleteEvent.name, {
-        "startHour": startHour,
-        "date": date,
-    }, success);
-}
-
-function getTeachers(success) {
-    genericAjaxReturn(getTeachers.name, {}, success);
-}
-
-function getClassrooms(success) {
-    genericAjaxReturn(getClassrooms.name, {}, success);
-}
-
-function getSchedules(success) {
-    genericAjaxReturn(getSchedules.name, {}, success);
-}
-
-function getEventsFromWeek(date, days) {
-
-}
-
-function getEventsFromDay(date, days) {
-
+    static genericAjaxRequest(requestName, params, success, error = null) {
+        if (error == null) {
+            error = function(data) {
+                sendNotification(message, true);
+            };
+        }
+    
+        AjaxController.request(requestName, "POST", params, success, error);
+    }
+    
+    static getEventsFromMonth(month, year, success) {
+        AjaxController.genericAjaxRequest("getEventsFromMonth", {
+            "month": month,
+            "year": year,
+        }, success);
+    }
+    
+    static createEvent(title, startHour, date, success) {
+        AjaxController.genericAjaxRequest("createEvent", {
+            "title": title,
+            "startHour": startHour,
+            "date": date,
+        }, success);
+    }
+    
+    static updateEvent(title, startHour, date, success) {
+        AjaxController.genericAjaxRequest("updateEvent", {
+            "title": title,
+            "startHour": startHour,
+            "date": date,
+        }, success);
+    }
+    
+    static deleteEvent(startHour, date, success) {
+        AjaxController.genericAjaxRequest("deleteEvent", {
+            "startHour": startHour,
+            "date": date,
+        }, success);
+    }
+    
+    static getTeachers(success) {
+        AjaxController.genericAjaxRequest("getTeachers", {}, success);
+    }
+    
+    static getClassrooms(success) {
+        AjaxController.genericAjaxRequest("getClassrooms", {}, success);
+    }
+    
+    static getSchedules(success) {
+        AjaxController.genericAjaxRequest("getSchedules", {}, success);
+    }
+    
+    static getEventsFromWeek(date, days) {
+    
+    }
+    
+    static getEventsFromDay(date, days) {
+    
+    }
 }
