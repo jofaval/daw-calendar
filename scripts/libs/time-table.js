@@ -14,7 +14,7 @@
             options
         );
 
-        console.log("Day in timetable  - " + settings.day.toString());
+        //console.log("Day in timetable  - " + settings.day.toString());
 
         var weekDates = [];
         weekDates = getWeekFromDate(settings.day);
@@ -27,7 +27,7 @@
     };
 
     function populateTimeTable(settings, weekDates, timeTable, timeTableTpl, daysOfWeek) {
-        console.log("Day in populateTimetable  - " + settings.day.toString());
+        //console.log("Day in populateTimetable  - " + settings.day.toString());
         timeTable.html("");
         if (settings.weekFormat) {
             var weekTitle = addWeekTitle(weekDates, timeTable);
@@ -52,7 +52,7 @@
                 generateTimeTable(timeTable, timeTableTpl, daysOfWeek, settings, weekDates[index]);
             }
         } else {
-            console.log("bien");
+            //console.log("bien");
             generateTimeTable(timeTable, timeTableTpl, daysOfWeek, settings, settings.day);
         }
     }
@@ -90,8 +90,6 @@
     }
 
     function generateTimeTable(timeTable, timeTableTpl, daysOfWeek, settings, workingDate, hasEvents = true) {
-        console.log("bien");
-        console.log(settings);
         var clone = timeTableTpl.clone();
         timeTable.addClass("mini-cal").append(clone);
         var thead = clone.find("#monthYear");
