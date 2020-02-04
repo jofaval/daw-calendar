@@ -27,7 +27,7 @@ function getWeekFromDate(dayDate) {
 function sendNotification(message, error = false) {
     setTimeout(() => {
 
-    }, timeout);
+    }, 250);
 }
 
 var schedule = [
