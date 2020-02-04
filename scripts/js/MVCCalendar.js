@@ -161,6 +161,26 @@ class Controller {
         });
 
         this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
+        this.calendarControls.onDayClick(function (params) {
+            
+            var dayInNumber = parseInt(current.text());
+
+            var newDate = new Date(
+                model.currentDate.getFullYear(),
+                model.currentDate.getMonth(),
+                dayInNumber
+            );
+            console.log(newDate);
+
+            var timeTable = $("#timeTable");
+            timeTable.TT({
+            events: this.events,
+            schedule: schedule,
+            day: newDate
+            });
+            console.log("test");
+            
+        });
     }
 
     instance = null;

@@ -1,5 +1,3 @@
-var globalDate = new Date();
-
 class CalendarControls {
   constructor(calendarHTML, events = [], from_monday = true) {
     this.from_monday = from_monday;
@@ -10,8 +8,14 @@ class CalendarControls {
 
     this.updateOnDayClick(this);
     var scope = this;
-    $(".month-mover").on("click", function() {
+    /*$(".month-mover").on("click", function () {
       scope.updateOnDayClick(scope);
+    });*/
+  }
+
+  setOnDayClick(onDayClick) {
+    $(".month-mover").click(function () {
+      onDayClick(scope);
     });
   }
 
@@ -33,7 +37,7 @@ class CalendarControls {
   }
 
   loadEvents(events) {
-    
+
   }
 
   updateCalendar() {
@@ -46,28 +50,5 @@ class CalendarControls {
 
   onMonthChanged(month, year) {
     globalDate = new Date(year, month, 2);
-  }
-
-  updateOnDayClick(scope) {
-    $(".a-date").on("click", function() {
-      var current = $(this);
-      scope.onDayClick(current);
-    });
-  }
-
-  onDayClick(current) {
-    var dayInNumber = parseInt(current.text());
-    var newDate = new Date(
-      globalDate.getFullYear(),
-      globalDate.getMonth(),
-      dayInNumber
-    );
-
-    var timeTable = $("#timeTable");
-    timeTable.TT({
-      events: this.events,
-      schedule: schedule,
-      day: newDate
-    });
   }
 }
