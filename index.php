@@ -11,6 +11,8 @@ require_once __DIR__ . './libs/AjaxController.php';
 
 $sessions = Sessions::getInstance();
 
+$sessions->regenerateSession();
+
 /*
 * Access
 * 0 - Guest - ACCESS_LEVEL_GUEST

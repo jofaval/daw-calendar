@@ -3,6 +3,7 @@
 class Sessions {
 
     public static $instance = null;
+    public $clicks;
 
     public static function getInstance() {
         if (self::$instance == null) {
@@ -27,8 +28,17 @@ class Sessions {
 
     }
 
-    private function initializeValues() {
+    public function regenerateSession() {
+        $this->clicks--;
+        
+        if ($this->clicks == 0) {
+            session_regenerate_id(true);
+        }
+    }
+
+    public function initializeValues() {
         $this->setSession("access", 0);
+        $this->clicks = 10;
     }
 
     public function getSessionID() {
