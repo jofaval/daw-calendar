@@ -25,9 +25,9 @@ class AjaxController {
             error: error,
         });
     }
-    
+
     static defaultAjaxSuccessAction(data) {}
-    
+
     static defaultAjaxErrorAction(data) {
         sendNotification("Ha surgido un error al realizar la operación", true);
     }
@@ -38,17 +38,17 @@ class AjaxController {
                 sendNotification("Couldn't execute operation succesfully", true);
             };
         }
-    
+
         AjaxController.request(requestName, "POST", params, success, error);
     }
-    
+
     static getEventsFromMonth(month, year, success) {
         AjaxController.genericAjaxRequest("getEventsFromMonth", {
             "month": month,
             "year": year,
         }, success);
     }
-    
+
     static createEvent(title, startHour, date, success) {
         AjaxController.genericAjaxRequest("createEvent", {
             "title": title,
@@ -56,7 +56,7 @@ class AjaxController {
             "date": date,
         }, success);
     }
-    
+
     static updateEvent(title, startHour, date, success) {
         AjaxController.genericAjaxRequest("updateEvent", {
             "title": title,
@@ -64,31 +64,42 @@ class AjaxController {
             "date": date,
         }, success);
     }
-    
+
     static deleteEvent(startHour, date, success) {
         AjaxController.genericAjaxRequest("deleteEvent", {
             "startHour": startHour,
             "date": date,
         }, success);
     }
-    
+
     static getTeachers(success) {
         AjaxController.genericAjaxRequest("getTeachers", {}, success);
     }
-    
+
     static getClassrooms(success) {
         AjaxController.genericAjaxRequest("getClassrooms", {}, success);
     }
-    
+
     static getSchedules(success) {
         AjaxController.genericAjaxRequest("getSchedules", {}, success);
     }
-    
-    static getEventsFromWeek(date, days) {
-    
+
+    static getSchedule(year, success) {
+        AjaxController.genericAjaxRequest("getSchedule", {
+            "year": year,
+        }, success);
     }
-    
-    static getEventsFromDay(date, days) {
-    
+
+    static getEventsFromWeek(startingDay, endingDay, success) {
+        AjaxController.genericAjaxRequest("getEventsFromWeek", {
+            "startingDay": startingDay,
+            "endingDay": endingDay,
+        }, success);
+    }
+
+    static getEventsFromDay(selectedDay, success) {
+        AjaxController.genericAjaxRequest("getEventsFromWeek", {
+            "selectedDay": selectedDay,
+        }, success);
     }
 }
