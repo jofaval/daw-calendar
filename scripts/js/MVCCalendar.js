@@ -155,12 +155,12 @@ class Controller {
         this.model = model;
         this.view = view;
 
-        view.timeTableWeek.TT({
+        /*view.timeTableWeek.TT({
             events: model.currentEvents,
             schedule: model.schedule,
             day: model.currentDate,
             weekFormat: true
-        });
+        });*/
 
         view.timeTableDay.TT({
             events: model.getEventsFromDay(model.currentDate.getUTCDate()),
@@ -173,7 +173,6 @@ class Controller {
         var controller = this;
 
         this.calendarControls.onDayClick = function () {
-            console.log("test");
             controller.onDayClick($(this), controller);
         };
 
@@ -190,7 +189,9 @@ class Controller {
             controller.model.currentDate.getMonth(),
             dayInNumber
         );
-        console.log(newDate);
+
+        console.log("Day  - " + newDate.toString());
+        console.log("Day  - " + dayInNumber);
 
         controller.view.timeTableDay.TT({
             events: this.events,
