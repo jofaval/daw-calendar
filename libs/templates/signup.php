@@ -8,7 +8,7 @@
 
 <?php ob_start() ?>
 
-<form class="form-signin">
+<form method="POST" action="index.php?ctl=signup" class="form-signin">
     <div class="text-center mb-4 text-white">
         <h3>Calendar SignIn</h3>
     </div>

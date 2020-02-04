@@ -8,7 +8,7 @@
 
 <?php ob_start() ?>
 
-<form class="form-signin">
+<form method="POST" action="index.php?ctl=signin" class="form-signin">
     <div class="text-center mb-4 text-white">
         <h3>LogIn</h3>
     </div>

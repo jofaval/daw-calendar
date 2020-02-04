@@ -8,7 +8,7 @@
 
 <?php ob_start() ?>
 
-<form class="form-signin col-md" method="POST">
+<form method="POST" action="index.php?ctl=admin" class="form-signin col-md" method="POST">
     <div class="text-center mb-4 text-white">
         <h3>Teacher</h3>
     </div>
@@ -47,7 +47,7 @@
 <div>
     <br><br>
 </div>
-<form class="form-signin col-md" method="POST">
+<form method="POST" class="form-signin col-md" method="POST">
     <div class="text-center mb-4 text-white">
         <h3>Classroom</h3>
     </div>
@@ -83,7 +83,7 @@
 <div>
     <br>
 </div>
-<form class="form-signin col-md" method="POST">
+<form method="POST" class="form-signin col-md" method="POST">
     <div class="text-center mb-4 text-white">
         <h3>Schedule</h3>
     </div>
