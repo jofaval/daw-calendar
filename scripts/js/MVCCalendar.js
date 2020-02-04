@@ -62,6 +62,14 @@ class Model {
             success(data);
         });
     }
+
+    getSchedule(date, days) {
+        var instance = this.instance;
+        getSchedule(date, days, function (data) {
+            instance.currentEvents = data;
+            success(data);
+        });
+    }
 }
 
 /**
@@ -105,18 +113,22 @@ class Controller {
         this.model = model;
         this.view = view;
 
-        // Explicit this binding
-        this.model.bindTodoListChanged(this.onTodoListChanged)
-        this.view.bindAddTodo(this.handleAddTodo)
-        this.view.bindEditTodo(this.handleEditTodo)
-        this.view.bindDeleteTodo(this.handleDeleteTodo)
-        this.view.bindToggleTodo(this.handleToggleTodo)
+        view.timeTableWeek.TT({
+            events: model.currentEvents,
+            schedule: model.schedule,
+            day: model.currentDate,
+            weekFormat: true
+        });
 
-        // Display initial todos
-        this.onTodoListChanged(this.model.todos)
+        view.timeTableDay.TT({
+            events: model.getEventsFromDay(mode.currentDate.getUTCDate()),
+            schedule: model.schedule,
+            day: model.currentDate,
+            weekFormat: false
+        });
+
+        var calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
     }
-
-
 }
 
 calendarController = new Controller(new Model(), new View());
