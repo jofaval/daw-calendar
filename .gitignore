@@ -4,3 +4,5 @@ SQL/*
 *backup.*
 !.vscode/
 .vscode/*
+!logs/
+logs/*
