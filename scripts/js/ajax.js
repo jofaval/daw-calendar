@@ -35,7 +35,7 @@ class AjaxController {
     static genericAjaxRequest(requestName, params, success, error = null) {
         if (error == null) {
             error = function(data) {
-                sendNotification(message, true);
+                sendNotification("Couldn't execute operation succesfully", true);
             };
         }
     
