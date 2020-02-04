@@ -13,7 +13,7 @@ function getWeekFromDate(dayDate) {
         startingNumber = 0 - dayInNumber;
     }
     
-    var currentDateInFor = workDate;
+    var currentDateInFor = new Date(dayDate.getDate());
     currentDateInFor.setDate(currentDateInFor.getDate() + (startingNumber));
     for (var index = 0; index < 7; index++) {
         currentDateInFor.setDate(currentDateInFor.getDate() + 1);
