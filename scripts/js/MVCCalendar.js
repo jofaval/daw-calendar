@@ -109,6 +109,13 @@ class View {
         this.mainContainer.append(this.weeklyCalendarContainer, this.monthlyCalendarContainer);
     }
 
+    fadeOutItem(item, miliseconds = 250) {
+        item.fadeOut(250);
+        setTimeout(() => {
+            item.hide();
+        }, miliseconds);
+    }
+
     instance = null;
 
     getInstance() {
