@@ -10,7 +10,7 @@ class Model {
     constructor() {
         this.currentEvents = [];
         this.currentDate = new Date();
-        getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function (data) {
+        AjaxController.getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function (data) {
             this.currentEvents = data;
         });
         this.instace = this;
@@ -28,7 +28,7 @@ class Model {
 
     addEvent(title, startHour, date, success) {
         var instance = this.instance;
-        createEvent(title, startHour, date, function (data) {
+        AjaxController.createEvent(title, startHour, date, function (data) {
             instance.currentEvents.push({
                 "title": title,
                 "startHour": startHour,
@@ -40,7 +40,7 @@ class Model {
 
     removeEvent(startHour, date, success) {
         var instance = this.instance;
-        removeEvent(title, startHour, date, function (data) {
+        AjaxController.removeEvent(title, startHour, date, function (data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -48,7 +48,7 @@ class Model {
 
     updateEvent(title, startHour, date, success) {
         var instance = this.instance;
-        updateEvent(title, startHour, date, function (data) {
+        AjaxController.updateEvent(title, startHour, date, function (data) {
             instance.currentEvents = data;
             instance.currentEvents.forEach(element => {
                 element.startHour
@@ -59,7 +59,7 @@ class Model {
 
     getEventsFromWeek(date, days) {
         var instance = this.instance;
-        getEventsFromWeek(date, days, function (data) {
+        AjaxController.getEventsFromWeek(date, days, function (data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -67,7 +67,7 @@ class Model {
 
     getEventsFromDay(date, days) {
         var instance = this.instance;
-        getEventsFromDay(date, days, function (data) {
+        AjaxController.getEventsFromDay(date, days, function (data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -75,7 +75,7 @@ class Model {
 
     getSchedule(date, days) {
         var instance = this.instance;
-        getSchedule(date, days, function (data) {
+        AjaxController.getSchedule(date, days, function (data) {
             instance.currentEvents = data;
             success(data);
         });
