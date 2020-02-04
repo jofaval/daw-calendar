@@ -42,7 +42,7 @@ class Controller
         }
           
         if ($result) {
-            header("Location: calendar/");
+            header("Location: ./index.php?ctl=calendar/");
         } else {
             require __DIR__ . '/templates/signin.php';
         }
@@ -81,7 +81,7 @@ class Controller
         $result = tryCatch("Controller", "signupFunctionality");
           
         if ($result) {
-            header("Location: signin/");
+            header("Location: ./index.php?ctl=signin/");
         } else {
             require __DIR__ . '/templates/signup.php';
         }
@@ -127,7 +127,7 @@ class Controller
         $sessions->deleteSession("username");
         $sessions->setSession("access", 0);
 
-        header("Location: /signin");
+        header("Location: ./index.php?ctl=signin");
     }
 
     public function calendar() {

@@ -49,11 +49,11 @@ if (isset($ctl)) {
     if (isset($map[$ctl])) {
         $ruta = $ctl;
     } else {
-        header('Location: ./error/');
+        header('Location: ./index.php?ctl=error');
         exit;
     }
 } else {
-    header('Location: ./calendar/');
+    header('Location: ./index.php?ctl=calendar');
 }
 
 /*if (!$sessions->doesSessionExists("username") && ($ctl!="singin")) {
@@ -66,10 +66,10 @@ if (method_exists($controlador['controller'],$controlador['action'])) {
     if ($sessions->getsession("access") >= $controlador['access']) {
         call_user_func(array(new $controlador['controller'], $controlador['action']));
     } else {
-        header('Location: ./access/');
+        header('Location: ./index.php?ctl=access');
     }
 } else {
-    header('Location: ./error/');
+    header('Location: ./index.php?ctl=error');
     exit;
 }
 ?>
