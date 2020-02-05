@@ -34,7 +34,7 @@ class AjaxController {
 
     static genericAjaxRequest(requestName, params, success, error = null) {
         if (error == null) {
-            error = function(data) {
+            error = function (data) {
                 sendNotification("Couldn't execute operation succesfully", true);
             };
         }
@@ -100,6 +100,79 @@ class AjaxController {
     static getEventsFromDay(selectedDay, success) {
         AjaxController.genericAjaxRequest("getEventsFromWeek", {
             "selectedDay": selectedDay,
+        }, success);
+    }
+
+    //Teacher
+    static signup(name, username, password, email, success) {
+        AjaxController.genericAjaxRequest("signup", {
+            "inputTeacherName": name,
+            "inputTeacherUsername": username,
+            "inputTeacherPassword": password,
+            "inputTeacherEmail": email,
+        }, success);
+    }
+
+    static updateTeacher(name, username, password, email, success) {
+        AjaxController.genericAjaxRequest("updateTeacher", {
+            "inputTeacherName": name,
+            "inputTeacherUsername": username,
+            "inputTeacherPassword": password,
+            "inputTeacherEmail": email,
+        }, success);
+    }
+
+    static deleteTeacher(email, success) {
+        AjaxController.genericAjaxRequest("deleteTeacher", {
+            "inputTeacherEmail": email,
+        }, success);
+    }
+
+    //Classroom
+    static createClassroom(name, description, state, success) {
+        AjaxController.genericAjaxRequest("createClassroom", {
+            "inputClassroomName": name,
+            "inputClasroomDescription": description,
+            "selectClasroomState": state,
+        }, success);
+    }
+
+    static updateClassroom(name, description, state, success) {
+        AjaxController.genericAjaxRequest("updateClassroom", {
+            "inputClassroomName": name,
+            "inputClasroomDescription": description,
+            "selectClasroomState": state,
+        }, success);
+    }
+
+    static deleteClassroom(name, success) {
+        AjaxController.genericAjaxRequest("deleteClassroom", {
+            "inputClassroomName": name,
+        }, success);
+    }
+
+    //Schedule
+    static createSchedule(name, description, state, success) {
+        AjaxController.genericAjaxRequest("createSchedule", {
+            "inputClassroomName": name,
+            "inputClasroomDescription": description,
+            "selectClasroomState": state,
+        }, success);
+    }
+
+    static updateSchedule(name, description, state, success) {
+        AjaxController.genericAjaxRequest("updateSchedule", {
+            "inputClassroomName": name,
+            "inputClasroomDescription": description,
+            "selectClasroomState": state,
+        }, success);
+    }
+
+    static deleteSchedule(name, description, state, success) {
+        AjaxController.genericAjaxRequest("deleteSchedule", {
+            "inputClassroomName": name,
+            "inputClasroomDescription": description,
+            "selectClasroomState": state,
         }, success);
     }
 }
