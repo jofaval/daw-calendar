@@ -124,19 +124,28 @@ class View {
         this.createTab("Schedules", this.mainContainer);
 
         //Teachers
-        this.tableTeachers = $('<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">');
+        this.tableTeachers = $(`<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+            <thead></thead>
+            <tbody></tbody>
+        </table>`);
         this.tableTeachers.prop("id", "dtTeachers");
         this.createDataTable(this.tableTeachers);
         $("#tabContainerTeachers").append(this.tableTeachers);
 
         //Classrooms
-        this.tableClassrooms = $('<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">');
+        this.tableClassrooms = $(`<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+            <thead></thead>
+            <tbody></tbody>
+        </table>`);
         this.tableClassrooms.prop("id", "dtClassrooms");
         this.createDataTable(this.tableClassrooms);
         $("#tabContainerClassrooms").append(this.tableClassrooms);
 
         //Schedules
-        this.tableSchedules = $('<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">');
+        this.tableSchedules = $(`<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+            <thead></thead>
+            <tbody></tbody>
+        </table>`);
         this.tableSchedules.prop("id", "dtSchedules");
         this.createDataTable(this.tableSchedules);
         $("#tabContainerSchedules").append(this.tableSchedules);
@@ -161,7 +170,7 @@ class View {
             $tabHeaderContainer = $("<div id='tabHeaders' class='btn-group rounded col-xs text-center text-white d-flex justify-content-center'></div>");
             container.append($tabHeaderContainer);
         }
-        $tabHeader.on("click", this.tabDispalyEvent);
+
         $tabHeaderContainer.append($tabHeader);
     }
 
@@ -170,7 +179,7 @@ class View {
         $tabContainer.prop("id", "tabContainer" + tabName);
         $tabContainerContainer = $("#tabContainers");
         if ($tabContainerContainer.length == 0) {
-            var $tabContainerContainer = $("<div id='tabContainers' class='col-xs'></div>");
+            var $tabContainerContainer = $("<div id='tabContainers' class='col-xs text-white'></div>");
             container.append($tabContainerContainer);
         }
         $tabContainerContainer.append($tabContainer);
@@ -179,31 +188,32 @@ class View {
     fadeOutItem(item, miliseconds = 250) {
         item.fadeOut(250);
         setTimeout(() => {
-            item.hide();
+            //item.hide();
         }, miliseconds);
     }
 
     fadeInItem(item) {
-        item.show();
+        //item.show();
         item.fadeIn(250);
     }
 
-    tabDispalyEvent() {
+    tabDispalyEvent(controller) {
         var current = $(this);
+        console.log(current.prop("tabContainer"));
         $("#tabContainer" + current.prop("tabContainer"));
         $(".tabContainer").each(function() {
-            fadeOutItem($(this));
+            controller.fadeOutItem($(this));
         });
-        fadeInItem(current);
+        controller.fadeInItem(current);
     }
 
     createDataTable(table) {
-        /*table.DataTable({
+        table.DataTable({
             "paging": true,
             "searching": true,
             "ordering": true,
         });
-        table.find('.dataTables_length').addClass('bs-select');*/
+        table.find('.dataTables_length').addClass('bs-select');
     }
 
     addRowToTable(dataArray, table) {
@@ -249,6 +259,19 @@ class AdminController {
     constructor(model, view) {
         this.model = model;
         this.view = view;
+
+        var controller = this;
+        $("#tabHeaders .btn").on("click", function() {
+            var current = $(this);
+            console.log(current.prop("tabContainer"));
+            $(".tabContainer").each(function() {
+                view.fadeOutItem($(this));
+                //$(this).hide();
+            });
+            var tabContainer = $("#" + current.prop("tabContainer"));
+            view.fadeInItem(tabContainer);
+            //tabContainer.show();
+        });
 
         model.loadTeachers(function(data) {
             data.each(function() {
