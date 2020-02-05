@@ -1,7 +1,7 @@
 <?php
-include_once('Config.php');
-include_once('bCrypt.php');
-include_once('bDate.php');
+include_once 'Config.php';
+include_once 'bCrypt.php';
+include_once 'bDate.php';
 
 class Model extends PDO
 {
@@ -68,7 +68,7 @@ class Model extends PDO
     public function signup($username, $password, $fullname, $email)
     {
         $params = [
-            "username" => $username
+            "username" => $username,
         ];
         if (count($this->query("SELECT username FROM users WHERE username=:username", $params)) !== 0) {
             $params["password"] = blowfishCrypt($password, $username);
@@ -134,7 +134,8 @@ class Model extends PDO
         return $this->cudOperation("DELETE FROM users WHERE email=:email", $params);
     }
 
-    public function createClassroom($inputClassroomName, $inputClasroomDescription, $selectClasroomState)  {
+    public function createClassroom($inputClassroomName, $inputClasroomDescription, $selectClasroomState)
+    {
         $params = [
             "name" => $inputClassroomName,
             "description" => $inputClasroomDescription,
@@ -247,7 +248,7 @@ class Model extends PDO
             "title" => $title,
             "startHour" => $startHour,
             "date" => $date,
-            "username" => $sessions->getSession("username")
+            "username" => $sessions->getSession("username"),
         ];
 
         if (count($this->query("SELECT name FROM events WHERE startHour=:startHour and date=:date", $params)) === 0) {
@@ -281,18 +282,18 @@ class Model extends PDO
     public function getSchedule()
     {
         $params = [
-            "selectedYear" => recoge("selectedYear")
+            "selectedYear" => recoge("selectedYear"),
         ];
-        
+
         return $this->query("SELECT * FROM schedules WHERE year=:selectedYear", $params);
     }
 
     public function getEventsFromDay($selectedDay)
     {
         $params = [
-            "selectedDay" => $selectedDay
+            "selectedDay" => $selectedDay,
         ];
-        
+
         return $this->query("SELECT * FROM events WHERE selectedDay=:selectedDay", $params);
     }
 
