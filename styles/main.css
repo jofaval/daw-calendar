@@ -9,7 +9,7 @@ body {
 }
 
 body {
-    background-color: #1f1f22;
+    background-color: #1f1f22 !important;
 }
 
 nav {
