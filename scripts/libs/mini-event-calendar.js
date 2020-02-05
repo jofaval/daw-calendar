@@ -117,7 +117,8 @@
                         showEvent(event);
                 }
 
-                tbody.append(dateTpl(false, ldate.getDate(), isToday, event, onInit && isToday));
+                var dayOfWeek = ldate.getDay();
+                tbody.append(dateTpl(false, ldate.getDate(), isToday, event, onInit && isToday, dayOfWeek === 6 || dayOfWeek === 0));
 
                 ldate.setDate(ldate.getDate() + 1);
 
@@ -157,7 +158,7 @@
             return lastDays;
         }
 
-        function dateTpl(blurred, date, isToday, event, isSelected) {
+        function dateTpl(blurred, date, isToday, event, isSelected, isWeekend) {
             var tpl = "<div class='a-date blurred'><span>" + date + "</span></div>";
 
             if (!blurred) {
@@ -165,6 +166,7 @@
                 var cls = isToday ? "current " : "";
                 cls += hasEvent && isSelected ? "focused " : "";
                 cls += hasEvent ? "event " : "";
+                cls += isWeekend ? "blurred isWeekend" : "";
 
                 var tpl = "<button type='button' class='a-date " + cls + "' data-event='" + JSON.stringify(event) + "'><span>" + date + "</span></button>";
             }
