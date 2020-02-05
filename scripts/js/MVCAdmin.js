@@ -119,26 +119,26 @@ class View {
         this.mainContainer = $('main');
 
         //Create tab
-        createTab("Teachers", this.mainContainer);
-        createTab("Classrooms", this.mainContainer);
-        createTab("Schedules", this.mainContainer);
+        this.createTab("Teachers", this.mainContainer);
+        this.createTab("Classrooms", this.mainContainer);
+        this.createTab("Schedules", this.mainContainer);
 
         //Teachers
         this.tableTeachers = $('<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">');
         this.tableTeachers.prop("id", "dtTeachers");
-        createDataTable(this.tableTeachers);
+        this.createDataTable(this.tableTeachers);
         $("#tabContainerTeachers").append(this.tableTeachers);
 
         //Classrooms
         this.tableClassrooms = $('<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">');
         this.tableClassrooms.prop("id", "dtClassrooms");
-        createDataTable(this.tableClassrooms);
+        this.createDataTable(this.tableClassrooms);
         $("#tabContainerClassrooms").append(this.tableClassrooms);
 
         //Schedules
         this.tableSchedules = $('<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">');
         this.tableSchedules.prop("id", "dtSchedules");
-        createDataTable(this.tableSchedules);
+        this.createDataTable(this.tableSchedules);
         $("#tabContainerSchedules").append(this.tableSchedules);
     }
 
@@ -152,10 +152,10 @@ class View {
     }
 
     createTabHeader(tabName, container) {
-        $tabHeader = $("<div id='tab" + tabName + "' class='col-xs'></div>");
+        var $tabHeader = $("<div id='tab" + tabName + "' class='col-xs'></div>");
         $tabHeader.prop("id", "tab" + tabName);
         $tabHeader.prop("tabContainer", "tabContainer" + tabName);
-        $tabHeaderContainer = $("#tabHeaders");
+        var $tabHeaderContainer = $("#tabHeaders");
         if ($tabHeaderContainer.length == 0) {
             $tabHeaderContainer = $("<div id='tabHeaders' class='col-xs'></div>");
             container.append($tabHeaderContainer);
@@ -165,11 +165,11 @@ class View {
     }
 
     createTabContainer(tabName, container) {
-        $tabContainer = $("<div id='tabContainer' class='tabContainer col-xs'></div>");
+        var $tabContainer = $("<div id='tabContainer' class='tabContainer col-xs'></div>");
         $tabContainer.prop("id", "tabContainer" + tabName);
         $tabContainerContainer = $("#tabContainers");
         if ($tabContainerContainer.length == 0) {
-            $tabContainerContainer = $("<div id='tabContainers' class='col-xs'></div>");
+            var $tabContainerContainer = $("<div id='tabContainers' class='col-xs'></div>");
             container.append($tabContainerContainer);
         }
         $tabContainerContainer.append($tabContainer);
@@ -203,7 +203,6 @@ class View {
             "ordering": true,
         });
         table.find('.dataTables_length').addClass('bs-select');
-        $('#dtBasicExample tr').on("click", function() {});
     }
 
     addRowToTable(dataArray, table) {
