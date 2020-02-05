@@ -152,12 +152,13 @@ class View {
     }
 
     createTabHeader(tabName, container) {
-        var $tabHeader = $("<div id='tab" + tabName + "' class='col-xs'></div>");
+        var $tabHeader = $("<div id='tab" + tabName + "' class='btn btn-warning text-dark p-4 col-xs'></div>");
+        $tabHeader.html(tabName);
         $tabHeader.prop("id", "tab" + tabName);
         $tabHeader.prop("tabContainer", "tabContainer" + tabName);
         var $tabHeaderContainer = $("#tabHeaders");
         if ($tabHeaderContainer.length == 0) {
-            $tabHeaderContainer = $("<div id='tabHeaders' class='col-xs'></div>");
+            $tabHeaderContainer = $("<div id='tabHeaders' class='btn-group rounded col-xs text-center text-white d-flex justify-content-center'></div>");
             container.append($tabHeaderContainer);
         }
         $tabHeader.on("click", this.tabDispalyEvent);
@@ -197,12 +198,12 @@ class View {
     }
 
     createDataTable(table) {
-        table.DataTable({
+        /*table.DataTable({
             "paging": true,
             "searching": true,
             "ordering": true,
         });
-        table.find('.dataTables_length').addClass('bs-select');
+        table.find('.dataTables_length').addClass('bs-select');*/
     }
 
     addRowToTable(dataArray, table) {
@@ -242,71 +243,28 @@ class View {
  * @param model
  * @param view
  */
-class Controller {
+class AdminController {
     instance = null;
 
     constructor(model, view) {
         this.model = model;
         this.view = view;
 
-        view.timeTableWeek.TT({
-            events: model.currentEvents,
-            schedule: model.schedule,
-            day: model.currentDate,
-            weekFormat: true
+        model.loadTeachers(function(data) {
+            data.each(function() {
+                view.addRowToTable($(this));
+            })
         });
-
-        view.timeTableDay.TT({
-            events: model.getEventsFromDay(model.currentDate.getUTCDate()),
-            schedule: model.schedule,
-            day: model.currentDate,
-            weekFormat: false
-        });
-
-        this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
-        var controller = this;
-
-        this.calendarControls.onDayClick = function() {
-            controller.onDayClick($(this), controller);
-        };
-
-        this.calendarControls.setOnMonthChanged(function(month, year) {
-            controller.onMonthChanged(month, year, controller);
-        });
-    }
-
-    onDayClick(current, controller) {
-        var dayInNumber = parseInt(current.text());
-
-        var newDate = new Date(
-            controller.model.currentDate.getFullYear(),
-            controller.model.currentDate.getMonth(),
-            dayInNumber
-        );
-
-        //console.log("Day  - " + newDate.toString());
-        //console.log("Day  - " + dayInNumber);
-
-        controller.view.timeTableDay.TT({
-            events: controller.model.getEventsFromDay(newDate),
-            schedule: controller.model.getSchedule(),
-            day: newDate
-        });
-    }
-
-    onMonthChanged(month, year, controller) {
-        controller.model.currentDate = new Date(year, month, 2);
-        controller.calendarControls.setOnDayClick();
     }
 
     static getInstance() {
         if (!Controller.instance) {
-            Controller.instance = new Controller(new Model(), new View());
+            Controller.instance = new AdminController(new Model(), new View());
         }
 
         return Controller.instance;
     }
 }
 
-//calendarController = new Controller(new Model(), new View());
-calendarController = Controller.getInstance();
+calendarController = new AdminController(new Model(), new View());
+//controller = Controller.getInstance();
