@@ -1,8 +1,8 @@
 <?php
-include_once('utils.php');
-include_once('bEmail.php');
-include_once('Validation.php');
-include_once('Sessions.php');
+include_once 'utils.php';
+include_once 'bEmail.php';
+include_once 'Validation.php';
+include_once 'Sessions.php';
 
 class Controller
 {
@@ -14,6 +14,11 @@ class Controller
     public function access()
     {
         require __DIR__ . '/templates/access.php';
+    }
+
+    public function notsigned()
+    {
+        require __DIR__ . '/templates/notsigned.php';
     }
 
     public function confirmEmail()
@@ -62,12 +67,12 @@ class Controller
         $regla = array(
             array(
                 'name' => 'username',
-                'regla' => 'no-empty,username'
+                'regla' => 'no-empty,username',
             ),
             array(
                 'name' => 'password',
-                'regla' => 'no-empty,password'
-            )
+                'regla' => 'no-empty,password',
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 
@@ -105,20 +110,20 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputName',
-                'regla' => 'no-empty,name'
+                'regla' => 'no-empty,name',
             ),
             array(
                 'name' => 'inputUsername',
-                'regla' => 'no-empty,username'
+                'regla' => 'no-empty,username',
             ),
             array(
                 'name' => 'inputPassword',
-                'regla' => 'no-empty,password'
+                'regla' => 'no-empty,password',
             ),
             array(
                 'name' => 'inputEmail',
-                'regla' => 'no-empty,email'
-            )
+                'regla' => 'no-empty,email',
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 
@@ -198,20 +203,20 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputTeacherUsername',
-                'regla' => 'no-empty,name'
+                'regla' => 'no-empty,name',
             ),
             array(
                 'name' => 'inputTeacherPassword',
-                'regla' => 'no-empty,username'
+                'regla' => 'no-empty,username',
             ),
             array(
                 'name' => 'inputTeacherName',
-                'regla' => 'no-empty,password'
+                'regla' => 'no-empty,password',
             ),
             array(
                 'name' => 'inputTeacherEmail',
-                'regla' => 'no-empty,email'
-            )
+                'regla' => 'no-empty,email',
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 
@@ -229,8 +234,8 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputTeacherEmail',
-                'regla' => 'no-empty,email'
-            )
+                'regla' => 'no-empty,email',
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 
@@ -249,15 +254,15 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputClassroomName',
-                'regla' => 'no-empty,name'
+                'regla' => 'no-empty,name',
             ),
             array(
                 'name' => 'inputClasroomDescription',
-                'regla' => 'no-empty,text'
+                'regla' => 'no-empty,text',
             ),
             array(
                 'name' => 'selectClasroomState',
-                'regla' => 'no-empty,state'
+                'regla' => 'no-empty,state',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -277,15 +282,15 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputClassroomName',
-                'regla' => 'no-empty,name'
+                'regla' => 'no-empty,name',
             ),
             array(
                 'name' => 'inputClasroomDescription',
-                'regla' => 'no-empty,text'
+                'regla' => 'no-empty,text',
             ),
             array(
                 'name' => 'selectClasroomState',
-                'regla' => 'no-empty,state'
+                'regla' => 'no-empty,state',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -305,7 +310,7 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputClassroomName',
-                'regla' => 'no-empty,name'
+                'regla' => 'no-empty,name',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -325,15 +330,15 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputScheduleStartHour',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
             array(
                 'name' => 'inputScheduleEndHour',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
             array(
                 'name' => 'year',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -353,11 +358,11 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputScheduleStartHour',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
             array(
                 'name' => 'inputScheduleEndHour',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -377,11 +382,11 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputScheduleStartHour',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
             array(
                 'name' => 'inputScheduleEndHour',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -401,11 +406,11 @@ class Controller
         $regla = array(
             array(
                 'name' => 'month',
-                'regla' => 'no-empty,numeric'
+                'regla' => 'no-empty,numeric',
             ),
             array(
                 'name' => 'year',
-                'regla' => 'no-empty,numeric'
+                'regla' => 'no-empty,numeric',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -446,15 +451,15 @@ class Controller
         $regla = array(
             array(
                 'name' => 'title',
-                'regla' => 'no-empty,name'
+                'regla' => 'no-empty,name',
             ),
             array(
                 'name' => 'startHour',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
             array(
                 'name' => 'date',
-                'regla' => 'no-empty,date'
+                'regla' => 'no-empty,date',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -474,15 +479,15 @@ class Controller
         $regla = array(
             array(
                 'name' => 'title',
-                'regla' => 'no-empty,name'
+                'regla' => 'no-empty,name',
             ),
             array(
                 'name' => 'startHour',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
             array(
                 'name' => 'date',
-                'regla' => 'no-empty,date'
+                'regla' => 'no-empty,date',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -502,11 +507,11 @@ class Controller
         $regla = array(
             array(
                 'name' => 'startHour',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
             array(
                 'name' => 'date',
-                'regla' => 'no-empty,date'
+                'regla' => 'no-empty,date',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -526,7 +531,7 @@ class Controller
         $regla = array(
             array(
                 'name' => 'selectedYear',
-                'regla' => 'no-empty,date'
+                'regla' => 'no-empty,date',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -546,7 +551,7 @@ class Controller
         $regla = array(
             array(
                 'name' => 'selectedDay',
-                'regla' => 'no-empty,date'
+                'regla' => 'no-empty,date',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -566,11 +571,11 @@ class Controller
         $regla = array(
             array(
                 'name' => 'startingDate',
-                'regla' => 'no-empty,datetime'
+                'regla' => 'no-empty,datetime',
             ),
             array(
                 'name' => 'endingDate',
-                'regla' => 'no-empty,date'
+                'regla' => 'no-empty,date',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
