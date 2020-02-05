@@ -118,35 +118,81 @@ class View {
     constructor() {
         this.mainContainer = $('main');
 
-        //Weekly calendar
-        this.weeklyCalendarContainer = $('<section class="container col-md-10"></section>');
-        var weeklyRow = $("<div class='row'></div");
-        this.timeTableWeek = $('<div id="timeTableWeek" class="col-md row"></div>');
-        weeklyRow.append(this.timeTableWeek);
-        this.weeklyCalendarContainer.append(weeklyRow);
+        //Create tab
+        createTab("Teachers", this.mainContainer);
+        createTab("Classrooms", this.mainContainer);
+        createTab("Schedules", this.mainContainer);
 
-        //Monthly calendar
-        this.monthlyCalendarContainer = $('<section class="container col-md-10"></section>');
-        var monthlyRow = $("<div class='row'></div");
-        this.monthCalendar = $('<div id="calendar" class="col-md-8 px-0"></div>');
-        this.timeTableDay = $('<div id="timeTable" class="col-md ml-md-5 px-0"></div>');
-        monthlyRow.append(this.monthCalendar, this.timeTableDay);
-        this.monthlyCalendarContainer.append(monthlyRow);
+        //Teachers
+        this.tableTeachers = $('<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">');
+        this.tableTeachers.prop("id", "dtTeachers");
+        createDataTable(this.tableTeachers);
+        $("#tabContainerTeachers").append(this.tableTeachers);
 
-        this.mainContainer.append(this.weeklyCalendarContainer, this.monthlyCalendarContainer);
-        this.weeklyCalendarContainer.hide();
+        //Classrooms
+        this.tableClassrooms = $('<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">');
+        this.tableClassrooms.prop("id", "dtClassrooms");
+        createDataTable(this.tableClassrooms);
+        $("#tabContainerClassrooms").append(this.tableClassrooms);
+
+        //Schedules
+        this.tableSchedules = $('<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">');
+        this.tableSchedules.prop("id", "dtSchedules");
+        createDataTable(this.tableSchedules);
+        $("#tabContainerSchedules").append(this.tableSchedules);
     }
 
-    fadeOutItem(item, miliseconds = 250) {
-        item.fadeOut(250);
-        setTimeout(() => {
-            item.hide();
-        }, miliseconds);
+    createTab(tabName, container) {
+        if ($("#tab" + tabName).length) {
+            return false;
+        }
+        $tabHeader = $("<div id='tabHeader' class='col-xs'></div>");
+        $tabHeader.prop("id", "#tab" + tabName);
+
+        $tabHeaderContainer = $("#tabHeaders");
+        if ($tabHeaderContainer.length == 0) {
+            $tabHeaderContainer = $("<div id='tabHeaders' class='col-xs'></div>");
+            container.append($tabHeaderContainer);
+        }
+        $tabHeaderContainer.append($tabHeader);
+
+        $tabContainer = $("<div id='tabContainer' class='col-xs'></div>");
+        $tabContainer.prop("id", "#tabContainer" + tabName);
+
+        $tabContainerContainer = $("#tabContainers");
+        if ($tabContainerContainer.length == 0) {
+            $tabContainerContainer = $("<div id='tabContainers' class='col-xs'></div>");
+            container.append($tabContainerContainer);
+        }
+        $tabContainerContainer.append($tabContainer);
     }
 
-    fadeInItem(item) {
-        item.show();
-        item.fadeIn(250);
+    createDataTable(table) {
+        table.DataTable({
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+        });
+        table.find('.dataTables_length').addClass('bs-select');
+        $('#dtBasicExample tr').on("click", function () {});
+    }
+
+    addRowToTable(dataArray, table) {
+        var row = $("<tr></tr>");
+        row.on("click", selectionEvent);
+        dataArray.forEach(column => {
+            row.append($("<td>" + column + "</td>"));
+        });
+        if (table.find("tbody").length) {
+            table.find("tbody").append(row);
+        } else {
+            table.append(row);
+        }
+    }
+
+    selectionEvent() {
+        $('#dtBasicExample tr').removeClass("selected");
+        $(this).addClass("selected");
     }
 
     instance = null;
