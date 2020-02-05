@@ -8,12 +8,94 @@ let calendarController;
 
 class Model {
     constructor() {
-        this.currentEvents = [];
-        this.currentDate = new Date();
-        AjaxController.getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function(data) {
-            this.currentEvents = data;
+
+    }
+
+    loadTeachers(model, whenFinished) {
+        this.teachers = [];
+        AjaxController.getTeachers(function (data) {
+            model.teachers = data;
+            whenFinished(model.teachers);
         });
-        this.instace = this;
+    }
+
+    loadClassrooms(model, whenFinished) {
+        this.classrooms = [];
+        AjaxController.getClassrooms(function (data) {
+            model.classrooms = data;
+            whenFinished(model.classrooms);
+        });
+    }
+
+    loadSchedules(model, whenFinished) {
+        this.schedules = [];
+        AjaxController.getSchedules(function (data) {
+            model.schedules = data;
+            whenFinished(model.schedules);
+        });
+    }
+
+    signup(name, username, password, email, success) {
+        AjaxController.signup(name, username, password, email, function (data) {
+            model.collection.action();
+            success(data);
+        });
+    }
+
+    updateTeacher(name, username, password, email, success) {
+        AjaxController.updateTeacher(name, username, password, email, function (data) {
+            model.collection.action();
+            success(data);
+        });
+    }
+
+    deleteTeacher(email, success) {
+        AjaxController.deleteTeacher(email, function (data) {
+            model.collection.action();
+            success(data);
+        });
+    }
+
+    createClassroom(name, description, state, success) {
+        AjaxController.createClassroom(name, description, state, function (data) {
+            model.collection.action();
+            success(data);
+        });
+    }
+
+    updateClassroom(name, description, state, success) {
+        AjaxController.updateClassroom(name, description, state, function (data) {
+            model.collection.action();
+            success(data);
+        });
+    }
+
+    deleteClassroom(name, success) {
+        AjaxController.deleteClassroom(name, function (data) {
+            model.collection.action();
+            success(data);
+        });
+    }
+
+    createSchedule(name, description, state, success) {
+        AjaxController.createSchedule(name, description, state, function (data) {
+            model.collection.action();
+            success(data);
+        });
+    }
+
+    updateSchedule(name, description, state, success) {
+        AjaxController.updateSchedule(name, description, state, function (data) {
+            model.collection.action();
+            success(data);
+        });
+    }
+
+    deleteSchedule(name, description, state, success) {
+        AjaxController.deleteSchedule(name, description, state, function (data) {
+            model.collection.action();
+            success(data);
+        });
     }
 
     instance = null;
@@ -24,68 +106,6 @@ class Model {
         }
 
         return instance;
-    }
-
-    /* Event
-    {
-        title: "Soulful sundays bay area",
-        date: new Date().setDate(new Date().getDate() - 7), // last week
-        link: "#"
-    }*/
-
-    addEvent(title, startHour, date, success) {
-        var instance = this.instance;
-        AjaxController.createEvent(title, startHour, date, function(data) {
-            instance.currentEvents.push({
-                "title": title,
-                "startHour": startHour,
-                "date": date,
-            });
-            success(data);
-        });
-    }
-
-    removeEvent(startHour, date, success) {
-        var instance = this.instance;
-        AjaxController.removeEvent(title, startHour, date, function(data) {
-            instance.currentEvents = data;
-            success(data);
-        });
-    }
-
-    updateEvent(title, startHour, date, success) {
-        var instance = this.instance;
-        AjaxController.updateEvent(title, startHour, date, function(data) {
-            instance.currentEvents = data;
-            instance.currentEvents.forEach(element => {
-                element.startHour
-            });
-            success(data);
-        });
-    }
-
-    getEventsFromWeek(date, days) {
-        var instance = this.instance;
-        AjaxController.getEventsFromWeek(date, days, function(data) {
-            instance.currentEvents = data;
-            success(data);
-        });
-    }
-
-    getEventsFromDay(date, days) {
-        var instance = this.instance;
-        AjaxController.getEventsFromDay(date, days, function(data) {
-            instance.currentEvents = data;
-            success(data);
-        });
-    }
-
-    getSchedule(date, days) {
-        var instance = this.instance;
-        AjaxController.getSchedule(date, days, function(data) {
-            instance.currentEvents = data;
-            success(data);
-        });
     }
 }
 
@@ -172,11 +192,11 @@ class Controller {
         this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
         var controller = this;
 
-        this.calendarControls.onDayClick = function() {
+        this.calendarControls.onDayClick = function () {
             controller.onDayClick($(this), controller);
         };
 
-        this.calendarControls.setOnMonthChanged(function(month, year) {
+        this.calendarControls.setOnMonthChanged(function (month, year) {
             controller.onMonthChanged(month, year, controller);
         });
     }
