@@ -10,8 +10,9 @@ class Model {
     constructor() {
         this.currentEvents = [];
         this.currentDate = new Date();
+        var model = this;
         AjaxController.getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function (data) {
-            this.currentEvents = data;
+            model.currentEvents = data;
         });
         this.instace = this;
     }
