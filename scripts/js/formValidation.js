@@ -24,7 +24,7 @@ function addFilterToInputKey(input, filter) {
             break;
     }
 
-    input.on("keypress", function(event) {
+    input.on("keypress", function (event) {
         var event = event || window.event;
 
         if (!regExFilter.test(event.key)) {
@@ -35,9 +35,8 @@ function addFilterToInputKey(input, filter) {
 }
 
 function inputMaxLength(input, maxLength) {
-    input.on("keypress", function(event) {
+    input.on("keypress", function (event) {
         var event = event || window.event;
-
 
         if (input.val().length > (maxLength - 1)) {
             event.preventDefault();
