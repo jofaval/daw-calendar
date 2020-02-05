@@ -5,6 +5,8 @@
 <?php $mainClasses = "";?>
 <?php $showFooter = false;?>
 <?php $showHeader = false;?>
+<?php $showBreadcrumb = false;?>
+<?php $breadcrumb = [];?>
 
 <?php ob_start()?>
 
