@@ -10,14 +10,14 @@
 
 <?php ob_start()?>
 
-<form method="POST" action="index.php?ctl=signup" class="form-signin">
-    <div class="text-center mb-4 text-white">
+<form method="POST" action="index.php?ctl=signup" class="form-signin p-4 bg-light rounded">
+    <div class="text-center mb-4 text-dark">
         <h3>Calendar SignIn</h3>
     </div>
 
     <div class="form-label-group">
         <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Enter name"
-            required>
+            required autofocus="">
         <label for="inputName">Full Name (*)</label>
         <small id="nameHelp" class="form-text text-muted">Enter your full name, the one you are legally
             recognized with.</small>
@@ -44,22 +44,25 @@
 
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Image</span>
+            <span class="input-group-text" id="inputImageDescription">Image</span>
         </div>
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            <input type="file" class="custom-file-input" id="inputImage" aria-describedby="inputImageDescription">
+            <label class="custom-file-label" for="inputImage">Choose file</label>
         </div>
     </div>
+    <small id="emailHelp" class="form-text text-muted">Only <b>PNG</b>, <b>JPG</b>, <b>JPEG</b> or
+        <b>GIF</b>.</small>
     <br>
 
-    <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
-            aria-describedby="emailHelp" required="" autofocus="">
-        <label for="inputEmail">Email address</label>
+    <div class="input-group">
+        <input type="text" class="form-control w-100" id="inputEmail" placeholder="username"
+            aria-describedby="emailHelp">
+        <span class="input-group-text w-auto" id="inputEmailDomain">@iesabastos.org</span>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
             else.</small>
     </div>
+    <br>
 
     <div class="checkbox mb-3 text-white text-center">
         <a href="">
