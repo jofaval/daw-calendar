@@ -56,7 +56,7 @@ if (isset($ctl)) {
     header('Location: ./index.php?ctl=calendar');
 }
 
-if (!$sessions->doesSessionExists("username") && !in_array($ctl, Config::$notsigned_ctls)) {
+if (!in_array($ctl, Config::$notsigned_ctls)) {
     header('Location: ./index.php?ctl=notsigned');
 }
 

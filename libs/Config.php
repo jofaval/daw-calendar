@@ -26,8 +26,8 @@ class Config
     public static $ACCESS_LEVEL_TEACHER = 2;
     public static $ACCESS_LEVEL_ADMIN = 3;
     public static $notsigned_ctls = [
-        "singin",
-        "singup",
+        "signin",
+        "signup",
         "notsigned",
         "error",
         "access",
