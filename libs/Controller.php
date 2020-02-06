@@ -31,7 +31,7 @@ class Controller
 
     public function confirmEmailFunctionality()
     {
-        $tokenCode = Utils::cleanGetData("token");
+        $tokenCode = Utils::getCleanedData("token");
         $model = Model::getInstance();
         $sessions = Sessions::getInstance();
         $token = $model->isTokenValid($sessions->getSession("username"), $tokenCode);
@@ -78,8 +78,8 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            $username = Utils::cleanGetData("username");
-            $password = Utils::cleanGetData("password");
+            $username = Utils::getCleanedData("username");
+            $password = Utils::getCleanedData("password");
             $signin = $model->signin($username);
             if (Cryptography::blowfishCrypt($password, $username) == $signin[0]["password"]) {
                 $sessions->setSession("username", $username);
@@ -138,7 +138,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            $signup = $model->signup(Utils::cleanGetData("inputName"), Utils::cleanGetData("inputUsername"), Utils::cleanGetData("inputPassword"), Utils::cleanGetData("inputEmail"), $file);
+            $signup = $model->signup(Utils::getCleanedData("inputName"), Utils::getCleanedData("inputUsername"), Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
             if ($signup !== false) {
                 return true;
             }
@@ -231,7 +231,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateTeacher(Utils::cleanGetData("inputTeacherUsername"), Utils::cleanGetData("inputTeacherPassword"), Utils::cleanGetData("inputTeacherName"), Utils::cleanGetData("inputTeacherEmail"));
+            return $model->updateTeacher(Utils::getCleanedData("inputTeacherUsername"), Utils::getCleanedData("inputTeacherPassword"), Utils::getCleanedData("inputTeacherName"), Utils::getCleanedData("inputTeacherEmail"));
         }
         return false;
     }
@@ -250,7 +250,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteTeacher(Utils::cleanGetData("inputTeacherEmail"));
+            return $model->deleteTeacher(Utils::getCleanedData("inputTeacherEmail"));
         }
 
         return false;
@@ -278,7 +278,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createClassroom(Utils::cleanGetData("inputClassroomName"), Utils::cleanGetData("inputClasroomDescription"), Utils::cleanGetData("selectClasroomState"));
+            return $model->createClassroom(Utils::getCleanedData("inputClassroomName"), Utils::getCleanedData("inputClasroomDescription"), Utils::getCleanedData("selectClasroomState"));
         }
 
         return false;
@@ -306,7 +306,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateClassroom(Utils::cleanGetData("inputClassroomName"), Utils::cleanGetData("inputClasroomDescription"), Utils::cleanGetData("selectClasroomState"));
+            return $model->updateClassroom(Utils::getCleanedData("inputClassroomName"), Utils::getCleanedData("inputClasroomDescription"), Utils::getCleanedData("selectClasroomState"));
         }
 
         return false;
@@ -326,7 +326,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteClassroom(Utils::cleanGetData("inputClassroomName"));
+            return $model->deleteClassroom(Utils::getCleanedData("inputClassroomName"));
         }
 
         return false;
@@ -354,7 +354,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createSchedule(Utils::cleanGetData("inputScheduleStartHour"), Utils::cleanGetData("inputScheduleEndHour"), Utils::cleanGetData("year"));
+            return $model->createSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("inputScheduleEndHour"), Utils::getCleanedData("year"));
         }
 
         return false;
@@ -378,7 +378,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateSchedule(Utils::cleanGetData("inputScheduleStartHour"), Utils::cleanGetData("inputScheduleEndHour"));
+            return $model->updateSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("inputScheduleEndHour"));
         }
 
         return false;
@@ -402,7 +402,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteSchedule(Utils::cleanGetData("inputScheduleStartHour"), Utils::cleanGetData("inputScheduleEndHour"));
+            return $model->deleteSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("inputScheduleEndHour"));
         }
 
         return false;
@@ -426,7 +426,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromMonth(Utils::cleanGetData("month"), Utils::cleanGetData("year"));
+            return $model->getEventsFromMonth(Utils::getCleanedData("month"), Utils::getCleanedData("year"));
         }
 
         return false;
@@ -475,7 +475,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createEvent(Utils::cleanGetData("title"), Utils::cleanGetData("startHour"), Utils::cleanGetData("date"));
+            return $model->createEvent(Utils::getCleanedData("title"), Utils::getCleanedData("startHour"), Utils::getCleanedData("date"));
         }
 
         return false;
@@ -503,7 +503,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateEvent(Utils::cleanGetData("title"), Utils::cleanGetData("startHour"), Utils::cleanGetData("date"));
+            return $model->updateEvent(Utils::getCleanedData("title"), Utils::getCleanedData("startHour"), Utils::getCleanedData("date"));
         }
 
         return false;
@@ -527,7 +527,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteEvent(Utils::cleanGetData("startHour"), Utils::cleanGetData("date"));
+            return $model->deleteEvent(Utils::getCleanedData("startHour"), Utils::getCleanedData("date"));
         }
 
         return false;
@@ -547,7 +547,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getSchedule(Utils::cleanGetData("selectedYear"));
+            return $model->getSchedule(Utils::getCleanedData("selectedYear"));
         }
 
         return false;
@@ -567,7 +567,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromDay(Utils::cleanGetData("selectedDay"));
+            return $model->getEventsFromDay(Utils::getCleanedData("selectedDay"));
         }
 
         return false;
@@ -591,7 +591,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromWeek(Utils::cleanGetData("startingDate"), Utils::cleanGetData("endingDate"));
+            return $model->getEventsFromWeek(Utils::getCleanedData("startingDate"), Utils::getCleanedData("endingDate"));
         }
 
         return false;

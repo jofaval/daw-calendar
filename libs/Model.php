@@ -174,12 +174,12 @@ class Model extends PDO
 
     public function createSchedule()
     {
-        $description = Utils::cleanGetData("inputClasroomDescription");
-        $state = Utils::cleanGetData("selectClasroomState");
+        $description = Utils::getCleanedData("inputClasroomDescription");
+        $state = Utils::getCleanedData("selectClasroomState");
         $params = [
-            "name" => Utils::cleanGetData("inputClassroomName"),
-            "description" => Utils::cleanGetData("inputClasroomDescription"),
-            "state" => Utils::cleanGetData("selectClasroomState"),
+            "name" => Utils::getCleanedData("inputClassroomName"),
+            "description" => Utils::getCleanedData("inputClasroomDescription"),
+            "state" => Utils::getCleanedData("selectClasroomState"),
         ];
 
         $queryResult = $this->query("SELECT name FROM name WHERE name=:name", $params);
@@ -196,9 +196,9 @@ class Model extends PDO
     public function updateSchedule()
     {
         $params = [
-            "name" => Utils::cleanGetData("inputClassroomName"),
-            "description" => Utils::cleanGetData("inputClasroomDescription"),
-            "state" => Utils::cleanGetData("selectClasroomState"),
+            "name" => Utils::getCleanedData("inputClassroomName"),
+            "description" => Utils::getCleanedData("inputClasroomDescription"),
+            "state" => Utils::getCleanedData("selectClasroomState"),
         ];
 
         return $this->cudOperation("UPDATE FROM classrooms SET name=:name, description=:description, state=:state WHERE name=:name", $params);
@@ -207,7 +207,7 @@ class Model extends PDO
     public function deleteSchedule()
     {
         $params = [
-            "name" => Utils::cleanGetData("inputClassroomName"),
+            "name" => Utils::getCleanedData("inputClassroomName"),
         ];
 
         return $this->cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
@@ -216,8 +216,8 @@ class Model extends PDO
     public function getEventsFromMonth()
     {
         $params = [
-            "month" => Utils::cleanGetData("month"),
-            "year" => Utils::cleanGetData("year"),
+            "month" => Utils::getCleanedData("month"),
+            "year" => Utils::getCleanedData("year"),
         ];
 
         return $this->query("SELECT * FROM horario_seleccionado WHERE MONTH(fecha_seleccionada)=:month and YEAR(fecha_seleccionada)=:year", $params);
@@ -281,7 +281,7 @@ class Model extends PDO
     public function getSchedule()
     {
         $params = [
-            "selectedYear" => Utils::cleanGetData("selectedYear"),
+            "selectedYear" => Utils::getCleanedData("selectedYear"),
         ];
 
         return $this->query("SELECT * FROM schedules WHERE year=:selectedYear", $params);
