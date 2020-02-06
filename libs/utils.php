@@ -36,7 +36,7 @@ class Utils {
         return $string;
     }
     
-    public static function recoge($var)
+    public static function cleanGetData($var)
     {
         if (isset($_REQUEST[$var]))
             $tmp=strip_tags(self::sinEspacios($_REQUEST[$var]));
