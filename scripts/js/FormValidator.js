@@ -112,4 +112,20 @@ class FormValidator {
         Validator.validate(rules, inputs);
     }
 
+    validateSchedule(form) {
+        var rules = [{
+                "fieldName": "startHour",
+                "rules": "noEmpty,datetime",
+            },
+            {
+                "fieldName": "endHour",
+                "rules": "noEmpty,datetime",
+            },
+        ];
+        var inputs = {
+            "startHour": form.find("#inputScheduleStartHour"),
+            "endHour": form.find("#inputScheduleEndHour"),
+        };
+        Validator.validate(rules, inputs);
+    }
 }
