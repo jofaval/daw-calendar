@@ -11,7 +11,7 @@ class Model {
         this.currentEvents = [];
         this.currentDate = new Date();
         var model = this;
-        AjaxController.getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function (data) {
+        AjaxController.getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function(data) {
             model.currentEvents = data;
         });
         this.instace = this;
@@ -36,7 +36,7 @@ class Model {
 
     addEvent(title, startHour, date, success) {
         var instance = this.instance;
-        AjaxController.createEvent(title, startHour, date, function (data) {
+        AjaxController.createEvent(title, startHour, date, function(data) {
             instance.currentEvents.push({
                 "title": title,
                 "startHour": startHour,
@@ -48,7 +48,7 @@ class Model {
 
     removeEvent(startHour, date, success) {
         var instance = this.instance;
-        AjaxController.removeEvent(title, startHour, date, function (data) {
+        AjaxController.removeEvent(title, startHour, date, function(data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -56,7 +56,7 @@ class Model {
 
     updateEvent(title, startHour, date, success) {
         var instance = this.instance;
-        AjaxController.updateEvent(title, startHour, date, function (data) {
+        AjaxController.updateEvent(title, startHour, date, function(data) {
             instance.currentEvents = data;
             instance.currentEvents.forEach(element => {
                 element.startHour
@@ -67,7 +67,7 @@ class Model {
 
     getEventsFromWeek(date, days) {
         var instance = this.instance;
-        AjaxController.getEventsFromWeek(date, days, function (data) {
+        AjaxController.getEventsFromWeek(date, days, function(data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -75,7 +75,7 @@ class Model {
 
     getEventsFromDay(date, days) {
         var instance = this.instance;
-        AjaxController.getEventsFromDay(date, days, function (data) {
+        AjaxController.getEventsFromDay(date, days, function(data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -83,7 +83,7 @@ class Model {
 
     getSchedule(date, days) {
         var instance = this.instance;
-        AjaxController.getSchedule(date, days, function (data) {
+        AjaxController.getSchedule(date, days, function(data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -98,6 +98,8 @@ class Model {
 class View {
     constructor() {
         this.mainContainer = $('main');
+        this.weekFormat = $('<button type="button" id="weekFormat" class="mb-5 w-75 btn btn-lg btn-warning">Month</button>');
+        this.mainContainer.append(this.weekFormat);
 
         //Weekly calendar
         this.weeklyCalendarContainer = $('<section class="container col-md-10"></section>');
@@ -116,6 +118,20 @@ class View {
 
         this.mainContainer.append(this.weeklyCalendarContainer, this.monthlyCalendarContainer);
         this.weeklyCalendarContainer.hide();
+
+        this.weekFormat.on("click", function() {
+            var current = $(this);
+            current.toggleClass("btn-primary");
+            current.toggleClass("btn-warning");
+
+            if (current.hasClass("btn-warning")) {
+                current.text("Month");
+            } else {
+                current.text("Week");
+            }
+
+            current.nextAll().toggle();
+        });
     }
 
     fadeOutItem(item, miliseconds = 250) {
@@ -173,11 +189,11 @@ class Controller {
         this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
         var controller = this;
 
-        this.calendarControls.onDayClick = function () {
+        this.calendarControls.onDayClick = function() {
             controller.onDayClick($(this), controller);
         };
 
-        this.calendarControls.setOnMonthChanged(function (month, year) {
+        this.calendarControls.setOnMonthChanged(function(month, year) {
             controller.onMonthChanged(month, year, controller);
         });
     }
