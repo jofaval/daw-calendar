@@ -146,7 +146,7 @@ class Model extends PDO
             $params["description"] = $inputClasroomDescription;
             $params["state"] = $selectClasroomState;
 
-            return $this->cudOperation("INSERT INTO classrooms (name, description, state) VALUES (name, description, state)", $params);
+            return $this->cudOperation("INSERT INTO classrooms (name, description, state) VALUES (:name, :description, :state)", $params);
         }
 
         return false;
@@ -172,45 +172,42 @@ class Model extends PDO
         return $this->cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
     }
 
-    public function createSchedule()
+    public function createSchedule($inputScheduleStartHour, $inputScheduleEndHour, $year)
     {
-        $description = Utils::getCleanedData("inputClasroomDescription");
-        $state = Utils::getCleanedData("selectClasroomState");
         $params = [
-            "name" => Utils::getCleanedData("inputClassroomName"),
-            "description" => Utils::getCleanedData("inputClasroomDescription"),
-            "state" => Utils::getCleanedData("selectClasroomState"),
+            "startHour" => $inputScheduleStartHour,
+            "selectedYear" => $year,
         ];
 
-        $queryResult = $this->query("SELECT name FROM name WHERE name=:name", $params);
+        $queryResult = $this->query("SELECT selectedYear FROM schedules WHERE startHour=:startHour and selectedYear=:selectedYear", $params);
         if (count($queryResult) === 0) {
-            $params["description"] = $description;
-            $params["state"] = $state;
+            $params["endHour"] = $inputScheduleEndHour;
 
-            return $this->cudOperation("INSERT INTO classrooms (name, description, state) VALUES (name, description, state)", $params);
+            return $this->cudOperation("INSERT INTO schedules (startHour, endHour, selectedYear) VALUES (:startHour, :endHour, :selectedYear)", $params);
         }
 
         return false;
     }
 
-    public function updateSchedule()
+    public function updateSchedule($inputScheduleStartHour, $inputScheduleEndHour, $year)
     {
         $params = [
-            "name" => Utils::getCleanedData("inputClassroomName"),
-            "description" => Utils::getCleanedData("inputClasroomDescription"),
-            "state" => Utils::getCleanedData("selectClasroomState"),
+            "startHour" => $inputScheduleStartHour,
+            "endHour" => $inputScheduleEndHour,
+            "selectedYear" => $year,
         ];
 
-        return $this->cudOperation("UPDATE FROM classrooms SET name=:name, description=:description, state=:state WHERE name=:name", $params);
+        return $this->cudOperation("UPDATE FROM schedules SET startHour=:startHour, endHour=:endHour, selectedYear=:selectedYear WHERE startHour=:startHour and selectedYear=:selectedYear", $params);
     }
 
-    public function deleteSchedule()
+    public function deleteSchedule($inputScheduleStartHour, $year)
     {
         $params = [
-            "name" => Utils::getCleanedData("inputClassroomName"),
+            "startHour" => $inputScheduleStartHour,
+            "selectedYear" => $year,
         ];
 
-        return $this->cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
+        return $this->cudOperation("DELETE FROM schedules WHERE startHour=:startHour and selectedYear=:selectedYear", $params);
     }
 
     public function getEventsFromMonth()

@@ -374,11 +374,15 @@ class Controller
                 'name' => 'inputScheduleEndHour',
                 'regla' => 'no-empty,datetime',
             ),
+            array(
+                'name' => 'year',
+                'regla' => 'no-empty,datetime',
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("inputScheduleEndHour"));
+            return $model->updateSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("inputScheduleEndHour"), Utils::getCleanedData("year"));
         }
 
         return false;
@@ -395,14 +399,14 @@ class Controller
                 'regla' => 'no-empty,datetime',
             ),
             array(
-                'name' => 'inputScheduleEndHour',
+                'name' => 'year',
                 'regla' => 'no-empty,datetime',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("inputScheduleEndHour"));
+            return $model->deleteSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("year"));
         }
 
         return false;
