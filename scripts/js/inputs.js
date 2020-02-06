@@ -118,10 +118,10 @@ function addFilterToInputKey(input, filter) {
             regExFilter = /[a-z0-9\.\-\_\@]+/i;
             break;
         case FILTER_REGEX_PASSWORD:
-            regExFilter = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,24}$/i;
+            regExFilter = /[a-z[@$!%*?&A-Za-z\d@$!%*?&]/i;
             break;
         case FILTER_REGEX_USERNAME:
-            regExFilter = /^[a-z0-9_-]{3,24}$/i;
+            regExFilter = /^[a-z0-9_-]$/i;
             break;
     }
 
