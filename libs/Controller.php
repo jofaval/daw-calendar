@@ -1,6 +1,7 @@
 <?php
 include_once 'utils.php';
 include_once 'bEmail.php';
+include_once 'bFile.php';
 include_once 'Validation.php';
 include_once 'Sessions.php';
 
@@ -105,8 +106,13 @@ class Controller
     {
         $model = Model::getInstance();
         $validation = Validation::getInstance();
-        $sessions = Sessions::getInstance();
 
+        $file = validateFile("inputImage", "./img_usuarios/");
+        if ($file === false) {
+            return false;
+        }
+
+        $_POST["inputImage"] = $file;
         $regla = array(
             array(
                 'name' => 'inputName',
@@ -124,11 +130,15 @@ class Controller
                 'name' => 'inputEmail',
                 'regla' => 'no-empty,email',
             ),
+            array(
+                'name' => 'inputImage',
+                'regla' => 'no-empty,image',
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            $signup = $model->signup(recoge("inputName"), recoge("inputUsername"), recoge("inputPassword"), recoge("inputEmail"));
+            $signup = $model->signup(recoge("inputName"), recoge("inputUsername"), recoge("inputPassword"), recoge("inputEmail"), $file);
             if ($signup !== false) {
                 return true;
             }

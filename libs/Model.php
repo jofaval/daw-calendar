@@ -65,7 +65,7 @@ class Model extends PDO
         return $signin;
     }
 
-    public function signup($username, $password, $fullname, $email)
+    public function signup($username, $password, $fullname, $email, $image)
     {
         $params = [
             "username" => $username,
@@ -74,7 +74,8 @@ class Model extends PDO
             $params["password"] = blowfishCrypt($password, $username);
             $params["fullname"] = $fullname;
             $params["email"] = $email;
-            $signUp = $this->cudOperation("INSERT INTO FROM users (username, password, fullname, email, type) VALUES (:username, :password, :fullname, :email, 2)", $params);
+            $params["image"] = $image;
+            $signUp = $this->cudOperation("INSERT INTO FROM users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)", $params);
             $this->generateToken($username);
             return $signUp;
         }
