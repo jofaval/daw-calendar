@@ -10,8 +10,8 @@
 
 <?php ob_start()?>
 
-<form method="POST" action="index.php?ctl=signin" class="form-signin">
-    <div class="text-center mb-4 text-white">
+<form method="POST" action="index.php?ctl=signin" class="form-signin p-4 bg-light rounded">
+    <div class="text-center mb-4 text-dark">
         <h3>LogIn</h3>
     </div>
 
@@ -23,29 +23,28 @@
             else.</small>
     </div>
 
-    <br>
-
-    <div class="form-label-group d-flex justify-content-center align-items-center" id="show_hide_password">
-        <input type="password" class="form-control col-md" id="inputPassword" placeholder="Password">
-        <label for="inputPassword">Password</label>
+    <div class="form-label-group d-flex justify-content-center align-items-center flex-wrap" id="show_hide_password">
+        <input type="password" class="form-control col-md-11" id="inputPassword" aria-describedby="passwordHelp"
+            placeholder="Password">
+        <label for="inputPassword">Password (*)</label>
         <a href=""
-            class="input-group-addon password-hide col-md-1 bg-primary d-flex justify-content-center align-items-center rounded">
-            <i class="fa fa-eye-slash text-white" aria-hidden="true"></i>
+            class="input-group-addon password-hide col-md-1 bg-warning text-dark d-flex justify-content-center align-items-center rounded">
+            <i class="fa fa-eye-slash" aria-hidden="true"></i>
         </a>
+        <small id="passwordHelp" class="form-text text-muted w-100">Alphanumeric combination, 8 to 24
+            characters.</small>
     </div>
 
-    <div class="checkbox mb-3 text-white text-center">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label> &nbsp;|&nbsp;
-        <a href="">
+    <div class="checkbox mb-3 text-center">
+        <a href="" class="float-left">
             Forgot password?
-        </a> &nbsp;|&nbsp;
-        <a href="">
+        </a>
+        <a href="" class="float-right">
             You registered but can't login?
         </a>
+        <br>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-warning btn-block" type="submit">Sign in</button>
 </form>
 
 <?php $contenido = ob_get_clean()?>
