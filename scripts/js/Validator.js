@@ -1,4 +1,26 @@
 class Validator {
+    validate(validationParams, inputs) {
+        if (!Array.isArray(validationParams)) {
+            return false;
+        }
+        validationParams.forEach(validationInfo => {
+            var currentInput = inputs[validationInfo["fieldName"]];
+            var currentInputVal = currentInput.val();
+            var rulesToExecute = validationInfo["rules"].split(",");
+
+            rulesToExecute.array.forEach(validationRule => {
+                if (eval(validationRule)(currentInputVal)) {
+                    currentInput.removeClass("error");
+                } else {
+                    currentInput.addClass("error");
+                    return false;
+                }
+            });
+        });
+
+        return true;
+    }
+
     noEmpty(valor) {
         return valor.toString().length != 0;
     }
