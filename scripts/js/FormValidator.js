@@ -1,6 +1,7 @@
+validateForm("test", $(".form"));
 class FormValidator {
     validateForm(formName, form) {
-        switch (key) {
+        switch (formName) {
             case "signup":
                 this.validateSignUp(form);
                 break;
@@ -17,28 +18,6 @@ class FormValidator {
             default:
                 break;
         }
-    }
-
-    validate(validationParams, inputs) {
-        if (!Array.isArray(validationParams)) {
-            return false;
-        }
-        validationParams.forEach(validationInfo => {
-            var currentInput = inputs[validationInfo["fieldName"]];
-            var currentInputVal = currentInput.val();
-            var rulesToExecute = validationInfo["rules"].split(",");
-
-            rulesToExecute.array.forEach(validationRule => {
-                if (eval(validationRule)(currentInputVal)) {
-                    currentInput.removeClass("error");
-                } else {
-                    currentInput.addClass("error");
-                    return false;
-                }
-            });
-        });
-
-        return true;
     }
 
     validateSignUp(form) {
