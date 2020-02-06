@@ -7,8 +7,10 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
 } catch (PDOException $e) {
-    echo "<p>Error: No puede conectarse con la base de datos.</p>\n";
-    echo "<p>Error: " . $e->getMessage();
+    echo "<div class='p-3 m-5 btn btn-danger rounded position-absolute fixed-bottom float-right' onclick='this.remove();'>";
+        echo "<p>Error: No puede conectarse con la base de datos.</p>\n";
+        echo "<p class='m-0'>Error: " . $e->getMessage() . "</p>";
+    echo "</div>";
 }
 
 ?>
