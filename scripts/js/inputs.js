@@ -92,6 +92,8 @@ const FILTER_REGEX_LETTERS = 1;
 const FILTER_REGEX_ALPHANUMERIC = 2;
 const FILTER_REGEX_ALPHANUMERIC_MIXED = 3;
 const FILTER_REGEX_EMAIL = 4;
+const FILTER_REGEX_PASSWORD = 5;
+const FILTER_REGEX_USERNAME = 6;
 
 function addFilterToInputKey(input, filter) {
     var regExFilter = /.*/i;
@@ -110,6 +112,12 @@ function addFilterToInputKey(input, filter) {
             break;
         case FILTER_REGEX_EMAIL:
             regExFilter = /[a-z0-9\.\-\_\@]+/i;
+            break;
+        case FILTER_REGEX_PASSWORD:
+            regExFilter = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,24}$/i;
+            break;
+        case FILTER_REGEX_USERNAME:
+            regExFilter = /^[a-z0-9_-]{3,24}$/i;
             break;
     }
 
