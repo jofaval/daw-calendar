@@ -97,6 +97,9 @@ const FILTER_REGEX_USERNAME = 6;
 const FILTER_REGEX_NONE = 0;
 
 function addFilterToInputKey(input, filter) {
+    if (input.length == 0) {
+        return false;
+    }
     var regExFilter = /.*/i;
     switch (filter) {
         case FILTER_REGEX_NUMBERS:
@@ -133,6 +136,9 @@ function addFilterToInputKey(input, filter) {
 }
 
 function inputMaxLength(input, maxLength = 24) {
+    if (input.length == 0) {
+        return false;
+    }
     input.prop("maxlength", maxLength);
     input.on("keypress", function(event) {
         var event = event || window.event;
