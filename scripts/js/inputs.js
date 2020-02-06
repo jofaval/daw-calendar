@@ -18,6 +18,21 @@ function usernameInputDoneTyping() {
     //do something
 }
 
+/*var removeText = $("<div class='removeContent'>X</div>");
+
+$("input").on("keypress", function () {
+  var current = $(this);
+  if (current.parent().find(".removeContent").length == 0) {
+    var clone = removeText.clone();
+    clone.on("click", function () {
+      var current = $(this);
+      current.prev().val("");
+      current.remove();
+    });
+    current.after(clone);
+  }
+});*/
+
 $("#show_hide_password .trigger").on("click", function(event) {
     var event = event || window.event;
     event.preventDefault();
@@ -118,18 +133,3 @@ function inputMaxLength(input, maxLength) {
         }
     });
 }
-
-/*var removeText = $("<div class='removeContent'>X</div>");
-
-$("input").on("keypress", function () {
-  var current = $(this);
-  if (current.parent().find(".removeContent").length == 0) {
-    var clone = removeText.clone();
-    clone.on("click", function () {
-      var current = $(this);
-      current.prev().val("");
-      current.remove();
-    });
-    current.after(clone);
-  }
-});*/
