@@ -89,4 +89,27 @@ class FormValidator {
         };
         Validator.validate(rules, inputs);
     }
+
+    validateClassroom(form) {
+        var rules = [{
+                "fieldName": "name",
+                "rules": "noEmpty,name",
+            },
+            {
+                "fieldName": "description",
+                "rules": "noEmpty,text",
+            },
+            {
+                "fieldName": "state",
+                "rules": "noEmpty,state",
+            },
+        ];
+        var inputs = {
+            "name": form.find("#inputClassroomName"),
+            "description": form.find("#inputClasroomDescription"),
+            "state": form.find("#selectClasroomState"),
+        };
+        Validator.validate(rules, inputs);
+    }
+
 }
