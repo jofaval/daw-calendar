@@ -55,6 +55,23 @@ $("#inputPassword").on("keyup", function () {
   }
 });
 
+$("input:file").change(function () {
+  var fullPath = $(this).val();
+
+  var filename = "Choose file";
+
+  if (fullPath.length > 0) {
+    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf(
+      '/'));
+    filename = fullPath.substring(startIndex);
+    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+      filename = filename.substring(1);
+    }
+  }
+
+  $(this).next().html(filename);
+});
+
 /*var removeText = $("<div class='removeContent'>X</div>");
 
 $("input").on("keypress", function () {
