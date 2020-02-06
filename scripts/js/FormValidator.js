@@ -70,7 +70,8 @@ class FormValidator {
             "password": form.find("#inputPassword"),
             "email": form.find("#inputEmail"),
         };
-        Validator.validate(rules, inputs);
+
+        return Validator.validate(rules, inputs);
     }
 
     validateSignIn(form) {
@@ -87,7 +88,8 @@ class FormValidator {
             "name": form.find("#inputName"),
             "username": form.find("#inputUsername"),
         };
-        Validator.validate(rules, inputs);
+
+        return Validator.validate(rules, inputs);
     }
 
     validateClassroom(form) {
@@ -109,7 +111,8 @@ class FormValidator {
             "description": form.find("#inputClasroomDescription"),
             "state": form.find("#selectClasroomState"),
         };
-        Validator.validate(rules, inputs);
+
+        return Validator.validate(rules, inputs);
     }
 
     validateSchedule(form) {
@@ -126,6 +129,7 @@ class FormValidator {
             "startHour": form.find("#inputScheduleStartHour"),
             "endHour": form.find("#inputScheduleEndHour"),
         };
-        Validator.validate(rules, inputs);
+
+        return Validator.validate(rules, inputs);
     }
 }
