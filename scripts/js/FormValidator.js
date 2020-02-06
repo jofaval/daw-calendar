@@ -74,14 +74,19 @@ class FormValidator {
     }
 
     validateSignIn(form) {
-
-    }
-
-    validateClassroom(form) {
-
-    }
-
-    validateSchedule(form) {
-
+        var rules = [{
+                "fieldName": "name",
+                "rules": "noEmpty,name",
+            },
+            {
+                "fieldName": "username",
+                "rules": "noEmpty,username",
+            },
+        ];
+        var inputs = {
+            "name": form.find("#inputName"),
+            "username": form.find("#inputUsername"),
+        };
+        Validator.validate(rules, inputs);
     }
 }
