@@ -60,4 +60,8 @@ class Validator {
     username(valor) {
         return /^[a-z0-9_-]{3,24}$/i.test(valor);
     }
+
+    image(valor) {
+        return /^.+[\.jpg|\.jpeg|\.png|\.gif]$/i.test(valor);
+    }
 }
