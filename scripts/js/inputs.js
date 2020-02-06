@@ -1,4 +1,4 @@
-var typingTimer;
+let typingTimer;
 var usernameInputDoneTypingInterval = 5000;
 var $input = $("#myInput");
 
@@ -112,13 +112,13 @@ function addFilterToInputKey(input, filter) {
             regExFilter = /[a-zñ0-9]+/iu;
             break;
         case FILTER_REGEX_ALPHANUMERIC_MIXED:
-            regExFilter = /[a-zñ0-9\*\_\-]+/iu;
+            regExFilter = /[a-zñ0-9*_-]+/iu;
             break;
         case FILTER_REGEX_EMAIL:
             regExFilter = /[a-z0-9\.\-\_\@]+/i;
             break;
         case FILTER_REGEX_PASSWORD:
-            regExFilter = /[a-z[@$!%*?&A-Za-z\d@$!%*?&]/i;
+            regExFilter = /[a-z@$!%*?&A-Za-z\d@$!%*?&]/i;
             break;
         case FILTER_REGEX_USERNAME:
             regExFilter = /^[a-z0-9_-]$/i;
