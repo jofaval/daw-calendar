@@ -1,21 +1,5 @@
 <?php
 class ExceptionUtils {
-    public function __construct() {
-        set_error_handler("errorAction");
-        set_exception_handler("expcetionHandler");
-    }
-    public static function expcetionHandler($exception)
-    {
-        error_log("Exception happend at " . microtime() . " with message (" . $exception->getMessage() . ")." . PHP_EOL, 3, "./logs/logError.txt");
-        header("Location: ./index.php?ctl=error");
-    }
-    
-    public static function errorAction($errno = -1, $errstr = "", $errfile = "", $errline = 0)
-    {
-        error_log("Error with number $errno happend at " . microtime() . " with message ($errstr) inside \"$errfile\" file at line $errline." . PHP_EOL, 3, "./logs/logError.txt");
-        header("Location: ./index.php?ctl=error");
-    }
-    
     public static function tryCatch($class, $function)
     {
         try {
@@ -36,4 +20,17 @@ class ExceptionUtils {
     }
 }
 
-$exception = new ExceptionUtils();
+set_error_handler("errorAction");
+set_exception_handler("expcetionHandler");
+
+function expcetionHandler($exception)
+{
+error_log("Exception happend at " . microtime() . " with message (" . $exception->getMessage() . ")." . PHP_EOL, 3, "./logs/logError.txt");
+header("Location: ./index.php?ctl=error");
+}
+
+function errorAction($errno = -1, $errstr = "", $errfile = "", $errline = 0)
+{
+error_log("Error with number $errno happend at " . microtime() . " with message ($errstr) inside \"$errfile\" file at line $errline." . PHP_EOL, 3, "./logs/logError.txt");
+header("Location: ./index.php?ctl=error");
+}
