@@ -97,7 +97,7 @@ class Model extends PDO
             "isTraded" => false,
         ];
 
-        $this->cudOperation("INSERT INTO tokens(token, username, expirationDate) VALUES(:token, :username, :expirationDate)", $params);
+        $this->cudOperation("INSERT INTO tokens (token, username, expirationDate) VALUES(:token, :username, :expirationDate)", $params);
 
         return $token;
     }
@@ -300,6 +300,6 @@ class Model extends PDO
             "endingDate" => $endingDate,
         ];
 
-        return $this->query("SELECT * FROM events WHERE selectedDay>=:startingDate AND selectedDay<=:endingDate", $params);
+        return $this->query("SELECT * FROM events WHERE selectedDay between :startingDate AND :endingDate", $params);
     }
 }
