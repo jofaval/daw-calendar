@@ -94,6 +94,7 @@ const FILTER_REGEX_ALPHANUMERIC_MIXED = 3;
 const FILTER_REGEX_EMAIL = 4;
 const FILTER_REGEX_PASSWORD = 5;
 const FILTER_REGEX_USERNAME = 6;
+const FILTER_REGEX_NONE = 0;
 
 function addFilterToInputKey(input, filter) {
     var regExFilter = /.*/i;
@@ -131,7 +132,8 @@ function addFilterToInputKey(input, filter) {
     });
 }
 
-function inputMaxLength(input, maxLength) {
+function inputMaxLength(input, maxLength = 24) {
+    input.prop("maxlength", maxLength);
     input.on("keypress", function(event) {
         var event = event || window.event;
 
@@ -141,3 +143,34 @@ function inputMaxLength(input, maxLength) {
         }
     });
 }
+
+//FormValidations
+//signin
+addFilterToInputKey($("#inputEmail"), FILTER_REGEX_USERNAME);
+inputMaxLength($("#inputEmail, #inputPassword"));
+
+addFilterToInputKey($("#inputPassword"), FILTER_REGEX_PASSWORD);
+
+//signup
+addFilterToInputKey($("#inputName"), FILTER_REGEX_LETTERS);
+inputMaxLength($("#inputName"), 50);
+
+addFilterToInputKey($("#inputUsername"), FILTER_REGEX_USERNAME);
+inputMaxLength($("#inputUsername"));
+
+addFilterToInputKey($("#inputPassword"), FILTER_REGEX_PASSWORD);
+inputMaxLength($("#inputPassword"));
+
+addFilterToInputKey($("#inputEmail"), FILTER_REGEX_USERNAME);
+inputMaxLength($("#inputEmail"));
+
+//calendar
+addFilterToInputKey($("#inputEventTitle"), FILTER_REGEX_ALPHANUMERIC);
+inputMaxLength($("#inputEventTitle"), 50);
+
+//classroom
+addFilterToInputKey($("#inputClassroomName, #inputClasroomDescription"), FILTER_REGEX_LETTERS);
+inputMaxLength($("#inputClassroomName, #inputClasroomDescription"), 50);
+
+//schedule
+addFilterToInputKey($("#inputScheduleStartHour, #inputScheduleEndHour"), FILTER_REGEX_NONE);
