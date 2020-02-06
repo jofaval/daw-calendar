@@ -17,7 +17,8 @@ class Validation
 
     public static $instance = null;
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (self::$instance == null) {
             self::$instance = new Validation();
         }
@@ -32,7 +33,7 @@ class Validation
      */
     public function rules($rule = array(), $data)
     {
-        if (! is_array($rule)) {
+        if (!is_array($rule)) {
             $this->mensaje = "the rules must be in arrangement format";
             return $this;
         }
@@ -43,7 +44,7 @@ class Validation
                     if ($indice === $rules['name']) {
                         foreach ($reglas as $clave => $valores) {
                             $validator = $this->_getInflectedName($valores);
-                            if (!is_callable(array($this,$validator))) {
+                            if (!is_callable(array($this, $validator))) {
                                 throw new BadMethodCallException("Didn't found the method $valores");
                             }
                             $respuesta = $this->$validator($rules['name'], $valor);
@@ -52,7 +53,7 @@ class Validation
                     }
                 }
             } else {
-                
+
                 $this->mensaje[$rules['name']] = "The field {$rules['name']} is not inside a validartion rule nor in the form";
             }
         }
@@ -83,7 +84,7 @@ class Validation
         } else {
             $validator = "_" . $_validator;
         }
-        
+
         return $validator;
     }
 
@@ -95,7 +96,7 @@ class Validation
      */
     protected function _noEmpty($campo, $valor)
     {
-        if (isset($valor) && ! empty($valor)) {
+        if (isset($valor) && !empty($valor)) {
             return true;
         } else {
             $this->mensaje[$campo][] = "The field $campo must be filled";
@@ -135,7 +136,8 @@ class Validation
         }
     }
 
-    protected function _datetime($campo, $valor) {
+    protected function _datetime($campo, $valor)
+    {
         if (isset($valor) && preg_match("/^\d\d\d\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01]) (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$/", $valor)) {
             return true;
         } else {
@@ -144,7 +146,8 @@ class Validation
         }
     }
 
-    protected function _date($campo, $valor) {
+    protected function _date($campo, $valor)
+    {
         if (isset($valor) && preg_match("/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/", $valor)) {
             return true;
         } else {
@@ -153,7 +156,8 @@ class Validation
         }
     }
 
-    protected function _name($campo, $valor) {
+    protected function _name($campo, $valor)
+    {
         if (isset($valor) && preg_match("/^[a-zñ\ \º\ª]+$/iu", $valor)) {
             return true;
         } else {
@@ -162,7 +166,8 @@ class Validation
         }
     }
 
-    protected function _password($campo, $valor) {
+    protected function _password($campo, $valor)
+    {
         if (isset($valor) && preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/i", $valor)) {
             return true;
         } else {
@@ -171,7 +176,8 @@ class Validation
         }
     }
 
-    protected function _state($campo, $valor) {
+    protected function _state($campo, $valor)
+    {
         if (isset($valor) && in_array($valor, ["perfect", "on_repair", "left_out"])) {
             return true;
         } else {
@@ -180,7 +186,8 @@ class Validation
         }
     }
 
-    protected function _text($campo, $valor) {
+    protected function _text($campo, $valor)
+    {
         if (isset($valor) && preg_match("/^[a-zñ\ \º\ª]+$/ium", $valor)) {
             return true;
         } else {
@@ -189,8 +196,19 @@ class Validation
         }
     }
 
-    protected function _username($campo, $valor) {
+    protected function _username($campo, $valor)
+    {
         if (isset($valor) && preg_match("/^[a-z0-9_-]{3,24}$/i", $valor)) {
+            return true;
+        } else {
+            $this->mensaje[$campo][] = "The field $campo must be alphanumeric with \"_\" and \"-\" as an exception";
+            return false;
+        }
+    }
+
+    protected function _image($campo, $valor)
+    {
+        if (isset($valor) && preg_match("/^.+[\.jpg|\.jpeg|\.png|\.gif]$/i", $valor)) {
             return true;
         } else {
             $this->mensaje[$campo][] = "The field $campo must be alphanumeric with \"_\" and \"-\" as an exception";
@@ -208,15 +226,13 @@ $validacion = new Validation();
 $regla = array(
     array(
         'name' => 'campo2',
-        'regla' => 'no-empty,email'
+        'regla' => 'no-empty,email',
     ),
     array(
         'name' => 'campo1',
-        'regla' => 'no-empty,numeric'
-    )
-    
+        'regla' => 'no-empty,numeric',
+    ),
+
 );
 $validaciones = $validacion->rules($regla, $datos);
 //print_r($validaciones);
-
-?>
