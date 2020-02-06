@@ -71,7 +71,7 @@ class Model extends PDO
             "username" => $username,
         ];
         if (count($this->query("SELECT username FROM users WHERE username=:username", $params)) !== 0) {
-            $params["password"] = blowfishCrypt($password, $username);
+            $params["password"] = Cryptography::blowfishCrypt($password, $username);
             $params["fullname"] = $fullname;
             $params["email"] = $email;
             $params["image"] = $image;
@@ -87,13 +87,13 @@ class Model extends PDO
         $token = "";
 
         do {
-            $token = generateRandomKey();
+            $token = Utils::generateRandomKey();
         } while (count($this->query("SELECT token FROM tokens WHERE token=:token and username=:username"), ["token" => $token, "username" => $username]) !== 0);
 
         $params = [
             "token" => $token,
             "username" => $username,
-            "expirationDate" => addDays(date("now"), 2),
+            "expirationDate" => DateUtils::addDays(date("now"), 2),
             "isTraded" => false,
         ];
 
@@ -106,7 +106,7 @@ class Model extends PDO
     {
         $queryResult = $this->query("SELECT expirationDate FROM tokens WHERE token=:token and username=:username", ["token" => $token, "username" => $username]);
         if (count($queryResult) !== 0) {
-            return isDateInTime($queryResult[0]["expirationDate"]);
+            return DateUtils::isDateInTime($queryResult[0]["expirationDate"]);
         }
 
         return false;
@@ -114,13 +114,13 @@ class Model extends PDO
 
     public function updateTeacher($inputTeacherUsername, $inputTeacherPassword, $inputTeacherName, $inputTeacherEmail)
     {
-        $username = recoge("username");
+        $username = Utils::recoge("username");
 
         $params = [
             "name" => $inputTeacherName,
             "email" => $inputTeacherEmail,
             "username" => $inputTeacherUsername,
-            "password" => blowfishCrypt($inputTeacherPassword, $username),
+            "password" => Cryptography::blowfishCrypt($inputTeacherPassword, $username),
         ];
 
         return $this->cudOperation("UPDATE FROM users SET name=:name, username=:username, password=:password WHERE email=:email type=2", $params);
@@ -176,12 +176,12 @@ class Model extends PDO
 
     public function createSchedule()
     {
-        $description = recoge("inputClasroomDescription");
-        $state = recoge("selectClasroomState");
+        $description = Utils::recoge("inputClasroomDescription");
+        $state = Utils::recoge("selectClasroomState");
         $params = [
-            "name" => recoge("inputClassroomName"),
-            "description" => recoge("inputClasroomDescription"),
-            "state" => recoge("selectClasroomState"),
+            "name" => Utils::recoge("inputClassroomName"),
+            "description" => Utils::recoge("inputClasroomDescription"),
+            "state" => Utils::recoge("selectClasroomState"),
         ];
 
         $queryResult = $this->query("SELECT name FROM name WHERE name=:name", $params);
@@ -198,9 +198,9 @@ class Model extends PDO
     public function updateSchedule()
     {
         $params = [
-            "name" => recoge("inputClassroomName"),
-            "description" => recoge("inputClasroomDescription"),
-            "state" => recoge("selectClasroomState"),
+            "name" => Utils::recoge("inputClassroomName"),
+            "description" => Utils::recoge("inputClasroomDescription"),
+            "state" => Utils::recoge("selectClasroomState"),
         ];
 
         return $this->cudOperation("UPDATE FROM classrooms SET name=:name, description=:description, state=:state WHERE name=:name", $params);
@@ -209,7 +209,7 @@ class Model extends PDO
     public function deleteSchedule()
     {
         $params = [
-            "name" => recoge("inputClassroomName"),
+            "name" => Utils::recoge("inputClassroomName"),
         ];
 
         return $this->cudOperation("DELETE FROM classrooms WHERE name=:name", $params);
@@ -218,8 +218,8 @@ class Model extends PDO
     public function getEventsFromMonth()
     {
         $params = [
-            "month" => recoge("month"),
-            "year" => recoge("year"),
+            "month" => Utils::recoge("month"),
+            "year" => Utils::recoge("year"),
         ];
 
         return $this->query("SELECT * FROM horario_seleccionado WHERE MONTH(fecha_seleccionada)=:month and YEAR(fecha_seleccionada)=:year", $params);
@@ -237,7 +237,7 @@ class Model extends PDO
 
     public function getSchedules()
     {
-        $params = ["year" => getAcademicYear(date("now"))];
+        $params = ["year" => Utils::getAcademicYear(date("now"))];
         return $this->query("SELECT * FROM schedules WHERE enabled=true and YEAR(year)=:year", $params);
     }
 
@@ -283,7 +283,7 @@ class Model extends PDO
     public function getSchedule()
     {
         $params = [
-            "selectedYear" => recoge("selectedYear"),
+            "selectedYear" => Utils::recoge("selectedYear"),
         ];
 
         return $this->query("SELECT * FROM schedules WHERE year=:selectedYear", $params);

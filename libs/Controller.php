@@ -24,14 +24,14 @@ class Controller
 
     public function confirmEmail()
     {
-        $params = tryCatch("Controller", "confirmEmailFunctionality");
+        $params = ExceptionUtils::tryCatch("Controller", "confirmEmailFunctionality");
 
         require __DIR__ . '/templates/email.php';
     }
 
     public function confirmEmailFunctionality()
     {
-        $tokenCode = recoge("token");
+        $tokenCode = Utils::recoge("token");
         $model = Model::getInstance();
         $sessions = Sessions::getInstance();
         $token = $model->isTokenValid($sessions->getSession("username"), $tokenCode);
@@ -49,7 +49,7 @@ class Controller
     {
         $result = false;
         if (isset($_REQUEST["signin"])) {
-            $result = tryCatch("Controller", "signinFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "signinFunctionality");
         }
 
         if ($result) {
@@ -78,10 +78,10 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            $username = recoge("username");
-            $password = recoge("password");
+            $username = Utils::recoge("username");
+            $password = Utils::recoge("password");
             $signin = $model->signin($username);
-            if (blowfishCrypt($password, $username) == $signin[0]["password"]) {
+            if (Cryptography::blowfishCrypt($password, $username) == $signin[0]["password"]) {
                 $sessions->setSession("username", $username);
                 $sessions->setSession("access", $signin[0]["access"]);
                 return true;
@@ -93,7 +93,7 @@ class Controller
 
     public function signup()
     {
-        $result = tryCatch("Controller", "signupFunctionality");
+        $result = ExceptionUtils::tryCatch("Controller", "signupFunctionality");
 
         if ($result) {
             header("Location: ./index.php?ctl=signin/");
@@ -107,7 +107,7 @@ class Controller
         $model = Model::getInstance();
         $validation = Validation::getInstance();
 
-        $file = validateFile("inputImage", "./img_usuarios/");
+        $file = FileUtils::validateFile("inputImage", "./img_usuarios/");
         if ($file === false) {
             return false;
         }
@@ -138,7 +138,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            $signup = $model->signup(recoge("inputName"), recoge("inputUsername"), recoge("inputPassword"), recoge("inputEmail"), $file);
+            $signup = $model->signup(Utils::recoge("inputName"), Utils::recoge("inputUsername"), Utils::recoge("inputPassword"), Utils::recoge("inputEmail"), $file);
             if ($signup !== false) {
                 return true;
             }
@@ -177,29 +177,29 @@ class Controller
             $_POST["inputEmail"] = $_POST["inputTeacherEmail"];
             unset($_POST["inputTeacherEmail"]);
 
-            $result = tryCatch("Controller", "signupFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "signupFunctionality");
         } else if (isset($_REQUEST["updateTeacher"])) { //Update
-            $result = tryCatch("Controller", "updateTeacherFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "updateTeacherFunctionality");
         } else if (isset($_REQUEST["deleteTeacher"])) { //Delete
-            $result = tryCatch("Controller", "deleteTeacherFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "deleteTeacherFunctionality");
         }
 
         //Classroom
         if (isset($_REQUEST["createClassroom"])) { //Create
-            $result = tryCatch("Controller", "createClassroomFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "createClassroomFunctionality");
         } else if (isset($_REQUEST["updateClassroom"])) { //Update
-            $result = tryCatch("Controller", "updateClassroomFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "updateClassroomFunctionality");
         } else if (isset($_REQUEST["deleteClassroom"])) { //Delete
-            $result = tryCatch("Controller", "deleteClassroomFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "deleteClassroomFunctionality");
         }
 
         //Schedule
         if (isset($_REQUEST["createSchedule"])) { //Create
-            $result = tryCatch("Controller", "createScheduleFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "createScheduleFunctionality");
         } else if (isset($_REQUEST["updateSchedule"])) { //Update
-            $result = tryCatch("Controller", "updateScheduleFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "updateScheduleFunctionality");
         } else if (isset($_REQUEST["deleteSchedule"])) { //Delete
-            $result = tryCatch("Controller", "deleteScheduleFunctionality");
+            $result = ExceptionUtils::tryCatch("Controller", "deleteScheduleFunctionality");
         }
 
         require __DIR__ . '/templates/admin.php';
@@ -231,7 +231,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateTeacher(recoge("inputTeacherUsername"), recoge("inputTeacherPassword"), recoge("inputTeacherName"), recoge("inputTeacherEmail"));
+            return $model->updateTeacher(Utils::recoge("inputTeacherUsername"), Utils::recoge("inputTeacherPassword"), Utils::recoge("inputTeacherName"), Utils::recoge("inputTeacherEmail"));
         }
         return false;
     }
@@ -250,7 +250,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteTeacher(recoge("inputTeacherEmail"));
+            return $model->deleteTeacher(Utils::recoge("inputTeacherEmail"));
         }
 
         return false;
@@ -278,7 +278,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createClassroom(recoge("inputClassroomName"), recoge("inputClasroomDescription"), recoge("selectClasroomState"));
+            return $model->createClassroom(Utils::recoge("inputClassroomName"), Utils::recoge("inputClasroomDescription"), Utils::recoge("selectClasroomState"));
         }
 
         return false;
@@ -306,7 +306,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateClassroom(recoge("inputClassroomName"), recoge("inputClasroomDescription"), recoge("selectClasroomState"));
+            return $model->updateClassroom(Utils::recoge("inputClassroomName"), Utils::recoge("inputClasroomDescription"), Utils::recoge("selectClasroomState"));
         }
 
         return false;
@@ -326,7 +326,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteClassroom(recoge("inputClassroomName"));
+            return $model->deleteClassroom(Utils::recoge("inputClassroomName"));
         }
 
         return false;
@@ -354,7 +354,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createSchedule(recoge("inputScheduleStartHour"), recoge("inputScheduleEndHour"), recoge("year"));
+            return $model->createSchedule(Utils::recoge("inputScheduleStartHour"), Utils::recoge("inputScheduleEndHour"), Utils::recoge("year"));
         }
 
         return false;
@@ -378,7 +378,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateSchedule(recoge("inputScheduleStartHour"), recoge("inputScheduleEndHour"));
+            return $model->updateSchedule(Utils::recoge("inputScheduleStartHour"), Utils::recoge("inputScheduleEndHour"));
         }
 
         return false;
@@ -402,7 +402,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteSchedule(recoge("inputScheduleStartHour"), recoge("inputScheduleEndHour"));
+            return $model->deleteSchedule(Utils::recoge("inputScheduleStartHour"), Utils::recoge("inputScheduleEndHour"));
         }
 
         return false;
@@ -426,7 +426,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromMonth(recoge("month"), recoge("year"));
+            return $model->getEventsFromMonth(Utils::recoge("month"), Utils::recoge("year"));
         }
 
         return false;
@@ -475,7 +475,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createEvent(recoge("title"), recoge("startHour"), recoge("date"));
+            return $model->createEvent(Utils::recoge("title"), Utils::recoge("startHour"), Utils::recoge("date"));
         }
 
         return false;
@@ -503,7 +503,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->updateEvent(recoge("title"), recoge("startHour"), recoge("date"));
+            return $model->updateEvent(Utils::recoge("title"), Utils::recoge("startHour"), Utils::recoge("date"));
         }
 
         return false;
@@ -527,7 +527,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteEvent(recoge("startHour"), recoge("date"));
+            return $model->deleteEvent(Utils::recoge("startHour"), Utils::recoge("date"));
         }
 
         return false;
@@ -547,7 +547,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getSchedule(recoge("selectedYear"));
+            return $model->getSchedule(Utils::recoge("selectedYear"));
         }
 
         return false;
@@ -567,7 +567,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromDay(recoge("selectedDay"));
+            return $model->getEventsFromDay(Utils::recoge("selectedDay"));
         }
 
         return false;
@@ -591,7 +591,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromWeek(recoge("startingDate"), recoge("endingDate"));
+            return $model->getEventsFromWeek(Utils::recoge("startingDate"), Utils::recoge("endingDate"));
         }
 
         return false;
