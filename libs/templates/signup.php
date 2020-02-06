@@ -10,7 +10,8 @@
 
 <?php ob_start()?>
 
-<form method="POST" action="index.php?ctl=signup" class="form-signin p-4 bg-light rounded">
+<form method="POST" action="index.php?ctl=signup" class="form-signin p-4 bg-light rounded"
+    enctype="multipart/form-data">
     <div class="text-center mb-4 text-dark">
         <h3>Calendar SignUp</h3>
     </div>
@@ -30,14 +31,16 @@
         <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
     </div>
 
-    <div class="form-label-group d-flex justify-content-center align-items-center flex-wrap" id="show_hide_password">
-        <input type="password" class="form-control col-md-11" id="inputPassword" aria-describedby="passwordHelp"
-            placeholder="Password">
+    <div class="input-group form-label-group" id="show_hide_password">
+        <input type="password"
+            class="form-control border-top-0 border-left-0 border-3 border-bottom border-right-0 col-md-11"
+            id="inputPassword" aria-describedby="passwordHelp" placeholder="Password" required>
         <label for="inputPassword">Password (*)</label>
         <a href=""
-            class="input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
+            class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
             <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
         </a>
+        <br>
         <small id="passwordHelp" class="form-text text-muted w-100">Alphanumeric combination, 8 to 24
             characters.</small>
     </div>
@@ -47,7 +50,8 @@
             <span class="input-group-text" id="inputImageDescription">Image</span>
         </div>
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputImage" aria-describedby="inputImageDescription">
+            <input type="file" class="custom-file-input" id="inputImage" aria-describedby="inputImageDescription"
+                accept="image/png, image/jpg, image/jpeg, image/gif" required>
             <label class="custom-file-label" for="inputImage">Choose file</label>
         </div>
     </div>
@@ -57,7 +61,7 @@
 
     <div class="input-group">
         <input type="text" class="form-control w-100" id="inputEmail" placeholder="username"
-            aria-describedby="emailHelp">
+            aria-describedby="emailHelp" required>
         <span class="input-group-text w-auto" id="inputEmailDomain">@iesabastos.org</span>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
             else.</small>
