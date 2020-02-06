@@ -12,7 +12,7 @@
 
 <form method="POST" action="index.php?ctl=signup" class="form-signin p-4 bg-light rounded">
     <div class="text-center mb-4 text-dark">
-        <h3>Calendar SignIn</h3>
+        <h3>Calendar SignUp</h3>
     </div>
 
     <div class="form-label-group">
@@ -35,8 +35,8 @@
             placeholder="Password">
         <label for="inputPassword">Password (*)</label>
         <a href=""
-            class="input-group-addon password-hide col-md-1 bg-primary d-flex justify-content-center align-items-center rounded">
-            <i class="fa fa-eye-slash text-white" aria-hidden="true"></i>
+            class="input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
+            <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
         </a>
         <small id="passwordHelp" class="form-text text-muted w-100">Alphanumeric combination, 8 to 24
             characters.</small>
@@ -66,10 +66,10 @@
 
     <div class="checkbox mb-3 text-white text-center">
         <a href="">
-            Already signed in? Go to login
+            Already signed up? Go to login
         </a>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-warning btn-block" type="submit">Sign up</button>
 </form>
 
 <?php $contenido = ob_get_clean()?>
