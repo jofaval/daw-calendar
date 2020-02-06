@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LogIn</title>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        main {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            height: calc(100vh - 56px);
+        }
+        
+        .form-signin {
+            color: white;
+        }
+        
+        .form-signin label {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="transition: all 0.2s ease-in-out 0s;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation" style="transition: all 0.2s ease-in-out 0s;">
+            <span class="navbar-toggler-icon" style="transition: all 0.2s ease-in-out 0s;"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08" style="transition: all 0.2s ease-in-out 0s;">
+            <ul class="navbar-nav" style="transition: all 0.2s ease-in-out 0s;">
+                <li class="nav-item active" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedules<span
+                            class="sr-only" style="transition: all 0.2s ease-in-out 0s;">(current)</span></a>
+                </li>
+                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link selected" href="#" style="transition: all 0.2s ease-in-out 0s;">Home</a>
+                </li>
+                <li class="nav-item dropdown" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="transition: all 0.2s ease-in-out 0s;">Create</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown08" style="transition: all 0.2s ease-in-out 0s;">
+                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Classroom</a>
+                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Teacher</a>
+                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedule</a>
+                    </div>
+                </li>
+                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link" href="#" style="transition: all 0.2s ease-in-out 0s;">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main" class="flex-column container col-md-10 px-md-0">
+        <div id="tabHeaders" class="btn-group rounded col-xs text-center text-white d-flex justify-content-center">
+            <div id="tabTeachers" class="btn btn-warning text-dark p-4 col-xs" tabContainer="tabContainerTeachers">Teachers</div>
+            <div id="tabClassrooms" class="btn btn-warning text-dark p-4 col-xs" tabContainer="tabContainerClassrooms">Classrooms</div>
+            <div id="tabSchedules" class="btn btn-warning text-dark p-4 col-xs" tabContainer="tabContainerSchedules">Schedules</div>
+        </div>
+        <div id="tabContainers" class="col-xs text-white">
+            <div id="tabContainerTeachers" class="tabContainer p-5 rounded rounded bg-dark col-xs">
+                <div id="dtBasicExample_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length bs-select" id="dtBasicExample_length"><label>Show <select
+                                        name="dtBasicExample_length" aria-controls="dtBasicExample"
+                                        class="custom-select custom-select-sm form-control form-control-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> entries</label></div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div id="dtBasicExample_filter" class="dataTables_filter"><label>Search:<input type="search"
+                                        class="form-control form-control-sm" placeholder=""
+                                        aria-controls="dtBasicExample"></label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="dtBasicExample" class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" style="width: 100%;" width="100%" cellspacing="0">
+                                <thead class="thead-dark">
+                                    <tr scope="row" role="row">
+                                        <th class="th-sm sorting_asc" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" style="width: 104.2px;" aria-sort="ascending" aria-label="Name
+            
+                            : activate to sort column descending">Name
+
+                                        </th>
+                                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" style="width: 171.2px;" aria-label="Position
+            
+                            : activate to sort column ascending">Position
+
+                                        </th>
+                                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" style="width: 70.2px;" aria-label="Office
+            
+                            : activate to sort column ascending">Office
+
+                                        </th>
+                                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" style="width: 29.2px;" aria-label="Age
+            
+                            : activate to sort column ascending">Age
+
+                                        </th>
+                                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" style="width: 74.2px;" aria-label="Start date
+            
+                            : activate to sort column ascending">Start date
+
+                                        </th>
+                                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" style="width: 50.2px;" aria-label="Salary
+            
+                            : activate to sort column ascending">Salary
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr scope="row" role="row" class="odd">
+                                        <td class="sorting_1">Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>33</td>
+                                        <td>2008/11/28</td>
+                                        <td>$162,700</td>
+                                    </tr>
+                                    <tr scope="row" role="row" class="even">
+                                        <td class="sorting_1">Angelica Ramos</td>
+                                        <td>Chief Executive Officer (CEO)</td>
+                                        <td>London</td>
+                                        <td>47</td>
+                                        <td>2009/10/09</td>
+                                        <td>$1,200,000</td>
+                                    </tr>
+                                    <tr scope="row" role="row" class="odd">
+                                        <td class="sorting_1">Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td>2009/01/12</td>
+                                        <td>$86,000</td>
+                                    </tr>
+                                    <tr scope="row" role="row" class="even">
+                                        <td class="sorting_1">Bradley Greer</td>
+                                        <td>Software Engineer</td>
+                                        <td>London</td>
+                                        <td>41</td>
+                                        <td>2012/10/13</td>
+                                        <td>$132,000</td>
+                                    </tr>
+                                    <tr scope="row" role="row" class="odd">
+                                        <td class="sorting_1">Brenden Wagner</td>
+                                        <td>Software Engineer</td>
+                                        <td>San Francisco</td>
+                                        <td>28</td>
+                                        <td>2011/06/07</td>
+                                        <td>$206,850</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot class="thead-dark">
+                                    <tr scope="row">
+                                        <th rowspan="1" colspan="1">Name
+                                        </th>
+                                        <th rowspan="1" colspan="1">Position
+                                        </th>
+                                        <th rowspan="1" colspan="1">Office
+                                        </th>
+                                        <th rowspan="1" colspan="1">Age
+                                        </th>
+                                        <th rowspan="1" colspan="1">Start date
+                                        </th>
+                                        <th rowspan="1" colspan="1">Salary
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                            <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
+                                Showing 1 to 10 of 57 entries</div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item previous disabled" id="dtBasicExample_previous"><a href="#" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                    <li class="paginate_button page-item active"><a href="#" aria-controls="dtBasicExample" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                                    <li class="paginate_button page-item next" id="dtBasicExample_next"><a href="#" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tabContainerClassrooms" class="tabContainer p-5 rounded bg-dark col-xs"></div>
+            <div id="tabContainerSchedules" class="tabContainer p-5 rounded bg-dark col-xs"></div>
+        </div>
+    </main>
+</body>
+<script src="../scripts/libs/jquery.min.js"></script>
+<script src="../scripts/libs/jquery-ui.min.js"></script>
+<script src="../scripts/libs/bootstrap.min.js"></script>
+<script src="../scripts/libs/bootstrap.bundle.min.js"></script>
+<script src="../scripts/js/utils.js"></script>
+<script src="../scripts/js/inputs.js"></script>
+<!--script src="../scripts/js/MVCAdmin.js"></script-->
+<script>
+    $("#tabHeaders .btn").on("click", function() {
+        var current = $(this);
+        $("#tabHeaders .btn.active").removeClass("active");
+        current.addClass("active");
+        console.log(current.attr("tabContainer"));
+        $(".tabContainer").each(function() {
+            $(this).hide();
+        });
+        var tabContainer = $("#" + current.attr("tabContainer"));
+        console.log(tabContainer);
+        tabContainer.show();
+    });
+</script>
+
+</html>
