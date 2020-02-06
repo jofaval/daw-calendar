@@ -93,7 +93,10 @@ class Controller
 
     public function signup()
     {
-        $result = ExceptionUtils::tryCatch("Controller", "signupFunctionality");
+        $result = false;
+        if (isset($_REQUEST["signup"])) {
+            $result = ExceptionUtils::tryCatch("Controller", "signupFunctionality");
+        }
 
         if ($result) {
             header("Location: ./index.php?ctl=signin/");
