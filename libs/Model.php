@@ -97,7 +97,7 @@ class Model extends PDO
             "isTraded" => false,
         ];
 
-        $this->cudOperation("INSERT INTO tokens VALUES(:token, :username, :expirationDate)", $params);
+        $this->cudOperation("INSERT INTO tokens(token, username, expirationDate) VALUES(:token, :username, :expirationDate)", $params);
 
         return $token;
     }
@@ -248,7 +248,7 @@ class Model extends PDO
         ];
 
         if (count($this->query("SELECT name FROM events WHERE startHour=:startHour and date=:date", $params)) === 0) {
-            return $this->query("INSERT INTO FROM events (title, startHour, date, username) WHERE startHour=:startHour and date=:date", $params);
+            return $this->query("INSERT INTO FROM events (title, startHour, date, username) VALUES (:title, :startHour, :date, :username)", $params);
         }
 
         return false;
