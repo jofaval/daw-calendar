@@ -30,10 +30,11 @@ $("#show_hide_password .trigger").on("click", function (event) {
     $("#show_hide_password i").removeClass("fa-eye-slash");
     $("#show_hide_password i").addClass("fa-eye");
   }
+
+  return false;
 });
 
-var removeText = $("<div class='removeContent'>X</div>");
-removeText
+/*var removeText = $("<div class='removeContent'>X</div>");
 
 $("input").on("keypress", function () {
   var current = $(this);
@@ -46,4 +47,4 @@ $("input").on("keypress", function () {
     });
     current.after(clone);
   }
-});
+});*/
