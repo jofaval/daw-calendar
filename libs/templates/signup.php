@@ -10,7 +10,7 @@
 
 <?php ob_start()?>
 
-<?php include_once './forms/formSignup.html'?>
+<?php include_once './libs/templates/forms/formSignup.html'?>
 
 <?php $contenido = ob_get_clean()?>
 
