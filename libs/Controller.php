@@ -95,6 +95,7 @@ class Controller
     {
         $result = false;
         if (isset($_REQUEST["signup"])) {
+            
             $result = ExceptionUtils::tryCatch("Controller", "signupFunctionality");
         }
 
