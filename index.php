@@ -2,6 +2,7 @@
 // web/index.php
 // carga del modelo y los controladores
 require_once __DIR__ . './libs/Config.php';
+require_once __DIR__ . './libs/bConecta.php';
 require_once __DIR__ . './libs/Sessions.php';
 require_once __DIR__ . './libs/Validation.php';
 require_once __DIR__ . './libs/bExceptions.php';
