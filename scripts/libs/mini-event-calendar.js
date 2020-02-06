@@ -126,7 +126,8 @@
 
                 if (ldate.getMonth() != month) {
                     for (var i = 1; i < bufferDays; i++) {
-                        tbody.append(dateTpl(true, i));
+                        var tempDay = new Date(ldate.getFullYear(), ldate.getMonth(), i).getDay();
+                        tbody.append(dateTpl(true, i, false, null, false, tempDay === 6 || tempDay === 0));
                     }
                 }
             }
@@ -152,14 +153,18 @@
 
             var prevMonth = getMonthDays(monthIdx, yearIdx);
             var lastDays = "";
-            for (var i = day; i > 0; i--)
-                lastDays += dateTpl(true, prevMonth[prevMonth.length - i]);
+            var testDate = new Date(yearIdx, (monthIdx + 1), 0);
+            for (var i = day; i > 0; i--) {
+                var tempDay = new Date(yearIdx, (monthIdx + 1), 1 - i);
+                var tempDay = tempDay.getDay();
+                lastDays += dateTpl(true, prevMonth[prevMonth.length - i], false, null, false, tempDay === 6 || tempDay === 0);
+            }
 
             return lastDays;
         }
 
         function dateTpl(blurred, date, isToday, event, isSelected, isWeekend) {
-            var tpl = "<div class='a-date blurred'><span>" + date + "</span></div>";
+            var tpl = "<div class='a-date blurred " + (isWeekend ? "isWeekend" : "") + "'><span>" + date + "</span></div>";
 
             if (!blurred) {
                 var hasEvent = event && event !== null;
