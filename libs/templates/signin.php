@@ -12,7 +12,7 @@
 
 <form method="POST" action="index.php?ctl=signin" class="form-signin p-4 bg-light rounded">
     <div class="text-center mb-4 text-dark">
-        <h3>LogIn</h3>
+        <h3>SignIn</h3>
     </div>
 
     <div class="form-label-group">
