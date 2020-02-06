@@ -164,7 +164,7 @@ class View {
         var $tabHeader = $("<div id='tab" + tabName + "' class='btn btn-warning text-dark p-4 col-xs'></div>");
         $tabHeader.html(tabName);
         $tabHeader.prop("id", "tab" + tabName);
-        $tabHeader.prop("tabContainer", "tabContainer" + tabName);
+        $tabHeader.attr("tabContainer", "tabContainer" + tabName);
         var $tabHeaderContainer = $("#tabHeaders");
         if ($tabHeaderContainer.length == 0) {
             $tabHeaderContainer = $("<div id='tabHeaders' class='btn-group rounded col-xs text-center text-white d-flex justify-content-center'></div>");
@@ -199,8 +199,8 @@ class View {
 
     tabDispalyEvent(controller) {
         var current = $(this);
-        console.log(current.prop("tabContainer"));
-        $("#tabContainer" + current.prop("tabContainer"));
+        console.log(current.attr("tabContainer"));
+        $("#tabContainer" + current.attr("tabContainer"));
         $(".tabContainer").each(function() {
             controller.fadeOutItem($(this));
         });
@@ -263,12 +263,11 @@ class AdminController {
         var controller = this;
         $("#tabHeaders .btn").on("click", function() {
             var current = $(this);
-            console.log(current.prop("tabContainer"));
             $(".tabContainer").each(function() {
                 view.fadeOutItem($(this));
                 //$(this).hide();
             });
-            var tabContainer = $("#" + current.prop("tabContainer"));
+            var tabContainer = $("#" + current.attr("tabContainer"));
             view.fadeInItem(tabContainer);
             //tabContainer.show();
         });
