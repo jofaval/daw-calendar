@@ -175,7 +175,7 @@ class View {
     }
 
     createTabContainer(tabName, container) {
-        var $tabContainer = $("<div id='tabContainer' class='tabContainer col-xs'></div>");
+        var $tabContainer = $("<div id='tabContainer' class='tabContainer p-5 rounded bg-dark col-xs'></div>");
         $tabContainer.prop("id", "tabContainer" + tabName);
         $tabContainerContainer = $("#tabContainers");
         if ($tabContainerContainer.length == 0) {
@@ -263,6 +263,8 @@ class AdminController {
         var controller = this;
         $("#tabHeaders .btn").on("click", function() {
             var current = $(this);
+            $("#tabHeaders .btn.active").removeClass("active");
+            current.addClass("active");
             $(".tabContainer").each(function() {
                 view.fadeOutItem($(this));
                 //$(this).hide();
