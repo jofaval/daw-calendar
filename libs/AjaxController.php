@@ -72,4 +72,8 @@ class AjaxController {
     public function getEventsFromWeek() {
         $this->genericAjaxReturn(__FUNCTION__, ["startingDate", "endingDate"]);
     }
+
+    public function test() {
+        $this->genericAjaxReturn(__FUNCTION__);
+    }
 }

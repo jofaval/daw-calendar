@@ -44,6 +44,7 @@ $map = array(
     'getSchedules' => array('controller' => 'AjaxController', 'action' => 'getSchedules', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'getEventsFromDay' => array('controller' => 'AjaxController', 'action' => 'getEventsFromDay', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'getEventsFromWeek' => array('controller' => 'AjaxController', 'action' => 'getEventsFromWeeks', 'access' => Config::$ACCESS_LEVEL_TEACHER),
+    'test' => array('controller' => 'AjaxController', 'action' => 'test', 'access' => Config::$ACCESS_LEVEL_GUEST),
 );
 
 $ctl = $_GET['ctl'];
