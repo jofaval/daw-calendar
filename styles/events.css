@@ -1,0 +1,7 @@
+.card.free {
+    background: rgb(63, 140, 255) !important;
+}
+
+.card.yours {
+    background: rgb(255, 178, 63) !important;
+}
