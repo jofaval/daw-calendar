@@ -61,7 +61,7 @@ if (isset($ctl)) {
 }
 
 if (!in_array($ctl, Config::$notsigned_ctls)) {
-    header('Location: ./index.php?ctl=notsigned');
+    //header('Location: ./index.php?ctl=notsigned');
 }
 
 // Ejecución del controlador asociado a la ruta

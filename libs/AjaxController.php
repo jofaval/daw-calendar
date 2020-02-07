@@ -6,8 +6,9 @@ class AjaxController {
             if (!empty($requiredParams)) {
                 $this->throwIfExceptionIfDoesntExist($requiredParams);
             }
-            if (method_exists("Controller", $functionName)) {
-                $result = call_user_func("Controller", $functionName);
+            $mainController = "Controller";
+            if (method_exists($mainController, $functionName)) {
+                $result = call_user_func([new $mainController, $functionName]);
                 if ($result === false) {
                     $this->returnError();
                 }
