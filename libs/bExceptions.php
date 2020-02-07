@@ -20,8 +20,10 @@ class ExceptionUtils {
     }
 }
 
-set_error_handler("errorAction");
-set_exception_handler("expcetionHandler");
+if (!(Config::$developmentMode != 0)) {
+    set_error_handler("errorAction");
+    set_exception_handler("expcetionHandler");
+}
 
 function expcetionHandler($exception)
 {
