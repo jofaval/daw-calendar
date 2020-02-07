@@ -10,7 +10,6 @@ class Event extends HTMLElement {
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="../styles/bootstrap.min.css">
         <link rel="stylesheet" href="../styles/main.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="../styles/events.css">
             <div class="card mb-3 mr-3 bg-dark">
                 <span
