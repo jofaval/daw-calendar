@@ -12,7 +12,7 @@ function getWeekFromDate(dayDate) {
     if (dayInNumber >= 1) {
         startingNumber = 0 - dayInNumber;
     }
-    
+
     var currentDateInFor = new Date(dayDate.getDate());
     currentDateInFor.setDate(currentDateInFor.getDate() + (startingNumber));
     for (var index = 0; index < 7; index++) {
@@ -28,6 +28,7 @@ function sendNotification(message, error = false) {
     setTimeout(() => {
 
     }, 250);
+    alert(message);
 }
 
 var schedule = [
