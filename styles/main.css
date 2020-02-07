@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
@@ -29,9 +30,11 @@ nav {
         background-color: #dbdbdb;
         color: #1f1f22;
     }
+
     .navbar {
         background-color: #eeeeee !important;
     }
+
     .nav-link {
         color: rgba(0, 0, 0, 0.75) !important;
     }
