@@ -35,4 +35,5 @@ class Config
     public static $notuseragent_ctls = [
         "notuseragent",
     ];
+    public static $developmentMode = 1;
 }
