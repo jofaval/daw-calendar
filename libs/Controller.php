@@ -174,7 +174,7 @@ class Controller
     {
         //Teacher
         if (isset($_REQUEST["createTeacher"])) { //Create
-            $_POST["inputName"] = $_POST["inputTeacherName"];
+            /*$_POST["inputName"] = $_POST["inputTeacherName"];
             unset($_POST["inputTeacherName"]);
 
             $_POST["inputUsername"] = $_POST["inputTeacherUsername"];
@@ -184,7 +184,7 @@ class Controller
             unset($_POST["inputTeacherPassword"]);
 
             $_POST["inputEmail"] = $_POST["inputTeacherEmail"];
-            unset($_POST["inputTeacherEmail"]);
+            unset($_POST["inputTeacherEmail"]);*/
 
             $result = ExceptionUtils::tryCatch("Controller", "signupFunctionality");
         } else if (isset($_REQUEST["updateTeacher"])) { //Update
