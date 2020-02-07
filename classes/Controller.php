@@ -214,10 +214,6 @@ class Controller
         require __DIR__ . '/templates/admin.php';
     }
 
-    public function test() {
-        return "haha xDDDD";
-    }
-
     public function updateTeacherFunctionality()
     {
         $model = Model::getInstance();
@@ -612,5 +608,9 @@ class Controller
         }
 
         return false;
+    }
+
+    public function test() {
+        return "haha xDDDD";
     }
 }
