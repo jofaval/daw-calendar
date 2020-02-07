@@ -28,7 +28,7 @@ function sendNotification(message, error = false) {
     setTimeout(() => {
 
     }, 250);
-    alert(message);
+    //alert(message);
 }
 
 var schedule = [
