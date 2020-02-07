@@ -1,7 +1,7 @@
 <?php
 include_once 'Config.php';
-include_once 'bCrypt.php';
-include_once 'bDate.php';
+include_once './libs/bCrypt.php';
+include_once './libs/bDate.php';
 
 class Model extends PDO
 {
