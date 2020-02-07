@@ -3,7 +3,7 @@
 class Config
 {
     public static $mvc_bd_hostname = "localhost";
-    public static $mvc_bd_nombre = "alimentos";
+    public static $mvc_bd_nombre = "schedule_teachers_abastos";
     public static $mvc_bd_usuario = "root";
     public static $mvc_bd_clave = "";
     public static $mvc_img_exts = ["image/png", "image/jpg", "image/jpeg", "image/gif"];
