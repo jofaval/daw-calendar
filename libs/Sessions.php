@@ -40,12 +40,12 @@ class Sessions {
         if ($this->doesSessionExist("clicks")) {
             $this->setSession("clicks", $this->getSession("clicks") - 1);
         } else {
-            $this->setSession("clicks", 10));
+            $this->setSession("clicks", 10);
         }
         
         if ($this->getSession("clicks") <= 0) {
             session_regenerate_id(true);
-            $this->setSession("clicks", 10));
+            $this->setSession("clicks", 10);
         }
     }
 
