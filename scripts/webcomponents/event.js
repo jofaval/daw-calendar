@@ -1,33 +1,17 @@
 class Event extends HTMLElement {
     connectedCallback() {
-        if (!this.shadowRoot) {
+        var shadowRoot = $(this.shadowRoot);
+        if (!shadowRoot) {
             this.attachShadow({
                 mode: 'open'
             });
         }
 
-        this.shadowRoot.innerHTML = `
+        shadowRoot.html(`
         <link rel="stylesheet" href="../styles/bootstrap.min.css">
         <link rel="stylesheet" href="../styles/main.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-        .card-icon {
-            z-index: 5;
-            cursor: pointer;
-        }
-
-        .card-icon:hover {
-            background: rgba(0, 0, 0, 0.25) !important;
-        }
-
-        .card.free {
-            background: rgb(63, 140, 255) !important;
-        }
-
-        .card.yours {
-            background: rgb(255, 178, 63) !important;
-        }
-        </style>
+        <link rel="stylesheet" href="../styles/events.css">
             <div class="card mb-3 mr-3 bg-dark">
                 <span
                     class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
@@ -54,16 +38,16 @@ class Event extends HTMLElement {
                     </div>
                 </div>
             </div>
-        `;
-        var eventActions = this.shadowRoot.querySelectorAll(".card-icon");
-        var close = eventActions[0];
-        var event = this;
-        close.addEventListener("click", function () {
-            event.remove();
+        `);
+        var eventActions = shadowRoot.find(".card-icon");
+        var close = eventActions.eq(0);
+        var eventScope = this;
+        close.on("click", function () {
+            eventScope.remove();
         });
-        var edit = eventActions[1];
-        edit.addEventListener("click", function () {
-            event.remove();
+        var edit = eventActions.eq(1);
+        edit.on("click", function () {
+            eventScope.remove();
         });
 
     }
@@ -74,38 +58,40 @@ class Event extends HTMLElement {
         }
         switch (name) {
             case "event-start-hour":
-                this.shadowRoot.querySelector("#eventStartHour").innerText = newValue;
+                $(this.shadowRoot).find("#eventStartHour").innerText = newValue;
             case "event-end-hour":
-                this.shadowRoot.querySelector("#eventEndHour").innerText = newValue;
+                $(this.shadowRoot).find("#eventEndHour").innerText = newValue;
             case "event-title":
-                this.shadowRoot.querySelector(".card-title").innerText = newValue;
+                $(this.shadowRoot).find(".card-title").innerText = newValue;
                 break;
             case "teacher-email":
-                this.shadowRoot.querySelector("#teacherName").innerText = newValue;
+                $(this.shadowRoot).find("#teacherName").innerText = newValue;
                 break;
             case "teacher-name":
-                this.shadowRoot.querySelector("#teacherEmail").setAttribute("href", "mailto:" + newValue);
+                $(this.shadowRoot).find("#teacherEmail").attr("href", "mailto:" + newValue);
                 break;
             case "event-type":
-                this.shadowRoot.querySelector(".card").className = "card mb-3 mr-3 bg-dark " + newValue;
+                $(this.shadowRoot).find(".card").addClass("card mb-3 mr-3 bg-dark " + newValue);
                 break;
             case "show-schedule":
-                var current = this.shadowRoot.querySelector("#eventSchedule");
-                var currentBrother = current.nextElementSibling;
+                var current = $(this.shadowRoot).find("#eventSchedule");
+                var currentBrother = current.next();
                 console.log(current);
 
                 if (newValue != "0") {
-                    current.classList.add("d-flex");
-                    current.classList.remove("d-none");
-                    currentBrother.classList.add("col-md-10");
-                    currentBrother.classList.add("col-9");
-                    currentBrother.classList.remove("col-md");
-                    currentBrother.classList.remove("col");
+                    current.addClass("d-flex");
+                    current.removeClass("d-none");
+                    currentBrother.addClass("col-md-10");
+                    currentBrother.addClass("col-9");
+                    currentBrother.removeClass("col-md");
+                    currentBrother.removeClass("col");
                 } else {
-                    current.classList.add("d-none");
-                    current.classList.remove("d-flex");
-                    currentBrother.classList.remove("col-md-10");
-                    currentBrother.classList.remove("col-9");
+                    current.addClass("d-none");
+                    current.removeClass("d-flex");
+                    currentBrother.add("col-md");
+                    currentBrother.add("col");
+                    currentBrother.removeClass("col-md-10");
+                    currentBrother.removeClass("col-9");
                 }
                 break;
         }
