@@ -1,13 +1,13 @@
 class Event extends HTMLElement {
     connectedCallback() {
         var shadowRoot = $(this.shadowRoot);
-        if (!shadowRoot) {
+        if (!this.shadowRoot) {
             this.attachShadow({
                 mode: 'open'
             });
         }
 
-        shadowRoot.html(`
+        this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="../styles/bootstrap.min.css">
         <link rel="stylesheet" href="../styles/main.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -38,7 +38,7 @@ class Event extends HTMLElement {
                     </div>
                 </div>
             </div>
-        `);
+        `;
         var eventActions = shadowRoot.find(".card-icon");
         var close = eventActions.eq(0);
         var eventScope = this;
