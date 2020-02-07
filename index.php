@@ -45,7 +45,14 @@ $map = array(
     'getSchedules' => array('controller' => 'AjaxController', 'action' => 'getSchedules', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'getEventsFromDay' => array('controller' => 'AjaxController', 'action' => 'getEventsFromDay', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'getEventsFromWeek' => array('controller' => 'AjaxController', 'action' => 'getEventsFromWeeks', 'access' => Config::$ACCESS_LEVEL_TEACHER),
-    'test' => array('controller' => 'AjaxController', 'action' => 'test', 'access' => Config::$ACCESS_LEVEL_GUEST),
+    'updateTeacher' => array('controller' => 'AjaxController', 'action' => 'updateTeacher', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'deleteTeacher' => array('controller' => 'AjaxController', 'action' => 'deleteTeacher', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'createClassroom' => array('controller' => 'AjaxController', 'action' => 'createClassroom', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'updateClassroom' => array('controller' => 'AjaxController', 'action' => 'updateClassroom', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'deleteClassroom' => array('controller' => 'AjaxController', 'action' => 'deleteClassroom', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'createSchedule' => array('controller' => 'AjaxController', 'action' => 'createSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'updateSchedule' => array('controller' => 'AjaxController', 'action' => 'updateSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'deleteSchedule' => array('controller' => 'AjaxController', 'action' => 'deleteSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
 );
 
 $ctl = $_GET['ctl'];
