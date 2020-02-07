@@ -19,7 +19,11 @@ class AjaxController
                 $this->returnError();
             }
         } catch (Throwable $th) {
-            $this->returnError();
+            if (Config::$developmentMode) {
+                $this->returnError($th->getMessage());
+            } else {
+                $this->returnError();
+            }
         }
     }
 
@@ -32,9 +36,15 @@ class AjaxController
         }
     }
 
-    public function returnError()
+    public function returnError($message = "")
     {
-        $json = json_encode((object) array("error" => true,));
+        $object = [
+            "error" => true,
+        ];
+        if ($message != "") {
+            $object["message"] = $message;
+        }
+        $json = json_encode($object);
         echo $json;
     }
 
