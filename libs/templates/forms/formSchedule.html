@@ -1,0 +1,23 @@
+<form method="POST" class="form-signin col-md" method="POST">
+    <div class="text-center mb-4 text-white">
+        <h3>Schedule</h3>
+    </div>
+
+    <div class="form-row d-flex justify-content-center align-items-center">
+        <div class="form-group col-md-1">
+            <label for="inputScheduleStartHour">Start hour (*)</label>
+            <input type="text" class="form-control" id="inputScheduleStartHour" aria-describedby="scheduleStartHourHelp" placeholder="7:55" required>
+            <small id="scheduleStartHourHelp" class="form-text text-muted">Event starts at.</small>
+        </div>
+
+        <div class="form-group col-md-1">
+            <label for="inputScheduleEndHour">End hour (*)</label>
+            <input type="text" class="form-control" id="inputScheduleEndHour" aria-describedby="scheduleEndHourHelp" placeholder="7:55" required>
+            <small id="scheduleEndHourHelp" class="form-text text-muted">Event ends at.</small>
+        </div>
+
+        <div class="form-group col-md-1">
+            <button class="btn btn-lg btn-primary btn-block" name="scheduleAdd" type="submit">Add</button>
+        </div>
+    </div>
+</form>
