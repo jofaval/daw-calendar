@@ -22,6 +22,11 @@ class Controller
         require __DIR__ . '/templates/notsigned.php';
     }
 
+    public function notuseragent()
+    {
+        require __DIR__ . '/templates/notuseragent.php';
+    }
+
     public function confirmEmail()
     {
         $params = ExceptionUtils::tryCatch("Controller", "confirmEmailFunctionality");
