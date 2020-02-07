@@ -55,6 +55,10 @@ $map = array(
     'deleteSchedule' => array('controller' => 'AjaxController', 'action' => 'deleteSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
 );
 
+if (Config::$developmentMode) {
+    $map["test"] = array('controller' => 'AjaxController', 'action' => 'test', 'access' => Config::$ACCESS_LEVEL_GUEST);
+}
+
 $ctl = $_GET['ctl'];
 // Parseo de la ruta
 if (isset($ctl)) {
