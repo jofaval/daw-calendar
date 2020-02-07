@@ -15,7 +15,11 @@
 <script src="./scripts/js/utils.js"></script>
 <script src="./scripts/js/AjaxController.js"></script>
 <script>
-    AjaxController.genericAjaxRequest("test", {}, function(data) {
+    AjaxController.genericAjaxRequest("test", {
+        "inputScheduleStartHour": "7:55",
+        "inputScheduleEndHour": "8:50",
+        "year": "2019",
+    }, function(data) {
         console.log(data);
     });
 </script>
