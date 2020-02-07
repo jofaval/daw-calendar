@@ -17,7 +17,15 @@
         </div>
 
         <div class="form-group col-md-1">
-            <button class="btn btn-lg btn-primary btn-block" name="scheduleAdd" type="submit">Add</button>
+            <label for="inputSelectedYear">Year</label>
+            <input type="date" class="form-control" id="inputSelectedYear" aria-describedby="scheduleSelectedYearHelp" required>
+            <small id="scheduleSelectedYearHelp" class="form-text text-muted">Event ends at.</small>
+        </div>
+
+        <div class="form-group col-md-1">
+            <button class="btn btn-lg btn-primary btn-block" name="createSchedule" type="submit">Add</button>
+            <button class="btn btn-lg btn-primary btn-block" name="updateSchedule" type="submit">Modify</button>
+            <button class="btn btn-lg btn-primary btn-block" name="deleteSchedule" type="submit">Remove</button>
         </div>
     </div>
 </form>
