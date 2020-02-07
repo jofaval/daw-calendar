@@ -59,7 +59,11 @@ class Sessions {
     }
 
     public function getSession($session_name) {
-        return $_SESSION[$session_name];
+        if ($this->doesSessionExist($session_name)) {
+            return $_SESSION[$session_name];
+        }
+
+        return "";
     }
 
     public function setSession($session_name , $data) {
