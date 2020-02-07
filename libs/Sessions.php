@@ -3,7 +3,6 @@
 class Sessions {
 
     public static $instance = null;
-    public $clicks;
 
     public static function getInstance() {
         if (self::$instance == null) {
@@ -28,17 +27,30 @@ class Sessions {
 
     }
 
+    public function isUserAgentTheSame() {
+        if ($this->doesSessionExist("userAgent")) {
+            return $_SERVER["HTTP_USER_AGENT"] == $this->getSession("userAgent");
+        }
+
+        return true;
+    }
+
     public function regenerateSession() {
-        $this->clicks--;
+        if ($this->doesSessionExist("clicks")) {
+            $this->setSession("clicks", $this->getSession("clicks") - 1);
+        } else {
+            $this->setSession("clicks", 10));
+        }
         
-        if ($this->clicks == 0) {
+        if ($this->getSession("clicks") <= 0) {
             session_regenerate_id(true);
+            $this->setSession("clicks", 10));
         }
     }
 
     public function initializeValues() {
         $this->setSession("access", 0);
-        $this->clicks = 10;
+        $this->setSession("clicks", 10);
     }
 
     public function getSessionID() {
@@ -73,5 +85,3 @@ class Sessions {
         }
     }
 }
-
-?>
