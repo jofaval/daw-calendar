@@ -21,6 +21,7 @@ class Sessions {
         session_start();
         $this->startingParams();
         $this->initializeValues();
+        $this->regenerateSession();
     }
 
     private function startingParams() {
@@ -35,7 +36,7 @@ class Sessions {
         return true;
     }
 
-    public function regenerateSession() {
+    private function regenerateSession() {
         if ($this->doesSessionExist("clicks")) {
             $this->setSession("clicks", $this->getSession("clicks") - 1);
         } else {
