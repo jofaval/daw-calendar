@@ -58,16 +58,16 @@ class Event extends HTMLElement {
         }
         switch (name) {
             case "event-start-hour":
-                $(this.shadowRoot).find("#eventStartHour").innerText = newValue;
+                $(this.shadowRoot).find("#eventStartHour").text(newValue);
                 break;
             case "event-end-hour":
-                $(this.shadowRoot).find("#eventEndHour").innerText = newValue;
+                $(this.shadowRoot).find("#eventEndHour").text(newValue);
                 break;
             case "event-title":
-                $(this.shadowRoot).find(".card-title").innerText = newValue;
+                $(this.shadowRoot).find(".card-title").text(newValue);
                 break;
             case "teacher-email":
-                $(this.shadowRoot).find("#teacherName").innerText = newValue;
+                $(this.shadowRoot).find("#teacherName").text(newValue);
                 break;
             case "teacher-name":
                 $(this.shadowRoot).find("#teacherEmail").attr("href", "mailto:" + newValue);
