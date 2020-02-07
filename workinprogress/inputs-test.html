@@ -5,39 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SignIn</title>
+    <title>LogIn</title>
     <link rel="stylesheet" href="../styles/bootstrap.min.css" />
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/inputs.css">
     <link rel="stylesheet" href="../styles/floating-label.css">
+    <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        main {
-            display: -ms-flexbox;
-            display: -webkit-box;
-            display: flex;
-            -ms-flex-align: center;
-            -ms-flex-pack: center;
-            -webkit-box-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            justify-content: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
-            height: calc(100vh - 56px);
-        }
-
-        .form-signin {
-            color: white;
-        }
-
-        /*.form-signin label {
-            color: white;
-        }*/
-
-        .border-3 {
-            border-width: 3px !important;
-        }
-    </style>
 </head>
 
 <body>
@@ -76,13 +50,12 @@
         </div>
     </nav>
     <main role="main">
-        <form method="POST" action="index.php?ctl=signup" class="form-signin p-4 bg-light rounded">
+        <form method="POST" action="index.php?ctl=signin" class="form-signin p-4 bg-light rounded">
             <input type="date" class="form-control">
             <input type="time" class="form-control">
         </form>
     </main>
 </body>
-
 <script src="../scripts/libs/jquery.min.js"></script>
 <script src="../scripts/libs/bootstrap.min.js"></script>
 <script src="../scripts/libs/bootstrap.bundle.min.js"></script>

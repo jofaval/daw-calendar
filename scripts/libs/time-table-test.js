@@ -14,6 +14,8 @@
             options
         );
 
+        //console.log("Day in timetable  - " + settings.day.toString());
+
         var weekDates = [];
         weekDates = getWeekFromDate(settings.day);
 
@@ -25,6 +27,7 @@
     };
 
     function populateTimeTable(settings, weekDates, timeTable, timeTableTpl, daysOfWeek) {
+        //console.log("Day in populateTimetable  - " + settings.day.toString());
         timeTable.html("");
         if (settings.weekFormat) {
             var weekTitle = addWeekTitle(weekDates, timeTable);
