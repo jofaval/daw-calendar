@@ -14,6 +14,8 @@
             options
         );
 
+        //console.log("Day in timetable  - " + settings.day.toString());
+
         var weekDates = [];
         weekDates = getWeekFromDate(settings.day);
 
@@ -25,6 +27,7 @@
     };
 
     function populateTimeTable(settings, weekDates, timeTable, timeTableTpl, daysOfWeek) {
+        //console.log("Day in populateTimetable  - " + settings.day.toString());
         timeTable.html("");
         if (settings.weekFormat) {
             var weekTitle = addWeekTitle(weekDates, timeTable);
@@ -103,40 +106,22 @@
     function addScheduleHourToTimeTable($table, settings, scheduleHours, hasEvents) {
         var $row = $("<tr></tr>");
         $table.append($row);
-        if (settings.weekFormat) {
-            if (settings.showSchedule) {
-                var $time = $("<td></td>");
-                $time.html(scheduleHours[0] + " <br /> " + scheduleHours[1]);
-                $row.append($time);
-            }
-            if (hasEvents) {
-                $eventTitle = $("<td></td>");
-                $row.append($eventTitle);
-                settings.events.forEach(event => {
-                    if (scheduleHours[0] == event.startHour) {
-                        $eventTitle.html(event.eventTitle);
-                    }
-                });
-                var $buttons = $("<td></td>");
-                $buttons.append();
-                $row.append($buttons);
-            }
-        } else {
-            var eventTitle = "Untitled";
-            for (const key in Object.keys) {
-                if (object.hasOwnProperty(key)) {
-                    const event = object[key];
-                    if (scheduleHours[0] == event.startHour) {
-                        eventTitle = event.eventTitle;
-                        break;
-                    }
+        if (settings.showSchedule) {
+            var $time = $("<td></td>");
+            $time.html(scheduleHours[0] + " <br /> " + scheduleHours[1]);
+            $row.append($time);
+        }
+        if (hasEvents) {
+            $eventTitle = $("<td></td>");
+            $row.append($eventTitle);
+            settings.events.forEach(event => {
+                if (scheduleHours[0] == event.startHour) {
+                    $eventTitle.html(event.eventTitle);
                 }
-            }
-            $row.append($(`<td class="col">
-        <event-card event-title="${eventTitle}" event-start-hour="${scheduleHours[0]}" event-end-hour="${scheduleHours[1]}" show-schedule="${settings.showSchedule ? "1" : "0"}"
-        teacher-email="email@test.com" teacher-name="parakquieressaberesojajasalu2"
-        event-type="free"></event-card></td>
-        `));
+            });
+            var $buttons = $("<td></td>");
+            $buttons.append();
+            $row.append($buttons);
         }
     }
 

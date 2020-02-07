@@ -8,6 +8,8 @@ class Event extends HTMLElement {
 
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="../styles/bootstrap.min.css">
+        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
         .card-icon {
             z-index: 5;
@@ -35,7 +37,7 @@ class Event extends HTMLElement {
                             class="fa fa-pencil"></i></a>
                 </span>
                 <div class="row no-gutters text-light">
-                    <div
+                    <div id="eventSchedule"
                         class="col-3 col-sm d-flex justify-content-center text-center align-content-center flex-column">
                         <div class="align-middle" id="eventStartHour">${this.getAttribute("event-start-hour")}</div>
                         <div class="align-middle">-</div>
@@ -87,10 +89,29 @@ class Event extends HTMLElement {
             case "event-type":
                 this.shadowRoot.querySelector(".card").className = "card mb-3 mr-3 bg-dark " + newValue;
                 break;
+            case "show-schedule":
+                var current = this.shadowRoot.querySelector("#eventSchedule");
+                var currentBrother = current.nextElementSibling;
+                console.log(current);
+
+                if (newValue != "0") {
+                    current.classList.add("d-flex");
+                    current.classList.remove("d-none");
+                    currentBrother.classList.add("col-md-10");
+                    currentBrother.classList.add("col-9");
+                    currentBrother.classList.remove("col-md");
+                    currentBrother.classList.remove("col");
+                } else {
+                    current.classList.add("d-none");
+                    current.classList.remove("d-flex");
+                    currentBrother.classList.remove("col-md-10");
+                    currentBrother.classList.remove("col-9");
+                }
+                break;
         }
     }
     static get observedAttributes() {
-        return ["event-start-hour", "event-end-hour", "event-title", "teacher-email", "teacher-name", "event-type"];
+        return ["event-start-hour", "event-end-hour", "event-title", "teacher-email", "teacher-name", "event-type", "show-schedule"];
     }
 }
 
