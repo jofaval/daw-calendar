@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Calendar</title>
+    <title>Calendar - Week</title>
     <link rel="stylesheet" href="../styles/bootstrap.min.css" />
     <link rel="stylesheet" href="../styles/mini-event-calendar.min.css" />
     <link rel="stylesheet" href="../styles/timetable.css">
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/events.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         #timeTableWeek {
@@ -77,7 +78,7 @@
                                     style="transition: all 0.2s ease-in-out 0s;"></path>
                             </svg>
                         </button>
-                        <div id="monthYear">Week of 28/12/1969 - 03/01/1970</div><button type="button"
+                        <div id="monthYear">Week of 27/01/2020 - 02/02/2020</div><button type="button"
                             class="month-mover next" style="transition: all 0.2s ease-in-out 0s;">
                             <svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30"
                                 xmlns="http://www.w3.org/2000/svg" style="transition: all 0.2s ease-in-out 0s;">
@@ -88,7 +89,7 @@
                     </div>
                     <div id="calBody" class="col-12 mb-3">
                         <table class="col text-center bg-dark text-white rounded">
-                            <thead class="my-3 shadow">
+                            <thead class="my-3">
                                 <tr>
                                     <th class="col-md">Schedule</th>
                                     <th class="col-md">M </th>
@@ -293,103 +294,383 @@
                                 </tr>
                                 <tr class="my-3">
                                     <td>12:50 <br> 13:45</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr class="my-3">
                                     <td>14:05 <br> 15:00</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr class="my-3">
                                     <td>15:00 <br> 15:55</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr class="my-3">
                                     <td>15:55 <br> 16:50</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr class="my-3">
                                     <td>16:50 <br> 17:45</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr class="my-3">
                                     <td>18:05 <br> 19:00</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr class="my-3">
                                     <td>19:00 <br> 19:55</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr class="my-3">
                                     <td>19:55 <br> 20:50</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr class="my-3">
                                     <td>20:50 <br> 21:10</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr class="my-3">
                                     <td>21:10 <br> 22:05</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
-                                    <td>Titulo del evento</td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="card picked bg-dark rounded p-3">
+                                            <p class="event-title m-0">Climate change lecture</p>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
