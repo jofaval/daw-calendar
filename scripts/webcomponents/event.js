@@ -59,8 +59,10 @@ class Event extends HTMLElement {
         switch (name) {
             case "event-start-hour":
                 $(this.shadowRoot).find("#eventStartHour").innerText = newValue;
+                break;
             case "event-end-hour":
                 $(this.shadowRoot).find("#eventEndHour").innerText = newValue;
+                break;
             case "event-title":
                 $(this.shadowRoot).find(".card-title").innerText = newValue;
                 break;
