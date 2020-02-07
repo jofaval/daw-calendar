@@ -357,7 +357,7 @@ class Controller
             ),
             array(
                 'name' => 'year',
-                'regla' => 'no-empty,datetime',
+                'regla' => 'no-empty,numeric',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
@@ -611,6 +611,16 @@ class Controller
     }
 
     public function test() {
-        return "haha xDDDD";
+        $model = Model::getInstance();
+        $params = [
+            "orderId" => '2',
+            "startHour" => "8:50",
+            "endHour" => "9:45",
+            "year" => "2019",
+        ];
+        //return count($model->query("SELECT * FROM `schedules`"));
+        //return $model->cudOperation("INSERT INTO `schedules` (`orderId`, `startHour`, `endHour`, `year`) VALUES (:orderId, :startHour, :endHour, :year)", $params);
+        return $model->cudOperation("INSERT INTO `schedules` (`orderId`, `startHour`, `endHour`, `year`) VALUES ('3', '9:45', '10:40', '2019')", $params);
+        //return $_REQUEST["year"];
     }
 }
