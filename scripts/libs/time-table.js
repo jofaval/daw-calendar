@@ -1,5 +1,5 @@
 (function ($) {
-    var timeTableTpl = $(`<div class="col-md timeTable"><div id="calTitle" class="text-center"><div id="monthYear" class="text-center"></div></div><div><div id="timeTbody"></div></div></div>`);
+    var timeTableTpl = $(`<div class="col-md timeTable"><div id="calTitle" class="text-center"><div id="monthYear" class="text-center"></div></div><div><div id="timeTbody" class="mt-3"></div></div></div>`);
     var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Saty"];
 
     $.fn.timeTable = $.fn.TT = function (options) {

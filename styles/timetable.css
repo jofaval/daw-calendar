@@ -1,5 +1,6 @@
 #timeTable #timeTbody {
-    max-height: 415px;
+    max-height: 360px;
+    min-height: 360px;
     overflow: auto;
 }
 
@@ -10,7 +11,7 @@
 
 #timeTable tr:not(:last-child) {
     border-bottom: 5px solid transparent
-    /*rgba(146, 208, 233, 0.5)*/
+        /*rgba(146, 208, 233, 0.5)*/
     ;
 }
 
@@ -39,6 +40,7 @@
     /*background: rgba(0, 0, 0, 0.05);*/
     padding: 1em 0;
 }
+
 /*#timeTableWeek .month-mover {
     background-color: rgba(255, 255, 255, .1) !important;
     margin: 0 1rem;
@@ -65,6 +67,7 @@
     justify-content: center;
     align-items: center;
 }
+
 /*.a-date.current {
 border: none !important;
 border-bottom: thin solid #fffc23 !important;
