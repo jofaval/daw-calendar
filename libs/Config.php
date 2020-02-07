@@ -32,4 +32,7 @@ class Config
         "error",
         "access",
     ];
+    public static $notuseragent_ctls = [
+        "notuseragent",
+    ];
 }
