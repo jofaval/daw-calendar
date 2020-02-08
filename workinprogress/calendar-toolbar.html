@@ -704,6 +704,18 @@
     <script src="../scripts/webcomponents/event.js"></script>
     <script src="../scripts/webcomponents/eventWeek.js"></script>
     <script>
+        var selectedDay = new Date();
+        $("input[type=date]").on("change", function (event) {
+            //Change month and week date
+            var date = new Date(Date.parse($(this).val()));
+            console.log(date);
+
+        });
+
+        $("#weekFormat").on("click", function () {
+            console.log($("section.container"));
+
+        });
     </script>
 
 </body>
