@@ -78,3 +78,22 @@ border: none !important;
 border-bottom: thin solid #fffc23 !important;
 box-shadow: 0 10px 0.5vh -0.5vh rgba(0, 0, 0, 0.35);
 }*/
+#timeTableWeek {
+    max-height: none !important;
+    overflow: hidden;
+    min-width: 1000px;
+}
+
+#timeTableWeek tbody {
+    display: block;
+    height: 415px;
+    overflow: auto;
+    scrollbar-color: rgba(255, 255, 255, 0.45) rgba(0, 0, 0, 0.15);
+}
+
+#timeTableWeek thead,
+#timeTableWeek tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
