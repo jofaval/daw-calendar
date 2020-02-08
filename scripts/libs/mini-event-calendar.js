@@ -24,6 +24,7 @@
 
     $.fn.miniEventCalendar = $.fn.MEC = function (options) {
         var settings = $.extend({
+            today: new Date(),
             calendar_link: "",
             events: [],
             from_monday: false,
@@ -44,9 +45,8 @@
         var eventTitle = miniCalendar.find("#eventTitle");
         var eventsLink = miniCalendar.find("#calLink");
 
-        var today = new Date();
-        var curMonth = today.getMonth();
-        var curYear = today.getFullYear();
+        var curMonth = settings.today.getMonth();
+        var curYear = settings.today.getFullYear();
 
         eventTitle.text("No events today.");
         eventsLink.text("ALL EVENTS");
