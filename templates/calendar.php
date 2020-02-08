@@ -1,11 +1,18 @@
 <!--Page configuration-->
-<?php $optionalCSS = ["mini-event-calendar.min.css", "timetable.css", "login.css"];?>
+<?php $optionalCSS = [
+    "mini-event-calendar.min.css",
+    "timetable.css",
+    "login.css",
+    "events.css",
+];?>
 <?php $optionalScripts = [
     "js/AjaxController.js",
     "libs/time-table.js",
     "libs/mini-event-calendar.js",
     "js/calendar-controls.js",
     "js/MVCCalendar.js",
+    "webcomponents/event.js",
+    "webcomponents/eventWeek.js",
 ];?>
 <?php $title = "Booking area";?>
 <?php $mainClasses = "";?>

@@ -1,6 +1,21 @@
 <!--Page configuration-->
-<?php $optionalCSS = ["login.css"];?>
-<?php $optionalScripts = [];?>
+<?php $optionalCSS = [
+    "login.css",
+    "mdb.min.css",
+    "datatables.min.css",
+    "datatables-select.min.css",
+];?>
+
+<script src="../scripts/js/AjaxController.js"></script>
+<script src="../scripts/js/MVCAdmin.js"></script>
+<?php $optionalScripts = [
+    "libs/popper.min.js",
+    "libs/mdb.min.js",
+    "libs/datatables.min.js",
+    "libs/datatables-select.min.js",
+    "js/AjaxController.js",
+    "js/MVCAdmin.js",
+];?>
 <?php $title = "Admin";?>
 <?php $mainClasses = "flex-column container col-md-10 px-md-0";?>
 <?php $showFooter = true;?>
