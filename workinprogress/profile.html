@@ -10,10 +10,21 @@
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/floating-label.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         main {
             background: none;
+        }
+
+        #changeFile {
+            top: 75%;
+        }
+
+        .card-img {
+            object-fit: cover;
+        }
+
+        #changeFile label {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -53,16 +64,23 @@
                 <div class="card h-50 bg-light">
                     <div class="row no-gutters">
                         <div class="col-md-4 p-3">
-                            <img src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                                class="card-img h-100 w-100" alt="">
+                            <img src="../test.jpg" class="card-img h-50 w-100" alt="">
+                            <!--div class="input-group text-center mt-3 mr-5 text-light h-25" id="changeFile">
+                                <label for="inputImage" class="w-100 h-100 bg-dark d-flex justify-content-center">
+                                    <span class="my-auto">Choose file</span>
+                                </label>
+                                <input type="file" class="custom-file-input sr-only" id="inputImage"
+                                    aria-describedby="inputImageDescription"
+                                    accept="image/png, image/jpg, image/jpeg, image/gif" required>
+                            </div-->
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md">
                             <div class="card-body">
                                 <center>
                                     <h3 class="card-title">Your details</h3>
                                 </center>
-                                <form method="POST" action="index.php?ctl=signup"
-                                    class="form-signin pt-4 bg-light rounded" enctype="multipart/form-data">
+                                <form method="POST" action="index.php?ctl=signup" class="form-signin pt-4 my-3 rounded"
+                                    enctype="multipart/form-data">
                                     <div class="form-label-group">
                                         <input type="text" class="form-control" id="inputName"
                                             aria-describedby="nameHelp" placeholder="Enter name" required autofocus="">
@@ -85,7 +103,7 @@
                                             id="inputPassword" aria-describedby="passwordHelp" placeholder="Password"
                                             required>
                                         <label for="inputPassword">Password (*)</label>
-                                        <a href=""
+                                        <a href="" tabindex="-1"
                                             class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
                                             <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
                                         </a>
@@ -105,7 +123,8 @@
                                             else.</small>
                                     </div>
                                     <br>
-                                    <button class="btn btn-lg btn-warning btn-block" type="submit">Sign up</button>
+                                    <button class="btn btn-lg btn-warning btn-block" type="submit">Modify
+                                        information</button>
                                 </form>
                             </div>
                         </div>
