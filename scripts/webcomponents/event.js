@@ -72,7 +72,8 @@ class Event extends HTMLElement {
                 $(this.shadowRoot).find("#teacherEmail").attr("href", "mailto:" + newValue);
                 break;
             case "event-type":
-                $(this.shadowRoot).find(".card").addClass("card mb-3 mr-3 bg-dark " + newValue);
+                $(this.shadowRoot).find(".card").removeClass(oldValue);
+                $(this.shadowRoot).find(".card").addClass(newValue);
                 break;
             case "show-schedule":
                 var current = $(this.shadowRoot).find("#eventSchedule");
