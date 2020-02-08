@@ -11,11 +11,17 @@
             <small id="teacherUsernameHelp" class="form-text text-muted">✓ Is available.</small>
         </div>
 
-        <div class="form-group col-md">
+        <div class="input-group form-label-group" id="show_hide_password">
+            <input type="password"
+                class="form-control border-top-0 border-left-0 border-3 border-bottom border-right-0 col-md-11"
+                id="inputTeacherPassword" aria-describedby="teacherPasswordHelp" placeholder="Password" required>
             <label for="inputTeacherPassword">Password (*)</label>
-            <input type="password" class="form-control" id="inputTeacherPassword" aria-describedby="teacherPasswordHelp"
-                placeholder="Password" required>
-            <small id="teacherPasswordHelp" class="form-text text-muted">Alphanumeric combination, 8 to 24
+            <a href="" tabindex="-1"
+                class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
+                <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
+            </a>
+            <br>
+            <small id="teacherPasswordHelp" class="form-text text-muted w-100">Alphanumeric combination, 8 to 24
                 characters.</small>
         </div>
 
