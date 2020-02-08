@@ -197,7 +197,7 @@
 
     function timeTableWeek(settings, weekDates, timeTable, timeTableTpl, daysOfWeek) {
         var schedule = settings.schedule;
-        var scheduleLength = schedule;
+        var scheduleLength = schedule.length;
         var weekTitle = "Week of " + printDateWithFormat(weekDates[0], "d/m/Y") + " - " + printDateWithFormat(weekDates[weekDates.length - 1], "d/m/Y");
         timeTable.append(`
         <div id="calTitle" class="weekTitle col-12 font-big text-center">
@@ -208,9 +208,48 @@
         addMovePrevWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, $weekTitle);
         addMoveNextWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, $weekTitle);
 
-        for (let index = 0; index < scheduleLength; index++) {
-            const element = array[index];
+        var $calBody = $(`<div id="calBody" class="col-12 mb-3"></div>`);
+        var $table = $(`<table class="col text-center bg-dark text-white rounded"></table>`);
+        $calBody.append($table);
+        timeTable.append($calBody);
+        $table.append($(`<thead class="my-3">
+                <tr>
+                    <th class="col-md">Hours</th>
+                    <th class="col-md">M </th>
+                    <th class="col-md">T </th>
+                    <th class="col-md">W </th>
+                    <th class="col-md">T </th>
+                    <th class="col-md">F </th>
+                    <th class="col-md">S </th>
+                    <th class="col-md">S </th>
+                </tr>
+            </thead>`));
+        var $tbody = $(`<tbody class="bg-dark"></tbody>`);
+        $table.append($tbody);
+        console.log(schedule);
 
+        for (let scheduleIndex = 0; scheduleIndex < scheduleLength; scheduleIndex++) {
+            var $tr = $(`<tr class="my-3"></tr>`);
+            console.log("test");
+
+            var $td = $(`<td>${schedule[scheduleIndex][0]} <br> ${schedule[scheduleIndex][1]}</td>`);
+            for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+                var $td = $(`<td></td>`);
+                var eventTitle = "Untitled";
+                var found = false;
+                for (const key in Object.keys(events)) {
+                    if (object.hasOwnProperty(key)) {
+                        if (schedule[scheduleIndex][0] == event[key].startHour) {
+                            eventTitle = event.eventTitle;
+                            break;
+                        }
+                    }
+                }
+                $event = $("<event-week event-title='" + eventTitle + " event-type='" + (found ? "picked" : "free") + "'></event-week>");
+                $td.append($event);
+                $tr.append($td);
+            }
+            $tbody.append($tr);
         }
     }
 })(jQuery);
