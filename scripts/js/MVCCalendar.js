@@ -191,32 +191,35 @@ class Controller {
         this.view = view;
         var controller = this;
 
-        controller.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
-        controller.start(model, view, controller);
+        controller.start(this);
 
-        $("input[type=date]").on("change", function (event) {
+        $("input[type=date]").val(printDateWithFormat(new Date(), "Y-m-d"));
+        $("input[type=date]").on("change", function () {
             var value = $(this).val();
-            $("input[type=date]").val(value);
-            model.currentDate = new Date(Date.parse(value));
 
-            controller.start(model, view, controller);
+            $("input[type=date]").val(value);
+            controller.model.currentDate = new Date(Date.parse(value));
+            controller.start(controller);
         });
     }
 
-    start(model, view, controller) {
-        view.timeTableWeek.TT({
-            events: model.currentEvents,
-            schedule: model.schedule,
-            day: model.currentDate,
+    start(controller) {
+        controller.view.timeTableWeek.TT({
+            events: controller.model.currentEvents,
+            schedule: controller.model.schedule,
+            day: controller.model.currentDate,
             weekFormat: true
         });
 
-        view.timeTableDay.TT({
-            events: model.getEventsFromDay(model.currentDate.getUTCDate()),
-            schedule: model.schedule,
-            day: model.currentDate,
+        controller.view.timeTableDay.TT({
+            events: controller.model.getEventsFromDay(controller.model.currentDate.getUTCDate()),
+            schedule: controller.model.schedule,
+            day: controller.model.currentDate,
             weekFormat: false
         });
+
+        controller.view.monthCalendar.html("");
+        controller.calendarControls = new CalendarControls(controller.view.monthCalendar, controller.model.currentEvents, controller.model.currentDate);
 
         controller.calendarControls.onDayClick = function () {
             controller.onDayClick($(this), controller);
@@ -224,6 +227,9 @@ class Controller {
 
         controller.calendarControls.setOnMonthChanged(function (month, year) {
             controller.onMonthChanged(month, year, controller);
+            var newDate = new Date(year, month, 1);
+            $("input[type=date]").val(printDateWithFormat(newDate, "Y-m-d"));
+            controller.model.currentDate = new Date(newDate);
         });
     }
 
