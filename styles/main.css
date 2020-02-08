@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
@@ -21,10 +22,14 @@ main {
     background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
     background: linear-gradient(to right, #38ef7d, #11998e);
     /*Quepal*/
-    background: #36D1DC;
+    /*background: #36D1DC;
     background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
     background: linear-gradient(to right, #5B86E5, #36D1DC);
     /*Scooter*/
+    background: #DA22FF;
+    background: -webkit-linear-gradient(45deg, #9733EE, #DA22FF);
+    background: linear-gradient(45deg, #9733EE, #DA22FF);
+    /*Intuitive Purple*/
 }
 
 .bg-dark {
@@ -40,9 +45,11 @@ main {
         background-color: #dbdbdb;
         color: #1f1f22;
     }
+
     .navbar {
         background-color: #eeeeee !important;
     }
+
     .nav-link {
         color: rgba(0, 0, 0, 0.75) !important;
     }
