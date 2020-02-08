@@ -6,14 +6,14 @@ function minNumberOfDigits(number, numberOfDigits = 2) {
 
 function getWeekFromDate(dayDate) {
     var weekDates = [];
-    var workDate = dayDate;
     var dayInNumber = dayDate.getDay();
     var startingNumber = 1;
     if (dayInNumber >= 1) {
         startingNumber = 0 - dayInNumber;
     }
 
-    var currentDateInFor = new Date(dayDate.getDate());
+    var currentDateInFor = new Date(dayDate.getFullYear(), dayDate.getMonth(), dayDate.getDate());
+
     currentDateInFor.setDate(currentDateInFor.getDate() + (startingNumber));
     for (var index = 0; index < 7; index++) {
         currentDateInFor.setDate(currentDateInFor.getDate() + 1);
