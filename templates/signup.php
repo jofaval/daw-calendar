@@ -1,5 +1,5 @@
 <!--Page configuration-->
-<?php $optionalCSS = ["login.css", "floating-label.css", "inputs.css"];?>
+<?php $optionalCSS = ["floating-label.css", "inputs.css"];?>
 <?php $optionalScripts = ["js/inputs.js"];?>
 <?php $title = "SignUp";?>
 <?php $mainClasses = "";?>

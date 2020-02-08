@@ -9,8 +9,9 @@ class Config
     public static $mvc_img_exts = ["image/png", "image/jpg", "image/jpeg", "image/gif"];
     public static $mvc_vis_css = [
         "bootstrap.min.css",
-        "main.css",
         "jquery-ui.min.css",
+        "main.css",
+        "login.css",
     ];
     public static $mvc_vis_scripts = [
         "libs/jquery.min.js",

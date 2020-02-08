@@ -2,7 +2,6 @@
 <?php $optionalCSS = [
     "mini-event-calendar.min.css",
     "timetable.css",
-    "login.css",
     "events.css",
 ];?>
 <?php $optionalScripts = [

@@ -1,6 +1,5 @@
 <!--Page configuration-->
 <?php $optionalCSS = [
-    "login.css",
     "mdb.min.css",
     "datatables.min.css",
     "datatables-select.min.css",
