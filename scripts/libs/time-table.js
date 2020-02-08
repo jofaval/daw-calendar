@@ -148,7 +148,9 @@
             if (settings.showDate) {
                 titleString += ", " + workingDate.getDate();
             }
-            addFiltering(thead.parent())
+            if (!settings.weekFormat) {
+                addFiltering(thead.parent())
+            }
         } else {
             titleString = "Hours";
             thead.parent().toggleClass("text-center");
