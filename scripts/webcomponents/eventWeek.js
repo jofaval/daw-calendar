@@ -1,20 +1,20 @@
 class EventWeek extends HTMLElement {
     connectedCallback() {
         var shadowRoot = $(this.shadowRoot);
-        if (!shadowRoot) {
+        if (!this.shadowRoot) {
             this.attachShadow({
                 mode: 'open'
             });
         }
 
-        shadowRoot.html(`
+        this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="../styles/bootstrap.min.css">
         <link rel="stylesheet" href="../styles/main.css">
         <link rel="stylesheet" href="../styles/events.css">
-        <div class="card picked bg-dark rounded p-3">
-            <p class="event-title m-0">Climate change lecture</p>
+        <div class="card bg-dark rounded p-3 ${this.getAttribute("event-type")}">
+            <p class="event-title m-0">${this.getAttribute("event-title")}</p>
         </div>
-        `);
+        `;
         var eventActions = shadowRoot.find(".card-icon");
         var close = eventActions.eq(0);
         var eventScope = this;
