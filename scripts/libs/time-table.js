@@ -189,7 +189,6 @@
             var eventsContainer = current.parent().parent().parent().parent().find("#timeTbody");
 
             eventsContainer.find(`event-card[event-type="${classString}"]`).toggle();
-            console.log(eventsContainer);
 
             current.toggleClass("active");
         }
@@ -197,6 +196,7 @@
 
     function timeTableWeek(settings, weekDates, timeTable, timeTableTpl, daysOfWeek) {
         var schedule = settings.schedule;
+        var events = settings.events;
         var scheduleLength = schedule.length;
         var weekTitle = "Week of " + printDateWithFormat(weekDates[0], "d/m/Y") + " - " + printDateWithFormat(weekDates[weekDates.length - 1], "d/m/Y");
         timeTable.append(`
@@ -226,7 +226,6 @@
             </thead>`));
         var $tbody = $(`<tbody class="bg-dark"></tbody>`);
         $table.append($tbody);
-        console.log(schedule);
 
         for (let scheduleIndex = 0; scheduleIndex < scheduleLength; scheduleIndex++) {
             var $tr = $(`<tr class="my-3"></tr>`);
@@ -236,14 +235,14 @@
                 var $td = $(`<td></td>`);
                 var eventTitle = "Unreserved";
                 var found = false;
-                /*for (const key in Object.keys(events)) {
+                for (const key in Object.keys(events)) {
                     if (object.hasOwnProperty(key)) {
                         if (schedule[scheduleIndex][0] == event[key].startHour) {
                             eventTitle = event.eventTitle;
                             break;
                         }
                     }
-                }*/
+                }
                 $event = $("<event-week event-title='" + eventTitle + "' event-type='" + (found ? "picked" : "free") + "'></event-week>");
                 $td.append($event);
                 $tr.append($td);
