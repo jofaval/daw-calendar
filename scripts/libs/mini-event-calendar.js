@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     var calenderTpl = `
 		<div id="calTitle">
 			<button type="button" class="month-mover prev">
@@ -22,7 +22,7 @@
     var weekDaysFromMonday = '<div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>';
     var shortMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    $.fn.miniEventCalendar = $.fn.MEC = function(options) {
+    $.fn.miniEventCalendar = $.fn.MEC = function (options) {
         var settings = $.extend({
             calendar_link: "",
             events: [],
@@ -35,6 +35,7 @@
         var miniCalendar = this;
 
         miniCalendar.addClass('mini-cal').html(calenderTpl);
+        miniCalendar.addClass('rounded');
 
         var thead = miniCalendar.find("#calThead");
         var tbody = miniCalendar.find("#calTbody");
@@ -59,9 +60,9 @@
         if (!settings.calendar_link.length && !settings.events.length)
             calFooter.css("display", "none");
 
-        miniCalendar.find(".month-mover").each(function() {
+        miniCalendar.find(".month-mover").each(function () {
             var mover = $(this);
-            mover.bind("click", function(e) {
+            mover.bind("click", function (e) {
                 e.preventDefault();
                 if (mover.hasClass("next"))
                     viewNextMonth();
@@ -70,7 +71,7 @@
             });
         });
 
-        miniCalendar.on("click touchstart", ".a-date", function(e) {
+        miniCalendar.on("click touchstart", ".a-date", function (e) {
             e.preventDefault();
             $(".a-date").removeClass('focused');
             if (!$(this).hasClass('blurred')) {
@@ -106,7 +107,7 @@
 
                 var isToday = areSameDate(ldate, new Date());
                 var event = null;
-                var eventIndex = settings.events.findIndex(function(ev) {
+                var eventIndex = settings.events.findIndex(function (ev) {
                     return areSameDate(dt, new Date(ev.date));
                 });
 

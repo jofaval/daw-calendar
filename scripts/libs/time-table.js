@@ -18,6 +18,7 @@
         weekDates = getWeekFromDate(settings.day);
 
         var timeTable = this;
+        timeTable.addClass('rounded');
 
         populateTimeTable(settings, weekDates, timeTable, timeTableTpl, daysOfWeek);
 
