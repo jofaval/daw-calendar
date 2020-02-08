@@ -230,22 +230,21 @@
 
         for (let scheduleIndex = 0; scheduleIndex < scheduleLength; scheduleIndex++) {
             var $tr = $(`<tr class="my-3"></tr>`);
-            console.log("test");
-
             var $td = $(`<td>${schedule[scheduleIndex][0]} <br> ${schedule[scheduleIndex][1]}</td>`);
+            $tr.append($td);
             for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
                 var $td = $(`<td></td>`);
-                var eventTitle = "Untitled";
+                var eventTitle = "Unreserved";
                 var found = false;
-                for (const key in Object.keys(events)) {
+                /*for (const key in Object.keys(events)) {
                     if (object.hasOwnProperty(key)) {
                         if (schedule[scheduleIndex][0] == event[key].startHour) {
                             eventTitle = event.eventTitle;
                             break;
                         }
                     }
-                }
-                $event = $("<event-week event-title='" + eventTitle + " event-type='" + (found ? "picked" : "free") + "'></event-week>");
+                }*/
+                $event = $("<event-week event-title='" + eventTitle + "' event-type='" + (found ? "picked" : "free") + "'></event-week>");
                 $td.append($event);
                 $tr.append($td);
             }
