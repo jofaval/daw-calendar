@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<?php $username = Sessions::getInstance()->getSession("username"); ?>
+<?php $username = Sessions::getInstance()->getSession("username");?>
 
 <head>
     <title><?php echo $title; ?></title>
@@ -8,6 +8,7 @@
     <?php foreach (Config::$mvc_vis_css as $css_link): ?>
     <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
     <?php endforeach;?>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <?php foreach ($optionalCSS as $css_link): ?>
     <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
     <?php endforeach;?>
