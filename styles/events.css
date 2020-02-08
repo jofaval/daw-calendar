@@ -9,8 +9,10 @@
 
 .card.free {
     background: rgb(63, 140, 255) !important;
+    color: #343a40 !important;
 }
 
 .card.yours {
     background: rgb(255, 178, 63) !important;
+    color: #343a40 !important;
 }
