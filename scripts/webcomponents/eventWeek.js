@@ -32,11 +32,15 @@ class EventWeek extends HTMLElement {
             case "event-title":
                 $(this.shadowRoot).find(".event-title").text(newValue);
                 break;
+            case "event-type":
+                $(this.shadowRoot).find(".card").removeClass(newValue);
+                $(this.shadowRoot).find(".card").addClass(newValue);
+                break;
         }
     }
 
     static get observedAttributes() {
-        return ["event-title"];
+        return ["event-title", "event-type"];
     }
 }
 
