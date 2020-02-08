@@ -99,7 +99,23 @@ class Model {
 class View {
     constructor() {
         this.mainContainer = $('main');
-        this.weekFormat = $('<button type="button" id="weekFormat" class="mb-5 w-75 btn btn-lg btn-warning">Month</button>');
+
+        this.weekFormat = $(`<div id="toolbar"
+                class="w-50 rounded d-flex justify-content-around py-3 text-white mb-5 bg-dark align-items-center">
+
+                <div class="form-group form-inline m-0">
+                    <label for="monthDatePicker">Month</label>
+                    <input type="date" name="monthDatePicker" id="monthDatePicker" class="form-control ml-4">
+                </div>
+                <div class="form-group form-inline m-0">
+                    <label for="weekDatePicker">Week</label>
+                    <input type="date" name="weekDatePicker" id="weekDatePicker" class="form-control ml-4">
+                </div>
+                <div class="form-group form-inline m-0">
+                    <label for="weekFormat">Change Week/Month calendar format:</label>
+                    <button type="button" id="weekFormat" class="btn ml-4 btn-primary">Week</button>
+                </div>
+            </div>`);
         this.mainContainer.append(this.weekFormat);
 
         //Weekly calendar
@@ -118,9 +134,10 @@ class View {
         this.monthlyCalendarContainer.append(monthlyRow);
 
         this.mainContainer.append(this.weeklyCalendarContainer, this.monthlyCalendarContainer);
-        this.monthlyCalendarContainer.hide();
+        this.weeklyCalendarContainer.hide();
 
-        this.weekFormat.on("click", function () {
+        //Week format
+        this.weekFormat.find("#weekFormat").on("click", function () {
             var current = $(this);
             current.toggleClass("btn-primary");
             current.toggleClass("btn-warning");
@@ -131,7 +148,7 @@ class View {
                 current.text("Week");
             }
 
-            current.nextAll().toggle();
+            $("section.container").toggle();
         });
     }
 
@@ -172,7 +189,21 @@ class Controller {
     constructor(model, view) {
         this.model = model;
         this.view = view;
+        var controller = this;
 
+        controller.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
+        controller.start(model, view, controller);
+
+        $("input[type=date]").on("change", function (event) {
+            var value = $(this).val();
+            $("input[type=date]").val(value);
+            model.currentDate = new Date(Date.parse(value));
+
+            controller.start(model, view, controller);
+        });
+    }
+
+    start(model, view, controller) {
         view.timeTableWeek.TT({
             events: model.currentEvents,
             schedule: model.schedule,
@@ -187,14 +218,11 @@ class Controller {
             weekFormat: false
         });
 
-        this.calendarControls = new CalendarControls(view.monthCalendar, model.currentEvents);
-        var controller = this;
-
-        this.calendarControls.onDayClick = function () {
+        controller.calendarControls.onDayClick = function () {
             controller.onDayClick($(this), controller);
         };
 
-        this.calendarControls.setOnMonthChanged(function (month, year) {
+        controller.calendarControls.setOnMonthChanged(function (month, year) {
             controller.onMonthChanged(month, year, controller);
         });
     }
