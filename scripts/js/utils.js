@@ -55,7 +55,7 @@ function printDateWithFormat(givenDate, format = "d/m/Y") {
 
     format = format = format.toLowerCase();
 
-    format = format.replace("d", minNumberOfDigits(givenDate.getUTCDate()));
+    format = format.replace("d", minNumberOfDigits(givenDate.getDate()));
 
     format = format.replace("m", minNumberOfDigits(givenDate.getMonth() + 1));
 
