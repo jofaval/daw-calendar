@@ -148,11 +148,42 @@
             if (settings.showDate) {
                 titleString += ", " + workingDate.getDate();
             }
+            addFiltering(thead.parent())
         } else {
             titleString = "Hours";
             thead.parent().toggleClass("text-center");
         }
 
-        thead.text(titleString);
+        thead.append(titleString);
+    }
+
+    function addFiltering(container) {
+        container.append(`
+                <div id="actions" class="d-flex justify-content-around btn-group">
+                    <span class="btn align-middle btn-sm btn-dark" id="picked">Picked</span>
+                    <span class="btn align-middle btn-sm btn-primary" id="free">Free</span>
+                    <span class="btn align-middle btn-sm btn-warning" id="yours">Yours</span>
+                </div>`);
+
+        container.find("#picked").on("click", function () {
+            toggle($(this), "picked");
+        });
+
+        container.find("#free").on("click", function () {
+            toggle($(this), "free");
+        });
+
+        container.find("#yours").on("click", function () {
+            toggle($(this), "yours");
+        });
+
+        function toggle(current, classString) {
+            var eventsContainer = current.parent().parent().parent().parent().find("#timeTbody");
+
+            eventsContainer.find(`event-card[event-type="${classString}"]`).toggle();
+            console.log(eventsContainer);
+
+            current.toggleClass("active");
+        }
     }
 })(jQuery);
