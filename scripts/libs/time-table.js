@@ -28,7 +28,7 @@
     function populateTimeTable(settings, weekDates, timeTable, timeTableTpl, daysOfWeek) {
         timeTable.html("");
         if (settings.weekFormat) {
-            var weekTitle = addWeekTitle(weekDates, timeTable);
+            /*var weekTitle = addWeekTitle(weekDates, timeTable);
             addMovePrevWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, weekTitle);
             addMoveNextWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, weekTitle);
 
@@ -48,7 +48,8 @@
 
             for (var index = 1; index < 7; index++) {
                 generateTimeTable(timeTable, timeTableTpl, daysOfWeek, settings, weekDates[index]);
-            }
+            }*/
+            timeTableWeek(settings, weekDates, timeTable, timeTableTpl, daysOfWeek);
         } else {
             //console.log("bien");
             generateTimeTable(timeTable, timeTableTpl, daysOfWeek, settings, settings.day);
@@ -70,8 +71,12 @@
     function addMovePrevWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, weekTitle) {
         var weekMovePrev = $(`<button type="button" class="month-mover prev" style="transition: all 0.2s ease-in-out 0s;">
 				<svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg" style="transition: all 0.2s ease-in-out 0s;"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" style="transition: all 0.2s ease-in-out 0s;"></path></svg>
-			</button>`);
+            </button>`);
+
+
+
         weekMovePrev.click(function name() {
+            console.log("funciona");
             var tempDate = weekDates[0];
             tempDate.setDate(tempDate.getDate() - 2);
             populateTimeTable(settings, getWeekFromDate(tempDate), timeTable, timeTableTpl, daysOfWeek);
@@ -187,6 +192,25 @@
             console.log(eventsContainer);
 
             current.toggleClass("active");
+        }
+    }
+
+    function timeTableWeek(settings, weekDates, timeTable, timeTableTpl, daysOfWeek) {
+        var schedule = settings.schedule;
+        var scheduleLength = schedule;
+        var weekTitle = "Week of " + printDateWithFormat(weekDates[0], "d/m/Y") + " - " + printDateWithFormat(weekDates[weekDates.length - 1], "d/m/Y");
+        timeTable.append(`
+        <div id="calTitle" class="weekTitle col-12 font-big text-center">
+            <div id="monthYear">${weekTitle}</div>
+        </div>
+        `);
+        var $weekTitle = timeTable.find(".weekTitle");
+        addMovePrevWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, $weekTitle);
+        addMoveNextWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, $weekTitle);
+
+        for (let index = 0; index < scheduleLength; index++) {
+            const element = array[index];
+
         }
     }
 })(jQuery);
