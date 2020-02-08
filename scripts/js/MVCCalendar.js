@@ -15,6 +15,7 @@ class Model {
             model.currentEvents = data;
         });
         this.instace = this;
+        model.schedule = schedule;
     }
 
     instance = null;
