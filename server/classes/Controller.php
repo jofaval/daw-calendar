@@ -2,8 +2,8 @@
 include_once './libs/Utils.php';
 include_once './libs/bEmail.php';
 include_once './libs/bFile.php';
-include_once './libs/Validation.php';
-include_once './libs/Sessions.php';
+include_once 'Validation.php';
+include_once 'Sessions.php';
 
 class Controller
 {
@@ -100,7 +100,7 @@ class Controller
     {
         $result = false;
         if (isset($_REQUEST["signup"])) {
-            
+
             $result = ExceptionUtils::tryCatch("Controller", "signupFunctionality");
         }
 
@@ -610,7 +610,8 @@ class Controller
         return false;
     }
 
-    public function test() {
+    public function test()
+    {
         $model = Model::getInstance();
         $params = [
             "orderId" => '9',
