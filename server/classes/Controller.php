@@ -604,7 +604,16 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromWeek(Utils::getCleanedData("startingDate"), Utils::getCleanedData("endingDate"));
+            $dates = getAllDatesFromInterval(Utils::getCleanedData("startingDate"), Utils::getCleanedData("endingDate"));
+            $events = [];
+            foreach ($dates as $key => $value) {
+                $events[] = [
+                    "date" => $key,
+                    "events" => $model->getEventsFromDay($value),
+                ];
+            }
+
+            return $events;
         }
 
         return false;
