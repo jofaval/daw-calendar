@@ -1,9 +1,20 @@
 .removeContent {
-	display: inline-block;
+	display: none;
 	position: absolute;
-	top: 0.35rem;
-	left: calc(100% - 1.5rem);
+	float: right;
 	cursor: pointer;
-    width: 1rem;
-    z-index: 3;
+	margin-top: 0.35em;
+	width: 1rem;
+	z-index: 3;
+	-moz-transform: translateX(94%);
+	-ms-transform: translateX(94%);
+	-webkit-transform: translateX(94%);
+	-o-transform: translateX(94%);
+	transform: translateX(94%);
+}
+
+input:focus:not(:placeholder-shown)+.removeContent,
+input:focus+.removeContent,
+.removeContent:hover {
+	display: block;
 }
