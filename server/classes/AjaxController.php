@@ -107,7 +107,7 @@ class AjaxController
     {
         $this->genericAjaxReturn(__FUNCTION__, ["inputTeacherUsername", "inputTeacherPassword", "inputTeacherName", "inputTeacherEmail"]);
     }
-    
+
     public function deleteTeacher()
     {
         $this->genericAjaxReturn(__FUNCTION__, ["inputTeacherEmail"]);
@@ -141,5 +141,10 @@ class AjaxController
     public function deleteSchedule()
     {
         $this->genericAjaxReturn(__FUNCTION__, ["inputScheduleStartHour", "year"]);
+    }
+
+    public function doesUsernameExist()
+    {
+        $this->genericAjaxReturn(__FUNCTION__, ["username"]);
     }
 }

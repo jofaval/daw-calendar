@@ -610,6 +610,23 @@ class Controller
         return false;
     }
 
+    public function doesUsernameExist()
+    {
+        $validation = Validation::getInstance();
+
+        $regla = array(
+            array(
+                'name' => 'username',
+                'regla' => 'no-empty,username',
+            ),
+        );
+        if ($validation->rules($regla, $_POST) === true) {
+            return count(Model::getInstance()->query("SELECT `username` FROM `users` WHERE `username`=:username", ["username" => $_POST["username"]])) > 0;
+        }
+
+        return true;
+    }
+
     public function test()
     {
         $model = Model::getInstance();
