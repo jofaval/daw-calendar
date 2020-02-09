@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/floating-label.css">
+    <link rel="stylesheet" href="../styles/loader.css">
+    <style>
+        main {
+            background: none;
+        }
+
+        .card-img {
+            object-fit: cover;
+        }
+
+        #changeFile {
+            top: -38px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08"
+            aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Schedules<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link selected" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Create</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown08">
+                        <a class="dropdown-item" href="#">Classroom</a>
+                        <a class="dropdown-item" href="#">Teacher</a>
+                        <a class="dropdown-item" href="#">Schedule</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="h-100 w-100 d-flex justify-content-center">
+        <div class="container text-center text-light">
+            <form method="POST" action="index.php?ctl=signup" class="form-signin p-4 bg-light rounded"
+                enctype="multipart/form-data">
+                <div class="text-center mb-4 text-dark">
+                    <h3>Calendar SignUp</h3>
+                </div>
+
+                <div class="form-label-group">
+                    <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp"
+                        placeholder="Enter name" required autofocus="">
+                    <label for="inputName">Full Name (*)</label>
+                    <small id="nameHelp" class="form-text text-muted">Enter your full name, the one you are legally
+                        recognized with.</small>
+                </div>
+
+                <div class="form-label-group">
+                    <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
+                        placeholder="Enter Username" required>
+                    <label for="inputUsername">Username (*)</label>
+                    <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
+                </div>
+
+                <div class="input-group form-label-group" id="show_hide_password">
+                    <input type="password"
+                        class="form-control border-top-0 border-left-0 border-3 border-bottom border-right-0 col-md-11"
+                        id="inputPassword" aria-describedby="passwordHelp" placeholder="Password" required>
+                    <label for="inputPassword">Password (*)</label>
+                    <a href=""
+                        class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
+                        <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
+                    </a>
+                    <br>
+                    <small id="passwordHelp" class="form-text text-muted w-100">Alphanumeric combination, 8 to 24
+                        characters.</small>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputImageDescription">Image</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputImage"
+                            aria-describedby="inputImageDescription"
+                            accept="image/png, image/jpg, image/jpeg, image/gif" required>
+                        <label class="custom-file-label" for="inputImage">Choose file</label>
+                    </div>
+                </div>
+                <small id="emailHelp" class="form-text text-muted">Only <b>PNG</b>, <b>JPG</b>, <b>JPEG</b> or
+                    <b>GIF</b>.</small>
+                <br>
+
+                <div class="input-group">
+                    <input type="text" class="form-control w-100" id="inputEmail" placeholder="username"
+                        aria-describedby="emailHelp" required>
+                    <span class="input-group-text w-auto" id="inputEmailDomain">@iesabastos.org</span>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <br>
+
+                <div class="checkbox mb-3 text-white text-center">
+                    <a href="">
+                        Already signed up? Go to login
+                    </a>
+                </div>
+                <button class="btn btn-lg btn-warning btn-block" type="submit">Sign up</button>
+            </form>
+        </div>
+    </main>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+</body>
+<script src="../scripts/libs/jquery.min.js"></script>
+<script src="../scripts/libs/bootstrap.min.js"></script>
+<script src="../scripts/libs/bootstrap.bundle.min.js"></script>
+<script src="../scripts/js/utils.js"></script>
+<script src="../scripts/js/inputs.js"></script>
+<script src="../scripts/js/preloader.js"></script>
+
+</html>
