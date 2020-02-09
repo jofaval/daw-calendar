@@ -13,8 +13,6 @@
 	transform: translateX(94%);
 }
 
-input:focus:not(:placeholder-shown)+.removeContent,
-input:focus+.removeContent,
-.removeContent:hover {
+input:not(:placeholder-shown)+.removeContent, input:focus+.removeContent, .removeContent:hover {
 	display: block;
 }
