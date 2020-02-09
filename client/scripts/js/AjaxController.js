@@ -26,7 +26,9 @@ class AjaxController {
         });
     }
 
-    static defaultAjaxSuccessAction(data) {}
+    static defaultAjaxSuccessAction(data) {
+        var jsonData = JSON.parse(data);
+    }
 
     static defaultAjaxErrorAction(data) {
         sendNotification("Ha surgido un error al realizar la operación", true);
