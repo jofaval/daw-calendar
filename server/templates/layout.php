@@ -18,7 +18,7 @@
 <body>
 
     <?php if ($showHeader): ?>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="transition: all 0.2s ease-in-out 0s;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="transition: all 0.2s ease-in-out 0s;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08"
             aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"
             style="transition: all 0.2s ease-in-out 0s;">
@@ -66,13 +66,16 @@
         </ol>
     </nav>
     <?php endif;?>
-
-    <main role="main" class="<?php echo $mainClasses; ?>">
-        <?php echo $contenido ?>
+    <main role="main" class="h-100 w-100 d-flex justify-content-center <?php echo $mainClasses; ?>">
+        <div class="container">
+            <div class="flex-column row my-auto bg-dark">
+                <?php echo $contenido ?>
+            </div>
+        </div>
     </main>
 
     <?php if ($showFooter): ?>
-    <div id="pie">
+    <div id="pie fixed-bottom">
         <hr />
         <div align="center">- pie de página -</div>
     </div>
