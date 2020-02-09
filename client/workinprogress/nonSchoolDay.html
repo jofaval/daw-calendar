@@ -18,8 +18,14 @@
 
         .custom-control-input:checked~.custom-control-label::before {
             color: #fff;
-            border-color: #28a745;
-            background-color: #28a745;
+            border-color: #20e04d;
+            background-color: #20e04d;
+        }
+
+        .custom-control-input:not(:checked)~.custom-control-label::before {
+            border-color: #adadad;
+            background-color: #adadad;
+            box-shadow: none !important;
         }
 
         .custom-control-input:checked:focus~.custom-control-label::before {
@@ -81,23 +87,31 @@
                         <button type="button" id="weekFormat" class="btn ml-4 btn-primary">Week</button>
                     </div>
                 </div>
-                <div id="calendar"></div>
-                <div id="toolbar"
-                    class="w-100 rounded d-flex justify-content-around py-3 text-white my-3 bg-dark align-items-center">
-                    <h5>Days in week that can't be booked</h5>
-                </div>
-                <!--table>(thead>tr>td*7)+(tbody>tr>td*7)-->
-                <form action="" method="POST">
-                    <table class="col text-center table table-striped m-0 table-dark">
+                <form action="" method="POST" class="mb-3">
+                    <table class="col text-center table table-bordered table-striped m-0 table-dark">
                         <thead>
                             <tr>
-                                <td>M</td>
-                                <td>T</td>
-                                <td>W</td>
-                                <td>T</td>
-                                <td>F</td>
-                                <td>S</td>
-                                <td>S</td>
+                                <td>
+                                    <p>M<span class="d-none d-sm-none d-md-inline-block">onday</span></p>
+                                </td>
+                                <td>
+                                    <p>T<span class="d-none d-sm-none d-md-inline-block">uesday</span></p>
+                                </td>
+                                <td>
+                                    <p>W<span class="d-none d-sm-none d-md-inline-block">ednesday</span></p>
+                                </td>
+                                <td>
+                                    <p>T<span class="d-none d-sm-none d-md-inline-block">hursday</span></p>
+                                </td>
+                                <td>
+                                    <p>F<span class="d-none d-sm-none d-md-inline-block">riday</span></p>
+                                </td>
+                                <td>
+                                    <p>S<span class="d-none d-sm-none d-md-inline-block">aturday</span></p>
+                                </td>
+                                <td>
+                                    <p>S<span class="d-none d-sm-none d-md-inline-block">unday</span></p>
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
@@ -155,6 +169,9 @@
                         </tbody>
                     </table>
                 </form>
+                <div id="calendar"></div>
+                <!--table>(thead>tr>td*7)+(tbody>tr>td*7)-->
+
             </div>
         </div>
     </main>
