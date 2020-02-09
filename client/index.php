@@ -1,15 +1,15 @@
 <?php
 // web/index.php
 // carga del modelo y los controladores
-require_once __DIR__ . './classes/Config.php';
+require_once __DIR__ . '/../server/classes/Config.php';
 error_reporting(Config::$developmentMode);
-require_once __DIR__ . './libs/bExceptions.php';
-require_once __DIR__ . './libs/bConecta.php';
-require_once __DIR__ . './libs/Sessions.php';
-require_once __DIR__ . './libs/Validation.php';
-require_once __DIR__ . './classes/Model.php';
-require_once __DIR__ . './classes/Controller.php';
-require_once __DIR__ . './classes/AjaxController.php';
+require_once __DIR__ . '/../server/libs/bExceptions.php';
+require_once __DIR__ . '/../server/libs/bConecta.php';
+require_once __DIR__ . '/../server/libs/Sessions.php';
+require_once __DIR__ . '/../server/libs/Validation.php';
+require_once __DIR__ . '/../server/classes/Model.php';
+require_once __DIR__ . '/../server/classes/Controller.php';
+require_once __DIR__ . '/../server/classes/AjaxController.php';
 
 $sessions = Sessions::getInstance();
 if (!$sessions->isUserAgentTheSame() && !in_array($ctl, Config::$notuseragent_ctls)) {
