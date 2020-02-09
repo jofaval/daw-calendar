@@ -128,20 +128,28 @@
                 $row.append($buttons);
             }
         } else {
+            var events = settings.events;
             var eventTitle = "Untitled";
-            for (const key in Object.keys) {
-                if (object.hasOwnProperty(key)) {
-                    const event = object[key];
-                    if (scheduleHours[0] == event.startHour) {
-                        eventTitle = event.eventTitle;
+            var keys = Object.keys(events);
+            var teacherEmail = "contact@iesabastos.org";
+            var teacherName = "not picked";
+            var eventType = "free";
+            for (const key in keys) {
+                if (events.hasOwnProperty(key)) {
+                    const event = events[key];
+                    if (scheduleHours[0] == event["event-start-hour"]) {
+                        eventTitle = event["event-title"];
+                        teacherName = event["teacher-name"];
+                        teacherEmail = event["teacher-email"];
+                        eventType = (event["event-type"] != 0) ? "yours" : "picked";
                         break;
                     }
                 }
             }
             $row.append($(`<td class="col">
         <event-card event-title="${eventTitle}" event-start-hour="${scheduleHours[0]}" event-end-hour="${scheduleHours[1]}" show-schedule="${settings.showSchedule ? "1" : "0"}"
-        teacher-email="email@test.com" teacher-name="parakquieressaberesojajasalu2"
-        event-type="free"></event-card></td>
+        teacher-email="${teacherEmail}" teacher-name="${teacherName}"
+        event-type="${eventType}"></event-card></td>
         `));
         }
     }
@@ -227,6 +235,12 @@
         var $tbody = $(`<tbody class="bg-dark"></tbody>`);
         $table.append($tbody);
 
+        $row.append($(`<td class="col">
+    <event-card event-title="${eventTitle}" event-start-hour="${scheduleHours[0]}" event-end-hour="${scheduleHours[1]}" show-schedule="${settings.showSchedule ? "1" : "0"}"
+    teacher-email="${teacherEmail}" teacher-name="${teacherName}"
+    event-type="${eventType}"></event-card></td>
+    `));
+
         for (let scheduleIndex = 0; scheduleIndex < scheduleLength; scheduleIndex++) {
             var $tr = $(`<tr class="my-3"></tr>`);
             var $td = $(`<td>${schedule[scheduleIndex][0]} <br> ${schedule[scheduleIndex][1]}</td>`);
@@ -234,16 +248,24 @@
             for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
                 var $td = $(`<td></td>`);
                 var eventTitle = "Unreserved";
-                var found = false;
-                for (const key in Object.keys(events)) {
+                var keys = Object.keys(events);
+                var teacherEmail = "contact@iesabastos.org";
+                var teacherName = "not picked";
+                var eventType = "free";
+                for (const key in keys) {
                     if (object.hasOwnProperty(key)) {
-                        if (schedule[scheduleIndex][0] == event[key].startHour) {
-                            eventTitle = event.eventTitle;
+                        if (schedule[scheduleIndex][0] == event["event-start-hour"]) {
+                            eventTitle = event["event-title"];
+                            teacherName = event["teacher-name"];
+                            teacherEmail = event["teacher-email"];
+                            eventType = (event["event-type"] != 0) ? "yours" : "picked";
                             break;
                         }
                     }
                 }
-                $event = $("<event-week event-title='" + eventTitle + "' event-type='" + (found ? "picked" : "free") + "'></event-week>");
+                $event = $(`<event-week event-title="${eventTitle}" event-start-hour="${schedule[scheduleIndex][0]}" event-end-hour="${schedule[scheduleIndex][1]}" show-schedule="${settings.showSchedule ? "1" : "0"}"
+                teacher-email="${teacherEmail}" teacher-name="${teacherName}"
+                event-type="${eventType}"></event-week>`);
                 $td.append($event);
                 $tr.append($td);
             }
