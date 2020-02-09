@@ -1,6 +1,6 @@
 let typingTimer;
 var usernameInputDoneTypingInterval = 5000;
-var $input = $("#myInput");
+var $input = $("#inputUsername");
 
 $input.on("keyup", function () {
     clearTimeout(typingTimer);
