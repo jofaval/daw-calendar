@@ -2,7 +2,7 @@ let typingTimer;
 var usernameInputDoneTypingInterval = 5000;
 var $input = $("#myInput");
 
-$input.on("keyup", function() {
+$input.on("keyup", function () {
     clearTimeout(typingTimer);
     typingTimer = setTimeout(
         usernameInputDoneTyping,
@@ -10,7 +10,7 @@ $input.on("keyup", function() {
     );
 });
 
-$input.on("keydown", function() {
+$input.on("keydown", function () {
     clearTimeout(typingTimer);
 });
 
@@ -18,22 +18,14 @@ function usernameInputDoneTyping() {
     //do something
 }
 
-/*var removeText = $("<div class='removeContent'>X</div>");
+var inputsWithRemoveOption = ;
 
-$("input").on("keypress", function () {
-  var current = $(this);
-  if (current.parent().find(".removeContent").length == 0) {
-    var clone = removeText.clone();
-    clone.on("click", function () {
-      var current = $(this);
-      current.prev().val("");
-      current.remove();
-    });
-    current.after(clone);
-  }
-});*/
+var removeContent = $("<span class='removeContent w-100'><i class='fa fa-times'></i></span>");
+$("input").after(removeContent.clone().click(function () {
+    vanishText($(this).prev());
+}));
 
-$("#show_hide_password .trigger").on("click", function(event) {
+$("#show_hide_password .trigger").on("click", function (event) {
     var event = event || window.event;
     event.preventDefault();
     if ($("#show_hide_password input").attr("type") == "text") {
@@ -53,7 +45,7 @@ var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\
 var mediumRegex = new RegExp(
     "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
 
-$("#inputPassword").on("keyup", function() {
+$("#inputPassword").on("keyup", function () {
     var current = $(this);
 
     current.removeClass("border-success");
@@ -70,7 +62,7 @@ $("#inputPassword").on("keyup", function() {
     }
 });
 
-$("input:file").change(function() {
+$("input:file").change(function () {
     var fullPath = $(this).val();
 
     var filename = "Choose file";
@@ -125,7 +117,7 @@ function addFilterToInputKey(input, filter) {
             break;
     }
 
-    input.on("keypress", function(event) {
+    input.on("keypress", function (event) {
         var event = event || window.event;
 
         if (!regExFilter.test(event.key)) {
@@ -140,7 +132,7 @@ function inputMaxLength(input, maxLength = 24) {
         return false;
     }
     input.prop("maxlength", maxLength);
-    input.on("keypress", function(event) {
+    input.on("keypress", function (event) {
         var event = event || window.event;
 
         if (input.val().length > (maxLength - 1)) {
