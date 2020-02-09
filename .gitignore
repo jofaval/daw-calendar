@@ -4,8 +4,8 @@ SQL/*
 *backup.*
 !.vscode/
 .vscode/*
-!logs/
-logs/*
-!downloads/
-downloads/*
+!server/logs/
+server/logs/*
+!client/downloads/
+client/downloads/*
 css/*
