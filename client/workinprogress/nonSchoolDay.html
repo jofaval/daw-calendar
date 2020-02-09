@@ -18,8 +18,14 @@
 
         .custom-control-input:checked~.custom-control-label::before {
             color: #fff;
-            border-color: #28a745;
-            background-color: #28a745;
+            border-color: #20e04d;
+            background-color: #20e04d;
+        }
+
+        .custom-control-input:not(:checked)~.custom-control-label::before {
+            border-color: #adadad;
+            background-color: #adadad;
+            box-shadow: none !important;
         }
 
         .custom-control-input:checked:focus~.custom-control-label::before {
@@ -68,36 +74,50 @@
     <main class="h-100 w-100 d-flex justify-content-center">
         <div class="container">
             <div class="flex-column row my-auto bg-dark text-light p-4 my-3 rounded">
-                <div id="nonSchoolDaysToolbar"
-                    class="w-100 rounded d-flex justify-content-around py-3 text-white mb-3 bg-dark align-items-center">
+                <div id="nonSchoolDaysToolbar" class="w-100 rounded py-3 text-white mb-3 bg-dark">
                     <!--(.form-group>label{Week}+input:date.form-control)*2-->
 
-                    <div class="form-group form-inline m-0">
-                        <label for="datePicker">Day</label>
-                        <input type="date" name="datePicker" id="datePicker" class="form-control ml-4">
-                    </div>
-                    <div class="form-group form-inline m-0">
-                        <label for="weekFormat">Change Week/Month calendar format:</label>
-                        <button type="button" id="weekFormat" class="btn ml-4 btn-primary">Week</button>
-                    </div>
+                    <form action="" method="POST" class="form-inline m-0 d-flex justify-content-center">
+                        <div class="form-group mx-3">
+                            <label for="datePicker">Day</label>
+                            <input type="date" name="datePicker" id="datePicker" class="form-control ml-4">
+                        </div>
+                        <div class="form-group mx-3">
+                            <label for="weekFormat">Non-school day actions:</label>
+                            <div class="btn-group ml-4">
+                                <button type="button" name="addNonSchoolDay" id="addNonSchoolDay"
+                                    class="btn btn-warning">Add</button>
+                                <button type="button" name="removeNonSchoolDay" id="removeNonSchoolDay"
+                                    class="btn btn-danger">Remove</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div id="calendar"></div>
-                <div id="toolbar"
-                    class="w-100 rounded d-flex justify-content-around py-3 text-white my-3 bg-dark align-items-center">
-                    <h5>Days in week that can't be booked</h5>
-                </div>
-                <!--table>(thead>tr>td*7)+(tbody>tr>td*7)-->
-                <form action="" method="POST">
-                    <table class="col text-center table table-striped m-0 table-dark">
+                <form action="" method="POST" class="mb-3">
+                    <table class="col text-center table table-bordered table-striped m-0 table-dark">
                         <thead>
                             <tr>
-                                <td>M</td>
-                                <td>T</td>
-                                <td>W</td>
-                                <td>T</td>
-                                <td>F</td>
-                                <td>S</td>
-                                <td>S</td>
+                                <td>
+                                    <p>M<span class="d-none d-sm-none d-md-inline-block">onday</span></p>
+                                </td>
+                                <td>
+                                    <p>T<span class="d-none d-sm-none d-md-inline-block">uesday</span></p>
+                                </td>
+                                <td>
+                                    <p>W<span class="d-none d-sm-none d-md-inline-block">ednesday</span></p>
+                                </td>
+                                <td>
+                                    <p>T<span class="d-none d-sm-none d-md-inline-block">hursday</span></p>
+                                </td>
+                                <td>
+                                    <p>F<span class="d-none d-sm-none d-md-inline-block">riday</span></p>
+                                </td>
+                                <td>
+                                    <p>S<span class="d-none d-sm-none d-md-inline-block">aturday</span></p>
+                                </td>
+                                <td>
+                                    <p>S<span class="d-none d-sm-none d-md-inline-block">unday</span></p>
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
@@ -154,7 +174,11 @@
                             </tr>
                         </tbody>
                     </table>
+                    <span class="btn btn-warning w-100 rounded-0">Change weekly non-school days</span>
                 </form>
+                <div id="calendar"></div>
+                <!--table>(thead>tr>td*7)+(tbody>tr>td*7)-->
+
             </div>
         </div>
     </main>
