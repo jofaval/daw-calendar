@@ -34,7 +34,7 @@ class AjaxController {
 
     static genericAjaxRequest(requestName, params, success, error = null) {
         if (error == null) {
-            error = function(data) {
+            error = function (data) {
                 sendNotification("Couldn't execute operation succesfully", true);
             };
         }
@@ -173,6 +173,12 @@ class AjaxController {
             "inputClassroomName": name,
             "inputClasroomDescription": description,
             "selectClasroomState": state,
+        }, success);
+    }
+
+    static doesUsernameExist(year, success) {
+        AjaxController.genericAjaxRequest("getSchedule", {
+            "year": year,
         }, success);
     }
 }
