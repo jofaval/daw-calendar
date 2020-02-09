@@ -18,11 +18,11 @@ function usernameInputDoneTyping() {
     //do something
 }
 
-var inputsWithRemoveOption = ;
+var inputsWithRemoveOption = ["input[type=email]", "input[type=text]", "input[type=password]"];
 
 var removeContent = $("<span class='removeContent w-100'><i class='fa fa-times'></i></span>");
-$("input").after(removeContent.clone().click(function () {
-    vanishText($(this).prev());
+$(inputsWithRemoveOption.join(", ")).after(removeContent.clone().click(function () {
+    $(this).prev().val("");
 }));
 
 $("#show_hide_password .trigger").on("click", function (event) {
