@@ -25,7 +25,8 @@
             <span class="navbar-toggler-icon" style="transition: all 0.2s ease-in-out 0s;"></span>
         </button>
 
-        <img class="navbar-brand rounded-circle mr-2" width="45" src="./img/users/<?php echo $username; ?>.png">
+        <img class="navbar-brand rounded-circle mr-2" width="45"
+            src="./img/users/<?php echo Sessions::getInstance()->getSession("userImg"); ?>">
         <small class="text-muted"><?php echo $username; ?></small>
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08"
             style="transition: all 0.2s ease-in-out 0s;">
