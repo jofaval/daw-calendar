@@ -1,21 +1,29 @@
-let typingTimer;
-var usernameInputDoneTypingInterval = 5000;
-var $input = $("#inputUsername");
+$messageContainer = $("<span class='font-weight-class'></span>");
 
-$input.on("keyup", function () {
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(
-        usernameInputDoneTyping,
-        usernameInputDoneTypingInterval
-    );
+whenUserDoneTypingInInput($("#inputUsername"), function () {
+    AjaxController.doesUsernameExist($input.val(), function (data) {
+        var jsonData = JSON.parse(data);
+        if (jsonData === true) {
+            $("#usernameHelp").html($messageContainer.clone().addClass("text-danger").html("✘ Isn't available."));
+        } else {
+            $("#usernameHelp").html($messageContainer.clone().addClass("text-success").html("✓ Is available."));
+        }
+    });
 });
 
-$input.on("keydown", function () {
-    clearTimeout(typingTimer);
-});
+function whenUserDoneTypingInInput(input, action, interval = 250) {
+    var typingTimeID = 0;
+    input.on("keyup", function () {
+        clearTimeout(typingTimeID);
+        typingTimeID = setTimeout(
+            action,
+            interval
+        );
+    });
 
-function usernameInputDoneTyping() {
-    //do something
+    input.on("keydown", function () {
+        clearTimeout(typingTimeID);
+    });
 }
 
 /*var inputsWithRemoveOption = ["input[type=email]", "input[type=text]", "input[type=password]"];
