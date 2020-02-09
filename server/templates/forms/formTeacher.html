@@ -6,15 +6,16 @@
     <div class="form-row d-flex justify-content-around align-items-center">
         <div class="form-group col-md-2">
             <label for="inputTeacherUsername">Username (*)</label>
-            <input type="text" class="form-control" id="inputTeacherUsername" aria-describedby="teacherUsernameHelp"
-                placeholder="Enter Username" required>
+            <input type="text" class="form-control" id="inputTeacherUsername" name="inputTeacherUsername"
+                aria-describedby="teacherUsernameHelp" placeholder="Enter Username" required>
             <small id="teacherUsernameHelp" class="form-text text-muted">✓ Is available.</small>
         </div>
 
         <div class="input-group form-label-group" id="show_hide_password">
             <input type="password"
                 class="form-control border-top-0 border-left-0 border-3 border-bottom border-right-0 col-md-11"
-                id="inputTeacherPassword" aria-describedby="teacherPasswordHelp" placeholder="Password" required>
+                id="inputTeacherPassword" name="inputTeacherPassword" aria-describedby="teacherPasswordHelp"
+                placeholder="Password" required>
             <label for="inputTeacherPassword">Password (*)</label>
             <a href="" tabindex="-1"
                 class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
@@ -27,16 +28,16 @@
 
         <div class="form-group col-md">
             <label for="inputTeacherName">Full Name (*)</label>
-            <input type="text" class="form-control" id="inputTeacherName" aria-describedby="teacherNameHelp"
-                placeholder="Enter name" required>
+            <input type="text" class="form-control" id="inputTeacherName" name="inputTeacherName"
+                aria-describedby="teacherNameHelp" placeholder="Enter name" required>
             <small id="teacherNameHelp" class="form-text text-muted">Enter your full name
                 <!--, the one you are legally recognized with-->.</small>
         </div>
 
         <div class="form-group col-md-3">
             <label for="inputTeacherEmail">Email address (*)</label>
-            <input type="email" class="form-control" id="inputTeacherEmail" aria-describedby="teacherEmailHelp"
-                placeholder="Enter email" required>
+            <input type="email" class="form-control" id="inputTeacherEmail" name="inputTeacherEmail"
+                aria-describedby="teacherEmailHelp" placeholder="Enter email" required>
             <small id="teacherEmailHelp" class="form-text text-muted">We'll never share your email with anyone
                 else.</small>
         </div>
