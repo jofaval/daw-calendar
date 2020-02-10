@@ -40,7 +40,7 @@ class Model extends PDO
 
     public function cudOperation($insertString, $params = [])
     {
-        $result = $this->conexion->query($insertString);
+        $result = $this->conexion->prepare($insertString);
 
         if (!empty($params)) {
             foreach ($params as $key => $value) {
