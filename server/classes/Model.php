@@ -76,7 +76,7 @@ class Model extends PDO
         $params = [
             "username" => $username,
         ];
-        if (count($this->query("SELECT username FROM users WHERE username=:username", $params)) !== 0) {
+        if (count($this->query("SELECT username FROM users WHERE username=:username", $params)) === 0) {
             $params["password"] = Cryptography::blowfishCrypt($password, $username);
             $params["fullname"] = $fullname;
             $params["email"] = $email;
@@ -94,7 +94,7 @@ class Model extends PDO
 
         do {
             $token = Utils::generateRandomKey();
-        } while (count($this->query("SELECT token FROM tokens WHERE token=:token and username=:username"), ["token" => $token, "username" => $username]) !== 0);
+        } while (count($this->query("SELECT token FROM tokens WHERE token=:token and username=:username"), ["token" => $token, "username" => $username]) === 0);
 
         $params = [
             "token" => $token,
@@ -111,7 +111,7 @@ class Model extends PDO
     public function isTokenValid($username, $token)
     {
         $queryResult = $this->query("SELECT expirationDate FROM tokens WHERE token=:token and username=:username", ["token" => $token, "username" => $username]);
-        if (count($queryResult) !== 0) {
+        if (count($queryResult) === 0) {
             return DateUtils::isDateInTime($queryResult[0]["expirationDate"]);
         }
 
