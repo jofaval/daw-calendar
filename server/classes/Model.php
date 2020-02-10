@@ -52,10 +52,16 @@ class Model extends PDO
 
     public function disable($entityType, $params, $enabled)
     {
-        $params = [];
+        $queryString = "UPDATE FROM $entityType SET enabled=:enabled WHERE ";
+
+        $keys = [];
+        foreach ($params as $key => $value) {
+            $keys = "$key=:$key";
+        }
+        $queryString .= $keys . join(" and ");
+
         $params["enabled"] = $enabled;
-        $identification = array_keys($params)[0];
-        return $this->cudOperation("UPDATE FROM $entityType SET enabled=:enabled WHERE $identification=:$identification", $params);
+        return $this->cudOperation($queryString, $params);
     }
 
     public function signin($username)
