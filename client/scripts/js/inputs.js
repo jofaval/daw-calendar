@@ -150,7 +150,19 @@ function inputMaxLength(input, maxLength = 24) {
     });
 }
 
-function addErrorMessage(input) {
+function addErrorMessage(input, regex, messageId, message) {
+    whenUserDoneTypingInInput(input, function () {
+        var value = input.val();
+
+        if (regex.test(value)) {
+            addMessageToInput(input, messageId, message);
+        } else {
+            removeMessageToInput(input, messageId);
+        }
+    });
+}
+
+function genericLengthMessages(input) {
     whenUserDoneTypingInInput(input, function () {
         var value = input.val();
 
@@ -177,8 +189,8 @@ function addMessageToInput(input, messageId, message) {
 function removeMessageToInput(input, messageId) {
     input.siblings("small").find("#" + messageId).remove();
 }
-addErrorMessage($("#inputPassword"));
-
+genericLengthMessages($("#inputPassword"));
+addErrorMessage($("#inputPassword"), /[a-z@$!%*?&A-Za-z\d@$!%*?&]/i, "Incorrecto")
 //FormValidations
 //signin
 addFilterToInputKey($("#inputEmail"), FILTER_REGEX_USERNAME);
