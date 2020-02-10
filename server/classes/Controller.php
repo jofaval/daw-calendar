@@ -168,7 +168,7 @@ class Controller
     public function calendar()
     {
         $params = [
-            "aula" => $_REQUEST["aula"]
+            "aula" => $_REQUEST["aula"],
         ];
         require __DIR__ . '/../templates/calendar.php';
     }
@@ -637,6 +637,11 @@ class Controller
         }
 
         return true;
+    }
+
+    public function getNonWorkWeeklyDays()
+    {
+        return Model::getInstance()->query("SELECT `nonWorkDay` FROM `nonWorkWeeklyDays`", []);
     }
 
     public function test()

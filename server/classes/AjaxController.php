@@ -147,4 +147,14 @@ class AjaxController
     {
         $this->genericAjaxReturn(__FUNCTION__, ["username"]);
     }
+
+    public function getNonSchoolDays()
+    {
+        $this->genericAjaxReturn(__FUNCTION__, ["username"]);
+    }
+
+    public function getNonWorkWeeklyDays()
+    {
+        $this->genericAjaxReturn(__FUNCTION__, ["username"]);
+    }
 }

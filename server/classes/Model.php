@@ -228,7 +228,7 @@ class Model extends PDO
             "year" => Utils::getCleanedData("year"),
         ];
 
-        return $this->query("SELECT * FROM horario_seleccionado WHERE MONTH(fecha_seleccionada)=:month and YEAR(fecha_seleccionada)=:year", $params);
+        return $this->query("SELECT * FROM events WHERE MONTH(selectedDay)=:month and YEAR(selectedDay)=:year", $params);
     }
 
     public function getTeachers()
