@@ -126,7 +126,7 @@ class View {
 
         //Teachers
         this.tableTeachers = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
-            <thead>
+            <thead class="text-center">
                 <tr>
                     <td>Username</td>
                     <td>Full name</td>
@@ -143,7 +143,7 @@ class View {
 
         //Classrooms
         this.tableClassrooms = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
-            <thead>
+            <thead class="text-center">
                 <tr>
                     <td>Name</td>
                     <td>Description</td>
@@ -159,7 +159,7 @@ class View {
 
         //Schedules
         this.tableSchedules = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
-            <thead>
+            <thead class="text-center">
                 <tr>
                     <td>Order Id</td>
                     <td>Start Hour</td>
@@ -328,7 +328,7 @@ class View {
         $tabContainer.prop("id", "tabContainer" + tabName);
         $tabContainerContainer = $("#tabContainers");
         if ($tabContainerContainer.length == 0) {
-            var $tabContainerContainer = $("<div id='tabContainers' class='col-xs text-white'></div>");
+            var $tabContainerContainer = $("<div id='tabContainers' class='w-75 text-white'></div>");
             container.append($tabContainerContainer);
         }
         $tabContainerContainer.append($tabContainer);
