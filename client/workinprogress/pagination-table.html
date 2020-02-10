@@ -14,9 +14,9 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../downloads/css/addons/datatables.min.css">
-    <link rel="stylesheet" href="../downloads/css/addons/datatables-select.min.css">
+    <link href="../styles/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/datatables.min.css">
+    <link rel="stylesheet" href="../styles/datatables-select.min.css">
     <link rel="stylesheet" href="../styles/login.css">
     <style>
         .selected {
@@ -29,8 +29,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08"
-            aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
@@ -42,8 +41,7 @@
                     <a class="nav-link selected" href="#">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Create</a>
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown08">
                         <a class="dropdown-item" href="#">Classroom</a>
                         <a class="dropdown-item" href="#">Teacher</a>
@@ -56,8 +54,7 @@
             </ul>
         </div>
     </nav>
-    <table id="dtBasicExample" class="table w-auto mx-auto table-striped table-light table-bordered table-sm"
-        cellspacing="0" width="100%">
+    <table id="dtBasicExample" class="table w-auto mx-auto table-striped table-light table-bordered table-sm" cellspacing="0" width="100%">
         <thead class="thead-dark">
             <tr scope="row">
                 <th class="th-sm">Name
@@ -565,18 +562,18 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js">
 </script>
 <!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.11.0/js/mdb.min.js"></script>
-<script type="text/javascript" src="../downloads/js/addons/datatables.min.js"></script>
-<script type="text/javascript" src="../downloads/js/addons/datatables-select.min.js"></script>
+<script type="text/javascript" src="../scripts/libs/mdb.min.js"></script>
+<script type="text/javascript" src="../scripts/libs/datatables.min.js"></script>
+<script type="text/javascript" src="../scripts/libs/datatables-select.min.js"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#dtBasicExample').DataTable({
             "paging": true,
             "searching": true,
             "ordering": true,
         });
         $('.dataTables_length').addClass('bs-select');
-        $('#dtBasicExample tr').on("click", function () {
+        $('#dtBasicExample tr').on("click", function() {
             $('#dtBasicExample tr').removeClass("selected");
             $(this).addClass("selected");
         });
