@@ -1,9 +1,9 @@
 <?php
-include_once './libs/Utils.php';
-include_once './libs/bEmail.php';
-include_once './libs/bFile.php';
-include_once 'Validation.php';
-include_once 'Sessions.php';
+include_once __DIR__ . '../server/libs/utils.php';
+include_once __DIR__ . '../server/libs/bEmail.php';
+include_once __DIR__ . '../server/libs/bFile.php';
+include_once __DIR__ . '../server/classes/Validation.php';
+include_once __DIR__ . '../server/classes/Sessions.php';
 
 class Controller
 {

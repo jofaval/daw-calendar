@@ -1,7 +1,8 @@
 <?php
-include_once 'Config.php';
-include_once './libs/bCrypt.php';
-include_once './libs/bDate.php';
+include_once __DIR__ . '../server/classes/Config.php';
+include_once __DIR__ . '../server/libs/bCrypt.php';
+include_once __DIR__ . '../server/libs/bDate.php';
+include_once __DIR__ . '../server/libs/utils.php';
 
 class Model extends PDO
 {
@@ -238,8 +239,11 @@ class Model extends PDO
 
     public function getSchedules()
     {
-        $params = ["year" => Utils::getAcademicYear(date("now"))];
-        return $this->query("SELECT * FROM schedules WHERE enabled=true and YEAR(year)=:year", $params);
+        
+        $year = Utils::getAcademicYear(date("now"));
+        //$year = "2020";
+        $params = ["scheduleYear" => $year];
+        return $this->query("SELECT * FROM schedules WHERE enabled=true and YEAR(scheduleYear)=:scheduleYear", $params);
     }
 
     public function createEvent($title, $startHour, $date)
