@@ -150,6 +150,35 @@ function inputMaxLength(input, maxLength = 24) {
     });
 }
 
+function addErrorMessage(input) {
+    whenUserDoneTypingInInput(input, function () {
+        var value = input.val();
+
+        if (value.length < input.attr("min")) {
+            addMessageToInput(input, "short", "Too short!");
+        } else if (value.length > input.attr("max")) {
+            addMessageToInput(input, "long", "Too long!");
+        } else {
+            removeMessageToInput(input, "short");
+            removeMessageToInput(input, "long");
+        }
+    });
+}
+
+function addMessageToInput(input, messageId, message) {
+    var smallHTML = input.siblings("small");
+
+    var messageHolder = smallHTML.find("#" + messageId);
+    if (messageHolder.length == 0) {
+        smallHTML.append($messageContainer.clone().attr("id", messageId).html(message));
+    }
+}
+
+function removeMessageToInput(input, messageId) {
+    input.siblings("small").find("#" + messageId).remove();
+}
+addErrorMessage($("#inputPassword"));
+
 //FormValidations
 //signin
 addFilterToInputKey($("#inputEmail"), FILTER_REGEX_USERNAME);
