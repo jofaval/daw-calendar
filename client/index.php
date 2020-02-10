@@ -12,6 +12,7 @@ require_once __DIR__ . '/../server/classes/Controller.php';
 require_once __DIR__ . '/../server/classes/AjaxController.php';
 
 $sessions = Sessions::getInstance();
+$ctl = $_GET['ctl'];
 if (!$sessions->isUserAgentTheSame() && !in_array($ctl, Config::$notuseragent_ctls)) {
     header("Location: index.php?ctl=notuseragent");
 }
@@ -60,7 +61,6 @@ if (Config::$developmentMode) {
     $map["test"] = array('controller' => 'AjaxController', 'action' => 'test', 'access' => Config::$ACCESS_LEVEL_GUEST);
 }
 
-$ctl = $_GET['ctl'];
 // Parseo de la ruta
 if (isset($ctl)) {
     if (isset($map[$ctl])) {
@@ -73,8 +73,8 @@ if (isset($ctl)) {
     header('Location: ./index.php?ctl=calendar');
 }
 
-if (!in_array($ctl, Config::$notsigned_ctls)) {
-    //header('Location: ./index.php?ctl=notsigned');
+if (!$sessions->doesSessionExist("username") && !in_array($ctl, Config::$notsigned_ctls)) {
+    header('Location: ./index.php?ctl=notsigned');
 }
 
 // Ejecución del controlador asociado a la ruta
