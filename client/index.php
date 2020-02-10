@@ -59,6 +59,7 @@ $map = array(
 
 if (Config::$developmentMode) {
     $map["test"] = array('controller' => 'AjaxController', 'action' => 'test', 'access' => Config::$ACCESS_LEVEL_GUEST);
+    $sessions->setSession("access", 20);
 }
 
 // Parseo de la ruta
