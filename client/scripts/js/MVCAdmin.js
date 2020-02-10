@@ -12,7 +12,7 @@ class Model {
     }
 
     loadTeachers(model, whenFinished) {
-        this.teachers = [];
+        model.teachers = [];
         AjaxController.getTeachers(function(data) {
             model.teachers = data;
             whenFinished(model.teachers);
@@ -20,7 +20,7 @@ class Model {
     }
 
     loadClassrooms(model, whenFinished) {
-        this.classrooms = [];
+        model.classrooms = [];
         AjaxController.getClassrooms(function(data) {
             model.classrooms = data;
             whenFinished(model.classrooms);
@@ -28,7 +28,7 @@ class Model {
     }
 
     loadSchedules(model, whenFinished) {
-        this.schedules = [];
+        model.schedules = [];
         AjaxController.getSchedules(function(data) {
             model.schedules = data;
             whenFinished(model.schedules);
@@ -124,7 +124,7 @@ class View {
         this.createTab("Schedules", this.mainContainer);
 
         //Teachers
-        this.tableTeachers = $(`<table class="table mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+        this.tableTeachers = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
             <thead>
                 <tr>
                     <td>Username</td>
@@ -138,31 +138,31 @@ class View {
         </table>`);
         this.tableTeachers.prop("id", "dtTeachers");
         $("#tabContainerTeachers").append(this.tableTeachers);
-        this.createDataTable(this.tableTeachers);
 
         //Classrooms
-        this.tableClassrooms = $(`<table class="table mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+        this.tableClassrooms = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
             <thead>
                 <tr>
                     <td>Name</td>
                     <td>Description</td>
                     <td>State</td>
+                    <td>Active</td>
                 </tr>
             </thead>
             <tbody></tbody>
         </table>`);
         this.tableClassrooms.prop("id", "dtClassrooms");
         $("#tabContainerClassrooms").append(this.tableClassrooms);
-        this.createDataTable(this.tableClassrooms);
 
         //Schedules
-        this.tableSchedules = $(`<table class="table mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+        this.tableSchedules = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
             <thead>
                 <tr>
                     <td>Order Id</td>
                     <td>Start Hour</td>
                     <td>End Hour</td>
-                    <td>year</td>
+                    <td>Year</td>
+                    <td>Active</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -170,7 +170,6 @@ class View {
         this.tableSchedules.prop("id", "dtSchedules");
         $("#tabContainerSchedules").append(this.tableSchedules);
 
-        this.createDataTable(this.tableSchedules);
     }
 
     createTab(tabName, container) {
@@ -240,21 +239,29 @@ class View {
 
     addRowToTable(dataArray, table) {
         var row = $("<tr></tr>");
-        row.on("click", selectionEvent);
-        dataArray.forEach(column => {
-            row.append($("<td>" + column + "</td>"));
-        });
+        row.on("click", this.selectionEvent);
+        for (const key in dataArray) {
+            if (dataArray.hasOwnProperty(key)) {
+                const element = dataArray[key];
+
+                row.append($("<td>" + element + "</td>"));
+            }
+        }
         if (table.find("tbody").length) {
             table.find("tbody").append(row);
         } else {
-            table.append(row);
+            table.find("tbody").append(row);
         }
     }
 
     addRowsToTable(dataArray, table) {
-        dataArray.forEach(rowElement => {
-            addRowToTable(rowElement, table);
-        });
+        var parsedArray = JSON.parse(dataArray);
+
+        if (parsedArray.length > 0) {
+            parsedArray.forEach(rowElement => {
+                this.addRowToTable(rowElement, table);
+            });
+        }
     }
 
     selectionEvent() {
@@ -302,21 +309,21 @@ class AdminController {
             tabContainer.show();
         });
 
-        model.loadTeachers(function(data) {
-            data.each(function() {
-                view.addRowToTable($(this));
-            })
-        });
         $("#tabTeachers").trigger("click");
         model.loadTeachers(model, function(data) {
-            view.addRowsToTable(model.teachers);
+            view.addRowsToTable(model.teachers, view.tableTeachers);
+            view.createDataTable(view.tableTeachers);
         });
-        model.loadClassrooms(model, function() {
-            view.addRowsToTable(model.classrooms);
+
+        model.loadClassrooms(model, function(data) {
+            view.addRowsToTable(model.classrooms, view.tableClassrooms);
+            view.createDataTable(view.tableClassrooms);
         });
-        model.loadSchedules(model, function() {
-            view.addRowsToTable(model.schedules);
-        });
+
+        /*model.loadSchedules(model, function(data) {
+            view.addRowsToTable(model.schedules, view.tableSchedules);
+            view.createDataTable(view.tableSchedules);
+        });*/
     }
 
     static getInstance() {
