@@ -73,8 +73,10 @@ if (isset($ctl)) {
     header('Location: ./index.php?ctl=calendar');
 }
 
-if (!$sessions->doesSessionExist("username") && !in_array($ctl, Config::$notsigned_ctls)) {
-    header('Location: ./index.php?ctl=notsigned');
+if (!Config::$developmentMode) {
+    if (!$sessions->doesSessionExist("username") && !in_array($ctl, Config::$notsigned_ctls)) {
+        header('Location: ./index.php?ctl=notsigned');
+    }
 }
 
 // Ejecución del controlador asociado a la ruta
