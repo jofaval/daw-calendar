@@ -649,8 +649,9 @@ class Controller
             "year" => "2019",
         ];
         //return count($model->query("SELECT * FROM `schedules`"));
-        return $model->cudOperation("INSERT INTO `schedules` (`orderId`, `startHour`, `endHour`, `year`) VALUES (:orderId, :startHour, :endHour, :year)", $params);
+        //return $model->cudOperation("INSERT INTO `schedules` (`orderId`, `startHour`, `endHour`, `year`) VALUES (:orderId, :startHour, :endHour, :year)", $params);
         //return $model->cudOperation("INSERT INTO `schedules` (`orderId`, `startHour`, `endHour`, `year`) VALUES ('7', '9:45', '10:40', '2019')", $params);
         //return $_REQUEST["year"];
+        return $model->getTeachers();
     }
 }
