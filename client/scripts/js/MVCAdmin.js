@@ -124,7 +124,7 @@ class View {
         this.createTab("Schedules", this.mainContainer);
 
         //Teachers
-        this.tableTeachers = $(`<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+        this.tableTeachers = $(`<table class="table mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
             <thead>
                 <tr>
                     <td>Username</td>
@@ -141,7 +141,7 @@ class View {
         this.createDataTable(this.tableTeachers);
 
         //Classrooms
-        this.tableClassrooms = $(`<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+        this.tableClassrooms = $(`<table class="table mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
             <thead>
                 <tr>
                     <td>Name</td>
@@ -156,7 +156,7 @@ class View {
         this.createDataTable(this.tableClassrooms);
 
         //Schedules
-        this.tableSchedules = $(`<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+        this.tableSchedules = $(`<table class="table mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
             <thead>
                 <tr>
                     <td>Order Id</td>
@@ -251,6 +251,12 @@ class View {
         }
     }
 
+    addRowsToTable(dataArray, table) {
+        dataArray.forEach(rowElement => {
+            addRowToTable(rowElement, table);
+        });
+    }
+
     selectionEvent() {
         $('#dtBasicExample tr').removeClass("selected");
         $(this).addClass("selected");
@@ -302,6 +308,15 @@ class AdminController {
             })
         });
         $("#tabTeachers").trigger("click");
+        model.loadTeachers(model, function(data) {
+            view.addRowsToTable(model.teachers);
+        });
+        model.loadClassrooms(model, function() {
+            view.addRowsToTable(model.classrooms);
+        });
+        model.loadSchedules(model, function() {
+            view.addRowsToTable(model.schedules);
+        });
     }
 
     static getInstance() {
