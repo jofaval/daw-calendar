@@ -132,6 +132,7 @@ class View {
                     <td>Type</td>
                     <td>Email</td>
                     <td>Activate</td>
+                    <td>Remove</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -147,6 +148,7 @@ class View {
                     <td>Description</td>
                     <td>State</td>
                     <td>Active</td>
+                    <td>Remove</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -163,6 +165,7 @@ class View {
                     <td>End Hour</td>
                     <td>Year</td>
                     <td>Active</td>
+                    <td>Remove</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -247,6 +250,8 @@ class View {
                 row.append($("<td>" + element + "</td>"));
             }
         }
+        var $btnRemove = $("<td><button class='btn btn-danger'>Remove</button></td>");
+        row.append($btnRemove);
         if (table.find("tbody").length) {
             table.find("tbody").append(row);
         } else {
