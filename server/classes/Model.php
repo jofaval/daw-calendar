@@ -44,7 +44,11 @@ class Model extends PDO
 
         if (!empty($params)) {
             foreach ($params as $key => $value) {
-                $result->bindParam(":$key", $value);
+                if (is_numeric($value)) {
+                    $result->bindParam(":$key", $value, PDO::PARAM_INT);
+                } else {
+                    $result->bindParam(":$key", $value, PDO::PARAM_STR);
+                }
             }
         }
 
@@ -239,7 +243,7 @@ class Model extends PDO
 
     public function getSchedules()
     {
-        
+
         $year = Utils::getAcademicYear(date("now"));
         //$year = "2020";
         $params = ["scheduleYear" => $year];
