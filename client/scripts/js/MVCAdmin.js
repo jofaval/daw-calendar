@@ -125,30 +125,52 @@ class View {
 
         //Teachers
         this.tableTeachers = $(`<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
-            <thead></thead>
+            <thead>
+                <tr>
+                    <td>Username</td>
+                    <td>Full name</td>
+                    <td>Type</td>
+                    <td>Email</td>
+                    <td>Activate</td>
+                </tr>
+            </thead>
             <tbody></tbody>
         </table>`);
         this.tableTeachers.prop("id", "dtTeachers");
-        this.createDataTable(this.tableTeachers);
         $("#tabContainerTeachers").append(this.tableTeachers);
+        this.createDataTable(this.tableTeachers);
 
         //Classrooms
         this.tableClassrooms = $(`<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
-            <thead></thead>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>State</td>
+                </tr>
+            </thead>
             <tbody></tbody>
         </table>`);
         this.tableClassrooms.prop("id", "dtClassrooms");
-        this.createDataTable(this.tableClassrooms);
         $("#tabContainerClassrooms").append(this.tableClassrooms);
+        this.createDataTable(this.tableClassrooms);
 
         //Schedules
         this.tableSchedules = $(`<table class="table w-auto mx-auto table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
-            <thead></thead>
+            <thead>
+                <tr>
+                    <td>Order Id</td>
+                    <td>Start Hour</td>
+                    <td>End Hour</td>
+                    <td>year</td>
+                </tr>
+            </thead>
             <tbody></tbody>
         </table>`);
         this.tableSchedules.prop("id", "dtSchedules");
-        this.createDataTable(this.tableSchedules);
         $("#tabContainerSchedules").append(this.tableSchedules);
+
+        this.createDataTable(this.tableSchedules);
     }
 
     createTab(tabName, container) {
@@ -266,12 +288,12 @@ class AdminController {
             $("#tabHeaders .btn.active").removeClass("active");
             current.addClass("active");
             $(".tabContainer").each(function() {
-                view.fadeOutItem($(this));
-                //$(this).hide();
+                //view.fadeOutItem($(this));
+                $(this).hide();
             });
             var tabContainer = $("#" + current.attr("tabContainer"));
-            view.fadeInItem(tabContainer);
-            //tabContainer.show();
+            //view.fadeInItem(tabContainer);
+            tabContainer.show();
         });
 
         model.loadTeachers(function(data) {
@@ -279,6 +301,7 @@ class AdminController {
                 view.addRowToTable($(this));
             })
         });
+        $("#tabTeachers").trigger("click");
     }
 
     static getInstance() {
