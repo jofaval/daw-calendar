@@ -9,29 +9,29 @@ class Controller
 {
     public function error()
     {
-        require __DIR__ . '/templates/error.php';
+        require __DIR__ . '/../templates/error.php';
     }
 
     public function access()
     {
-        require __DIR__ . '/templates/access.php';
+        require __DIR__ . '/../templates/access.php';
     }
 
     public function notsigned()
     {
-        require __DIR__ . '/templates/notsigned.php';
+        require __DIR__ . '/../templates/notsigned.php';
     }
 
     public function notuseragent()
     {
-        require __DIR__ . '/templates/notuseragent.php';
+        require __DIR__ . '/../templates/notuseragent.php';
     }
 
     public function confirmEmail()
     {
         $params = ExceptionUtils::tryCatch("Controller", "confirmEmailFunctionality");
 
-        require __DIR__ . '/templates/email.php';
+        require __DIR__ . '/../templates/email.php';
     }
 
     public function confirmEmailFunctionality()
@@ -60,7 +60,7 @@ class Controller
         if ($result) {
             header("Location: ./index.php?ctl=calendar/");
         } else {
-            require __DIR__ . '/templates/signin.php';
+            require __DIR__ . '/../templates/signin.php';
         }
     }
 
@@ -107,7 +107,7 @@ class Controller
         if ($result) {
             header("Location: ./index.php?ctl=signin/");
         } else {
-            require __DIR__ . '/templates/signup.php';
+            require __DIR__ . '/../templates/signup.php';
         }
     }
 
@@ -170,7 +170,7 @@ class Controller
         $params = [
             "aula" => $_REQUEST["aula"]
         ];
-        require __DIR__ . '/templates/calendar.php';
+        require __DIR__ . '/../templates/calendar.php';
     }
 
     public function admin()
@@ -214,7 +214,7 @@ class Controller
             $result = ExceptionUtils::tryCatch("Controller", "deleteScheduleFunctionality");
         }
 
-        require __DIR__ . '/templates/admin.php';
+        require __DIR__ . '/../templates/admin.php';
     }
 
     public function updateTeacherFunctionality()
@@ -607,7 +607,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            $dates = getAllDatesFromInterval(Utils::getCleanedData("startingDate"), Utils::getCleanedData("endingDate"));
+            $dates = DateUtils::getAllDatesFromInterval(Utils::getCleanedData("startingDate"), Utils::getCleanedData("endingDate"));
             $events = [];
             foreach ($dates as $key => $value) {
                 $events[] = [
