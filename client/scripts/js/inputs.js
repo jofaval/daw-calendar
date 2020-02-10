@@ -180,3 +180,13 @@ inputMaxLength($("#inputClassroomName, #inputClasroomDescription"), 50);
 
 //schedule
 addFilterToInputKey($("#inputScheduleStartHour, #inputScheduleEndHour"), FILTER_REGEX_NONE);
+
+//Fix floating label bug
+$("input").on("focus", function () {
+    $(this).attr("data-placeholder", $(this).attr("placeholder"));
+    $(this).attr("placeholder", "");
+});
+$("input").on("blur", function () {
+    $(this).attr("placeholder", $(this).attr("data-placeholder"));
+    $(this).removeAttr("data-placeholder");
+});
