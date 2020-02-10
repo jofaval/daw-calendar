@@ -26,9 +26,9 @@ main {
     background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
     background: linear-gradient(to right, #5B86E5, #36D1DC);
     /*Scooter*/
-    background: #DA22FF;
+    /*background: #DA22FF;
     background: -webkit-linear-gradient(45deg, #9733EE, #DA22FF);
-    background: linear-gradient(45deg, #9733EE, #DA22FF);
+    background: linear-gradient(45deg, #9733EE, #DA22FF);*/
     /*Intuitive Purple*/
 }
 
@@ -45,11 +45,9 @@ main {
         background-color: #dbdbdb;
         color: #1f1f22;
     }
-
     .navbar {
         background-color: #eeeeee !important;
     }
-
     .nav-link {
         color: rgba(0, 0, 0, 0.75) !important;
     }
