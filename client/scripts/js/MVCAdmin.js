@@ -195,7 +195,7 @@ class View {
                         </div>
                     </form>
                 </div>
-                <form action="" method="POST" class="mb-3">
+                <form action="" id="nonWorkWeeklyDays" method="POST" class="mb-3">
                     <table class="col text-center table table-bordered table-striped m-0 table-dark">
                         <thead>
                             <tr>
@@ -268,7 +268,7 @@ class View {
                                 </td>
                                 <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input  rounded-circle" id="sundays"
+                                        <input type="checkbox" class="custom-control-input  rounded-circle" id="sunday"
                                             name="sundays">
                                         <label class="custom-control-label rounded-circle" for="sundays"></label>
                                     </div>
@@ -282,7 +282,29 @@ class View {
                 <!--table>(thead>tr>td*7)+(tbody>tr>td*7)-->
 
             </div>`);
+
         $("#tabContainerNonSchoolDays").append($nonSchoolDays);
+
+        var dayIntToId = {
+            1: "monday",
+            2: "tuesday",
+            3: "wednesday",
+            4: "thursday",
+            5: "friday",
+            6: "saturday",
+            0: "sunday",
+        };
+
+        AjaxController.getNonWorkWeeklyDays(function (data) {
+            var jsonParsed = JSON.parse(data);
+            for (const key in jsonParsed) {
+                if (jsonParsed.hasOwnProperty(key)) {
+                    const row = jsonParsed[key];
+                    $("#" + dayIntToId[row.nonWorkDay]).attr("checked", true);
+                }
+            }
+        });
+
         var calendar = $nonSchoolDays.find("#calendar");
         var sampleEvents = [{
             title: "Soulful sundays bay area",
