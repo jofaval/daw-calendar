@@ -122,6 +122,7 @@ class View {
         this.createTab("Teachers", this.mainContainer);
         this.createTab("Classrooms", this.mainContainer);
         this.createTab("Schedules", this.mainContainer);
+        this.createTab("NonSchoolDays", this.mainContainer);
 
         //Teachers
         this.tableTeachers = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
@@ -173,6 +174,7 @@ class View {
         this.tableSchedules.prop("id", "dtSchedules");
         $("#tabContainerSchedules").append(this.tableSchedules);
 
+        this.createTab();
     }
 
     createTab(tabName, container) {
