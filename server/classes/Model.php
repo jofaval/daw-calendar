@@ -81,7 +81,7 @@ class Model extends PDO
             $params["fullname"] = $fullname;
             $params["email"] = $email;
             $params["image"] = $image;
-            $signUp = $this->cudOperation("INSERT INTO FROM users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)", $params);
+            $signUp = $this->cudOperation("INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)", $params);
             $this->generateToken($username);
             return $signUp;
         }
