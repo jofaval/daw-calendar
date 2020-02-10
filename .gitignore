@@ -8,4 +8,6 @@ SQL/*
 server/logs/*
 !client/downloads/
 client/downloads/*
+!/downloads/
+/downloads/*
 css/*
