@@ -1,23 +1,24 @@
 validateForm("test", $(".form"));
 class FormValidator {
     validateForm(formName, form) {
+        var value = false;
+
         switch (formName) {
             case "signup":
-                this.validateSignUp(form);
+                value = this.validateSignUp(form);
                 break;
             case "signin":
-                this.validateSignIn(form);
+                value = this.validateSignIn(form);
                 break;
             case "classroom":
-                this.validateClassroom(form);
+                value = this.validateClassroom(form);
                 break;
             case "schedule":
-                this.validateSchedule(form);
-                break;
-
-            default:
+                value = this.validateSchedule(form);
                 break;
         }
+
+        return value;
     }
 
     validateSignUp(form) {
