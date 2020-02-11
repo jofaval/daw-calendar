@@ -131,6 +131,33 @@ class Controller
         }
     }
 
+    public function profile()
+    {
+        $result = false;
+        if (isset($_REQUEST["modify"])) {
+
+            $_REQUEST['inputTeacherUsername'] = $_REQUEST['inputUsername'];
+            unset($_REQUEST['inputUsername']);
+
+            $_REQUEST['inputTeacherPassword'] = $_REQUEST['inputPassword'];
+            unset($_REQUEST['inputPassword']);
+
+            $_REQUEST['inputTeacherName'] = $_REQUEST['inputName'];
+            unset($_REQUEST['inputName']);
+
+            $_REQUEST['inputTeacherEmail'] = $_REQUEST['inputEmail'];
+            unset($_REQUEST['inputEmail']);
+
+            $result = ExceptionUtils::tryCatch("Controller", "updateTeacherFunctionality");
+        }
+
+        if ($result) {
+            header("Location: ./index.php?ctl=profile/");
+        } else {
+            require __DIR__ . '/../templates/signup.php';
+        }
+    }
+
     public function signupFunctionality()
     {
         $model = Model::getInstance();

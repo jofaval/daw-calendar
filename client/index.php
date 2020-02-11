@@ -31,6 +31,7 @@ $map = array(
     'signout' => array('controller' => 'Controller', 'action' => 'signout', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'signup' => array('controller' => 'Controller', 'action' => 'signup', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'calendar' => array('controller' => 'Controller', 'action' => 'calendar', 'access' => Config::$ACCESS_LEVEL_TEACHER),
+    'profile' => array('controller' => 'Controller', 'action' => 'profile', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'admin' => array('controller' => 'Controller', 'action' => 'admin', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'access' => array('controller' => 'Controller', 'action' => 'access', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'confirmEmail' => array('controller' => 'Controller', 'action' => 'confirmEmail', 'access' => Config::$ACCESS_LEVEL_NOT_ACTIVATED),
