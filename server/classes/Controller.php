@@ -2,6 +2,7 @@
 include_once __DIR__ . '../server/libs/utils.php';
 include_once __DIR__ . '../server/libs/bEmail.php';
 include_once __DIR__ . '../server/libs/bFile.php';
+include_once __DIR__ . '../server/libs/bCrypt.php';
 include_once __DIR__ . '../server/classes/Validation.php';
 include_once __DIR__ . '../server/classes/Sessions.php';
 
@@ -721,17 +722,20 @@ class Controller
     public function test()
     {
         $model = Model::getInstance();
+
+        return Cryptography::
+
         /* $params = [
             "orderId" => '94',
             "startHour" => '7:55',
             "endHour" => '8:50',
             "currentyear" => '2019',
         ]; */
-        $params = [
+        /* $params = [
             "currentyear" => '2020',
         ];
         $orderId = '1';
-        return $model->getSchedules();
+        return $model->getSchedules(); */
         /* return $model->cudOperation("INSERT INTO `schedules`
         (`orderId`, `startHour`, `endHour`, `currentyear`)
         VALUES
