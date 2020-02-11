@@ -1,5 +1,5 @@
 var formValidator = new FormValidator();
-validateForm("signup", $("form"));
+validateForm("classroom", $("form"));
 
 //classroom
 addFilterToInputKey($("#inputClassroomName, #inputClasroomDescription"), FILTER_REGEX_LETTERS);
