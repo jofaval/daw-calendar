@@ -13,6 +13,9 @@ require_once __DIR__ . '/../server/classes/AjaxController.php';
 
 $sessions = Sessions::getInstance();
 $ctl = $_GET['ctl'];
+if ($ctl == "") {
+    $ctl = "signin";
+}
 if (!$sessions->isUserAgentTheSame() && !in_array($ctl, Config::$notuseragent_ctls)) {
     header("Location: index.php?ctl=notuseragent");
 }
@@ -74,7 +77,7 @@ if (isset($ctl)) {
     if (isset($map[$ctl])) {
         $ruta = $ctl;
     } else {
-        header('Location: ./index.php?ctl=error');
+        header('Location: ./index.php?ctl=error&test=esfgwege');
         exit;
     }
 } else {
@@ -96,6 +99,6 @@ if (method_exists($controlador['controller'], $controlador['action'])) {
         header('Location: ./index.php?ctl=access');
     }
 } else {
-    header('Location: ./index.php?ctl=error');
+    header('Location: ./index.php?ctl=error&testse=ewgwehwgh');
     exit;
 }
