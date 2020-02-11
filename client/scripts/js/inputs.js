@@ -192,35 +192,7 @@ function removeMessageToInput(input, messageId) {
 genericLengthMessages($("#inputPassword"));
 addErrorMessage($("#inputPassword"), /[a-z@$!%*?&A-Za-z\d@$!%*?&]/i, "Incorrecto")
 //FormValidations
-//signin
-addFilterToInputKey($("#inputEmail"), FILTER_REGEX_USERNAME);
-inputMaxLength($("#inputEmail, #inputPassword"));
 
-addFilterToInputKey($("#inputPassword"), FILTER_REGEX_PASSWORD);
-
-//signup
-addFilterToInputKey($("#inputName"), FILTER_REGEX_LETTERS);
-inputMaxLength($("#inputName"), 50);
-
-addFilterToInputKey($("#inputUsername"), FILTER_REGEX_USERNAME);
-inputMaxLength($("#inputUsername"));
-
-addFilterToInputKey($("#inputPassword"), FILTER_REGEX_PASSWORD);
-inputMaxLength($("#inputPassword"));
-
-addFilterToInputKey($("#inputEmail"), FILTER_REGEX_USERNAME);
-inputMaxLength($("#inputEmail"));
-
-//calendar
-addFilterToInputKey($("#inputEventTitle"), FILTER_REGEX_ALPHANUMERIC);
-inputMaxLength($("#inputEventTitle"), 50);
-
-//classroom
-addFilterToInputKey($("#inputClassroomName, #inputClasroomDescription"), FILTER_REGEX_LETTERS);
-inputMaxLength($("#inputClassroomName, #inputClasroomDescription"), 50);
-
-//schedule
-addFilterToInputKey($("#inputScheduleStartHour, #inputScheduleEndHour"), FILTER_REGEX_NONE);
 
 //Fix floating label bug
 $("input").on("focus", function () {
