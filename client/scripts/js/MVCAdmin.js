@@ -457,8 +457,8 @@ class AdminController {
                 $(this).hide();
             });
             var tabContainer = $("#" + current.attr("tabContainer"));
-            //view.fadeInItem(tabContainer);
-            tabContainer.show();
+            view.fadeInItem(tabContainer);
+            //tabContainer.show();
         });
 
         $("#tabTeachers").trigger("click");
