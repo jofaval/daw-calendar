@@ -1,10 +1,10 @@
 <?php
-include_once __DIR__ . '../server/libs/utils.php';
-include_once __DIR__ . '../server/libs/bEmail.php';
-include_once __DIR__ . '../server/libs/bFile.php';
-include_once __DIR__ . '../server/libs/bCrypt.php';
-include_once __DIR__ . '../server/classes/Validation.php';
-include_once __DIR__ . '../server/classes/Sessions.php';
+include_once __DIR__ . '../libs/utils.php';
+include_once __DIR__ . '../libs/bEmail.php';
+include_once __DIR__ . '../libs/bFile.php';
+include_once __DIR__ . '../libs/bCrypt.php';
+include_once __DIR__ . '../classes/Validation.php';
+include_once __DIR__ . '../classes/Sessions.php';
 
 class Controller
 {
@@ -79,7 +79,7 @@ class Controller
         }
 
         if ($result) {
-            header("Location: ./index.php?ctl=calendar/");
+            //header("Location: ./index.php?ctl=calendar/");
         } else {
             require __DIR__ . '/../templates/signin.php';
         }
@@ -88,10 +88,13 @@ class Controller
     public function signinFunctionality()
     {
         $model = Model::getInstance();
-        $validation = Validation::getInstance();
+        //$validation = Validation::getInstance();
         $sessions = Sessions::getInstance();
 
-        $regla = array(
+        $username = Utils::getCleanedData("username");
+        $password = Utils::getCleanedData("password");
+
+        /* $regla = array(
             array(
                 'name' => 'username',
                 'regla' => 'no-empty,username',
@@ -101,15 +104,15 @@ class Controller
                 'regla' => 'no-empty,password',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, ["username" => $username, "password" => $password]); */
+        $validation = true;
 
         if ($validation === true) {
-            $username = Utils::getCleanedData("username");
-            $password = Utils::getCleanedData("password");
             $signin = $model->signin($username);
+            var_dump($signin);
             if (Cryptography::blowfishCrypt($password, $username) == $signin[0]["password"]) {
                 $sessions->setSession("username", $username);
-                $sessions->setSession("access", $signin[0]["access"]);
+                $sessions->setSession("access", $signin[0]["type"]);
                 return true;
             }
         }
@@ -699,7 +702,7 @@ class Controller
     public function getMonthlyNonSchoolDays()
     {
         $validation = Validation::getInstance();
-        
+
         $regla = array(
             array(
                 'name' => 'startingDate',
@@ -722,8 +725,18 @@ class Controller
     public function test()
     {
         $model = Model::getInstance();
+        $sessions = Sessions::getInstance();
 
-        return Cryptography::
+        //return Cryptography::blowfishCrypt("test", "test");
+
+            $signin = $model->signin("test");
+            if (Cryptography::blowfishCrypt("test", "test") == $signin[0]["password"]) {
+                $sessions->setSession("username", "test");
+                $sessions->setSession("access", $signin[0]["access"]);
+                return true;
+            }
+
+            return false;
 
         /* $params = [
             "orderId" => '94',
@@ -741,7 +754,7 @@ class Controller
         VALUES
         (:orderId, :startHour, :endHour, :currentyear)",
         $params); */
-         /*return $model->query("SELECT * FROM `schedules` WHERE currentyear=:currentyear)",
+        /*return $model->query("SELECT * FROM `schedules` WHERE currentyear=:currentyear)",
         $params);*/
         /* $year = "2019";
         $test = $model->conexion->prepare("SELECT * FROM schedules WHERE currentyear=:currentyear");
