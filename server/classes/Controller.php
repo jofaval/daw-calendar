@@ -691,6 +691,27 @@ class Controller
         return Model::getInstance()->query("SELECT `nonWorkDay` FROM `nonWorkWeeklyDays`", []);
     }
 
+    public function getMonthlyNonSchoolDays()
+    {
+        $regla = array(
+            array(
+                'name' => 'startingDate',
+                'regla' => 'no-empty,datetime',
+            ),
+            array(
+                'name' => 'endingDate',
+                'regla' => 'no-empty,date',
+            ),
+        );
+        $validation = $validation->rules($regla, $_POST);
+
+        if ($validation === true) {
+            return Model::getInstance()->getMonthlyNonSchoolDays(Utils::getCleanedData("year"), Utils::getCleanedData("month"));
+        }
+
+        return false;
+    }
+
     public function test()
     {
         $model = Model::getInstance();

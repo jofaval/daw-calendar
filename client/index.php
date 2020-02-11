@@ -61,6 +61,7 @@ $map = array(
     'getFormEvent' => array('controller' => 'AjaxController', 'action' => 'getFormEvent', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'getFormTeacher' => array('controller' => 'AjaxController', 'action' => 'getFormTeacher', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'getFormSchedule' => array('controller' => 'AjaxController', 'action' => 'getFormSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'getMonthlyNonSchoolDays' => array('controller' => 'AjaxController', 'action' => 'getMonthlyNonSchoolDays', 'access' => Config::$ACCESS_LEVEL_ADMIN),
 );
 
 if (Config::$developmentMode) {

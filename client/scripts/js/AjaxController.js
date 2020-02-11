@@ -187,4 +187,11 @@ class AjaxController {
     static getNonWorkWeeklyDays(success) {
         AjaxController.genericAjaxRequest("getNonWorkWeeklyDays", {}, success);
     }
+
+    static getMonthlyNonSchoolDays(year, month, success) {
+        AjaxController.genericAjaxRequest("getMonthlyNonSchoolDays", {
+            "year": year,
+            "month": month,
+        }, success);
+    }
 }

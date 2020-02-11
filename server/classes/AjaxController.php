@@ -172,4 +172,9 @@ class AjaxController
     {
         $this->genericAjaxReturn(__FUNCTION__, ["username"]);
     }
+
+    public function getMonthlyNonSchoolDays()
+    {
+        $this->genericAjaxReturn(__FUNCTION__, ["username", "month"]);
+    }
 }

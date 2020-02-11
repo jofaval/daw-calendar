@@ -327,4 +327,15 @@ class Model extends PDO
         ];
         return $this->query("SELECT * FROM events WHERE selectedDay between :startingDate AND :endingDate", $params);
     }
+
+    public function getMonthlyNonSchoolDays($selectedYear, $selectedMonth)
+    {
+        $params = [
+            "selectedYear" => $selectedYear,
+            "selectedMonth" => $selectedMonth,
+        ];
+
+        return $this->query("SELECT * FROM `specialDays` WHERE YEAR(specialDay)=:selectedYear and MONTH(specialDay)=:selectedMonth", $params);
+    }
+
 }
