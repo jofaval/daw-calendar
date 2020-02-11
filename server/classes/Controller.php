@@ -34,6 +34,26 @@ class Controller
         require __DIR__ . '/../templates/email.php';
     }
 
+    public function getFormClassroom()
+    {
+        return __DIR__ . '/../templates/forms/formClassroom.html';
+    }
+
+    public function getFormEvent()
+    {
+        return __DIR__ . '/../templates/forms/formEvent.html';
+    }
+
+    public function getFormTeacher()
+    {
+        return __DIR__ . '/../templates/forms/formTeacher.html';
+    }
+
+    public function getFormSchedule()
+    {
+        return __DIR__ . '/../templates/forms/formSchedule.html';
+    }
+
     public function confirmEmailFunctionality()
     {
         $tokenCode = Utils::getCleanedData("token");

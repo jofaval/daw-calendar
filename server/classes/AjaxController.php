@@ -153,7 +153,22 @@ class AjaxController
         $this->genericAjaxReturn(__FUNCTION__, ["username"]);
     }
 
-    public function getNonWorkWeeklyDays()
+    public function getFormClassroom()
+    {
+        $this->genericAjaxReturn(__FUNCTION__, ["username"]);
+    }
+
+    public function getFormEvent()
+    {
+        $this->genericAjaxReturn(__FUNCTION__, ["username"]);
+    }
+
+    public function getFormTeacher()
+    {
+        $this->genericAjaxReturn(__FUNCTION__, ["username"]);
+    }
+
+    public function getFormSchedule()
     {
         $this->genericAjaxReturn(__FUNCTION__, ["username"]);
     }

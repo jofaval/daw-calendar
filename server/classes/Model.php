@@ -31,11 +31,12 @@ class Model extends PDO
 
         if (!empty($params)) {
             foreach ($params as $key => $value) {
-                if (is_int($value)) {
-                    $result->bindValue(":$key", $value, PDO::PARAM_INT);
-                } else {
-                    $result->bindValue(":$key", $value, PDO::PARAM_STR);
-                }
+                $result->bindValue(":$key", $value);
+                /*if (is_int($value)) {
+            $result->bindValue(":$key", $value, PDO::PARAM_INT);
+            } else {
+            $result->bindValue(":$key", $value, PDO::PARAM_STR);
+            }*/
             }
         }
 
@@ -48,11 +49,12 @@ class Model extends PDO
 
         if (!empty($params)) {
             foreach ($params as $key => $value) {
-                if (is_int($value)) {
-                    $result->bindValue(":$key", $value, PDO::PARAM_INT);
-                } else {
-                    $result->bindValue(":$key", $value, PDO::PARAM_STR);
-                }
+                $result->bindValue(":$key", $value);
+                /*if (is_int($value)) {
+            $result->bindValue(":$key", $value, PDO::PARAM_INT);
+            } else {
+            $result->bindValue(":$key", $value, PDO::PARAM_STR);
+            }*/
             }
         }
 

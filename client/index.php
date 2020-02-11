@@ -56,6 +56,10 @@ $map = array(
     'deleteSchedule' => array('controller' => 'AjaxController', 'action' => 'deleteSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'doesUsernameExist' => array('controller' => 'AjaxController', 'action' => 'doesUsernameExist', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'getNonWorkWeeklyDays' => array('controller' => 'AjaxController', 'action' => 'getNonWorkWeeklyDays', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'getFormClassroom' => array('controller' => 'AjaxController', 'action' => 'getFormClassroom', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'getFormEvent' => array('controller' => 'AjaxController', 'action' => 'getFormEvent', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'getFormTeacher' => array('controller' => 'AjaxController', 'action' => 'getFormTeacher', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'getFormSchedule' => array('controller' => 'AjaxController', 'action' => 'getFormSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
 );
 
 if (Config::$developmentMode) {
