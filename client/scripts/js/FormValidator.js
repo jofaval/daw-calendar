@@ -16,6 +16,9 @@ class FormValidator {
             case "schedule":
                 value = this.validateSchedule(form);
                 break;
+            case "events":
+                value = this.validateEvents(form);
+                break;
         }
 
         return value;
@@ -108,6 +111,18 @@ class FormValidator {
         var inputs = {
             "startHour": form.find("#inputScheduleStartHour"),
             "endHour": form.find("#inputScheduleEndHour"),
+        };
+
+        return Validator.validate(rules, inputs);
+    }
+
+    validateEvents(form) {
+        var rules = [{
+            "fieldName": "inputTitle",
+            "rules": "noEmpty,name",
+        }];
+        var inputs = {
+            "startHour": form.find("#inputTitle"),
         };
 
         return Validator.validate(rules, inputs);
