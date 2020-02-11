@@ -306,20 +306,29 @@ class View {
         });
 
         var calendar = $nonSchoolDays.find("#calendar");
-        var sampleEvents = [{
-            title: "Soulful sundays bay area",
-            date: new Date().setDate(new Date().getDate() - 7), // last week
-            link: "#"
-        }, {
-            title: "London Comicon",
-            date: new Date().getTime(), // today
-            link: "#"
-        }, {
-            title: "Youth Athletic Camp",
-            date: new Date().setDate(new Date().getDate() + 31), // next month
-            link: "#"
-        }];
-        var calendarControls = new CalendarControls(calendar, sampleEvents);
+        this.loadEventsFromMonth(new Date(), calendar);
+    }
+
+    loadEventsFromMonth(date, calendar) {
+        var sampleEvents = [];
+        AjaxController.getMonthlyNonSchoolDays(date.getFullYear(), date.getMonth(), function (data) {
+            var jsonParsed = JSON.parse(data);
+            for (const key in jsonParsed) {
+                var currentEvent = {};
+                if (jsonParsed.hasOwnProperty(key)) {
+                    const element = jsonParsed[key];
+                    sampleEvents.push({
+                        title: "Not bookeable",
+                        date: new Date(Date.parse(element.specialDay)), // next month
+                        link: "#"
+                    });
+                }
+            }
+            var calendarControls = new CalendarControls(calendar, sampleEvents, date);
+            calendarControls.setOnMonthChanged(function name(month, year) {
+                loadEventsFromMonth(new Date(year, month, 1), calendar, sampleEvents);
+            });
+        });
     }
 
     createTab(tabName, container) {
