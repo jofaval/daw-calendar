@@ -626,11 +626,15 @@ class Controller
                 'name' => 'selectedDay',
                 'regla' => 'no-empty,date',
             ),
+            array(
+                'name' => 'classroom',
+                'regla' => 'no-empty,text',
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->getEventsFromDay(Utils::getCleanedData("selectedDay"));
+            return $model->getEventsFromDay(Utils::getCleanedData("selectedDay"), Utils::getCleanedData("classroom"));
         }
 
         return false;

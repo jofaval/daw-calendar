@@ -74,9 +74,9 @@ class Model {
         });
     }
 
-    getEventsFromDay(date, days) {
+    getEventsFromDay(date, days, classroom) {
         var instance = this.instance;
-        AjaxController.getEventsFromDay(date, days, function (data) {
+        AjaxController.getEventsFromDay(date, days, classroom, function (data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -246,7 +246,7 @@ class Controller {
         //console.log("Day  - " + dayInNumber);
 
         controller.view.timeTableDay.TT({
-            events: controller.model.getEventsFromDay(newDate),
+            events: controller.model.getEventsFromDay(newDate, classroom),
             schedule: controller.model.getSchedule(),
             day: newDate
         });
