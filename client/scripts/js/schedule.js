@@ -1,2 +1,2 @@
 var formValidator = new FormValidator();
-validateForm("classroom", $("form"));
+validateForm("schedule", $("form"));
