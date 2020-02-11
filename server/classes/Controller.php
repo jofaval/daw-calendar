@@ -720,15 +720,28 @@ class Controller
     {
         $model = Model::getInstance();
         $params = [
-            "orderId" => '9',
-            "startHour" => "8:50",
-            "endHour" => "9:45",
-            "year" => "2019",
+            "orderId" => '94',
+            "startHour" => '7:55',
+            "endHour" => '8:50',
+            "currentyear" => '2019',
         ];
-        //return count($model->query("SELECT * FROM `schedules`"));
+        $orderId = '1';
+        return $model->cudOperation("INSERT INTO `schedules`
+        (`orderId`, `startHour`, `endHour`, `currentyear`)
+        VALUES
+        (:orderId, :startHour, :endHour, :currentyear)",
+        $params);
+        /*$test = $model->conexion->prepare("SELECT * FROM schedules WHERE orderId=:orderId");
+
+        $test->bindParam(":orderId", $orderId);
+
+        $test->execute();
+        return $test->fetchAll(PDO::FETCH_ASSOC);*/
+
+        //return count($model->query("SELECT * FROM `schedules`", $params));
         //return $model->cudOperation("INSERT INTO `schedules` (`orderId`, `startHour`, `endHour`, `year`) VALUES (:orderId, :startHour, :endHour, :year)", $params);
         //return $model->cudOperation("INSERT INTO `schedules` (`orderId`, `startHour`, `endHour`, `year`) VALUES ('7', '9:45', '10:40', '2019')", $params);
         //return $_REQUEST["year"];
-        return $model->getTeachers();
+        //return $model->getTeachers();
     }
 }

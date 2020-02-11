@@ -6,7 +6,7 @@ include_once __DIR__ . '../server/libs/utils.php';
 
 class Model extends PDO
 {
-    protected $conexion;
+    public $conexion;
     public static $instance = null;
 
     public function __construct()
@@ -28,10 +28,9 @@ class Model extends PDO
     public function query($queryString, $params = [])
     {
         $result = $this->conexion->query($queryString);
-
         if (!empty($params)) {
             foreach ($params as $key => $value) {
-                $result->bindValue(":$key", $value);
+                $result->bindValue(":$key", $value, PDO::PARAM_STR);
                 /*if (is_int($value)) {
             $result->bindValue(":$key", $value, PDO::PARAM_INT);
             } else {
@@ -40,6 +39,7 @@ class Model extends PDO
             }
         }
 
+        $result->execute();
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -47,9 +47,12 @@ class Model extends PDO
     {
         $result = $this->conexion->prepare($insertString);
 
+        var_dump($params);
+        $count = 1;
         if (!empty($params)) {
             foreach ($params as $key => $value) {
-                $result->bindValue(":$key", $value);
+                $result->bindValue(":" . $key, $value, PDO::PARAM_STR);
+                $count++;
                 /*if (is_int($value)) {
             $result->bindValue(":$key", $value, PDO::PARAM_INT);
             } else {
@@ -57,8 +60,9 @@ class Model extends PDO
             }*/
             }
         }
+        var_dump($count);
 
-        return $result->execute();
+        return $result->execute($params);
     }
 
     public function disable($entityType, $params, $enabled)
@@ -337,6 +341,16 @@ class Model extends PDO
         ];
 
         return $this->query("SELECT * FROM `specialDays` WHERE YEAR(specialDay)=:selectedYear and MONTH(specialDay)=:selectedMonth", $params);
+    }
+
+    public function test()
+    {
+        $params = [
+            "orderId" => 1,
+        ];
+        var_dump($params);
+
+        return $this->query("SELECT * FROM `schedules` WHERE orderId=:orderId", $params);
     }
 
 }
