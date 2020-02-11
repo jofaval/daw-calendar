@@ -307,6 +307,7 @@ class View {
 
         var calendar = $nonSchoolDays.find("#calendar");
         this.loadEventsFromMonth(new Date(), calendar);
+        var calendarControls = new CalendarControls(calendar, [], new Date()); //For testing
     }
 
     loadEventsFromMonth(date, calendar) {
@@ -459,15 +460,17 @@ class AdminController {
         var controller = this;
         $("#tabHeaders .btn").on("click", function () {
             var current = $(this);
-            $("#tabHeaders .btn.active").removeClass("active");
-            current.addClass("active");
-            $(".tabContainer").each(function () {
-                //view.fadeOutItem($(this));
-                $(this).hide();
-            });
-            var tabContainer = $("#" + current.attr("tabContainer"));
-            view.fadeInItem(tabContainer);
-            //tabContainer.show();
+            if (!current.hasClass("active")) {
+                $("#tabHeaders .btn.active").removeClass("active");
+                current.addClass("active");
+                $(".tabContainer").each(function () {
+                    //view.fadeOutItem($(this));
+                    $(this).hide();
+                });
+                var tabContainer = $("#" + current.attr("tabContainer"));
+                view.fadeInItem(tabContainer);
+                //tabContainer.show();
+            }
         });
 
         $("#tabTeachers").trigger("click");
