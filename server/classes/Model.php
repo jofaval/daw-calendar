@@ -68,7 +68,7 @@ class Model extends PDO
     public function signin($username)
     {
         $params = ["username" => $username];
-        $signin = $this->query("SELECT access, password FROM users WHERE username=:username", $params);
+        $signin = $this->query("SELECT type, password FROM users WHERE username=:username", $params);
         return $signin;
     }
 
@@ -333,7 +333,6 @@ class Model extends PDO
         $params = [
             "orderId" => 1,
         ];
-        var_dump($params);
 
         return $this->query("SELECT * FROM `schedules` WHERE orderId=:orderId", $params);
     }
