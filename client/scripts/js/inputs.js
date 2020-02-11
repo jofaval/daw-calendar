@@ -1,7 +1,7 @@
-$messageContainer = $("<span class='font-weight-class'></span>");
+var $messageContainer = $("<span class='font-weight-class'></span>");
 
-whenUserDoneTypingInInput($("#inputUsername"), function () {
-    AjaxController.doesUsernameExist($input.val(), function (data) {
+whenUserDoneTypingInInput($("#inputUsername"), function() {
+    AjaxController.doesUsernameExist($input.val(), function(data) {
         var jsonData = JSON.parse(data);
         if (jsonData === true) {
             $("#usernameHelp").html($messageContainer.clone().addClass("text-danger").html("✘ Isn't available."));
@@ -13,7 +13,7 @@ whenUserDoneTypingInInput($("#inputUsername"), function () {
 
 function whenUserDoneTypingInInput(input, action, interval = 250) {
     var typingTimeID = 0;
-    input.on("keyup", function () {
+    input.on("keyup", function() {
         clearTimeout(typingTimeID);
         typingTimeID = setTimeout(
             action,
@@ -21,7 +21,7 @@ function whenUserDoneTypingInInput(input, action, interval = 250) {
         );
     });
 
-    input.on("keydown", function () {
+    input.on("keydown", function() {
         clearTimeout(typingTimeID);
     });
 }
@@ -33,7 +33,7 @@ $(inputsWithRemoveOption.join(", ")).after(removeContent.clone().click(function 
     $(this).prev().val("");
 }));*/
 
-$("#show_hide_password .trigger").on("click", function (event) {
+$("#show_hide_password .trigger").on("click", function(event) {
     var event = event || window.event;
     event.preventDefault();
     if ($("#show_hide_password input").attr("type") == "text") {
@@ -53,7 +53,7 @@ var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\
 var mediumRegex = new RegExp(
     "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
 
-$("#inputPassword").on("keyup", function () {
+$("#inputPassword").on("keyup", function() {
     var current = $(this);
 
     current.removeClass("border-success");
@@ -70,7 +70,7 @@ $("#inputPassword").on("keyup", function () {
     }
 });
 
-$("input:file").change(function () {
+$("input:file").change(function() {
     var fullPath = $(this).val();
 
     var filename = "Choose file";
@@ -87,14 +87,14 @@ $("input:file").change(function () {
     $(this).next().html(filename);
 });
 
-const FILTER_REGEX_NUMBERS = 0;
-const FILTER_REGEX_LETTERS = 1;
-const FILTER_REGEX_ALPHANUMERIC = 2;
-const FILTER_REGEX_ALPHANUMERIC_MIXED = 3;
-const FILTER_REGEX_EMAIL = 4;
-const FILTER_REGEX_PASSWORD = 5;
-const FILTER_REGEX_USERNAME = 6;
-const FILTER_REGEX_NONE = 0;
+var FILTER_REGEX_NUMBERS = 0;
+var FILTER_REGEX_LETTERS = 1;
+var FILTER_REGEX_ALPHANUMERIC = 2;
+var FILTER_REGEX_ALPHANUMERIC_MIXED = 3;
+var FILTER_REGEX_EMAIL = 4;
+var FILTER_REGEX_PASSWORD = 5;
+var FILTER_REGEX_USERNAME = 6;
+var FILTER_REGEX_NONE = 0;
 
 function addFilterToInputKey(input, filter) {
     if (input.length == 0) {
@@ -125,7 +125,7 @@ function addFilterToInputKey(input, filter) {
             break;
     }
 
-    input.on("keypress", function (event) {
+    input.on("keypress", function(event) {
         var event = event || window.event;
 
         if (!regExFilter.test(event.key)) {
@@ -140,7 +140,7 @@ function inputMaxLength(input, maxLength = 24) {
         return false;
     }
     input.prop("maxlength", maxLength);
-    input.on("keypress", function (event) {
+    input.on("keypress", function(event) {
         var event = event || window.event;
 
         if (input.val().length > (maxLength - 1)) {
@@ -151,7 +151,7 @@ function inputMaxLength(input, maxLength = 24) {
 }
 
 function addErrorMessage(input, regex, messageId, message) {
-    whenUserDoneTypingInInput(input, function () {
+    whenUserDoneTypingInInput(input, function() {
         var value = input.val();
 
         if (regex.test(value)) {
@@ -163,7 +163,7 @@ function addErrorMessage(input, regex, messageId, message) {
 }
 
 function genericLengthMessages(input) {
-    whenUserDoneTypingInInput(input, function () {
+    whenUserDoneTypingInInput(input, function() {
         var value = input.val();
 
         if (value.length < input.attr("min")) {
@@ -191,15 +191,15 @@ function removeMessageToInput(input, messageId) {
 }
 genericLengthMessages($("#inputPassword"));
 addErrorMessage($("#inputPassword"), /[a-z@$!%*?&A-Za-z\d@$!%*?&]/i, "Incorrecto")
-//FormValidations
+    //FormValidations
 
 
 //Fix floating label bug
-$("input").on("focus", function () {
+$("input").on("focus", function() {
     $(this).attr("data-placeholder", $(this).attr("placeholder"));
     $(this).attr("placeholder", "");
 });
-$("input").on("blur", function () {
+$("input").on("blur", function() {
     $(this).attr("placeholder", $(this).attr("data-placeholder"));
     $(this).removeAttr("data-placeholder");
 });
