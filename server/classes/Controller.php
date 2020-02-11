@@ -697,6 +697,8 @@ class Controller
 
     public function getMonthlyNonSchoolDays()
     {
+        $validation = Validation::getInstance();
+        
         $regla = array(
             array(
                 'name' => 'startingDate',
@@ -719,18 +721,31 @@ class Controller
     public function test()
     {
         $model = Model::getInstance();
-        $params = [
+        /* $params = [
             "orderId" => '94',
             "startHour" => '7:55',
             "endHour" => '8:50',
             "currentyear" => '2019',
+        ]; */
+        $params = [
+            "currentyear" => '2020',
         ];
         $orderId = '1';
-        return $model->cudOperation("INSERT INTO `schedules`
+        return $model->getSchedules();
+        /* return $model->cudOperation("INSERT INTO `schedules`
         (`orderId`, `startHour`, `endHour`, `currentyear`)
         VALUES
         (:orderId, :startHour, :endHour, :currentyear)",
-        $params);
+        $params); */
+         /*return $model->query("SELECT * FROM `schedules` WHERE currentyear=:currentyear)",
+        $params);*/
+        /* $year = "2019";
+        $test = $model->conexion->prepare("SELECT * FROM schedules WHERE currentyear=:currentyear");
+
+        $test->bindValue(":currentyear", $year, PDO::PARAM_STR);
+
+        $test->execute(["currentyear" => $year]);
+        return $test->fetchAll(PDO::FETCH_ASSOC); */
         /*$test = $model->conexion->prepare("SELECT * FROM schedules WHERE orderId=:orderId");
 
         $test->bindParam(":orderId", $orderId);

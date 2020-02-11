@@ -1,8 +1,8 @@
 <?php
-include_once __DIR__ . '../server/classes/Config.php';
-include_once __DIR__ . '../server/libs/bCrypt.php';
-include_once __DIR__ . '../server/libs/bDate.php';
-include_once __DIR__ . '../server/libs/utils.php';
+include_once __DIR__ . '/../Config.php';
+include_once __DIR__ . '../../libs/bCrypt.php';
+include_once __DIR__ . '../../libs/bDate.php';
+include_once __DIR__ . '../../libs/utils.php';
 
 class Model extends PDO
 {
@@ -27,19 +27,14 @@ class Model extends PDO
 
     public function query($queryString, $params = [])
     {
-        $result = $this->conexion->query($queryString);
+        $result = $this->conexion->prepare($queryString);
         if (!empty($params)) {
             foreach ($params as $key => $value) {
-                $result->bindValue(":$key", $value, PDO::PARAM_STR);
-                /*if (is_int($value)) {
-            $result->bindValue(":$key", $value, PDO::PARAM_INT);
-            } else {
-            $result->bindValue(":$key", $value, PDO::PARAM_STR);
-            }*/
+                $result->bindValue(":" . $key, $value, PDO::PARAM_STR);
             }
         }
 
-        $result->execute();
+        $result->execute($params);
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -47,20 +42,11 @@ class Model extends PDO
     {
         $result = $this->conexion->prepare($insertString);
 
-        var_dump($params);
-        $count = 1;
         if (!empty($params)) {
             foreach ($params as $key => $value) {
                 $result->bindValue(":" . $key, $value, PDO::PARAM_STR);
-                $count++;
-                /*if (is_int($value)) {
-            $result->bindValue(":$key", $value, PDO::PARAM_INT);
-            } else {
-            $result->bindValue(":$key", $value, PDO::PARAM_STR);
-            }*/
             }
         }
-        var_dump($count);
 
         return $result->execute($params);
     }
@@ -253,11 +239,10 @@ class Model extends PDO
 
     public function getSchedules()
     {
-
         $year = Utils::getAcademicYear(date("now"));
         //$year = "2020";
-        $params = ["scheduleYear" => $year];
-        return $this->query("SELECT * FROM schedules WHERE enabled=true and YEAR(scheduleYear)=:scheduleYear", $params);
+        $params = ["currentyear" => $year];
+        return $this->query("SELECT * FROM schedules WHERE currentyear=:currentyear", $params);
     }
 
     public function createEvent($title, $startHour, $date)
@@ -305,7 +290,7 @@ class Model extends PDO
             "selectedYear" => Utils::getCleanedData("selectedYear"),
         ];
 
-        return $this->query("SELECT * FROM schedules WHERE year=:selectedYear", $params);
+        return $this->query("SELECT * FROM schedules WHERE currentyear=:currentyear", $params);
     }
 
     public function getEventsFromDay($selectedDay, $classroom)
@@ -352,5 +337,4 @@ class Model extends PDO
 
         return $this->query("SELECT * FROM `schedules` WHERE orderId=:orderId", $params);
     }
-
 }
