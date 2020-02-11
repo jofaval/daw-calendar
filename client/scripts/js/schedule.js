@@ -1,2 +1,8 @@
 var formValidator = new FormValidator();
-validateForm("schedule", $("form"));
+$("form").on("submit", function (event) {
+    var event = event || window.event;
+    if (!validateForm("schedule", $("form"))) {
+        event.preventDefault();
+        return false;
+    }
+});

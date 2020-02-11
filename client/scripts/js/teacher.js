@@ -1,5 +1,11 @@
 var formValidator = new FormValidator();
-validateForm("signup", $("form"));
+$("form").on("submit", function (event) {
+    var event = event || window.event;
+    if (!validateForm("signup", $("form"))) {
+        event.preventDefault();
+        return false;
+    }
+});
 
 //signin
 addFilterToInputKey($("#inputTeacherName"), FILTER_REGEX_LETTERS);

@@ -1,5 +1,11 @@
 var formValidator = new FormValidator();
-validateForm("signin", $("form"));
+$("form").on("submit", function (event) {
+    var event = event || window.event;
+    if (!validateForm("signin", $("form"))) {
+        event.preventDefault();
+        return false;
+    }
+});
 
 //signin
 addFilterToInputKey($("#inputEmail"), FILTER_REGEX_USERNAME);
