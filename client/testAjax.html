@@ -19,8 +19,12 @@
         "inputScheduleStartHour": "7:55",
         "inputScheduleEndHour": "8:50",
         "year": "2019",
-    }, function (data) {
+    }, function(data) {
+        console.log("EXITO");
         console.log(data);
+    }, function(data) {
+        console.log("ERROR");
+        console.log(data.responseText);
     });
 
     //$(document.body).load("./scripts/js/AjaxController.js");

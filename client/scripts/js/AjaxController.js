@@ -17,7 +17,7 @@
 class AjaxController {
     static request(requestLocation, requestType = "POST", params = {}, success = AjaxController.defaultAjaxSuccessAction, error = AjaxController.defaultAjaxErrorAction, async = true) {
         $.ajax({
-            url: '../index.php?ctl=' + requestLocation,
+            url: 'index.php?ctl=' + requestLocation,
             data: params,
             type: requestType,
             async: async,
@@ -36,7 +36,7 @@ class AjaxController {
 
     static genericAjaxRequest(requestName, params, success, error = null) {
         if (error == null) {
-            error = function (data) {
+            error = function(data) {
                 sendNotification("Couldn't execute operation succesfully", true);
             };
         }
