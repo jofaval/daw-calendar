@@ -88,6 +88,8 @@ class Sessions
             unset($_SESSION[$session_name]);
         } else {
             unset($_SESSION);
+            session_unset();
+            session_destroy();
         }
     }
 
