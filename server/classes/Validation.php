@@ -158,7 +158,7 @@ class Validation
 
     protected function _name($campo, $valor)
     {
-        if (isset($valor) && preg_match("/^[a-zñ\ \º\ª]+$/iu", $valor)) {
+        if (isset($valor) && preg_match("/^[a-zñ\ \º\ª]{0,50}$/iu", $valor)) {
             return true;
         } else {
             $this->mensaje[$campo][] = "The field $campo must be a name";
