@@ -256,8 +256,10 @@ class Model extends PDO
             "username" => $sessions->getSession("username"),
         ];
 
-        if (count($this->query("SELECT name FROM events WHERE startHour=:startHour and date=:date", $params)) === 0) {
-            return $this->query("INSERT INTO FROM events (title, startHour, date, username) VALUES (:title, :startHour, :date, :username)", $params);
+        if (count($this->query("SELECT name FROM events WHERE startHour=:startHour and date=:date
+        and date not in (select specialDay from specialDays where specialDay=:date)
+        and WEEKDAY(date) not in (select nonWorkDay from nonWorkWeeklyDays where year=YEAR(date))", $params)) === 0) {
+            return $this->query("INSERT INTO events (title, startHour, date, username) VALUES (:title, :startHour, :date, :username)", $params);
         }
 
         return false;
