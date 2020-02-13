@@ -72,8 +72,16 @@
         icon: $.sweetModal.ICON_SUCCESS
     });*/
 
-
-    Modal.genericModalWithForm("Teachers");
+    //Modal.genericModalWithForm("Teachers");
+    $.sweetModal({
+        title: 'HTML Content',
+        content: `<form id='picked'>
+            <input type="text">
+        <input type="text">
+        <input type="submit" value="Test">
+            </form>`,
+        theme: $.sweetModal.THEME_DARK
+    });
 </script>
 
 </html>
