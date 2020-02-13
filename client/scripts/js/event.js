@@ -9,3 +9,5 @@ $("form").on("submit", function (event) {
 
 addFilterToInputKey($("#inputEventTitle"), FILTER_REGEX_ALPHANUMERIC);
 inputMaxLength($("#inputEventTitle"), 50);
+
+addErrorMessage($("#inputEventTitle"), /^[a-z0-9\ \.\-\_]$/i, "Carácteres no válidos");

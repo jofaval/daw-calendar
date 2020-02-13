@@ -19,3 +19,8 @@ inputMaxLength($("#inputTeacherPassword"));
 
 addFilterToInputKey($("#inputTeacherEmail"), FILTER_REGEX_USERNAME);
 inputMaxLength($("#inputTeacherEmail"));
+
+addErrorMessage($("#inputTeacherName"), /^[a-z\ ]$/i, "Carácteres no válidos");
+addErrorMessage($("#inputTeacherUsername"), /^[a-z0-9_-]$/i, "Carácteres no válidos");
+addErrorMessage($("#inputTeacherPassword"), /[a-z@$!%*?&A-Za-z\d@$!%*?&]/i, "Carácteres no válidos");
+addErrorMessage($("#inputTeacherEmail"), /^[a-z0-9_-\.]$/i, "Carácteres no válidos");
