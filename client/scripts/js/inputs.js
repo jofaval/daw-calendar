@@ -26,12 +26,12 @@ function whenUserDoneTypingInInput(input, action, interval = 250) {
     });
 }
 
-/*var inputsWithRemoveOption = ["input[type=email]", "input[type=text]", "input[type=password]"];
+var inputsWithRemoveOption = ["input[type=email]", "input[type=text]", "input[type=password]"];
 
 var removeContent = $("<span class='removeContent w-100 text-dark'><i class='fa fa-times'></i></span>");
 $(inputsWithRemoveOption.join(", ")).after(removeContent.clone().click(function () {
     $(this).prev().val("");
-}));*/
+}));
 
 $("#show_hide_password .trigger").on("click", function (event) {
     var event = event || window.event;

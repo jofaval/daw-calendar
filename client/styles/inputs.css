@@ -13,7 +13,13 @@
 	transform: translateX(94%);
 }
 
-input:not(:placeholder-shown)+.removeContent, .removeContent:hover {
+#inputUsername+.removeContent,
+#inputName+.removeContent {
+	margin-top: -2em;
+}
+
+input:not(:placeholder-shown)+.removeContent,
+.removeContent:hover {
 	display: block;
 }
 
