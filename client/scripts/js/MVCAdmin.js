@@ -13,7 +13,7 @@ class Model {
 
     loadTeachers(model, whenFinished) {
         model.teachers = [];
-        AjaxController.getTeachers(function(data) {
+        AjaxController.getTeachers(function (data) {
             model.teachers = data;
             whenFinished(model.teachers);
         });
@@ -21,7 +21,7 @@ class Model {
 
     loadClassrooms(model, whenFinished) {
         model.classrooms = [];
-        AjaxController.getClassrooms(function(data) {
+        AjaxController.getClassrooms(function (data) {
             model.classrooms = data;
             whenFinished(model.classrooms);
         });
@@ -29,70 +29,70 @@ class Model {
 
     loadSchedules(model, whenFinished) {
         model.schedules = [];
-        AjaxController.getSchedules(function(data) {
+        AjaxController.getSchedules(function (data) {
             model.schedules = data;
             whenFinished(model.schedules);
         });
     }
 
     signup(name, username, password, email, success) {
-        AjaxController.signup(name, username, password, email, function(data) {
+        AjaxController.signup(name, username, password, email, function (data) {
             model.collection.action();
             success(data);
         });
     }
 
     updateTeacher(name, username, password, email, success) {
-        AjaxController.updateTeacher(name, username, password, email, function(data) {
+        AjaxController.updateTeacher(name, username, password, email, function (data) {
             model.collection.action();
             success(data);
         });
     }
 
     deleteTeacher(email, success) {
-        AjaxController.deleteTeacher(email, function(data) {
+        AjaxController.deleteTeacher(email, function (data) {
             model.collection.action();
             success(data);
         });
     }
 
     createClassroom(name, description, state, success) {
-        AjaxController.createClassroom(name, description, state, function(data) {
+        AjaxController.createClassroom(name, description, state, function (data) {
             model.collection.action();
             success(data);
         });
     }
 
     updateClassroom(name, description, state, success) {
-        AjaxController.updateClassroom(name, description, state, function(data) {
+        AjaxController.updateClassroom(name, description, state, function (data) {
             model.collection.action();
             success(data);
         });
     }
 
     deleteClassroom(name, success) {
-        AjaxController.deleteClassroom(name, function(data) {
+        AjaxController.deleteClassroom(name, function (data) {
             model.collection.action();
             success(data);
         });
     }
 
     createSchedule(name, description, state, success) {
-        AjaxController.createSchedule(name, description, state, function(data) {
+        AjaxController.createSchedule(name, description, state, function (data) {
             model.collection.action();
             success(data);
         });
     }
 
     updateSchedule(name, description, state, success) {
-        AjaxController.updateSchedule(name, description, state, function(data) {
+        AjaxController.updateSchedule(name, description, state, function (data) {
             model.collection.action();
             success(data);
         });
     }
 
     deleteSchedule(name, description, state, success) {
-        AjaxController.deleteSchedule(name, description, state, function(data) {
+        AjaxController.deleteSchedule(name, description, state, function (data) {
             model.collection.action();
             success(data);
         });
@@ -134,6 +134,7 @@ class View {
                     <td>Email</td>
                     <td>Activate</td>
                     <td>Remove</td>
+                    <td>Disable</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -150,6 +151,7 @@ class View {
                     <td>State</td>
                     <td>Active</td>
                     <td>Remove</td>
+                    <td>Disable</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -167,6 +169,7 @@ class View {
                     <td>Year</td>
                     <td>Active</td>
                     <td>Remove</td>
+                    <td>Disable</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -295,7 +298,7 @@ class View {
             0: "sunday",
         };
 
-        AjaxController.getNonWorkWeeklyDays(function(data) {
+        AjaxController.getNonWorkWeeklyDays(function (data) {
             var jsonParsed = JSON.parse(data);
             for (const key in jsonParsed) {
                 if (jsonParsed.hasOwnProperty(key)) {
@@ -312,7 +315,7 @@ class View {
 
     loadEventsFromMonth(date, calendar) {
         var sampleEvents = [];
-        AjaxController.getMonthlyNonSchoolDays(date.getFullYear(), date.getMonth(), function(data) {
+        AjaxController.getMonthlyNonSchoolDays(date.getFullYear(), date.getMonth(), function (data) {
             var jsonParsed = JSON.parse(data);
             for (const key in jsonParsed) {
                 var currentEvent = {};
@@ -382,7 +385,7 @@ class View {
         var current = $(this);
         console.log(current.attr("tabContainer"));
         $("#tabContainer" + current.attr("tabContainer"));
-        $(".tabContainer").each(function() {
+        $(".tabContainer").each(function () {
             controller.fadeOutItem($(this));
         });
         controller.fadeInItem(current);
@@ -399,6 +402,10 @@ class View {
 
     addRowToTable(dataArray, table) {
         var row = $("<tr></tr>");
+
+        var disableState = dataArray["enabled"];
+        delete dataArray["enabled"];
+
         row.on("click", this.selectionEvent);
         for (const key in dataArray) {
             if (dataArray.hasOwnProperty(key)) {
@@ -408,7 +415,25 @@ class View {
             }
         }
         var $btnRemove = $("<td><button class='btn btn-danger'>Remove</button></td>");
+        $btnRemove.on("click", function () {
+
+        });
         row.append($btnRemove);
+
+        var $checkDisable = $(`<td>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input  rounded-circle" id="disable"
+                    name="disable">
+                <label class="custom-control-label rounded-circle" for="monday"></label>
+            </div>
+        </td>`);
+        $checkDisable.on("click", function () {
+
+        });
+        if (disableState != 0) {
+            $checkDisable.find("input").attr("checked", true);
+        }
+        row.append($checkDisable);
         if (table.find("tbody").length) {
             table.find("tbody").append(row);
         } else {
@@ -458,12 +483,12 @@ class AdminController {
         this.view = view;
 
         var controller = this;
-        $("#tabHeaders .btn").on("click", function() {
+        $("#tabHeaders .btn").on("click", function () {
             var current = $(this);
             if (!current.hasClass("active")) {
                 $("#tabHeaders .btn.active").removeClass("active");
                 current.addClass("active");
-                $(".tabContainer").each(function() {
+                $(".tabContainer").each(function () {
                     //view.fadeOutItem($(this));
                     $(this).hide();
                 });
@@ -474,12 +499,12 @@ class AdminController {
         });
 
         $("#tabTeachers").trigger("click");
-        model.loadTeachers(model, function(data) {
+        model.loadTeachers(model, function (data) {
             view.addRowsToTable(model.teachers, view.tableTeachers);
             view.createDataTable(view.tableTeachers);
         });
 
-        model.loadClassrooms(model, function(data) {
+        model.loadClassrooms(model, function (data) {
             view.addRowsToTable(model.classrooms, view.tableClassrooms);
             view.createDataTable(view.tableClassrooms);
         });
