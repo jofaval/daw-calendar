@@ -12,6 +12,9 @@ class Config
         "jquery-ui.min.css",
         "main.css",
         "login.css",
+        "loader.css",
+        "floating-label.css",
+        "inputs.css",
     ];
     public static $mvc_vis_scripts = [
         "libs/jquery.min.js",
@@ -19,6 +22,11 @@ class Config
         "libs/bootstrap.min.js",
         "libs/bootstrap.bundle.min.js",
         "js/utils.js",
+        "js/inputs.js",
+        "js/AjaxController.js",
+        "js/Validator.js",
+        "js/FormValidator.js",
+        "js/preloader.js",
     ];
     public static $emailSender = "no-reply@iesabastos.org";
     public static $emailMsgLineLength = 70;
