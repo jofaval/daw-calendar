@@ -58,9 +58,18 @@ class Sessions
 
     public function initializeValues()
     {
-        $this->setSession("access", 0);
-        $this->setSession("clicks", 10);
-        $this->setSession("userImg", "default.png");
+        if (!$this->doesSessionExist("access")) {
+            $this->setSession("access", 0);
+        }
+
+        if (!$this->doesSessionExist("clicks")) {
+            $this->setSession("clicks", 10);
+        }
+
+        if (!$this->doesSessionExist("userImg")) {
+            $this->setSession("userImg", "default.png");
+        }
+
     }
 
     public function getSessionID()
