@@ -26,6 +26,7 @@ class Config
         "js/AjaxController.js",
         "js/Validator.js",
         "js/FormValidator.js",
+        "js/Modal.js",
         "js/preloader.js",
     ];
     public static $emailSender = "no-reply@iesabastos.org";
