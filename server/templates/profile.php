@@ -1,6 +1,6 @@
 <!--Page configuration-->
 <?php $optionalCSS = ["floating-label.css"];?>
-<?php $optionalScripts = ["js/inputs.js"];?>
+<?php $optionalScripts = [];?>
 <?php $title = "Booking area";?>
 <?php $mainClasses = "h-100 w-100 d-flex justify-content-center";?>
 <?php $showFooter = true;?>

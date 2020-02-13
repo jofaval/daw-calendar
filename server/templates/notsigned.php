@@ -1,6 +1,6 @@
 <!--Page configuration-->
 <?php $optionalCSS = ["floating-label.css", "inputs.css"];?>
-<?php $optionalScripts = ["js/inputs.js"];?>
+<?php $optionalScripts = [];?>
 <?php $title = "LogIn";?>
 <?php $mainClasses = "";?>
 <?php $showFooter = false;?>

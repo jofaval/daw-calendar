@@ -6,15 +6,20 @@
     <div class="form-row d-flex justify-content-around align-items-center">
         <div class="form-group col-md-2">
             <label for="inputTeacherUsername">Username (*)</label>
-            <input type="text" class="form-control" min="3" max="24" id="inputTeacherUsername" name="inputTeacherUsername" aria-describedby="teacherUsernameHelp" placeholder="Enter Username" required>
+            <input type="text" class="form-control" min="3" max="24" id="inputTeacherUsername"
+                name="inputTeacherUsername" aria-describedby="teacherUsernameHelp" placeholder="Enter Username"
+                required>
             <small id="teacherUsernameHelp" class="form-text text-muted">✓ Is available.</small>
         </div>
 
         <div class="input-group form-label-group" id="show_hide_password">
-            <input type="password" min="3" max="24" class="form-control border-top-0 border-left-0 border-3 border-bottom border-right-0 col-md-11" id="inputTeacherPassword" name="inputTeacherPassword" aria-describedby="teacherPasswordHelp" placeholder="Password"
-                required>
+            <input type="password" min="3" max="24"
+                class="form-control border-top-0 border-left-0 border-3 border-bottom border-right-0 col-md-11"
+                id="inputTeacherPassword" name="inputTeacherPassword" aria-describedby="teacherPasswordHelp"
+                placeholder="Password" required>
             <label for="inputTeacherPassword">Password (*)</label>
-            <a href="" tabindex="-1" class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
+            <a href="" tabindex="-1"
+                class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
                 <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
             </a>
             <br>
@@ -24,13 +29,15 @@
 
         <div class="form-group col-md">
             <label for="inputTeacherName">Full Name (*)</label>
-            <input type="text" min="3" max="50" class="form-control" id="inputTeacherName" name="inputTeacherName" aria-describedby="teacherNameHelp" placeholder="Enter name" required>
+            <input type="text" min="3" max="50" class="form-control" id="inputTeacherName" name="inputTeacherName"
+                aria-describedby="teacherNameHelp" placeholder="Enter name" required>
             <small id="teacherNameHelp" class="form-text text-muted">Enter your full name
                 <!--, the one you are legally recognized with-->.</small>
         </div>
 
         <div class="input-group">
-            <input type="text" class="form-control w-100" min="3" max="24" id="inputTeacherEmail" name="inputEmail" placeholder="username" aria-describedby="teacherEmailHelp" required>
+            <input type="text" class="form-control w-100" min="3" max="24" id="inputTeacherEmail" name="inputEmail"
+                placeholder="username" aria-describedby="teacherEmailHelp" required>
             <span class="input-group-text w-auto" id="inputTeacherEmail">@iesabastos.org</span>
             <small id="teacherEmailHelp" class="form-text text-muted">We'll never share your email with anyone
                 else.</small>
@@ -44,3 +51,4 @@
     </div>
 </form>
 <script src="./scripts/js/inputs.js"></script>
+<script src="./scripts/js/teacher.js"></script>
