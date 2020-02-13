@@ -9,23 +9,23 @@
 </head>
 
 <body>
-
+    <div id="test"></div>
 </body>
 <script src="./scripts/libs/jquery.min.js"></script>
 <script src="./scripts/js/utils.js"></script>
 <script src="./scripts/js/AjaxController.js"></script>
 <script>
-    AjaxController.genericAjaxRequest("test", {
-        "inputScheduleStartHour": "7:55",
-        "inputScheduleEndHour": "8:50",
-        "year": "2019",
-    }, function(data) {
-        console.log("EXITO");
-        console.log(data);
-    }, function(data) {
-        console.log("ERROR");
-        console.log(data.responseText);
-    });
+    /* AjaxController.genericAjaxRequest("test", {
+                    "inputScheduleStartHour": "7:55",
+                    "inputScheduleEndHour": "8:50",
+                    "year": "2019",
+                }, function(data) {
+                    console.log("EXITO");
+                    console.log(data);
+                }, function(data) {
+                    console.log("ERROR");
+                    console.log(data.responseText);
+                }); */
 
     /* AjaxController.genericAjaxRequest("getSchedules", {}, function(data) {
         console.log("EXITO");
@@ -36,6 +36,8 @@
     }); */
 
     //$(document.body).load("./scripts/js/AjaxController.js");
+
+    $("#test").load("index.php");
 </script>
 
 </html>
