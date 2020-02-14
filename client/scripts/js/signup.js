@@ -1,7 +1,7 @@
-var formValidator = new FormValidator();;
+var formValidator = new FormValidator();
 $("form").on("submit", function (event) {
     var event = event || window.event;
-    if (!validateForm("signup", $("form"))) {
+    if (!FormValidator.validateForm("signup", $("form"))) {
         event.preventDefault();
         return false;
     }
@@ -22,6 +22,6 @@ inputMaxLength($("#inputEmail"));
 
 genericLengthMessages($("#inputPassword, #inputName, #inputUsername, #inputEmail"));
 addErrorMessage($("#inputName"), /^[a-z\ ]$/i, "Carácteres no válidos");
-addErrorMessage($("#inputUsername"), /^[a-z0-9_-]$/i, "Carácteres no válidos");
-addErrorMessage($("#inputPassword"), /[a-z@$!%*?&A-Za-z\d@$!%*?&]/i, "Carácteres no válidos");
-addErrorMessage($("#inputEmail"), /^[a-z0-9_-\.]$/i, "Carácteres no válidos");
+addErrorMessage($("#inputUsername"), /^[a-z0-9\_\-]$/i, "Carácteres no válidos");
+addErrorMessage($("#inputPassword"), /^[a-z@$!%*?&A-Za-z\d@$!%*?&]$/i, "Carácteres no válidos");
+addErrorMessage($("#inputEmail"), /^[a-z0-9\_\-\.]$/i, "Carácteres no válidos");

@@ -30,7 +30,7 @@ class Validator {
     }
 
     email(valor) {
-        return /^[a-z]+([\.]?[a-z0-9_-]+)*@iesabastos\.org$/.test(valor);
+        return /^[a-z]+([\.]?[a-z0-9\_\-]+)*@iesabastos\.org$/.test(valor);
     }
 
     datetime(valor) {
@@ -42,7 +42,7 @@ class Validator {
     }
 
     name(valor) {
-        return /^[a-zñ\ \º\ª]+$/iu.test(valor);
+        return /^[a-zñºª ]+$/iu.test(valor);
     }
 
     password(valor) {
@@ -54,11 +54,11 @@ class Validator {
     }
 
     text(valor) {
-        return /^[a-zñ\ \º\ª]+$/ium.test(valor);
+        return /^[a-zñ ]*$/iu.test(valor);
     }
 
     username(valor) {
-        return /^[a-z0-9_-]{3,24}$/i.test(valor);
+        return /^[a-z0-9\_\-]{3,24}$/i.test(valor);
     }
 
     image(valor) {
