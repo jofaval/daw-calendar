@@ -27,7 +27,7 @@ class AjaxController {
     }
 
     static defaultAjaxSuccessAction(data) {
-        var jsonData = JSON.parse(data);
+        //var jsonData = JSON.parse(data);
     }
 
     static defaultAjaxErrorAction(data) {
