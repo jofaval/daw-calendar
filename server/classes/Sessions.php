@@ -23,7 +23,9 @@ class Sessions
     private function initSession()
     {
         session_start();
-        $this->startingParams();
+        if (!$this->doesSessionExist("access")) {
+            $this->startingParams();
+        }
         $this->initializeValues();
         $this->regenerateSession();
     }
