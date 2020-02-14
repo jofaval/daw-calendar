@@ -1,7 +1,7 @@
 var formValidator = new FormValidator();
-$("form").on("submit", function (event) {
+$("form").on("submit", function(event) {
     var event = event || window.event;
-    if (!validateForm("events", $("form"))) {
+    if (!formValidator.validateForm("events", $("form"))) {
         event.preventDefault();
         return false;
     }
