@@ -11,3 +11,7 @@ client/downloads/*
 !/downloads/
 /downloads/*
 css/*
+*.jpg
+*.jpeg
+*.png
+*.gif
