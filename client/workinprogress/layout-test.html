@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <title>SignUp</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <link rel="stylesheet" type="text/css" href="../styles/login.css">
+    <link rel="stylesheet" type="text/css" href="../styles/loader.css">
+    <link rel="stylesheet" type="text/css" href="../styles/floating-label.css">
+    <link rel="stylesheet" type="text/css" href="../styles/inputs.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" type="text/css" href="../styles/floating-label.css">
+    <link rel="stylesheet" type="text/css" href="../styles/inputs.css">
+
+</head>
+
+<body>
+
+    <main role="main" class="h-100 w-100 d-flex flex-column justify-content-center ">
+        <div class="flex-column row my-auto bg-dark">
+
+            <form method="POST" action="index.php?ctl=signup" class="form-signin p-4 bg-light rounded" enctype="multipart/form-data">
+                <div class="text-center mb-4 text-dark">
+                    <h3>Calendar SignUp</h3>
+                </div>
+
+                <div class="form-label-group">
+                    <input type="text" class="form-control" id="inputName" name="inputName" aria-describedby="nameHelp" placeholder="Enter name" required="" autofocus="" min="3" max="24"><span class="removeContent w-100 text-dark"><i class="fa fa-times"></i></span>
+                    <label for="inputName">Full Name (*)</label>
+                    <small id="nameHelp" class="form-text text-muted">Enter your full name, the one you are legally
+            recognized with.</small>
+                </div>
+
+                <div class="form-label-group">
+                    <input type="text" class="form-control" min="3" max="24" id="inputUsername" name="inputUsername" aria-describedby="usernameHelp" placeholder="Enter Username" required=""><span class="removeContent w-100 text-dark"><i class="fa fa-times"></i></span>
+                    <label for="inputUsername">Username (*)</label>
+                    <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
+                </div>
+
+                <div class="input-group form-label-group" id="show_hide_password">
+                    <input type="password" min="3" max="24" class="form-control border-top-0 border-left-0 border-3 border-bottom border-right-0 col-md-11" id="inputPassword" name="inputPassword" aria-describedby="passwordHelp" placeholder="Password" required="">
+                    <span class="removeContent w-100 text-dark"><i class="fa fa-times"></i></span>
+                    <label for="inputPassword">Password (*)</label>
+                    <a href="" tabindex="-1" class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
+                        <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
+                    </a>
+                    <br>
+                    <small id="passwordHelp" class="form-text text-muted w-100">Alphanumeric combination, 8 to 24
+            characters.</small>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputImageDescription">Image</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputImage" name="inputImage" aria-describedby="inputImageDescription" accept="image/png, image/jpg, image/jpeg, image/gif" required="">
+                        <label class="custom-file-label" for="inputImage">Choose file</label>
+                    </div>
+                </div>
+                <small class="form-text text-muted">Only <b>PNG</b>, <b>JPG</b>, <b>JPEG</b> or
+        <b>GIF</b>.</small>
+                <br>
+
+                <div class="input-group">
+                    <input type="text" class="form-control w-100" min="3" max="24" id="inputEmail" name="inputEmail" placeholder="username" aria-describedby="emailHelp" required=""><span class="removeContent w-100 text-dark"><i class="fa fa-times"></i></span>
+                    <span class="input-group-text w-auto" id="inputEmailDomain">@iesabastos.org</span>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+            else.</small>
+                </div>
+                <br>
+
+                <div class="checkbox mb-3 text-white text-center">
+                    <a href="index.php?ctl=signin">
+            Already signed up? Go to login
+        </a>
+                </div>
+                <button class="btn btn-lg btn-warning btn-block" name="signup" type="submit">Sign up</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+
+
+    <script src="../scripts/libs/jquery.min.js"></script>
+    <script src="../scripts/libs/jquery-ui.min.js"></script>
+    <script src="../scripts/libs/bootstrap.min.js"></script>
+    <script src="../scripts/libs/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/js/utils.js"></script>
+    <script src="../scripts/js/inputs.js"></script>
+    <script src="../scripts/js/AjaxController.js"></script>
+    <script src="../scripts/js/Validator.js"></script>
+    <script src="../scripts/js/FormValidator.js"></script>
+    <script src="../scripts/js/Modal.js"></script>
+    <script src="../scripts/js/preloader.js"></script>
+    <script src="../scripts/js/signup.js"></script>
+
+</body>
+
+</html>
