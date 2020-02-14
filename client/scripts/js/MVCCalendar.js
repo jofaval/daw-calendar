@@ -11,7 +11,7 @@ class Model {
         this.currentEvents = [];
         this.currentDate = new Date();
         var model = this;
-        AjaxController.getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function (data) {
+        AjaxController.getEventsFromMonth(this.currentDate.getMonth(), this.currentDate.getFullYear(), function(data) {
             model.currentEvents = data;
         });
         this.instace = this;
@@ -37,7 +37,7 @@ class Model {
 
     addEvent(title, startHour, date, success) {
         var instance = this.instance;
-        AjaxController.createEvent(title, startHour, date, function (data) {
+        AjaxController.createEvent(title, startHour, date, function(data) {
             instance.currentEvents.push({
                 "title": title,
                 "startHour": startHour,
@@ -49,7 +49,7 @@ class Model {
 
     removeEvent(startHour, date, success) {
         var instance = this.instance;
-        AjaxController.removeEvent(title, startHour, date, function (data) {
+        AjaxController.removeEvent(title, startHour, date, function(data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -57,7 +57,7 @@ class Model {
 
     updateEvent(title, startHour, date, success) {
         var instance = this.instance;
-        AjaxController.updateEvent(title, startHour, date, function (data) {
+        AjaxController.updateEvent(title, startHour, date, function(data) {
             instance.currentEvents = data;
             instance.currentEvents.forEach(element => {
                 element.startHour
@@ -68,7 +68,7 @@ class Model {
 
     getEventsFromWeek(date, days) {
         var instance = this.instance;
-        AjaxController.getEventsFromWeek(date, days, function (data) {
+        AjaxController.getEventsFromWeek(date, days, function(data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -76,7 +76,7 @@ class Model {
 
     getEventsFromDay(date, days, classroom) {
         var instance = this.instance;
-        AjaxController.getEventsFromDay(date, days, classroom, function (data) {
+        AjaxController.getEventsFromDay(date, days, classroom, function(data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -84,7 +84,7 @@ class Model {
 
     getSchedule(date, days) {
         var instance = this.instance;
-        AjaxController.getSchedule(date, days, function (data) {
+        AjaxController.getSchedule(date, days, function(data) {
             instance.currentEvents = data;
             success(data);
         });
@@ -137,7 +137,7 @@ class View {
         this.weeklyCalendarContainer.hide();
 
         //Week format
-        this.weekFormat.find("#weekFormat").on("click", function () {
+        this.weekFormat.find("#weekFormat").on("click", function() {
             var current = $(this);
             current.toggleClass("btn-primary");
             current.toggleClass("btn-warning");
@@ -194,7 +194,7 @@ class Controller {
         controller.start(this);
 
         $("input[type=date]").val(printDateWithFormat(new Date(), "Y-m-d"));
-        $("input[type=date]").on("change", function () {
+        $("input[type=date]").on("change", function() {
             var value = $(this).val();
 
             $("input[type=date]").val(value);
@@ -221,11 +221,11 @@ class Controller {
         controller.view.monthCalendar.html("");
         controller.calendarControls = new CalendarControls(controller.view.monthCalendar, controller.model.currentEvents, controller.model.currentDate);
 
-        controller.calendarControls.onDayClick = function () {
+        controller.calendarControls.onDayClick = function() {
             controller.onDayClick($(this), controller);
         };
 
-        controller.calendarControls.setOnMonthChanged(function (month, year) {
+        controller.calendarControls.setOnMonthChanged(function(month, year) {
             controller.onMonthChanged(month, year, controller);
             var newDate = new Date(year, month, 1);
             $("input[type=date]").val(printDateWithFormat(newDate, "Y-m-d"));
@@ -246,7 +246,7 @@ class Controller {
         //console.log("Day  - " + dayInNumber);
 
         controller.view.timeTableDay.TT({
-            events: controller.model.getEventsFromDay(newDate, classroom),
+            events: controller.model.getEventsFromDay(newDate, 50),
             schedule: controller.model.getSchedule(),
             day: newDate
         });
