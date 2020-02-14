@@ -72,17 +72,19 @@ class Model extends PDO
         return $signin;
     }
 
-    public function signup($username, $password, $fullname, $email, $image)
+    public function signup($fullname, $username, $password, $email, $image)
     {
         $params = [
             "username" => $username,
         ];
         if (count($this->query("SELECT username FROM users WHERE username=:username", $params)) === 0) {
+
             $params["password"] = Cryptography::blowfishCrypt($password, $username);
             $params["fullname"] = $fullname;
             $params["email"] = $email;
             $params["image"] = $image;
-            $signUp = $this->cudOperation("INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)", $params);
+
+        $signUp = $this->cudOperation("INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)", $params);
             $this->generateToken($username);
             return $signUp;
         }

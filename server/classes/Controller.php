@@ -1,10 +1,10 @@
 <?php
-include_once __DIR__ . '../libs/utils.php';
-include_once __DIR__ . '../libs/bEmail.php';
-include_once __DIR__ . '../libs/bFile.php';
-include_once __DIR__ . '../libs/bCrypt.php';
-include_once __DIR__ . '../classes/Validation.php';
-include_once __DIR__ . '../classes/Sessions.php';
+include_once '../libs/utils.php';
+include_once '../libs/bEmail.php';
+include_once '../libs/bFile.php';
+include_once '../libs/bCrypt.php';
+include_once './Validation.php';
+include_once './Sessions.php';
 
 class Controller
 {
@@ -109,7 +109,6 @@ class Controller
 
         if ($validation === true) {
             $signin = $model->signin($username);
-            var_dump($signin);
             if (Cryptography::blowfishCrypt($password, $username) == $signin[0]["password"]) {
                 $sessions->setSession("username", $username);
                 $sessions->setSession("access", $signin[0]["type"]);
@@ -171,7 +170,7 @@ class Controller
         if ($file === false) {
             return false;
         }
-
+        /* 
         $_POST["inputImage"] = $file;
         $regla = array(
             array(
@@ -195,10 +194,12 @@ class Controller
                 'regla' => 'no-empty,image',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_POST); */
 
+        $validation = true;
         if ($validation === true) {
-            $signup = $model->signup(Utils::getCleanedData("inputName"), Utils::getCleanedData("inputUsername"), Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
+        $signup = $model->signup(Utils::getCleanedData("inputName"), Utils::getCleanedData("inputUsername"), Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
+
             if ($signup !== false) {
                 return true;
             }
