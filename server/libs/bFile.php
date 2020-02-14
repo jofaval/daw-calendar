@@ -1,5 +1,6 @@
 <?php
-class FileUtils {
+class FileUtils
+{
     public static function validateFile($fileName, $path, &$errors = [])
     {
         $final_file_name = false;
@@ -28,7 +29,7 @@ class FileUtils {
                 case 7:
                     $errors[] = "UPLOAD_ERR_CANT_WRITE<br>";
                     $errors[] = "No se ha podido escribir en el disco<br>";
-    
+
                 default:
                     $errors[] = 'Error indeterminado.';
             }
@@ -41,11 +42,11 @@ class FileUtils {
             * segura
             */
             // Podríamos comprobar con un array de posibles tipos válidos
-    
-    //jpge
-            if (in_array($_FILES[$fileName]['type'], Config::$mvc_img_exts)) {
-                    $errors[] = 'Error: No se puede mover el fichero a su destino';
-                    $final_file_name = false;
+
+            //jpge
+            if (!in_array($_FILES[$fileName]['type'], Config::$mvc_img_exts)) {
+                $errors[] = 'Error: No se puede mover el fichero a su destino';
+                $final_file_name = false;
             } else { // Si el formato es el esperado lo guardaremos definitivamente 
                 /*
          * Comprobamos si ya existe un archivo con este nombre en el destino,
@@ -59,7 +60,7 @@ class FileUtils {
                 } else {
                     $nombre = $path . $nombre;
                 }
-                // Movemos el fichero a su nueva ubicación
+                    // Movemos el fichero a su nueva ubicación
                 if (move_uploaded_file($_FILES[$fileName]['tmp_name'], $nombre)) {
                     // Muestro la imagen.
                     $final_file_name = $nombre;
@@ -69,8 +70,7 @@ class FileUtils {
                 }
             }
         }
-    
+
         return $final_file_name;
     }
-    
 }
