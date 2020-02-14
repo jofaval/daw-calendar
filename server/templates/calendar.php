@@ -5,7 +5,6 @@
     "events.css",
 ];?>
 <?php $optionalScripts = [
-    "js/AjaxController.js",
     "libs/time-table.js",
     "libs/mini-event-calendar.js",
     "js/calendar-controls.js",
