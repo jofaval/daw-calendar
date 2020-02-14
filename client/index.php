@@ -21,6 +21,8 @@ $ctl = $_GET['ctl'];
 if ($ctl == "") {
     $ctl = "signin";
 }
+//$sessions->setSession("username", "test");
+//$sessions->setSession("access", 2);
 if (!$sessions->isUserAgentTheSame() && !in_array($ctl, Config::$notuseragent_ctls)) {
     header("Location: index.php?ctl=notuseragent");
 }
