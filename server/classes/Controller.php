@@ -201,8 +201,11 @@ class Controller
         $signup = $model->signup(Utils::getCleanedData("inputName"), Utils::getCleanedData("inputUsername"), Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
 
             if ($signup !== false) {
-                return true;
+                header("Location: index.php?ctl=signin");
+            } else {
+                unlink($file);
             }
+
         }
         return false;
     }
