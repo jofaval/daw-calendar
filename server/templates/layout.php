@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body class="text-light">
 
     <?php if ($showHeader): ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="transition: all 0.2s ease-in-out 0s;">
