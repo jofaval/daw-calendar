@@ -1,25 +1,31 @@
-<form method="POST" action="index.php?ctl=signup" class="form-signin p-4 bg-light rounded" enctype="multipart/form-data">
+<form method="POST" action="index.php?ctl=signup" class="form-signin p-4 bg-light rounded"
+    enctype="multipart/form-data">
     <div class="text-center mb-4 text-dark">
         <h3>Calendar SignUp</h3>
     </div>
 
     <div class="form-label-group">
-        <input type="text" class="form-control" id="inputName" name="inputName" aria-describedby="nameHelp" placeholder="Enter name" required autofocus="" min="3" max="24">
+        <input type="text" class="form-control" id="inputName" name="inputName" aria-describedby="nameHelp"
+            placeholder="Enter name" required autofocus="" min="3" max="24">
         <label for="inputName">Full Name (*)</label>
         <small id="nameHelp" class="form-text text-muted">Enter your full name, the one you are legally
             recognized with.</small>
     </div>
 
     <div class="form-label-group">
-        <input type="text" class="form-control" min="3" max="24" id="inputUsername" name="inputUsername" aria-describedby="usernameHelp" placeholder="Enter Username" required>
+        <input type="text" class="form-control" min="3" max="24" id="inputUsername" name="inputUsername"
+            aria-describedby="usernameHelp" placeholder="Enter Username" required>
         <label for="inputUsername">Username (*)</label>
         <small id="usernameHelp" class="form-text text-muted">✓ Is available.</small>
     </div>
 
     <div class="input-group form-label-group" id="show_hide_password">
-        <input type="password" min="3" max="24" class="form-control border-top-0 border-left-0 border-3 border-bottom border-right-0 col-md-11" id="inputPassword" name="inputPassword" aria-describedby="passwordHelp" placeholder="Password" required>
+        <input type="password" min="3" max="24"
+            class="form-control border-top-0 border-left-0 border-3 border-bottom border-right-0 col-md-11"
+            id="inputPassword" name="inputPassword" aria-describedby="passwordHelp" placeholder="Password" required>
         <label for="inputPassword">Password (*)</label>
-        <a href="" tabindex="-1" class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
+        <a href="" tabindex="-1"
+            class="trigger input-group-addon password-hide col-md-1 bg-warning d-flex justify-content-center align-items-center rounded">
             <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
         </a>
         <br>
@@ -32,7 +38,8 @@
             <span class="input-group-text" id="inputImageDescription">Image</span>
         </div>
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputImage" name="inputImage" aria-describedby="inputImageDescription" accept="image/png, image/jpg, image/jpeg, image/gif" required>
+            <input type="file" class="custom-file-input" id="inputImage" name="inputImage"
+                aria-describedby="inputImageDescription" accept="image/png, image/jpg, image/jpeg, image/gif" required>
             <label class="custom-file-label" for="inputImage">Choose file</label>
         </div>
     </div>
@@ -41,7 +48,8 @@
     <br>
 
     <div class="input-group">
-        <input type="text" class="form-control w-100" min="3" max="24" id="inputEmail" name="inputEmail" placeholder="username" aria-describedby="emailHelp" required>
+        <input type="text" class="form-control w-100" min="3" max="24" id="inputEmail" name="inputEmail"
+            placeholder="username" aria-describedby="emailHelp" required>
         <span class="input-group-text w-auto" id="inputEmailDomain">@iesabastos.org</span>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
             else.</small>
@@ -55,4 +63,3 @@
     </div>
     <button class="btn btn-lg btn-warning btn-block" name="signup" type="submit">Sign up</button>
 </form>
-<script src="./scripts/js/inputs.js"></script>

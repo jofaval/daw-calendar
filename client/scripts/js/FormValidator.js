@@ -1,4 +1,3 @@
-validateForm("test", $(".form"));
 class FormValidator {
     validateForm(formName, form) {
         var value = false;
