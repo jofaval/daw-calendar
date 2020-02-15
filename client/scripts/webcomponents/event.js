@@ -15,9 +15,9 @@ class Event extends HTMLElement {
         <div class="card ${this.getAttribute("event-type")} mb-3 mr-3 bg-dark">
                 <span
                     class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
-                    <a id="pickEvent" class="card-icon text-light m-1 p-2 rounded"><i
-                            class="fa fa-times"></i></a>
                     <a id="removeEvent" class="card-icon text-light m-1 p-2 rounded"><i
+                            class="fa fa-times"></i></a>
+                    <a id="pickEvent" class="card-icon text-light m-1 p-2 rounded"><i
                             class="fa fa-pencil"></i></a>
                 </span>
                 <div class="row no-gutters text-light">
