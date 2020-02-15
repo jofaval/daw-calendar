@@ -117,6 +117,7 @@ class Model {
 class View {
     constructor() {
         this.mainContainer = $('main');
+        var addButton = $("<span class='w-100 btn btn-warning mb-2'>Add <i class='fa fa-plus'></i></span>");
 
         //Create tab
         this.createTab("Teachers", this.mainContainer);
@@ -139,6 +140,7 @@ class View {
             <tbody></tbody>
         </table>`);
         this.tableTeachers.prop("id", "dtTeachers");
+        $("#tabContainerTeachers").append(addButton.clone().attr("id", "addTeachers"));
         $("#tabContainerTeachers").append(this.tableTeachers);
 
         //Classrooms
@@ -155,6 +157,7 @@ class View {
             <tbody></tbody>
         </table>`);
         this.tableClassrooms.prop("id", "dtClassrooms");
+        $("#tabContainerClassrooms").append(addButton.clone().attr("id", "addClassrooms"));
         $("#tabContainerClassrooms").append(this.tableClassrooms);
 
         //Schedules
@@ -536,6 +539,10 @@ class AdminController {
                     row.remove();
                 });
             });
+        });
+
+        $("#addTeachers").on("click", function () {
+            Modal.genericModalWithForm("Teacher");
         });
 
         /*model.loadSchedules(model, function(data) {
