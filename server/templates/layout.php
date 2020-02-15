@@ -37,6 +37,10 @@
                             style="transition: all 0.2s ease-in-out 0s;">(current)</span></a>
                 </li>
                 <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link selected" href="index.php?ctl=classrooms"
+                        style="transition: all 0.2s ease-in-out 0s;">Classrooms</a>
+                </li>
+                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
                     <a class="nav-link selected" href="index.php?ctl=calendar"
                         style="transition: all 0.2s ease-in-out 0s;">Calendar</a>
                 </li>
