@@ -11,7 +11,9 @@ $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $string = "SELECT * FROM users";
 //$string = "INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)";
+$string = "UPDATE users SET type=3 WHERE 1=1";
 $queryVar = $conexion->prepare($string);
+$queryVar->execute();
 
 $params = [
     /* "username" => "teste",
