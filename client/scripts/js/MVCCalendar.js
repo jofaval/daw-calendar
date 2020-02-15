@@ -148,7 +148,7 @@ class View {
                 current.text("Week");
             }
 
-            $("section.container").toggle();
+            $("main section").toggle();
         });
     }
 
@@ -231,6 +231,15 @@ class Controller {
             $("input[type=date]").val(printDateWithFormat(newDate, "Y-m-d"));
             controller.model.currentDate = new Date(newDate);
         });
+
+        $("event-card").each(function () {
+            var shadowRoot = $(this.shadowRoot);
+
+            shadowRoot.find("#pickEvent").on("click", function () {
+                Modal.genericModalWithForm("Event");
+            });
+        });
+
     }
 
     onDayClick(current, controller) {
