@@ -79,12 +79,11 @@ class Model extends PDO
         ];
         if (count($this->query("SELECT username FROM users WHERE username=:username", $params)) === 0) {
             $insert = $this->conexion->prepare("INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)");
-            var_dump("test");
-            $insert->bindValue(":username", $username, PDO::PARAM_STR);
+            /*$insert->bindValue(":username", $username, PDO::PARAM_STR);
             $insert->bindValue(":password", Cryptography::blowfishCrypt($password, $username), PDO::PARAM_STR);
             $insert->bindValue(":fullname", $fullname, PDO::PARAM_STR);
             $insert->bindValue(":email", $email, PDO::PARAM_STR);
-            $insert->bindValue(":image", $image, PDO::PARAM_STR);
+            $insert->bindValue(":image", $image, PDO::PARAM_STR);*/
 
             $params["password"] = Cryptography::blowfishCrypt($password, $username);
             $params["fullname"] = $fullname;
