@@ -68,7 +68,7 @@ class Model extends PDO
     public function signin($username)
     {
         $params = ["username" => $username];
-        $signin = $this->query("SELECT type, password FROM users WHERE username=:username or email=:username", $params);
+        $signin = $this->query("SELECT type, password, image FROM users WHERE username=:username or email=:username", $params);
         return $signin;
     }
 

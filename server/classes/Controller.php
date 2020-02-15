@@ -112,6 +112,7 @@ class Controller
             if (Cryptography::blowfishCrypt($password, $username) == $signin[0]["password"]) {
                 $sessions->setSession("username", $username);
                 $sessions->setSession("access", $signin[0]["type"]);
+                $sessions->setSession("userImg", $signin[0]["image"]);
                 header("Location: index.php?ctl=calendar");
             }
         }
