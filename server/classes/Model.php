@@ -28,11 +28,11 @@ class Model extends PDO
     public function query($queryString, $params = [])
     {
         $result = $this->conexion->prepare($queryString);
-        if (!empty($params)) {
-            foreach ($params as $key => $value) {
-                $result->bindValue(":" . $key, $value, PDO::PARAM_STR);
-            }
+        /*if (!empty($params)) {
+        foreach ($params as $key => $value) {
+        $result->bindValue(":" . $key, $value, PDO::PARAM_STR);
         }
+        }*/
 
         $result->execute($params);
         return $result->fetchAll(PDO::FETCH_ASSOC);
@@ -42,11 +42,11 @@ class Model extends PDO
     {
         $result = $this->conexion->prepare($insertString);
 
-        if (!empty($params)) {
-            foreach ($params as $key => $value) {
-                $result->bindValue(":" . $key, $value, PDO::PARAM_STR);
-            }
+        /*if (!empty($params)) {
+        foreach ($params as $key => $value) {
+        $result->bindValue(":" . $key, $value, PDO::PARAM_STR);
         }
+        }*/
 
         return $result->execute($params);
     }
@@ -79,9 +79,9 @@ class Model extends PDO
         ];
         if (count($this->query("SELECT username FROM users WHERE username=:username", $params)) === 0) {
             $insert = $this->conexion->prepare("INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)");
-
+            var_dump("test");
             $insert->bindValue(":username", $username, PDO::PARAM_STR);
-            $insert->bindValue(":password", $password, PDO::PARAM_STR);
+            $insert->bindValue(":password", Cryptography::blowfishCrypt($password, $username), PDO::PARAM_STR);
             $insert->bindValue(":fullname", $fullname, PDO::PARAM_STR);
             $insert->bindValue(":email", $email, PDO::PARAM_STR);
             $insert->bindValue(":image", $image, PDO::PARAM_STR);
@@ -91,8 +91,8 @@ class Model extends PDO
             $params["email"] = $email;
             $params["image"] = $image;
 
-        //$signUp = $this->cudOperation("INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)", $params);
-        $signUp = $insert->execute($params);
+            //$signUp = $this->cudOperation("INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)", $params);
+            $signUp = $insert->execute($params);
             $this->generateToken($username);
             return $signUp;
         }
