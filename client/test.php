@@ -65,7 +65,8 @@ $queryVar->execute();
 //$string = "INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)";
 //$string = "UPDATE users SET type=3 WHERE 1=1";
 //$string = "SELECT * FROM `schedules`";
-$string = "SELECT * FROM `specialDays` WHERE YEAR(specialDay)=2020 and MONTH(specialDay)=1";
+//$string = "SELECT * FROM `specialDays` WHERE YEAR(specialDay)=2020 and MONTH(specialDay)=1";
+$string = "DELETE FROM classrooms WHERE name='203'";
 $queryVar = $conexion->prepare($string);
 
 $params = [
