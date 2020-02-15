@@ -70,7 +70,7 @@
     </main>
 
     <?php if ($showFooter): ?>
-    <footer class="footer">
+    <footer class="footer fixed-bottom mb-3">
         <div class="container">
             <span class="text-muted float-right">- Developed by <a href="jofaval@iesabastos.org">Pepe Fabra Valverde</a>
                 &copy;
