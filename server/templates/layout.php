@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<?php $username = Sessions::getInstance()->getSession("username");?>
+<?php $sessions = Sessions::getInstance();?>
+<?php $username = $sessions->getSession("username");?>
 
 <head>
     <title><?php echo $title; ?></title>
@@ -25,8 +26,7 @@
             <span class="navbar-toggler-icon" style="transition: all 0.2s ease-in-out 0s;"></span>
         </button>
 
-        <img class="navbar-brand rounded-circle mr-2" width="45"
-            src="./img/users/<?php echo Sessions::getInstance()->getSession("userImg"); ?>">
+        <img class="navbar-brand rounded-circle mr-2" width="45" src="<?php echo $sessions->getSession("userImg"); ?>">
         <small class="text-muted"><?php echo $username; ?></small>
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08"
             style="transition: all 0.2s ease-in-out 0s;">
@@ -40,18 +40,12 @@
                     <a class="nav-link selected" href="index.php?ctl=calendar"
                         style="transition: all 0.2s ease-in-out 0s;">Calendar</a>
                 </li>
-                <li class="nav-item dropdown" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link dropdown-toggle" href="index.php?ctl=admin" id="dropdown08"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style="transition: all 0.2s ease-in-out 0s;">Admin
-                        panel</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown08"
-                        style="transition: all 0.2s ease-in-out 0s;">
-                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Classroom</a>
-                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Teacher</a>
-                        <a class="dropdown-item" href="#" style="transition: all 0.2s ease-in-out 0s;">Schedule</a>
-                    </div>
+                <?php if ($sessions->getSession("access") >= 2): ?>
+                <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
+                    <a class="nav-link selected" href="index.php?ctl=admin"
+                        style="transition: all 0.2s ease-in-out 0s;">Admin</a>
                 </li>
+                <?php endif;?>
                 <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
                     <a class="nav-link" href="index.php?ctl=signout"
                         style="transition: all 0.2s ease-in-out 0s;">Signout</a>
@@ -76,10 +70,13 @@
     </main>
 
     <?php if ($showFooter): ?>
-    <div id="pie fixed-bottom">
-        <hr />
-        <div align="center">- pie de página -</div>
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted float-right">- Developed by <a href="jofaval@iesabastos.org">Pepe Fabra Valverde</a>
+                &copy;
+                -</span>
+        </div>
+    </footer>
     <?php endif;?>
     <div id="loader-wrapper">
         <div id="loader"></div>
