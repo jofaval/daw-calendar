@@ -231,13 +231,15 @@ class Controller
 
     public function calendar()
     {
-        $params = [
-            "classroom" => $_REQUEST["classroom"],
-        ];
+        $classroom = Utils::getCleanedData("classroom");
 
-        if (!isset($_REQUEST["classroom"])) {
+        if (!isset($_REQUEST["classroom"]) || !Model::getInstance()->doesClassroomExist($classroom)) {
             header("Location: index.php?ctl=classrooms");
         }
+
+        $params = [
+            "classroom" => $classroom,
+        ];
 
         require __DIR__ . '/../templates/calendar.php';
     }
