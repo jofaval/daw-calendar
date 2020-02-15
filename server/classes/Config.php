@@ -15,12 +15,14 @@ class Config
         "loader.css",
         "floating-label.css",
         "inputs.css",
+        "jquery.sweet-modal.min.css",
     ];
     public static $mvc_vis_scripts = [
         "libs/jquery.min.js",
         "libs/jquery-ui.min.js",
         "libs/bootstrap.min.js",
         "libs/bootstrap.bundle.min.js",
+        "libs/jquery.sweet-modal.min.js",
         "js/utils.js",
         "js/inputs.js",
         "js/AjaxController.js",

@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test AJAX</title>
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
 </head>
 
 <body>
-    <div id="test"></div>
+    <div id="test">
+        Esta funcionando
+    </div>
 </body>
 <script src="./scripts/libs/jquery.min.js"></script>
 <script src="./scripts/js/utils.js"></script>
@@ -37,7 +40,24 @@
 
     //$(document.body).load("./scripts/js/AjaxController.js");
 
-    $("#test").load("index.php");
+    //$("#test").load("index.php");
+
+    /*$.ajax({
+        url: "../index.php?ctl=getForm" + "Teachers",
+        type: "POST",
+        succes: function (data) {
+            console.log(data);
+        },
+        error: function () {
+            console.log("test");
+        }
+    });*/
+
+    $("#test").load("../server/templates/forms/formSignup.html", {}, function (params) {
+        console.log($(this));
+
+    });
+    //console.log($("#test").html());
 </script>
 
 </html>

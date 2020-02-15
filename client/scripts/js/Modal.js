@@ -1,21 +1,18 @@
 class Modal {
     static genericModalWithForm(formName, readonly = false) {
-        $.ajax({
-            url: "../index.php?ctl=getForm" + formName,
-            type: "POST",
-            succes: function (data) {
-                $.sweetModal({
-                    title: 'HTML Content',
-                    content: data,
-                    theme: $.sweetModal.THEME_DARK
-                });
-                if (readonly) {
-                    $("form *[type=submit]").remove();
-                    $("form input").attr("readonly", true);
-                }
-            },
-            error: function () {
-                Modal.modalError("An error occured, couldn't load form");
+
+        var test = $.sweetModal({
+            title: formName,
+            content: "<div id='modalContent'></div>",
+            theme: $.sweetModal.THEME_DARK
+        }).params.content;
+
+        $(".sweet-modal-content").load("../server/templates/forms/form" + formName + ".html", {}, function () {
+            var content = $(this);
+            console.log(content.html());
+            if (readonly) {
+                test.find("form *[type=submit]").remove();
+                test.find("form input").attr("readonly", true);
             }
         });
     }

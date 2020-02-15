@@ -44,22 +44,22 @@ class Controller
 
     public function getFormClassroom()
     {
-        return __DIR__ . '/../templates/forms/formClassroom.html';
+        return file_get_contents(__DIR__ . '/../templates/forms/formClassroom.html');
     }
 
     public function getFormEvent()
     {
-        return __DIR__ . '/../templates/forms/formEvent.html';
+        return file_get_contents(__DIR__ . '/../templates/forms/formEvent.html');
     }
 
     public function getFormTeacher()
     {
-        return __DIR__ . '/../templates/forms/formTeacher.html';
+        return file_get_contents(__DIR__ . '/../templates/forms/formTeacher.html');
     }
 
     public function getFormSchedule()
     {
-        return __DIR__ . '/../templates/forms/formSchedule.html';
+        return file_get_contents(__DIR__ . '/../templates/forms/formSchedule.html');
     }
 
     public function confirmEmailFunctionality()
