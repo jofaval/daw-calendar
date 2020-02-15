@@ -8,9 +8,9 @@ class EventWeek extends HTMLElement {
         }
 
         this.shadowRoot.innerHTML = `
-        <link rel="stylesheet" href="../styles/bootstrap.min.css">
-        <link rel="stylesheet" href="../styles/main.css">
-        <link rel="stylesheet" href="../styles/events.css">
+        <link rel="stylesheet" href="./client/styles/bootstrap.min.css">
+        <link rel="stylesheet" href="./client/styles/main.css">
+        <link rel="stylesheet" href="./client/styles/events.css">
         <div class="card bg-dark rounded p-3 ${this.getAttribute("event-type")}">
             <p class="event-title m-0">${this.getAttribute("event-title")}</p>
         </div>
