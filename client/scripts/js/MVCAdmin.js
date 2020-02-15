@@ -314,6 +314,7 @@ class View {
     }
 
     loadEventsFromMonth(date, calendar) {
+        var view = this;
         var sampleEvents = [];
         AjaxController.getMonthlyNonSchoolDays(date.getFullYear(), date.getMonth(), function (data) {
             var jsonParsed = JSON.parse(data);
@@ -330,7 +331,7 @@ class View {
             }
             var calendarControls = new CalendarControls(calendar, sampleEvents, date);
             calendarControls.setOnMonthChanged(function name(month, year) {
-                loadEventsFromMonth(new Date(year, month, 1), calendar, sampleEvents);
+                view.loadEventsFromMonth(new Date(year, month, 1), calendar, sampleEvents);
             });
         });
     }
