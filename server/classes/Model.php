@@ -238,12 +238,17 @@ class Model extends PDO
 
     public function getTeachers()
     {
-        return $this->query("SELECT * FROM users WHERE type=2 and enabled=true");
+        return $this->query("SELECT username, fullname, type, email, enabled FROM users WHERE type>=2 and enabled=true");
     }
 
     public function getClassrooms()
     {
         return $this->query("SELECT * FROM classrooms WHERE enabled=true");
+    }
+
+    public function doesClassroomExist($name)
+    {
+        return $this->query("SELECT * FROM classrooms WHERE enabled=true and name=:name", ["name" => $name]);
     }
 
     public function getSchedules()
