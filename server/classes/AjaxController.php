@@ -30,7 +30,7 @@ class AjaxController
     public function throwIfExceptionIfDoesntExist($elems)
     {
         foreach ($elems as $elem) {
-            if (isset($_REQUEST[$elem])) {
+            if (!isset($_REQUEST[$elem])) {
                 throw new Error("$elem doesn't exist");
             }
         }
@@ -175,7 +175,7 @@ class AjaxController
 
     public function getMonthlyNonSchoolDays()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["username", "month"]);
+        $this->genericAjaxReturn(__FUNCTION__, ["year", "month"]);
     }
 
     public function getNonWorkWeeklyDays()
