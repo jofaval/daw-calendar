@@ -53,8 +53,8 @@
                     </div>
                 </li>
                 <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link" href="index.php?ctl=logout"
-                        style="transition: all 0.2s ease-in-out 0s;">Logout</a>
+                    <a class="nav-link" href="index.php?ctl=signout"
+                        style="transition: all 0.2s ease-in-out 0s;">Signout</a>
                 </li>
             </ul>
         </div>
