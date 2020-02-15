@@ -208,7 +208,7 @@ class Validation
 
     protected function _image($campo, $valor)
     {
-        if (isset($valor) && preg_match("/^.+[\.jpg|\.jpeg|\.png|\.gif]$/i", $valor)) {
+        if (isset($valor) && preg_match("/.+[\.jpg|\.jpeg|\.png|\.gif]$/i", $valor)) {
             return true;
         } else {
             $this->mensaje[$campo][] = "The field $campo must be alphanumeric with \"_\" and \"-\" as an exception";
