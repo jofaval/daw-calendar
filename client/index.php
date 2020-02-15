@@ -38,7 +38,7 @@ if (!$sessions->isUserAgentTheSame() && !in_array($ctl, Config::$notuseragent_ct
 // enrutamiento
 $map = array(
     'signin' => array('controller' => 'Controller', 'action' => 'signin', 'access' => Config::$ACCESS_LEVEL_GUEST),
-    'signout' => array('controller' => 'Controller', 'action' => 'signout', 'access' => Config::$ACCESS_LEVEL_TEACHER),
+    'signout' => array('controller' => 'Controller', 'action' => 'signout', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'signup' => array('controller' => 'Controller', 'action' => 'signup', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'calendar' => array('controller' => 'Controller', 'action' => 'calendar', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'profile' => array('controller' => 'Controller', 'action' => 'profile', 'access' => Config::$ACCESS_LEVEL_TEACHER),
@@ -48,6 +48,7 @@ $map = array(
     'error' => array('controller' => 'Controller', 'action' => 'error', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'notsigned' => array('controller' => 'Controller', 'action' => 'notsigned', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'notuseragent' => array('controller' => 'Controller', 'action' => 'notuseragent', 'access' => Config::$ACCESS_LEVEL_GUEST),
+    //AJAX Operations
     'getMonthFromEvents' => array('controller' => 'AjaxController', 'action' => 'getMonthFromEvents', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'createEvent' => array('controller' => 'AjaxController', 'action' => 'createEvent', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'updateEvent' => array('controller' => 'AjaxController', 'action' => 'updateEvent', 'access' => Config::$ACCESS_LEVEL_TEACHER),
@@ -76,7 +77,7 @@ $map = array(
 
 if (Config::$developmentMode) {
     $map["test"] = array('controller' => 'AjaxController', 'action' => 'test', 'access' => Config::$ACCESS_LEVEL_GUEST);
-    $sessions->setSession("access", 20);
+    //$sessions->setSession("access", 20);
 }
 
 // Parseo de la ruta
@@ -100,7 +101,7 @@ if (!Config::$developmentMode) {
 // Ejecución del controlador asociado a la ruta
 $controlador = $map[$ruta];
 if (method_exists($controlador['controller'], $controlador['action'])) {
-    if ($sessions->getsession("access") >= $controlador['access']) {
+    if ($sessions->getSession("access") >= $controlador['access']) {
         call_user_func(array(new $controlador['controller'], $controlador['action']));
     } else {
         header('Location: ./index.php?ctl=access');
