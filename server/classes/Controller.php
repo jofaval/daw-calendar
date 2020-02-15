@@ -88,13 +88,13 @@ class Controller
     public function signinFunctionality()
     {
         $model = Model::getInstance();
-        //$validation = Validation::getInstance();
+        $validation = Validation::getInstance();
         $sessions = Sessions::getInstance();
 
-        $username = Utils::getCleanedData("username");
-        $password = Utils::getCleanedData("password");
+        $username = Utils::getCleanedData("inputUsername");
+        $password = Utils::getCleanedData("inputPassword");
 
-        /* $regla = array(
+        $regla = array(
             array(
                 'name' => 'username',
                 'regla' => 'no-empty,username',
@@ -104,7 +104,7 @@ class Controller
                 'regla' => 'no-empty,password',
             ),
         );
-        $validation = $validation->rules($regla, ["username" => $username, "password" => $password]); */
+        $validation = $validation->rules($regla, ["username" => $username, "password" => $password]);
         $validation = true;
 
         if ($validation === true) {
@@ -112,7 +112,7 @@ class Controller
             if (Cryptography::blowfishCrypt($password, $username) == $signin[0]["password"]) {
                 $sessions->setSession("username", $username);
                 $sessions->setSession("access", $signin[0]["type"]);
-                return true;
+                header("Location: index.php?ctl=calendar");
             }
         }
 
@@ -167,38 +167,39 @@ class Controller
         $validation = Validation::getInstance();
 
         $file = FileUtils::validateFile("inputImage", "./img_usuarios/");
+        var_dump("test");
         if ($file === false) {
             return false;
         }
-        /* 
+        /*
         $_POST["inputImage"] = $file;
         $regla = array(
-            array(
-                'name' => 'inputName',
-                'regla' => 'no-empty,name',
-            ),
-            array(
-                'name' => 'inputUsername',
-                'regla' => 'no-empty,username',
-            ),
-            array(
-                'name' => 'inputPassword',
-                'regla' => 'no-empty,password',
-            ),
-            array(
-                'name' => 'inputEmail',
-                'regla' => 'no-empty,email',
-            ),
-            array(
-                'name' => 'inputImage',
-                'regla' => 'no-empty,image',
-            ),
+        array(
+        'name' => 'inputName',
+        'regla' => 'no-empty,name',
+        ),
+        array(
+        'name' => 'inputUsername',
+        'regla' => 'no-empty,username',
+        ),
+        array(
+        'name' => 'inputPassword',
+        'regla' => 'no-empty,password',
+        ),
+        array(
+        'name' => 'inputEmail',
+        'regla' => 'no-empty,email',
+        ),
+        array(
+        'name' => 'inputImage',
+        'regla' => 'no-empty,image',
+        ),
         );
         $validation = $validation->rules($regla, $_POST); */
 
         $validation = true;
         if ($validation === true) {
-        $signup = $model->signup(Utils::getCleanedData("inputName"), Utils::getCleanedData("inputUsername"), Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
+            $signup = $model->signup(Utils::getCleanedData("inputName"), Utils::getCleanedData("inputUsername"), Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
 
             if ($signup !== false) {
                 header("Location: index.php?ctl=signin");
@@ -733,23 +734,23 @@ class Controller
 
         //return Cryptography::blowfishCrypt("test", "test");
 
-            $signin = $model->signin("test");
-            if (Cryptography::blowfishCrypt("test", "test") == $signin[0]["password"]) {
-                $sessions->setSession("username", "test");
-                $sessions->setSession("access", $signin[0]["access"]);
-                return true;
-            }
+        $signin = $model->signin("test");
+        if (Cryptography::blowfishCrypt("test", "test") == $signin[0]["password"]) {
+            $sessions->setSession("username", "test");
+            $sessions->setSession("access", $signin[0]["access"]);
+            return true;
+        }
 
-            return false;
+        return false;
 
         /* $params = [
-            "orderId" => '94',
-            "startHour" => '7:55',
-            "endHour" => '8:50',
-            "currentyear" => '2019',
+        "orderId" => '94',
+        "startHour" => '7:55',
+        "endHour" => '8:50',
+        "currentyear" => '2019',
         ]; */
         /* $params = [
-            "currentyear" => '2020',
+        "currentyear" => '2020',
         ];
         $orderId = '1';
         return $model->getSchedules(); */
