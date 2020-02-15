@@ -168,7 +168,8 @@ class Validation
 
     protected function _password($campo, $valor)
     {
-        if (isset($valor) && preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,24}$/i", $valor)) {
+        //if (isset($valor) && preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,24}$/i", $valor)) {
+        if (isset($valor) && preg_match("/^[A-Za-z\d@$!%*?&]{3,24}$/i", $valor)) {
             return true;
         } else {
             $this->mensaje[$campo][] = "The field $campo must be alphanumeric, only certain special characters are allowed";
