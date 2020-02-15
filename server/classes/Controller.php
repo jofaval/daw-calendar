@@ -397,7 +397,7 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputClassroomName',
-                'regla' => 'no-empty,name',
+                'regla' => 'no-empty',
             ),
         );
         $validation = $validation->rules($regla, $_POST);

@@ -104,42 +104,42 @@ class AjaxController
 
     public function updateTeacher()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["inputTeacherUsername", "inputTeacherPassword", "inputTeacherName", "inputTeacherEmail"]);
+        $this->genericAjaxReturn("updateTeacherFunctionality", ["inputTeacherUsername", "inputTeacherPassword", "inputTeacherName", "inputTeacherEmail"]);
     }
 
     public function deleteTeacher()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["inputTeacherEmail"]);
+        $this->genericAjaxReturn("deleteTeacherFunctionality", ["inputTeacherEmail"]);
     }
 
     public function createClassroom()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["inputClassroomName", "inputClasroomDescription", "selectClasroomState"]);
+        $this->genericAjaxReturn("createClassroomFunctionality", ["inputClassroomName", "inputClasroomDescription", "selectClasroomState"]);
     }
 
     public function updateClassroom()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["inputClassroomName", "inputClasroomDescription", "selectClasroomState"]);
+        $this->genericAjaxReturn("updateClassroomFunctionality", ["inputClassroomName", "inputClasroomDescription", "selectClasroomState"]);
     }
 
     public function deleteClassroom()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["inputClassroomName"]);
+        $this->genericAjaxReturn("deleteClassroomFunctionality", ["inputClassroomName"]);
     }
 
     public function createSchedule()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["inputScheduleStartHour", "inputScheduleEndHour", "year"]);
+        $this->genericAjaxReturn("createScheduleFunctionality", ["inputScheduleStartHour", "inputScheduleEndHour", "year"]);
     }
 
     public function updateSchedule()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["inputScheduleStartHour", "inputScheduleEndHour", "year"]);
+        $this->genericAjaxReturn("updateScheduleFunctionality", ["inputScheduleStartHour", "inputScheduleEndHour", "year"]);
     }
 
     public function deleteSchedule()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["inputScheduleStartHour", "year"]);
+        $this->genericAjaxReturn("deleteScheduleFunctionality", ["inputScheduleStartHour", "year"]);
     }
 
     public function doesUsernameExist()
