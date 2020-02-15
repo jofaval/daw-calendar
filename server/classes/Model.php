@@ -259,21 +259,27 @@ class Model extends PDO
         return $this->query("SELECT * FROM schedules WHERE currentyear=:currentyear", $params);
     }
 
-    public function createEvent($title, $startHour, $date)
+    public function createEvent($title, $startHour, $date, $classroom)
     {
         $sessions = Sessions::getInstance();
-
+        $scheduleRow = $this->query("SELECT * FROM schedules WHERE startHour=:startHour", ["startHour" => $startHour]);
+        if (count($scheduleRow) == 0) {
+            return false;
+        }
+        $scheduleRow = $scheduleRow[0];
         $params = [
-            "title" => $title,
-            "startHour" => $startHour,
+            "orderId" => $scheduleRow["orderId"],
             "date" => $date,
-            "username" => $sessions->getSession("username"),
+            "classroom" => $classroom,
         ];
 
-        if (count($this->query("SELECT name FROM events WHERE startHour=:startHour and date=:date
-        and date not in (select specialDay from specialDays where specialDay=:date)
-        and WEEKDAY(date) not in (select nonWorkDay from nonWorkWeeklyDays where year=YEAR(date))", $params)) === 0) {
-            return $this->query("INSERT INTO events (title, startHour, date, username) VALUES (:title, :startHour, :date, :username)", $params);
+        if (count($this->query("SELECT title FROM events WHERE orderId=:orderId and selectedDay=:date and classroomName=:classroom
+        and selectedDay not in (select specialDay from specialDays where specialDay=:date)
+        and WEEKDAY(selectedDay) not in (select nonWorkDay from nonWorkWeeklyDays where year=YEAR(selectedDay))", $params)) === 0) {
+            $params["title"] = $title;
+            $params["year"] = $scheduleRow["year"];
+            $params["username"] = $sessions->getSession("username");
+            return $this->query("INSERT INTO events (title, orderId, year, selectedDay, username, classroomName) VALUES (:title, :orderId, :year, :date, :username, :classroom)", $params);
         }
 
         return false;
