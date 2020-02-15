@@ -3,8 +3,8 @@
         <h3>Teacher</h3>
     </div>
 
-    <div class="form-row d-flex justify-content-around align-items-center">
-        <div class="form-group col-md-2">
+    <div class="form-inline d-flex justify-content-around align-items-center">
+        <div class="form-group col-md-12">
             <label for="inputTeacherUsername">Username (*)</label>
             <input type="text" class="form-control" min="3" max="24" id="inputTeacherUsername"
                 name="inputTeacherUsername" aria-describedby="teacherUsernameHelp" placeholder="Enter Username"
@@ -27,7 +27,7 @@
                 characters.</small>
         </div>
 
-        <div class="form-group col-md">
+        <div class="form-group col-md-12">
             <label for="inputTeacherName">Full Name (*)</label>
             <input type="text" min="3" max="50" class="form-control" id="inputTeacherName" name="inputTeacherName"
                 aria-describedby="teacherNameHelp" placeholder="Enter name" required>
@@ -43,7 +43,7 @@
                 else.</small>
         </div>
 
-        <div class="form-group col-md-1">
+        <div class="form-group col-md-12">
             <button class="btn btn-lg btn-primary btn-block" name="createTeacher" type="submit">Add</button>
             <button class="btn btn-lg btn-primary btn-block" name="updateTeacher" type="submit">Modify</button>
             <button class="btn btn-lg btn-primary btn-block" name="deleteTeacher" type="submit">Remove</button>
