@@ -562,7 +562,7 @@ class Controller
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->createEvent(Utils::getCleanedData("title"), Utils::getCleanedData("startHour"), Utils::getCleanedData("date"));
+            return $model->createEvent(Utils::getCleanedData("title"), Utils::getCleanedData("startHour"), Utils::getCleanedData("date"), Utils::getCleanedData("classroom"));
         }
 
         return false;

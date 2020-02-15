@@ -51,11 +51,12 @@ class AjaxController {
         }, success);
     }
 
-    static createEvent(title, startHour, date, success) {
+    static createEvent(title, startHour, date, classroom, success) {
         AjaxController.genericAjaxRequest("createEvent", {
             "title": title,
             "startHour": startHour,
             "date": date,
+            "classroom": classroom,
         }, success);
     }
 

@@ -69,7 +69,7 @@ class AjaxController
 
     public function createEvent()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["title", "startHour", "date"]);
+        $this->genericAjaxReturn(__FUNCTION__, ["title", "startHour", "date", "classroom"]);
     }
 
     public function updateEvent()
