@@ -10,10 +10,15 @@ class ExceptionUtils
                 header("Location: ./index.php?ctl=error");
             }
         } catch (Exception $e) {
-            error_log($e->getMessage() . microtime() . PHP_EOL, 3, __DIR__ . "/../server/logs/logException.txt");
+            $fw = fopen(__DIR__ . "/../server/logs/logException.txt" . "a+");
+            fwrite($fw, $e->getMessage() . microtime() . PHP_EOL);
+            fclose($fw);
             header("Location: ./index.php?ctl=error");
+            var_dump($e);
         } catch (Error $e) {
-            error_log($e->getMessage() . microtime() . PHP_EOL, 3, __DIR__ . "/../server/logs/logError.txt");
+            $fw = fopen(__DIR__ . "/../server/logs/logError.txt" . "a+");
+            fwrite($fw, $e->getMessage() . microtime() . PHP_EOL);
+            fclose($fw);
             header("Location: ./index.php?ctl=error");
         }
 
