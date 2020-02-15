@@ -101,6 +101,7 @@ class Sessions
             unset($_SESSION);
             session_unset();
             session_destroy();
+            session_abort();
         }
     }
 
