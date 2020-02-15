@@ -545,6 +545,10 @@ class AdminController {
             Modal.genericModalWithForm("Teacher");
         });
 
+        $("#addClassrooms").on("click", function () {
+            Modal.genericModalWithForm("Classroom");
+        });
+
         /*model.loadSchedules(model, function(data) {
             view.addRowsToTable(model.schedules, view.tableSchedules);
             view.createDataTable(view.tableSchedules);
