@@ -75,11 +75,22 @@
     //Modal.genericModalWithForm("Teachers");
     $.sweetModal({
         title: 'HTML Content',
-        content: `<form id='picked'>
-            <input type="text">
-        <input type="text">
-        <input type="submit" value="Test">
-            </form>`,
+        content: `<form method="POST" class="form-signin col-md" method="POST">
+    <div class="text-center mb-4 text-white">
+        <h3>Event</h3>
+    </div>
+
+    <div class="form">
+        <div class="form-group col-md">
+            <label for="inputTitle">Start hour (*)</label>
+            <input type="text" class="form-control" id="inputTitle" name="inputTitle" aria-describedby="inputTitleHelp"
+                placeholder="Climate change lecture" required>
+            <small id="inputTitleHelp" class="form-text text-muted">Event title.</small>
+        </div>
+
+        <input type="submit" value="Add" class="btn btn-warning w-100">
+    </div>
+</form>`,
         theme: $.sweetModal.THEME_DARK
     });
 </script>
