@@ -28,6 +28,11 @@ class Controller
         require __DIR__ . '/../templates/notuseragent.php';
     }
 
+    public function classrooms()
+    {
+        require __DIR__ . '/../templates/classrooms.php';
+    }
+
     public function confirmEmail()
     {
         $params = ExceptionUtils::tryCatch("Controller", "confirmEmailFunctionality");
