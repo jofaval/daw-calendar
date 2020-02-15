@@ -30,6 +30,8 @@ class Controller
 
     public function classrooms()
     {
+        $classrooms = Model::getInstance()->query("SELECT * FROM classrooms WHERE enabled!=0");
+
         require __DIR__ . '/../templates/classrooms.php';
     }
 

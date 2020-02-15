@@ -2,7 +2,7 @@
 <?php $optionalCSS = [];?>
 <?php $optionalScripts = ["webcomponents/classroom.js"];?>
 <?php $title = "Classroom selector";?>
-<?php $mainClasses = "";?>
+<?php $mainClasses = "container text-light h-100 d-flex justify-content-center text-dark";?>
 <?php $showFooter = true;?>
 <?php $showHeader = true;?>
 <?php $showBreadcrumb = false;?>
@@ -10,11 +10,16 @@
 
 <?php ob_start()?>
 
-<?php $classrooms = Model::getInstance()->query("SELECT * FROM classrooms WHERE enabled!=0");?>
-<?php foreach ($classrooms as $row): ?>
-<classroom-card classroom-name="<?php echo $row["name"]; ?>" classroom-description="<?php echo $row["description"]; ?>">
-</classroom-card>
-<?php endforeach;?>
+<div class="d-flex flex-row align-content-center justify-content-center col-md-12 my-auto flex-wrap">
+
+    <?php $controller = new Controller();
+$classrooms = $controller->getClassrooms();?>
+    <?php foreach ($classrooms as $row): ?>
+    <classroom-card classroom-name="<?php echo $row["name"]; ?>"
+        classroom-description="<?php echo $row["description"]; ?>">
+    </classroom-card>
+    <?php endforeach;?>
+</div>
 
 <?php $contenido = ob_get_clean();?>
 
