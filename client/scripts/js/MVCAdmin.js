@@ -134,7 +134,6 @@ class View {
                     <td>Email</td>
                     <td>Activate</td>
                     <td>Remove</td>
-                    <td>Disable</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -151,7 +150,6 @@ class View {
                     <td>State</td>
                     <td>Active</td>
                     <td>Remove</td>
-                    <td>Disable</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -169,7 +167,6 @@ class View {
                     <td>Year</td>
                     <td>Active</td>
                     <td>Remove</td>
-                    <td>Disable</td>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -340,7 +337,7 @@ class View {
             }
             var calendarControls = new CalendarControls(calendar, sampleEvents, date);
             calendarControls.setOnMonthChanged(function name(month, year) {
-                view.loadEventsFromMonth(new Date(year, month, 1), calendar, sampleEvents);
+                //view.loadEventsFromMonth(new Date(year, month, 1), calendar, sampleEvents);
             });
         });
     }
@@ -407,6 +404,9 @@ class View {
             "searching": true,
             "ordering": true,
         });
+        console.log($(".dataTables_length"));
+
+        $(".dataTables_length select").html("").append("<option value='5'>5</option>");
         table.find('.dataTables_length').addClass('bs-select');
     }
 
@@ -462,8 +462,11 @@ class View {
     }
 
     selectionEvent() {
-        $('#dtBasicExample tr').removeClass("selected");
-        $(this).addClass("selected");
+        var toggle = !$(this).hasClass("selected");
+        $('.selected').removeClass("selected");
+        if (toggle) {
+            $(this).addClass("selected");
+        }
     }
 
     instance = null;
@@ -510,13 +513,13 @@ class AdminController {
 
         $("#tabTeachers").trigger("click");
         model.loadTeachers(model, function (data) {
-            view.addRowsToTable(model.teachers, view.tableTeachers);
-            view.createDataTable(view.tableTeachers);
+            view.addRowsToTable(model.teachers, $("#dtTeachers"));
+            view.createDataTable($("#dtTeachers"));
         });
 
         model.loadClassrooms(model, function (data) {
-            view.addRowsToTable(model.classrooms, view.tableClassrooms);
-            view.createDataTable(view.tableClassrooms);
+            view.addRowsToTable(model.classrooms, $("#dtClassrooms"));
+            view.createDataTable($("#dtClassrooms"));
         });
 
         /*model.loadSchedules(model, function(data) {
