@@ -8,7 +8,7 @@ class Classroom extends HTMLElement {
         }
 
         this.shadowRoot.innerHTML = `
-        <link rel="stylesheet" href="../styles/bootstrap.min.css">
+        <link rel="stylesheet" href="./styles/bootstrap.min.css">
         <div class="card m-3">
             <div class="card-body">
                 <h5 class="classroom-name card-title text-center">${this.getAttribute("classroom-name")}</h5>

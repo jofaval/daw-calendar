@@ -8,9 +8,9 @@ class Event extends HTMLElement {
         }
 
         this.shadowRoot.innerHTML = `
-        <link rel="stylesheet" href="./client/styles/bootstrap.min.css">
-        <link rel="stylesheet" href="./client/styles/main.css">
-        <link rel="stylesheet" href="./client/styles/events.css">
+        <link rel="stylesheet" href="./styles/bootstrap.min.css">
+        <link rel="stylesheet" href="./styles/main.css">
+        <link rel="stylesheet" href="./styles/events.css">
             <div class="card ${this.getAttribute("event-type")} mb-3 mr-3 bg-dark">
                 <span
                     class="pull-right w-100 position-absolute p-1 d-flex flex-row-reverse clickable close-icon">
@@ -41,11 +41,11 @@ class Event extends HTMLElement {
         var eventActions = shadowRoot.find(".card-icon");
         var close = eventActions.eq(0);
         var eventScope = this;
-        close.on("click", function() {
+        close.on("click", function () {
             eventScope.remove();
         });
         var edit = eventActions.eq(1);
-        edit.on("click", function() {
+        edit.on("click", function () {
             eventScope.remove();
         });
 
