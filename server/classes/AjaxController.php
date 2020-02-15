@@ -11,9 +11,7 @@ class AjaxController
             $mainController = "Controller";
             if (method_exists($mainController, $functionName)) {
                 $result = call_user_func([new $mainController, $functionName]);
-                if ($result === false) {
-                    $this->returnError();
-                }
+
                 echo json_encode($result);
             } else {
                 $this->returnError();
@@ -46,6 +44,7 @@ class AjaxController
         }
         $json = json_encode($object);
         echo $json;
+        exit;
     }
 
     public function getEventsFromMonth()
