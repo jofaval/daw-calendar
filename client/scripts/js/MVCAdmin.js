@@ -462,11 +462,11 @@ class View {
     }
 
     selectionEvent() {
-        var toggle = !$(this).hasClass("selected");
+        /* var toggle = !$(this).hasClass("selected");
         $('.selected').removeClass("selected");
         if (toggle) {
             $(this).addClass("selected");
-        }
+        } */
     }
 
     instance = null;
