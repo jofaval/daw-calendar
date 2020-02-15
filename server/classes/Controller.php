@@ -167,37 +167,37 @@ class Controller
         $validation = Validation::getInstance();
 
         $file = FileUtils::validateFile("inputImage", "./img_usuarios/");
-        var_dump("test");
         if ($file === false) {
             return false;
         }
-        /*
+
+        $_POST["inputEmail"] = $_POST["inputEmail"] . "@iesabastos.org";
+
         $_POST["inputImage"] = $file;
         $regla = array(
-        array(
-        'name' => 'inputName',
-        'regla' => 'no-empty,name',
-        ),
-        array(
-        'name' => 'inputUsername',
-        'regla' => 'no-empty,username',
-        ),
-        array(
-        'name' => 'inputPassword',
-        'regla' => 'no-empty,password',
-        ),
-        array(
-        'name' => 'inputEmail',
-        'regla' => 'no-empty,email',
-        ),
-        array(
-        'name' => 'inputImage',
-        'regla' => 'no-empty,image',
-        ),
+            array(
+                'name' => 'inputName',
+                'regla' => 'no-empty,name',
+            ),
+            array(
+                'name' => 'inputUsername',
+                'regla' => 'no-empty,username',
+            ),
+            array(
+                'name' => 'inputPassword',
+                'regla' => 'no-empty,password',
+            ),
+            array(
+                'name' => 'inputEmail',
+                'regla' => 'no-empty,email',
+            ),
+            array(
+                'name' => 'inputImage',
+                'regla' => 'no-empty,image',
+            ),
         );
-        $validation = $validation->rules($regla, $_POST); */
+        $validation = $validation->rules($regla, $_POST);
 
-        $validation = true;
         if ($validation === true) {
             $signup = $model->signup(Utils::getCleanedData("inputName"), Utils::getCleanedData("inputUsername"), Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
 
