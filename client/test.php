@@ -39,32 +39,33 @@ var_dump(call_user_func(["AjaxController", "getNonWorkWeeklyDays"]));*/
 'INSERT INTO specialDays (specialDay, type) VALUES ("2020-10-09", 1)',
 ]; */
 
-$inserts = [
-    'INSERT INTO classrooms (name, description, state) VALUES ("201", "desc", "perfect")',
-    'INSERT INTO classrooms (name, description, state) VALUES ("202", "desc", "perfect")',
-    'INSERT INTO classrooms (name, description, state) VALUES ("203", "desc", "perfect")',
-    'INSERT INTO classrooms (name, description, state) VALUES ("204", "desc", "perfect")',
-    'INSERT INTO classrooms (name, description, state) VALUES ("205", "desc", "perfect")',
-    'INSERT INTO classrooms (name, description, state) VALUES ("206", "desc", "perfect")',
-    'INSERT INTO classrooms (name, description, state) VALUES ("207", "desc", "perfect")',
-    'INSERT INTO classrooms (name, description, state) VALUES ("208", "desc", "perfect")',
-    'INSERT INTO classrooms (name, description, state) VALUES ("209", "desc", "perfect")',
-];
+/* $inserts = [
+'INSERT INTO classrooms (name, description, state) VALUES ("201", "desc", "perfect")',
+'INSERT INTO classrooms (name, description, state) VALUES ("202", "desc", "perfect")',
+'INSERT INTO classrooms (name, description, state) VALUES ("203", "desc", "perfect")',
+'INSERT INTO classrooms (name, description, state) VALUES ("204", "desc", "perfect")',
+'INSERT INTO classrooms (name, description, state) VALUES ("205", "desc", "perfect")',
+'INSERT INTO classrooms (name, description, state) VALUES ("206", "desc", "perfect")',
+'INSERT INTO classrooms (name, description, state) VALUES ("207", "desc", "perfect")',
+'INSERT INTO classrooms (name, description, state) VALUES ("208", "desc", "perfect")',
+'INSERT INTO classrooms (name, description, state) VALUES ("209", "desc", "perfect")',
+]; */
 
 $conexion = new PDO('mysql:host=' . Config::$mvc_bd_hostname . ';dbname=' . Config::$mvc_bd_nombre . '', Config::$mvc_bd_usuario, Config::$mvc_bd_clave);
 // Realiza el enlace con la BD en utf-8
 $conexion->exec("set names utf8");
 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-foreach ($inserts as $insert) {
-    $queryVar = $conexion->prepare($insert);
-    $queryVar->execute();
-}
+/* foreach ($inserts as $insert) {
+$queryVar = $conexion->prepare($insert);
+$queryVar->execute();
+} */
 
-$string = "SELECT * FROM users";
+//$string = "SELECT * FROM users";
 //$string = "INSERT INTO users (username, password, fullname, email, type, image) VALUES (:username, :password, :fullname, :email, 1, :image)";
 //$string = "UPDATE users SET type=3 WHERE 1=1";
 //$string = "SELECT * FROM `schedules`";
+$string = "SELECT * FROM `specialDays` WHERE YEAR(specialDay)=2020 and MONTH(specialDay)=1";
 $queryVar = $conexion->prepare($string);
 
 $params = [
