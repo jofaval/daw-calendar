@@ -1,18 +1,19 @@
 class Modal {
     static genericModalWithForm(formName, readonly = false) {
 
-        var test = $.sweetModal({
-            title: formName,
-            content: "<div id='modalContent'></div>",
-            theme: $.sweetModal.THEME_DARK
-        }).params.content;
 
-        $(".sweet-modal-content").load("../server/templates/forms/form" + formName + ".html", {}, function () {
+        $("<div id='test'></div>").load("../server/templates/forms/form" + formName + ".html", {}, function () {
             var content = $(this);
-            console.log(content.html());
+
+            var modalContent = $.sweetModal({
+                title: formName,
+                content: content.html(),
+                theme: $.sweetModal.THEME_DARK
+            }).params.content;
+
             if (readonly) {
-                test.find("form *[type=submit]").remove();
-                test.find("form input").attr("readonly", true);
+                modalContent.find("form *[type=submit]").remove();
+                modalContent.find("form input").attr("readonly", true);
             }
         });
     }
