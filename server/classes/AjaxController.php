@@ -31,7 +31,7 @@ class AjaxController
     {
         foreach ($elems as $elem) {
             if (isset($_REQUEST[$elem])) {
-                throw new Throwable("$elem doesn't exist");
+                throw new Error("$elem doesn't exist");
             }
         }
     }
