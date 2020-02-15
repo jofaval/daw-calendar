@@ -236,7 +236,8 @@ class Controller {
             var shadowRoot = $(this.shadowRoot);
 
             shadowRoot.find("#pickEvent").on("click", function () {
-                Modal.genericModalWithForm("Event");
+                Modal.genericModalWithForm("Event", false);
+
             });
         });
 
