@@ -8,9 +8,9 @@
     "libs/time-table.js",
     "libs/mini-event-calendar.js",
     "js/calendar-controls.js",
-    "js/MVCCalendar.js",
     "webcomponents/event.js",
     "webcomponents/eventWeek.js",
+    "js/MVCCalendar.js",
 ];?>
 <?php $title = "Booking area";?>
 <?php $mainClasses = "";?>
