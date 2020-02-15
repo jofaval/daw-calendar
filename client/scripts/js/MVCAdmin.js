@@ -404,9 +404,13 @@ class View {
             "searching": true,
             "ordering": true,
         });
-        console.log($(".dataTables_length"));
+        var select = $(".dataTables_length select");
+        select.html("").append("<option value='5'>5</option><option value='10'>10</option>");
+        var children = select.children();
+        children.last().attr("selected", "selected");
+        children.last().attr("selected", false);
+        children.first().attr("selected", "selected");
 
-        $(".dataTables_length select").html("").append("<option value='5'>5</option>");
         table.find('.dataTables_length').addClass('bs-select');
     }
 
@@ -424,11 +428,6 @@ class View {
                 row.append($("<td>" + element + "</td>"));
             }
         }
-        var $btnRemove = $("<td><button class='btn btn-danger'>Remove</button></td>");
-        $btnRemove.on("click", function () {
-
-        });
-        row.append($btnRemove);
 
         var $checkDisable = $(`<td>
             <div class="custom-control custom-checkbox">
@@ -437,13 +436,18 @@ class View {
                 <label class="custom-control-label rounded-circle" for="monday"></label>
             </div>
         </td>`);
+
         $checkDisable.on("click", function () {
 
         });
+
         if (disableState != 0) {
             $checkDisable.find("input").attr("checked", true);
         }
         row.append($checkDisable);
+
+        var $btnRemove = $("<td><button class='btnRemove btn btn-danger'>Remove</button></td>");
+        row.append($btnRemove);
         if (table.find("tbody").length) {
             table.find("tbody").append(row);
         } else {
@@ -513,13 +517,25 @@ class AdminController {
 
         $("#tabTeachers").trigger("click");
         model.loadTeachers(model, function (data) {
-            view.addRowsToTable(model.teachers, $("#dtTeachers"));
-            view.createDataTable($("#dtTeachers"));
+            var table = $("#dtTeachers");
+            view.addRowsToTable(model.teachers, table);
+            view.createDataTable(table);
         });
 
         model.loadClassrooms(model, function (data) {
-            view.addRowsToTable(model.classrooms, $("#dtClassrooms"));
-            view.createDataTable($("#dtClassrooms"));
+            var table = $("#dtClassrooms");
+            view.addRowsToTable(model.classrooms, table);
+            view.createDataTable(table);
+
+            $(".btnRemove").on("click", function name(params) {
+                var btn = $(this);
+
+                var row = btn.parent().parent();
+                var columns = row.children();
+                AjaxController.deleteClassroom(columns.eq(0).text(), function (data) {
+                    row.remove();
+                });
+            });
         });
 
         /*model.loadSchedules(model, function(data) {
