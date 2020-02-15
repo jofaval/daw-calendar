@@ -21,6 +21,8 @@
 
 <?php ob_start()?>
 
+<h2><?php echo "Classroom: <span id='classroomId'>" . $params["classroom"]; ?></span></h2>
+
 <?php $contenido = ob_get_clean();?>
 
 <?php include_once 'layout.php'?>

@@ -232,8 +232,9 @@ class Controller
     public function calendar()
     {
         $params = [
-            "aula" => $_REQUEST["aula"],
+            "classroom" => $_REQUEST["classroom"],
         ];
+
         require __DIR__ . '/../templates/calendar.php';
     }
 
