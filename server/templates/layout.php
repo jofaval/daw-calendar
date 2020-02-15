@@ -70,9 +70,9 @@
     </nav>
     <?php endif;?>
     <main role="main" class="h-100 w-100 d-flex flex-column justify-content-center <?php echo $mainClasses; ?>">
-        <div class="flex-column row my-auto bg-dark">
-            <?php echo $contenido ?>
-        </div>
+        <!--div class="flex-column row my-auto bg-dark"-->
+        <?php echo $contenido ?>
+        <!--/div-->
     </main>
 
     <?php if ($showFooter): ?>
