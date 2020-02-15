@@ -701,7 +701,7 @@ class Controller
 
     public function getNonWorkWeeklyDays()
     {
-        return Model::getInstance()->query("SELECT `nonWorkDay` FROM `nonWorkWeeklyDays`", []);
+        return Model::getInstance()->query("SELECT `nonWorkDay` FROM `nonWorkWeeklyDays`");
     }
 
     public function getMonthlyNonSchoolDays()
