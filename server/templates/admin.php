@@ -4,6 +4,8 @@
     "datatables.min.css",
     "datatables-select.min.css",
     "mini-event-calendar.min.css",
+    "floating-labels.css",
+    "inputs.css",
 ];?>
 
 <?php $optionalScripts = [
