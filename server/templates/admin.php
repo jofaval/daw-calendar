@@ -24,6 +24,8 @@
 
 <?php ob_start()?>
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
 <?php $contenido = ob_get_clean()?>
 
 <?php include_once 'layout.php'?>
