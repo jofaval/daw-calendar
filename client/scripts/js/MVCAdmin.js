@@ -298,12 +298,21 @@ class View {
             0: "sunday",
         };
 
+        for (const key in dayIntToId) {
+            if (dayIntToId.hasOwnProperty(key)) {
+                const element = dayIntToId[key];
+                $("#" + element).attr("checked", true);
+            }
+        }
+
         AjaxController.getNonWorkWeeklyDays(function (data) {
             var jsonParsed = JSON.parse(data);
             for (const key in jsonParsed) {
                 if (jsonParsed.hasOwnProperty(key)) {
                     const row = jsonParsed[key];
-                    $("#" + dayIntToId[row.nonWorkDay]).attr("checked", true);
+                    if (condition) {
+                        $("#" + dayIntToId[row.nonWorkDay]).attr("checked", false);
+                    }
                 }
             }
         });
