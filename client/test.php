@@ -66,8 +66,10 @@ $queryVar->execute();
 //$string = "UPDATE users SET type=3 WHERE 1=1";
 //$string = "SELECT * FROM `schedules`";
 //$string = "SELECT * FROM `specialDays` WHERE YEAR(specialDay)=2020 and MONTH(specialDay)=1";
-$string = "DELETE FROM classrooms WHERE name='203'";
-$queryVar = $conexion->prepare($string);
+//$string = "DELETE FROM classrooms WHERE name='203'";
+
+var_dump(Model::getInstance()->createEvent("test", "7:55", "2020-02-13", "205"));
+//$queryVar = $conexion->prepare($string);
 
 $params = [
 //"username" => "teste",
