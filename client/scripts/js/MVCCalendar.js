@@ -119,14 +119,14 @@ class View {
         this.mainContainer.append(this.weekFormat);
 
         //Weekly calendar
-        this.weeklyCalendarContainer = $('<section class="container w-100"></section>');
+        this.weeklyCalendarContainer = $('<section class="w-75"></section>');
         var weeklyRow = $("<div class='row'></div");
         this.timeTableWeek = $('<div id="timeTableWeek" class="col-md mini-cal row"></div>');
         weeklyRow.append(this.timeTableWeek);
         this.weeklyCalendarContainer.append(weeklyRow);
 
         //Monthly calendar
-        this.monthlyCalendarContainer = $('<section class="container w-100"></section>');
+        this.monthlyCalendarContainer = $('<section class="w-75"></section>');
         var monthlyRow = $("<div class='row'></div");
         this.monthCalendar = $('<div id="calendar" class="col-md-8 px-0"></div>');
         this.timeTableDay = $('<div id="timeTable" class="col-md ml-md-5 px-0"></div>');

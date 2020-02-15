@@ -9,7 +9,7 @@
     <?php foreach (Config::$mvc_vis_css as $css_link): ?>
     <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
     <?php endforeach;?>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <?php foreach ($optionalCSS as $css_link): ?>
     <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
     <?php endforeach;?>
