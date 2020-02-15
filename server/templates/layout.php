@@ -32,16 +32,18 @@
             style="transition: all 0.2s ease-in-out 0s;">
             <ul class="navbar-nav" style="transition: all 0.2s ease-in-out 0s;">
                 <li class="nav-item active" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link" href="./home" style="transition: all 0.2s ease-in-out 0s;">Schedules<span
-                            class="sr-only" style="transition: all 0.2s ease-in-out 0s;">(current)</span></a>
+                    <a class="nav-link" href="index.php?ctl=calendar"
+                        style="transition: all 0.2s ease-in-out 0s;">Schedules<span class="sr-only"
+                            style="transition: all 0.2s ease-in-out 0s;">(current)</span></a>
                 </li>
                 <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link selected" href="./calendar"
+                    <a class="nav-link selected" href="index.php?ctl=calendar"
                         style="transition: all 0.2s ease-in-out 0s;">Calendar</a>
                 </li>
                 <li class="nav-item dropdown" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link dropdown-toggle" href="./admin" id="dropdown08" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" style="transition: all 0.2s ease-in-out 0s;">Admin
+                    <a class="nav-link dropdown-toggle" href="index.php?ctl=admin" id="dropdown08"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="transition: all 0.2s ease-in-out 0s;">Admin
                         panel</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown08"
                         style="transition: all 0.2s ease-in-out 0s;">
@@ -51,7 +53,8 @@
                     </div>
                 </li>
                 <li class="nav-item" style="transition: all 0.2s ease-in-out 0s;">
-                    <a class="nav-link" href="./logout" style="transition: all 0.2s ease-in-out 0s;">Logout</a>
+                    <a class="nav-link" href="index.php?ctl=logout"
+                        style="transition: all 0.2s ease-in-out 0s;">Logout</a>
                 </li>
             </ul>
         </div>
