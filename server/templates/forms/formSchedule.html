@@ -4,31 +4,31 @@
     </div>
 
     <div class="form-inline d-flex justify-content-center align-items-center">
-        <div class="form-group col-md-12">
-            <label for="inputScheduleStartHour">Start hour (*)</label>
-            <input type="time" class="form-control" id="inputScheduleStartHour" name="inputScheduleStartHour"
+        <div class="form-group flex-column w-100 col-md-12">
+            <label class="w-100" for="inputScheduleStartHour">Start hour (*)</label>
+            <input type="time" class="form-control w-100" id="inputScheduleStartHour" name="inputScheduleStartHour"
                 aria-describedby="scheduleStartHourHelp" placeholder="7:55" required>
             <small id="scheduleStartHourHelp" class="form-text text-muted">Event starts at.</small>
         </div>
 
-        <div class="form-group col-md-12">
-            <label for="inputScheduleEndHour">End hour (*)</label>
-            <input type="time" class="form-control" id="inputScheduleEndHour" name="inputScheduleEndHour"
+        <div class="form-group flex-column w-100 col-md-12">
+            <label class="w-100" for="inputScheduleEndHour">End hour (*)</label>
+            <input type="time" class="form-control w-100" id="inputScheduleEndHour" name="inputScheduleEndHour"
                 aria-describedby="scheduleEndHourHelp" placeholder="7:55" required>
             <small id="scheduleEndHourHelp" class="form-text text-muted">Event ends at.</small>
         </div>
 
-        <div class="form-group col-md-12">
-            <label for="inputSelectedYear">Year</label>
-            <input type="date" class="form-control" id="inputSelectedYear" name="inputSelectedYear"
+        <div class="form-group flex-column w-100 col-md-12">
+            <label class="w-100" for="inputSelectedYear">Year</label>
+            <input type="date" class="form-control w-100" id="inputSelectedYear" name="inputSelectedYear"
                 aria-describedby="scheduleSelectedYearHelp" required>
             <small id="scheduleSelectedYearHelp" class="form-text text-muted">Event ends at.</small>
         </div>
 
         <div class="form-group btn-group col-md-12">
-            <button class="btn btn-lg btn-primary btn-block" name="createSchedule" type="submit">Add</button>
-            <button class="btn btn-lg btn-primary btn-block" name="updateSchedule" type="submit">Modify</button>
-            <button class="btn btn-lg btn-primary btn-block" name="deleteSchedule" type="submit">Remove</button>
+            <button class="btn btn-primary" name="createSchedule" type="submit">Add</button>
+            <button class="btn btn-primary" name="updateSchedule" type="submit">Modify</button>
+            <button class="btn btn-primary" name="deleteSchedule" type="submit">Remove</button>
         </div>
     </div>
 </form>

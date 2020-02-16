@@ -17,7 +17,7 @@
     "js/MVCAdmin.js",
 ];?>
 <?php $title = "Admin";?>
-<?php $mainClasses = "flex-column container col-md-10 px-md-0";?>
+<?php $mainClasses = "flex-column container col-12 col-md-10 px-md-0 offset-md-1 h-0 h-75";?>
 <?php $showFooter = true;?>
 <?php $showHeader = true;?>
 <?php $showBreadcrumb = false;?>
