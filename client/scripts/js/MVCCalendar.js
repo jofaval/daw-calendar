@@ -204,6 +204,10 @@ class Controller {
     }
 
     start(controller) {
+        //console.log(controller.model);
+
+        //getEventsFromWeek(date, days);
+
         controller.view.timeTableWeek.TT({
             events: controller.model.currentEvents,
             schedule: controller.model.schedule,
@@ -232,14 +236,6 @@ class Controller {
             controller.model.currentDate = new Date(newDate);
         });
 
-        $("event-card").each(function () {
-            var shadowRoot = $(this.shadowRoot);
-
-            shadowRoot.find("#pickEvent").on("click", function () {
-                Modal.genericModalWithForm("Event", false);
-
-            });
-        });
 
     }
 
@@ -255,11 +251,49 @@ class Controller {
         //console.log("Day  - " + newDate.toString());
         //console.log("Day  - " + dayInNumber);
 
+        var date = printDateWithFormat(newDate, "Y-m-d");
+        $("input[type=date]").val(printDateWithFormat(newDate, "Y-m-d"));
+
         controller.view.timeTableDay.TT({
             events: controller.model.getEventsFromDay(newDate, 50),
             schedule: controller.model.getSchedule(),
             day: newDate
         });
+
+        controller.model.currentDate.setDate(newDate.getDate());
+
+        setTimeout(() => {
+            $("event-card").each(function () {
+                var shadowRoot = $(this.shadowRoot);
+
+                shadowRoot.find("#pickEvent").on("click", function () {
+                    var focused = $(".focused");
+
+                    if (focused.length == 1) {
+                        Modal.genericModalWithForm("Event", false, function () {
+                            var form = $("form .form");
+                            form.prepend("<input type='hidden' name='classroom' id='classroom' value='" + $("#classroomId").html() + "'>");
+                            form.prepend("<input type='hidden' name='date' id='date' value='" + printDateWithFormat(controller.model.currentDate, "Y-m-d") + "'>");
+                            form.prepend("<input type='hidden' name='startHour' id='startHour' value='" + shadowRoot.find("#eventStartHour").text() + "'>");
+                            form.find(":submit").on("click", function (event) {
+                                var event = event || window.event;
+                                event.preventDefault();
+
+                                AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
+                                    var parsedData = JSON.parse(data);
+
+                                    if (data === true) {
+
+                                    } else {
+
+                                    }
+                                });
+                            })
+                        });
+                    }
+                });
+            });
+        }, 100);
     }
 
     onMonthChanged(month, year, controller) {
