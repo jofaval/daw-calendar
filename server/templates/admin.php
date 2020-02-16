@@ -17,13 +17,19 @@
     "js/MVCAdmin.js",
 ];?>
 <?php $title = "Admin";?>
-<?php $mainClasses = "flex-column container col-12 col-md-10 px-md-0 offset-md-1 h-0 h-75";?>
+<?php $mainClasses = "col-12 col-md-10 px-md-0 offset-md-1 h-0 h-75";?>
 <?php $showFooter = true;?>
 <?php $showHeader = true;?>
 <?php $showBreadcrumb = false;?>
 <?php $breadcrumb = [];?>
 
 <?php ob_start()?>
+
+<style>
+div.col-sm-12 {
+    overflow: auto;
+}
+</style>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 

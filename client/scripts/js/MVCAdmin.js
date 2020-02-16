@@ -117,6 +117,7 @@ class Model {
 class View {
     constructor() {
         this.mainContainer = $('main');
+        this.mainContainer.before('<div class="d-block d-sm-none my-5 w-100">&nbsp;</div>');
         var addButton = $("<span class='w-100 btn btn-warning mb-2'>Add <i class='fa fa-plus'></i></span>");
 
         //Create tab
@@ -370,7 +371,7 @@ class View {
     }
 
     createTabContainer(tabName, container) {
-        var $tabContainer = $("<div id='tabContainer' class='tabContainer py-2 col-md-12 mx-0 rounded bg-dark col-xs'></div>");
+        var $tabContainer = $("<div id='tabContainer' class='tabContainer w-auto py-2 col-md-12 mx-0 rounded bg-dark col-xs'></div>");
         $tabContainer.prop("id", "tabContainer" + tabName);
         $tabContainerContainer = $("#tabContainers");
         if ($tabContainerContainer.length == 0) {
