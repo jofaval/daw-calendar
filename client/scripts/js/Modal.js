@@ -24,4 +24,21 @@ class Modal {
             icon: $.sweetModal.ICON_ERROR
         });
     }
+
+    static confirmModal(actionAfterConfirm, buttonText = "Remove", title = "Are you sure?") {
+        $.sweetModal({
+            title: title,
+            theme: $.sweetModal.THEME_DARK,
+            buttons: [{
+                label: buttonText,
+                classes: 'redB',
+                action: function () {
+                    actionAfterConfirm();
+                }
+            }, {
+                label: 'Cancel',
+                classes: 'button greenB bordered flat'
+            }]
+        });
+    }
 }

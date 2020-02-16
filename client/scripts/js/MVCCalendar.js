@@ -295,13 +295,33 @@ class Controller {
                                     AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
                                         var parsedData = JSON.parse(data);
 
-                                        if (data === true) {
-
+                                        if (parsedData === true) {
+                                            focused.prev().trigger("click");
+                                            focused.trigger("click");
                                         } else {
 
                                         }
                                     });
                                 })
+                            });
+                        }
+                    });
+
+                    shadowRoot.find("#removeEvent").on("click", function () {
+                        var focused = $(".focused");
+
+                        if (focused.length == 1) {
+                            Modal.confirmModal(function () {
+                                AjaxController.deleteEvent(shadowRoot.find("#eventStartHour").text(), printDateWithFormat(controller.model.currentDate, "Y-m-d"), $("#classroomId").html(), function success(data) {
+                                    var parsedData = JSON.parse(data);
+
+                                    if (data === true) {
+                                        focused.prev().trigger("click");
+                                        focused.trigger("click");
+                                    } else {
+                                        console.log("fallo");
+                                    }
+                                });
                             });
                         }
                     });
