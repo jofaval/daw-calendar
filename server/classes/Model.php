@@ -293,7 +293,7 @@ class Model extends PDO
             "date" => $date,
         ];
 
-        return $this->cudOperation("UPDATE FROM events SET title=:title WHERE startHour=:startHour and date=:date", $params);
+        return $this->cudOperation("UPDATE FROM events SET title=:title WHERE startHour=:startHour and selectedDay=:date", $params);
     }
 
     public function deleteEvent($startHour, $date, $classroom)
@@ -308,13 +308,14 @@ class Model extends PDO
             "orderId" => $scheduleRow["orderId"],
             "year" => $scheduleRow["year"],
             "date" => $date,
-            "classroom" => $classroom,
+            "classroomName" => $classroom,
         ];
 
-        $string = "DELETE FROM events WHERE orderId=:orderId and year=:year and date=:date and classroomName=:classroomName";
+        $string = "DELETE FROM events WHERE orderId=:orderId and year=:year and selectedDay=:date and classroomName=:classroomName";
 
-        if (condition) {
+        if ($sessions->getSession("access") < Config::$ACCESS_LEVEL_ADMIN) {
             $params["username"] = $sessions->getSession("username");
+            $string .= " and username=:username";
         }
 
         return $this->cudOperation($string, $params);
