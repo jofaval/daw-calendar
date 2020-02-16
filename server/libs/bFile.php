@@ -1,7 +1,7 @@
 <?php
 class FileUtils
 {
-    public static function validateFile($fileName, $path, &$errors = [])
+    public static function validateFile($fileName, $path, $username, &$errors = [])
     {
         $final_file_name = false;
         if ($_FILES[$fileName]['error'] != 0) {
@@ -37,22 +37,24 @@ class FileUtils
         } else {
             // Sino ha habido errores en la subida
             /*
-            * Comprobamos que el fichero es del tipo que esperamos.
-            * Tener en cuenta que este tipo viene determinado por lo que envía el navegador del usuario, no es del todo
-            * segura
-            */
+             * Comprobamos que el fichero es del tipo que esperamos.
+             * Tener en cuenta que este tipo viene determinado por lo que envía el navegador del usuario, no es del todo
+             * segura
+             */
             // Podríamos comprobar con un array de posibles tipos válidos
 
             //jpge
             if (!in_array($_FILES[$fileName]['type'], Config::$mvc_img_exts)) {
                 $errors[] = 'Error: No se puede mover el fichero a su destino';
                 $final_file_name = false;
-            } else { // Si el formato es el esperado lo guardaremos definitivamente 
+            } else { // Si el formato es el esperado lo guardaremos definitivamente
                 /*
-         * Comprobamos si ya existe un archivo con este nombre en el destino,
-         * si es así, establecemos un nombre no repetido.
-         */
+                 * Comprobamos si ya existe un archivo con este nombre en el destino,
+                 * si es así, establecemos un nombre no repetido.
+                 */
                 $nombre = $_FILES[$fileName]['name'];
+                $explodedNombre = $nombre . explode(".");
+                $nombre = "$username.$explodedNombre[1]";
                 if (is_file($path . $nombre) === true) {
                     // Añadimos el tiempo para asegurarnos que el nombre es único
                     $idUnico = time();
@@ -60,7 +62,7 @@ class FileUtils
                 } else {
                     $nombre = $path . $nombre;
                 }
-                    // Movemos el fichero a su nueva ubicación
+                // Movemos el fichero a su nueva ubicación
                 if (move_uploaded_file($_FILES[$fileName]['tmp_name'], $nombre)) {
                     // Muestro la imagen.
                     $final_file_name = $nombre;
