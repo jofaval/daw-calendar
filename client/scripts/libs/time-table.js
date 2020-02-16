@@ -247,6 +247,8 @@
         var $tbody = $(`<tbody class="bg-dark"></tbody>`);
         $table.append($tbody);
 
+        //pasar a formato los eventos de la semana
+
         for (let scheduleIndex = 0; scheduleIndex < scheduleLength; scheduleIndex++) {
             var $tr = $(`<tr class="my-3"></tr>`);
             var $td = $(`<td>${schedule[scheduleIndex][0]} <br> ${schedule[scheduleIndex][1]}</td>`);
@@ -254,18 +256,21 @@
             for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
                 var $td = $(`<td></td>`);
                 var eventTitle = "Unreserved";
-                var keys = Object.keys(events);
                 var teacherEmail = "contact@iesabastos.org";
                 var teacherName = "not picked";
                 var eventType = "free";
-                for (const key in keys) {
-                    if (object.hasOwnProperty(key)) {
-                        if (schedule[scheduleIndex][0] == event["event-start-hour"]) {
-                            eventTitle = event["event-title"];
-                            teacherName = event["teacher-name"];
-                            teacherEmail = event["teacher-email"];
-                            eventType = (event["event-type"] != 0) ? "yours" : "picked";
-                            break;
+                var currentEvent = events[dayIndex];
+                if (currentEvent != undefined) {
+                    var currentEventList = currentEvent["events"];
+                    var eventsLen = currentEventList.length;
+                    for (let eventIndex = 0; eventIndex < eventsLen; eventIndex++) {
+                        const selectedEvent = currentEventList[eventIndex];
+                        if (schedule[scheduleIndex][0] == selectedEvent["event-start-hour"]) {
+                            eventTitle = selectedEvent["event-title"];
+                            teacherName = selectedEvent["teacher-name"];
+                            teacherEmail = selectedEvent["teacher-email"];
+                            eventType = (selectedEvent["event-type"] != 0) ? "yours" : "picked";
+                            eventIndex = eventsLen;
                         }
                     }
                 }
