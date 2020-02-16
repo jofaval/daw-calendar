@@ -53,11 +53,16 @@
         }
     });*/
 
-    $("#test").load("../server/templates/forms/formSignup.html", {}, function (params) {
+    /* $("#test").load("../server/templates/forms/formSignup.html", {}, function (params) {
         console.log($(this));
 
-    });
+    }); */
     //console.log($("#test").html());
+
+    AjaxController.createEvent("Test", "8:50", "2020-02-12", "205",
+        function success(data) {
+            console.log(data);
+        });
 </script>
 
 </html>

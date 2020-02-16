@@ -51,6 +51,7 @@ var_dump(call_user_func(["AjaxController", "getNonWorkWeeklyDays"]));*/
 'INSERT INTO classrooms (name, description, state) VALUES ("209", "desc", "perfect")',
 ]; */
 
+$controller = new Controller();
 $conexion = new PDO('mysql:host=' . Config::$mvc_bd_hostname . ';dbname=' . Config::$mvc_bd_nombre . '', Config::$mvc_bd_usuario, Config::$mvc_bd_clave);
 // Realiza el enlace con la BD en utf-8
 $conexion->exec("set names utf8");
@@ -68,7 +69,12 @@ $queryVar->execute();
 //$string = "SELECT * FROM `specialDays` WHERE YEAR(specialDay)=2020 and MONTH(specialDay)=1";
 //$string = "DELETE FROM classrooms WHERE name='203'";
 
-var_dump(Model::getInstance()->createEvent("test", "7:55", "2020-02-13", "205"));
+//var_dump(Model::getInstance()->createEvent("test", "7:55", "2020-02-13", "205"));
+$_POST["title"] = "test";
+$_POST["startHour"] = "7:55";
+$_POST["date"] = "2020-02-13";
+$_POST["classroom"] = "205";
+var_dump($controller->createEvent());
 //$queryVar = $conexion->prepare($string);
 
 $params = [
