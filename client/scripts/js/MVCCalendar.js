@@ -293,14 +293,8 @@ class Controller {
                                     event.preventDefault();
 
                                     AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
-                                        var parsedData = JSON.parse(data);
-
-                                        if (parsedData === true) {
-                                            focused.prev().trigger("click");
-                                            focused.trigger("click");
-                                        } else {
-
-                                        }
+                                        focused.prev().trigger("click");
+                                        focused.trigger("click");
                                     });
                                 })
                             });
@@ -313,14 +307,8 @@ class Controller {
                         if (focused.length == 1) {
                             Modal.confirmModal(function () {
                                 AjaxController.deleteEvent(shadowRoot.find("#eventStartHour").text(), printDateWithFormat(controller.model.currentDate, "Y-m-d"), $("#classroomId").html(), function success(data) {
-                                    var parsedData = JSON.parse(data);
-
-                                    if (data === true) {
-                                        focused.prev().trigger("click");
-                                        focused.trigger("click");
-                                    } else {
-                                        console.log("fallo");
-                                    }
+                                    focused.prev().trigger("click");
+                                    focused.trigger("click");
                                 });
                             });
                         }
