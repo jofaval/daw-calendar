@@ -255,8 +255,8 @@ class Model extends PDO
     {
         $year = Utils::getAcademicYear(date("now"));
         //$year = "2020";
-        $params = ["currentyear" => $year];
-        return $this->query("SELECT * FROM schedules WHERE currentyear=:currentyear", $params);
+        //$params = ["currentyear" => $year];
+        return $this->query("SELECT * FROM schedules", $params);
     }
 
     public function createEvent($title, $startHour, $date, $classroom)
