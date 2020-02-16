@@ -16,7 +16,13 @@ INSERT INTO classrooms VALUES
 ("206","desc","perfect","1"),
 ("207","desc","perfect","1"),
 ("208","desc","perfect","1"),
-("209","desc","perfect","1");
+("209","desc","perfect","1"),
+("el","test funciona","perfect","1"),
+("renejne","jyjrt","perfect","1"),
+("se","añade","perfect","1"),
+("test","purrfect","perfect","1"),
+("wegwehwe","wehwehwe","perfect","1"),
+("wfgweg","wegwegwe","perfect","1");
 
 
 
@@ -125,7 +131,10 @@ INSERT INTO users VALUES
 ("jofaval","Pepe Fabra","$2a$09$esternocleidomastoideetywGL9Sf5TXyFHwilEcX5OTB5tlZG6e","./img_usuarios/bg2.jpg","3","jofaval","1"),
 ("jofaval2","Pepe Fabra","$2a$09$esternocleidomastoideetywGL9Sf5TXyFHwilEcX5OTB5tlZG6e","./img_usuarios/1581777008_blurred-tulips - copia.jpeg","1","jofaval2","1"),
 ("newUser","Pepe Fabra","$2a$09$esternocleidomastoideetywGL9Sf5TXyFHwilEcX5OTB5tlZG6e","./img_usuarios/1581778987_blurred-tulips - copia.jpeg","1","newTest","1"),
+("prueba","Pepe Fabra","$2a$09$esternocleidomastoideetywGL9Sf5TXyFHwilEcX5OTB5tlZG6e","./img_usuarios/prueba.g","1","prueba@iesabastos.org","1"),
 ("teste","Pepe Fabra","$2a$09$esternocleidomastoideetywGL9Sf5TXyFHwilEcX5OTB5tlZG6e","test.jph","3","teste@iesabastos.org","1"),
+("wegwe","Pepe Fabra","$2a$09$esternocleidomastoideetywGL9Sf5TXyFHwilEcX5OTB5tlZG6e","./img_usuarios/wegwe.l","1","wegwhweh@iesabastos.org","1"),
+("wegwehwehwe","Pepe Fabra","$2a$09$esternocleidomastoideetywGL9Sf5TXyFHwilEcX5OTB5tlZG6e","./img_usuarios/wegwehwehwe.l","1","wegwjhwehy@iesabastos.org","1"),
 ("wehwehwehwe","ewghweghwehwehweh","$2a$09$esternocleidomastoideeTA.ozyFa9xjzxkCo6VpXsNb2J2HdHt.","./img_usuarios/blurred-tulips.jpg","1","wehwehwehwh","1");
 
 
