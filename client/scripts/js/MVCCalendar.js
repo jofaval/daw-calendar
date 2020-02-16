@@ -101,32 +101,33 @@ class View {
         this.mainContainer = $('main');
 
         this.weekFormat = $(`<div id="toolbar"
-                class="w-50 rounded d-flex justify-content-around py-3 text-white mb-5 bg-dark align-items-center">
+                class="w-100 rounded d-flex justify-content-around flex-wrap py-3 text-white mb-5 bg-dark align-items-center">
 
                 <div class="form-group form-inline m-0">
-                    <label for="monthDatePicker">Month</label>
+                    <label class='d-none d-sm-block' for="monthDatePicker">Month</label>
                     <input type="date" name="monthDatePicker" id="monthDatePicker" class="form-control ml-4">
                 </div>
                 <div class="form-group form-inline m-0">
-                    <label for="weekDatePicker">Week</label>
+                    <label class='d-none d-sm-block' for="weekDatePicker">Week</label>
                     <input type="date" name="weekDatePicker" id="weekDatePicker" class="form-control ml-4">
                 </div>
                 <div class="form-group form-inline m-0">
-                    <label for="weekFormat">Change Week/Month calendar format:</label>
+                    <label class='d-none d-sm-block' for="weekFormat">Change Week/Month calendar format:</label>
                     <button type="button" id="weekFormat" class="btn ml-4 btn-primary">Week</button>
                 </div>
             </div>`);
         this.mainContainer.append(this.weekFormat);
+        this.mainContainer.before('<div class="d-block d-sm-none h-25 my-4 w-100">&nbsp;</div>');
 
         //Weekly calendar
-        this.weeklyCalendarContainer = $('<section class="w-75"></section>');
+        this.weeklyCalendarContainer = $('<section class="w-100"></section>');
         var weeklyRow = $("<div class='row'></div");
         this.timeTableWeek = $('<div id="timeTableWeek" class="col-md-12 mini-cal row"></div>');
         weeklyRow.append(this.timeTableWeek);
         this.weeklyCalendarContainer.append(weeklyRow);
 
         //Monthly calendar
-        this.monthlyCalendarContainer = $('<section class="w-75"></section>');
+        this.monthlyCalendarContainer = $('<section class="w-100"></section>');
         var monthlyRow = $("<div class='row'></div");
         this.monthCalendar = $('<div id="calendar" class="col-md-8 col-12 px-0"></div>');
         this.timeTableDay = $('<div id="timeTable" class="col-md-4 col-12 px-0"></div>');
@@ -252,7 +253,6 @@ class Controller {
         var parts = inputDate.split('-');
         var newDate = new Date(parts[0], parts[1] - 1, parts[2]);
         console.log(newDate);*/
-        console.log("new date", controller.model.currentDate);
 
         controller.calendarControls = new CalendarControls(
             controller.view.monthCalendar,
@@ -307,50 +307,56 @@ class Controller {
                 $("event-card").each(function () {
                     var shadowRoot = $(this.shadowRoot);
 
-                    shadowRoot.find("#pickEvent").on("click", function () {
-                        var focused = $(".focused");
+                    shadowRoot.find("#pickEvent").on("click", pickEvent);
+                    shadowRoot.find("#pickEvent").on("touch", pickEvent);
 
-                        if (focused.length == 1) {
-                            Modal.genericModalWithForm("Event", false, function (modalContent) {
-                                $("*[type=submit]").on("click", function (event) {
-                                    var event = event || window.event
-                                    event.preventDefault();
-                                    modalContent.close();
-                                    return false;
-                                });
-
-                                var form = $("form .form");
-                                form.prepend("<input type='hidden' name='classroom' id='classroom' value='" + $("#classroomId").html() + "'>");
-                                form.prepend("<input type='hidden' name='date' id='date' value='" + printDateWithFormat(controller.model.currentDate, "Y-m-d") + "'>");
-                                form.prepend("<input type='hidden' name='startHour' id='startHour' value='" + shadowRoot.find("#eventStartHour").text() + "'>");
-                                form.find(":submit").on("click", function (event) {
-                                    var event = event || window.event;
-                                    event.preventDefault();
-
-                                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
-                                        focused.prev().trigger("click");
-                                        focused.trigger("click");
-                                    });
-                                })
-                            });
-                        }
-                    });
-
-                    shadowRoot.find("#removeEvent").on("click", function () {
-                        var focused = $(".focused");
-
-                        if (focused.length == 1) {
-                            Modal.confirmModal(function () {
-                                AjaxController.deleteEvent(shadowRoot.find("#eventStartHour").text(), printDateWithFormat(controller.model.currentDate, "Y-m-d"), $("#classroomId").html(), function success(data) {
-                                    focused.prev().trigger("click");
-                                    focused.trigger("click");
-                                });
-                            });
-                        }
-                    });
+                    shadowRoot.find("#removeEvent").on("click", removeEvent);
+                    shadowRoot.find("#removeEvent").on("touch", removeEvent);
                 });
             }, 100);
         });
+    }
+
+    removeEvent() {
+        var focused = $(".focused");
+
+        if (focused.length == 1) {
+            Modal.confirmModal(function () {
+                AjaxController.deleteEvent(shadowRoot.find("#eventStartHour").text(), printDateWithFormat(controller.model.currentDate, "Y-m-d"), $("#classroomId").html(), function success(data) {
+                    focused.prev().trigger("click");
+                    focused.trigger("click");
+                });
+            });
+        }
+    }
+
+    pickEvent() {
+        var focused = $(".focused");
+
+        if (focused.length == 1) {
+            Modal.genericModalWithForm("Event", false, function (modalContent) {
+                $("*[type=submit]").on("click", function (event) {
+                    var event = event || window.event
+                    event.preventDefault();
+                    modalContent.close();
+                    return false;
+                });
+
+                var form = $("form .form");
+                form.prepend("<input type='hidden' name='classroom' id='classroom' value='" + $("#classroomId").html() + "'>");
+                form.prepend("<input type='hidden' name='date' id='date' value='" + printDateWithFormat(controller.model.currentDate, "Y-m-d") + "'>");
+                form.prepend("<input type='hidden' name='startHour' id='startHour' value='" + shadowRoot.find("#eventStartHour").text() + "'>");
+                form.find(":submit").on("click", function (event) {
+                    var event = event || window.event;
+                    event.preventDefault();
+
+                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
+                        focused.prev().trigger("click");
+                        focused.trigger("click");
+                    });
+                })
+            });
+        }
     }
 
     onMonthChanged(month, year, controller) {

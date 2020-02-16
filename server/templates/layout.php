@@ -81,7 +81,7 @@
     </main>
 
     <?php if ($showFooter): ?>
-    <footer class="footer fixed-bottom mb-3">
+    <footer class="footer fixed-bottom mb-3 d-none d-sm-block">
         <div class="container">
             <span class="text-muted float-right">- Developed by <a href="jofaval@iesabastos.org">Pepe Fabra Valverde</a>
                 &copy;

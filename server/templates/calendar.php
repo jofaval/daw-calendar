@@ -13,7 +13,7 @@
     "js/MVCCalendar.js",
 ];?>
 <?php $title = "Booking area";?>
-<?php $mainClasses = "";?>
+<?php $mainClasses = "col-12 col-md-10 offset-md-1 h-0 h-75";?>
 <?php $showFooter = true;?>
 <?php $showHeader = true;?>
 <?php $showBreadcrumb = false;?>
