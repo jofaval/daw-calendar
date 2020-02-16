@@ -175,6 +175,7 @@ class View {
             <tbody></tbody>
         </table>`);
         this.tableSchedules.prop("id", "dtSchedules");
+        $("#tabContainerSchedules").append(addButton.clone().attr("id", "addSchedules"));
         $("#tabContainerSchedules").append(this.tableSchedules);
 
         var $nonSchoolDays = $(`
@@ -361,7 +362,7 @@ class View {
         $tabHeader.attr("tabContainer", "tabContainer" + tabName);
         var $tabHeaderContainer = $("#tabHeaders");
         if ($tabHeaderContainer.length == 0) {
-            $tabHeaderContainer = $("<div id='tabHeaders' class='btn-group rounded col-xs w-75 text-center text-white d-flex justify-content-center'></div>");
+            $tabHeaderContainer = $("<div id='tabHeaders' class='btn-group rounded col-xs w-100 text-center text-white d-flex justify-content-center'></div>");
             container.append($tabHeaderContainer);
         }
 
@@ -369,11 +370,11 @@ class View {
     }
 
     createTabContainer(tabName, container) {
-        var $tabContainer = $("<div id='tabContainer' class='tabContainer p-2 col-md-10 mx-auto rounded bg-dark col-xs'></div>");
+        var $tabContainer = $("<div id='tabContainer' class='tabContainer py-2 col-md-12 mx-0 rounded bg-dark col-xs'></div>");
         $tabContainer.prop("id", "tabContainer" + tabName);
         $tabContainerContainer = $("#tabContainers");
         if ($tabContainerContainer.length == 0) {
-            var $tabContainerContainer = $("<div id='tabContainers' class='w-75 text-white'></div>");
+            var $tabContainerContainer = $("<div id='tabContainers' class='w-100 text-white'></div>");
             container.append($tabContainerContainer);
         }
         $tabContainerContainer.append($tabContainer);
@@ -542,17 +543,74 @@ class AdminController {
         });
 
         $("#addTeachers").on("click", function () {
-            Modal.genericModalWithForm("Teacher");
+            Modal.genericModalWithForm("Teacher", false, function (modalContent) {
+                $("*[type=submit]").on("click", function (event) {
+                    var event = event || window.event
+                    event.preventDefault();
+                    modalContent.close();
+                    return false;
+                });
+                var form = $("form .form");
+                form.find(":submit").on("click", function (event) {
+                    var event = event || window.event;
+                    event.preventDefault();
+
+                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
+                        focused.prev().trigger("click");
+                        focused.trigger("click");
+                    });
+                })
+            });
         });
 
         $("#addClassrooms").on("click", function () {
-            Modal.genericModalWithForm("Classroom");
+            Modal.genericModalWithForm("Classroom", false, function (modalContent) {
+                $("*[type=submit]").on("click", function (event) {
+                    var event = event || window.event
+                    event.preventDefault();
+                    modalContent.close();
+                    return false;
+                });
+                var form = $("form .form");
+                form.find(":submit").on("click", function (event) {
+                    var event = event || window.event;
+                    event.preventDefault();
+
+                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
+                        focused.prev().trigger("click");
+                        focused.trigger("click");
+                    });
+                })
+            });
         });
 
-        /*model.loadSchedules(model, function(data) {
+        $("#addSchedules").on("click", function () {
+            Modal.genericModalWithForm("Schedule", false, function (modalContent) {
+                $("*[type=submit]").on("click", function (event) {
+                    var event = event || window.event
+                    event.preventDefault();
+                    modalContent.close();
+                    return false;
+                });
+                var form = $("form .form");
+                form.find(":submit").on("click", function (event) {
+                    var event = event || window.event;
+                    event.preventDefault();
+
+                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
+                        focused.prev().trigger("click");
+                        focused.trigger("click");
+                    });
+                })
+            });
+        });
+
+        model.loadSchedules(model, function (data) {
+            console.log(data);
+
             view.addRowsToTable(model.schedules, view.tableSchedules);
             view.createDataTable(view.tableSchedules);
-        });*/
+        });
     }
 
     static getInstance() {
