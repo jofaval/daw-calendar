@@ -8,6 +8,17 @@ $(window).on("load", function () {
         }
     });
 
+    whenUserDoneTypingInInput($("#inputUsername"), function () {
+        AjaxController.doesUsernameExist($("#inputUsername").val(), function (data) {
+            var jsonData = JSON.parse(data);
+            if (jsonData === true) {
+                $("#usernameHelp").html($messageContainer.clone().addClass("text-danger").html("✘ Isn't available."));
+            } else {
+                $("#usernameHelp").html($messageContainer.clone().addClass("text-success").html("✓ Is available."));
+            }
+        });
+    });
+
     //signin
     addFilterToInputKey($("#inputName"), FILTER_REGEX_LETTERS);
     inputMaxLength($("#inputName"), 50);

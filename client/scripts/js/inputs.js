@@ -119,25 +119,15 @@ function removeMessageToInput(input, messageId) {
 }
 
 $(window).on("load", function () {
-    whenUserDoneTypingInInput($("#inputUsername"), function () {
-        AjaxController.doesUsernameExist($input.val(), function (data) {
-            var jsonData = JSON.parse(data);
-            if (jsonData === true) {
-                $("#usernameHelp").html($messageContainer.clone().addClass("text-danger").html("✘ Isn't available."));
-            } else {
-                $("#usernameHelp").html($messageContainer.clone().addClass("text-success").html("✓ Is available."));
-            }
-        });
-    });
 
-    var inputsWithRemoveOption = ["input[type=email]", "input[type=text]", "input[type=password]"];
+    /*var inputsWithRemoveOption = ["input[type=email]", "input[type=text]", "input[type=password]"];
 
-    /*var removeContent = $("<span class='removeContent w-100 text-dark'><i class='fa fa-times'></i></span>");
+    var removeContent = $("<span class='removeContent w-100 text-dark'><i class='fa fa-times'></i></span>");
     $(inputsWithRemoveOption.join(", ")).after(removeContent.clone().click(function () {
         $(this).prev().val("");
     }));*/
 
-    $("#show_hide_password .trigger").on("click", function (event) {
+    $("#show_hide_password a.bg-warning").on("click", function (event) {
         var event = event || window.event;
         event.preventDefault();
         if ($("#show_hide_password input").attr("type") == "text") {

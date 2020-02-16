@@ -67,7 +67,7 @@ $map = array(
     'createSchedule' => array('controller' => 'AjaxController', 'action' => 'createSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'updateSchedule' => array('controller' => 'AjaxController', 'action' => 'updateSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'deleteSchedule' => array('controller' => 'AjaxController', 'action' => 'deleteSchedule', 'access' => Config::$ACCESS_LEVEL_ADMIN),
-    'doesUsernameExist' => array('controller' => 'AjaxController', 'action' => 'doesUsernameExist', 'access' => Config::$ACCESS_LEVEL_ADMIN),
+    'doesUsernameExist' => array('controller' => 'AjaxController', 'action' => 'doesUsernameExist', 'access' => Config::$ACCESS_LEVEL_GUEST),
     'getNonWorkWeeklyDays' => array('controller' => 'AjaxController', 'action' => 'getNonWorkWeeklyDays', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'getFormClassroom' => array('controller' => 'AjaxController', 'action' => 'getFormClassroom', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'getFormEvent' => array('controller' => 'AjaxController', 'action' => 'getFormEvent', 'access' => Config::$ACCESS_LEVEL_ADMIN),
