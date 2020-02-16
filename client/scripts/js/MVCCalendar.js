@@ -74,7 +74,7 @@ class Model {
         });
     }
 
-    getEventsFromDay(date, days, classroom) {
+    getEventsFromDay(date, days, classroom, success) {
         var instance = this.instance;
         AjaxController.getEventsFromDay(date, days, classroom, function (data) {
             instance.currentEvents = data;
@@ -254,46 +254,53 @@ class Controller {
         var date = printDateWithFormat(newDate, "Y-m-d");
         $("input[type=date]").val(printDateWithFormat(newDate, "Y-m-d"));
 
-        controller.view.timeTableDay.TT({
-            events: controller.model.getEventsFromDay(newDate, 50),
-            schedule: controller.model.getSchedule(),
-            day: newDate
-        });
+        var classroom = $("#classroomId").text();
 
-        controller.model.currentDate.setDate(newDate.getDate());
-
-        setTimeout(() => {
-            $("event-card").each(function () {
-                var shadowRoot = $(this.shadowRoot);
-
-                shadowRoot.find("#pickEvent").on("click", function () {
-                    var focused = $(".focused");
-
-                    if (focused.length == 1) {
-                        Modal.genericModalWithForm("Event", false, function () {
-                            var form = $("form .form");
-                            form.prepend("<input type='hidden' name='classroom' id='classroom' value='" + $("#classroomId").html() + "'>");
-                            form.prepend("<input type='hidden' name='date' id='date' value='" + printDateWithFormat(controller.model.currentDate, "Y-m-d") + "'>");
-                            form.prepend("<input type='hidden' name='startHour' id='startHour' value='" + shadowRoot.find("#eventStartHour").text() + "'>");
-                            form.find(":submit").on("click", function (event) {
-                                var event = event || window.event;
-                                event.preventDefault();
-
-                                AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
-                                    var parsedData = JSON.parse(data);
-
-                                    if (data === true) {
-
-                                    } else {
-
-                                    }
-                                });
-                            })
-                        });
-                    }
-                });
+        AjaxController.getEventsFromDay(date, classroom, function (data) {
+            //console.log("AJAX result", data);
+            var parsedData = JSON.parse(data);
+            //console.log("Parsed JSON", parsedData);
+            controller.model.currentEvents = parsedData;
+            controller.model.currentDate.setDate(newDate.getDate());
+            controller.view.timeTableDay.TT({
+                events: controller.model.currentEvents,
+                schedule: controller.model.getSchedule(),
+                day: newDate
             });
-        }, 100);
+
+            setTimeout(() => {
+                $("event-card").each(function () {
+                    var shadowRoot = $(this.shadowRoot);
+
+                    shadowRoot.find("#pickEvent").on("click", function () {
+                        var focused = $(".focused");
+
+                        if (focused.length == 1) {
+                            Modal.genericModalWithForm("Event", false, function () {
+                                var form = $("form .form");
+                                form.prepend("<input type='hidden' name='classroom' id='classroom' value='" + $("#classroomId").html() + "'>");
+                                form.prepend("<input type='hidden' name='date' id='date' value='" + printDateWithFormat(controller.model.currentDate, "Y-m-d") + "'>");
+                                form.prepend("<input type='hidden' name='startHour' id='startHour' value='" + shadowRoot.find("#eventStartHour").text() + "'>");
+                                form.find(":submit").on("click", function (event) {
+                                    var event = event || window.event;
+                                    event.preventDefault();
+
+                                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
+                                        var parsedData = JSON.parse(data);
+
+                                        if (data === true) {
+
+                                        } else {
+
+                                        }
+                                    });
+                                })
+                            });
+                        }
+                    });
+                });
+            }, 100);
+        });
     }
 
     onMonthChanged(month, year, controller) {

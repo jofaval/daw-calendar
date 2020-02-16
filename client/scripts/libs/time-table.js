@@ -1,8 +1,8 @@
-(function($) {
+(function ($) {
     var timeTableTpl = $(`<div class="col-md timeTable"><div id="calTitle" class="text-center"><div id="monthYear" class="text-center"></div></div><div><div id="timeTbody" class="mt-3"></div></div></div>`);
     var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Saty"];
 
-    $.fn.timeTable = $.fn.TT = function(options) {
+    $.fn.timeTable = $.fn.TT = function (options) {
         var settings = $.extend({
                 events: [],
                 schedule: [],
@@ -129,28 +129,32 @@
             }
         } else {
             var events = settings.events;
+
+            var eventsLen = events.length;
             var eventTitle = "Untitled";
-            var keys = Object.keys(events);
             var teacherEmail = "contact@iesabastos.org";
             var teacherName = "not picked";
             var eventType = "free";
-            for (const key in keys) {
-                if (events.hasOwnProperty(key)) {
-                    const event = events[key];
-                    if (scheduleHours[0] == event["event-start-hour"]) {
-                        eventTitle = event["event-title"];
-                        teacherName = event["teacher-name"];
-                        teacherEmail = event["teacher-email"];
-                        eventType = (event["event-type"] != 0) ? "yours" : "picked";
-                        break;
-                    }
+
+            //console.log("events: ", events);
+            for (let eventIndex = 0; eventIndex < eventsLen; eventIndex++) {
+                const event = events[eventIndex];
+                //console.log(event["event-start-hour"], scheduleHours[0], scheduleHours[0] == event["event-start-hour"]);
+                if (scheduleHours[0] == event["event-start-hour"]) {
+                    eventTitle = event["event-title"];
+                    teacherName = event["teacher-name"];
+                    teacherEmail = event["teacher-email"];
+                    eventType = (event["event-type"] != 0) ? "yours" : "picked";
+                    break;
                 }
             }
+
+
             $row.append($(`<td class="col">
-        <event-card event-title="${eventTitle}" event-start-hour="${scheduleHours[0]}" event-end-hour="${scheduleHours[1]}" show-schedule="${settings.showSchedule ? "1" : "0"}"
-        teacher-email="${teacherEmail}" teacher-name="${teacherName}"
-        event-type="${eventType}"></event-card></td>
-        `));
+                <event-card event-title="${eventTitle}" event-start-hour="${scheduleHours[0]}" event-end-hour="${scheduleHours[1]}" show-schedule="${settings.showSchedule ? "1" : "0"}"
+                teacher-email="${teacherEmail}" teacher-name="${teacherName}"
+                event-type="${eventType}"></event-card></td>
+            `));
         }
     }
 
@@ -181,15 +185,15 @@
                     <span class="btn align-middle btn-sm btn-warning" id="yours">Yours</span>
                 </div>`);
 
-        container.find("#picked").on("click", function() {
+        container.find("#picked").on("click", function () {
             toggle($(this), "picked");
         });
 
-        container.find("#free").on("click", function() {
+        container.find("#free").on("click", function () {
             toggle($(this), "free");
         });
 
-        container.find("#yours").on("click", function() {
+        container.find("#yours").on("click", function () {
             toggle($(this), "yours");
         });
 
