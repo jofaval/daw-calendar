@@ -126,15 +126,15 @@ class View {
         this.createTab("NonSchoolDays", this.mainContainer);
 
         //Teachers
-        this.tableTeachers = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+        this.tableTeachers = $(`<table class="text-center table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
             <thead class="text-center">
                 <tr>
-                    <td>Username</td>
-                    <td>Full name</td>
-                    <td>Type</td>
-                    <td>Email</td>
-                    <td>Activate</td>
-                    <td>Remove</td>
+                    <th>Username</th>
+                    <th>Full name</th>
+                    <th>Type</th>
+                    <th>Email</th>
+                    <th>Activate</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -144,14 +144,14 @@ class View {
         $("#tabContainerTeachers").append(this.tableTeachers);
 
         //Classrooms
-        this.tableClassrooms = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+        this.tableClassrooms = $(`<table class="text-center table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
             <thead class="text-center">
                 <tr>
-                    <td>Name</td>
-                    <td>Description</td>
-                    <td>State</td>
-                    <td>Active</td>
-                    <td>Remove</td>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>State</th>
+                    <th>Active</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -161,15 +161,15 @@ class View {
         $("#tabContainerClassrooms").append(this.tableClassrooms);
 
         //Schedules
-        this.tableSchedules = $(`<table class="table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
+        this.tableSchedules = $(`<table class="text-center table mx-auto w-100 table-striped table-light table-bordered table-sm dataTable" role="grid" aria-describedby="dtBasicExample_info" cellspacing="0">
             <thead class="text-center">
                 <tr>
-                    <td>Order Id</td>
-                    <td>Start Hour</td>
-                    <td>End Hour</td>
-                    <td>Year</td>
-                    <td>Active</td>
-                    <td>Remove</td>
+                    <th>Order Id</th>
+                    <th>Start Hour</th>
+                    <th>End Hour</th>
+                    <th>Year</th>
+                    <th>Active</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -428,11 +428,11 @@ class View {
             if (dataArray.hasOwnProperty(key)) {
                 const element = dataArray[key];
 
-                row.append($("<td>" + element + "</td>"));
+                row.append($("<td class='align-middle'>" + element + "</td>"));
             }
         }
 
-        var $checkDisable = $(`<td>
+        var $checkDisable = $(`<td class='align-middle'>
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input  rounded-circle" id="disable"
                     name="disable">
