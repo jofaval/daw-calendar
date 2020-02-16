@@ -357,7 +357,7 @@ class View {
 
     createTabHeader(tabName, container) {
         var $tabHeader = $("<span id='tab" + tabName + "' class='btn btn-warning w-25 text-dark p-4 col-xs col-md-10'></span>");
-        $tabHeader.html(tabName);
+        $tabHeader.html(`<p class="my-auto">${tabName.substring(0,5)}<span class="d-none d-sm-inline">${tabName.substring(5,tabName.length)}</span></p>`);
         $tabHeader.prop("id", "tab" + tabName);
         $tabHeader.attr("tabContainer", "tabContainer" + tabName);
         var $tabHeaderContainer = $("#tabHeaders");
@@ -408,12 +408,18 @@ class View {
             "searching": true,
             "ordering": true,
         });
+
         var select = $(".dataTables_length select");
-        select.html("").append("<option value='5'>5</option><option value='10'>10</option>");
-        var children = select.children();
-        children.last().attr("selected", "selected");
-        children.last().attr("selected", false);
-        children.first().attr("selected", "selected");
+        select.html("");
+        var acumulative = 5;
+        var increment = 5;
+        for (let rowOptionsIndex = 0; rowOptionsIndex < 3; rowOptionsIndex++) {
+            select.append(`<option value='${acumulative}'>${acumulative}</option>`);
+            acumulative += increment;
+        }
+
+        select.prop("selectedIndex", 0);
+        select.trigger("change");
 
         table.find('.dataTables_length').addClass('bs-select');
     }
@@ -524,6 +530,16 @@ class AdminController {
             var table = $("#dtTeachers");
             view.addRowsToTable(model.teachers, table);
             view.createDataTable(table);
+
+            table.find(".btnRemove").on("click", function name(params) {
+                var btn = $(this);
+
+                var row = btn.parent().parent();
+                var columns = row.children();
+                AjaxController.deleteTeacher(columns.eq(3).text(), function (data) {
+                    row.remove();
+                });
+            });
         });
 
         model.loadClassrooms(model, function (data) {
@@ -531,7 +547,7 @@ class AdminController {
             view.addRowsToTable(model.classrooms, table);
             view.createDataTable(table);
 
-            $(".btnRemove").on("click", function name(params) {
+            table.find(".btnRemove").on("click", function name(params) {
                 var btn = $(this);
 
                 var row = btn.parent().parent();
@@ -540,6 +556,12 @@ class AdminController {
                     row.remove();
                 });
             });
+        });
+
+        model.loadSchedules(model, function (data) {
+            //console.log(data);
+            view.addRowsToTable(model.schedules, view.tableSchedules);
+            view.createDataTable(view.tableSchedules);
         });
 
         $("#addTeachers").on("click", function () {
@@ -603,13 +625,6 @@ class AdminController {
                     });
                 })
             });
-        });
-
-        model.loadSchedules(model, function (data) {
-            console.log(data);
-
-            view.addRowsToTable(model.schedules, view.tableSchedules);
-            view.createDataTable(view.tableSchedules);
         });
     }
 
