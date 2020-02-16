@@ -153,11 +153,9 @@ class Model extends PDO
     {
         $params = [
             "name" => $inputClassroomName,
-            "description" => $inputClasroomDescription,
-            "state" => $selectClasroomState,
         ];
 
-        $queryResult = $this->query("SELECT name FROM name WHERE name=:name", $params);
+        $queryResult = $this->query("SELECT name FROM classrooms WHERE name=:name", $params);
         if (count($queryResult) === 0) {
             $params["description"] = $inputClasroomDescription;
             $params["state"] = $selectClasroomState;

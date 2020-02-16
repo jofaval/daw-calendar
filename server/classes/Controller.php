@@ -248,6 +248,7 @@ class Controller
 
     public function admin()
     {
+        $result = "scope";
         //Teacher
         if (isset($_REQUEST["createTeacher"])) { //Create
             $_REQUEST["inputName"] = $_REQUEST["inputTeacherName"];
@@ -267,7 +268,7 @@ class Controller
             $result = ExceptionUtils::tryCatch("Controller", "updateTeacherFunctionality");
         } else if (isset($_REQUEST["deleteTeacher"])) { //Delete
             $result = ExceptionUtils::tryCatch("Controller", "deleteTeacherFunctionality");
-        }
+        } else
 
         //Classroom
         if (isset($_REQUEST["createClassroom"])) { //Create
@@ -276,7 +277,7 @@ class Controller
             $result = ExceptionUtils::tryCatch("Controller", "updateClassroomFunctionality");
         } else if (isset($_REQUEST["deleteClassroom"])) { //Delete
             $result = ExceptionUtils::tryCatch("Controller", "deleteClassroomFunctionality");
-        }
+        } else
 
         //Schedule
         if (isset($_REQUEST["createSchedule"])) { //Create
@@ -285,9 +286,11 @@ class Controller
             $result = ExceptionUtils::tryCatch("Controller", "updateScheduleFunctionality");
         } else if (isset($_REQUEST["deleteSchedule"])) { //Delete
             $result = ExceptionUtils::tryCatch("Controller", "deleteScheduleFunctionality");
+        } else {
+            require_once __DIR__ . '/../templates/admin.php';
         }
 
-        require __DIR__ . '/../templates/admin.php';
+        return $result;
     }
 
     public function updateTeacherFunctionality()
@@ -349,21 +352,22 @@ class Controller
         $regla = array(
             array(
                 'name' => 'inputClassroomName',
-                'regla' => 'no-empty,name',
+                'regla' => 'no-empty',
             ),
             array(
-                'name' => 'inputClasroomDescription',
+                'name' => 'inputClassroomDescription',
                 'regla' => 'no-empty,text',
             ),
             array(
-                'name' => 'selectClasroomState',
-                'regla' => 'no-empty,state',
+                'name' => 'selectClassroomState',
+                'regla' => 'no-empty,text',
             ),
         );
         $validation = $validation->rules($regla, $_REQUEST);
 
+        var_dump($validation);
         if ($validation === true) {
-            return $model->createClassroom(Utils::getCleanedData("inputClassroomName"), Utils::getCleanedData("inputClasroomDescription"), Utils::getCleanedData("selectClasroomState"));
+            return $model->createClassroom(Utils::getCleanedData("inputClassroomName"), Utils::getCleanedData("inputClassroomDescription"), Utils::getCleanedData("selectClassroomState"));
         }
 
         return false;
@@ -380,18 +384,18 @@ class Controller
                 'regla' => 'no-empty,name',
             ),
             array(
-                'name' => 'inputClasroomDescription',
+                'name' => 'inputClassroomDescription',
                 'regla' => 'no-empty,text',
             ),
             array(
-                'name' => 'selectClasroomState',
+                'name' => 'selectClassroomState',
                 'regla' => 'no-empty,state',
             ),
         );
         $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
-            return $model->updateClassroom(Utils::getCleanedData("inputClassroomName"), Utils::getCleanedData("inputClasroomDescription"), Utils::getCleanedData("selectClasroomState"));
+            return $model->updateClassroom(Utils::getCleanedData("inputClassroomName"), Utils::getCleanedData("inputClassroomDescription"), Utils::getCleanedData("selectClassroomState"));
         }
 
         return false;

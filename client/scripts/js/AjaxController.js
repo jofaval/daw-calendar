@@ -110,75 +110,86 @@ class AjaxController {
     }
 
     //Teacher
-    static signup(name, username, password, email, success) {
-        AjaxController.genericAjaxRequest("signup", {
-            "inputTeacherName": name,
-            "inputTeacherUsername": username,
-            "inputTeacherPassword": password,
-            "inputTeacherEmail": email,
+    static signup(name, username, password, email, image, success) {
+        AjaxController.genericAjaxRequest("admin", {
+            "createTeacher": 1,
+            "inputName": name,
+            "inputUsername": username,
+            "inputPassword": password,
+            "inputEmail": email,
+            "inputImage": image,
         }, success);
     }
 
     static updateTeacher(name, username, password, email, success) {
-        AjaxController.genericAjaxRequest("updateTeacher", {
+        AjaxController.genericAjaxRequest("admin", {
+            "updateTeacher": 1,
             "inputTeacherName": name,
             "inputTeacherUsername": username,
             "inputTeacherPassword": password,
             "inputTeacherEmail": email,
+            "inputTeacherImage": image,
         }, success);
     }
 
     static deleteTeacher(email, success) {
-        AjaxController.genericAjaxRequest("deleteTeacher", {
+        AjaxController.genericAjaxRequest("admin", {
+            "deleteTeacher": 1,
             "inputTeacherEmail": email,
         }, success);
     }
 
     //Classroom
     static createClassroom(name, description, state, success) {
-        AjaxController.genericAjaxRequest("createClassroom", {
+        AjaxController.genericAjaxRequest("admin", {
+            "createClassroom": 1,
             "inputClassroomName": name,
-            "inputClasroomDescription": description,
-            "selectClasroomState": state,
+            "inputClassroomDescription": description,
+            "selectClassroomState": state,
         }, success);
     }
 
     static updateClassroom(name, description, state, success) {
-        AjaxController.genericAjaxRequest("updateClassroom", {
+        AjaxController.genericAjaxRequest("admin", {
+            "updateClassroom": 1,
             "inputClassroomName": name,
-            "inputClasroomDescription": description,
-            "selectClasroomState": state,
+            "inputClassroomDescription": description,
+            "selectClassroomState": state,
         }, success);
     }
 
     static deleteClassroom(name, success) {
-        AjaxController.genericAjaxRequest("deleteClassroom", {
+        AjaxController.genericAjaxRequest("admin", {
+            "deleteClassroom": 1,
             "inputClassroomName": name,
         }, success);
     }
 
     //Schedule
     static createSchedule(name, description, state, success) {
-        AjaxController.genericAjaxRequest("createSchedule", {
+        AjaxController.genericAjaxRequest("admin", {
+            "createSchedule": 1,
             "inputClassroomName": name,
-            "inputClasroomDescription": description,
-            "selectClasroomState": state,
+            "inputClassroomDescription": description,
+            "selectClassroomState": state,
         }, success);
     }
 
     static updateSchedule(name, description, state, success) {
-        AjaxController.genericAjaxRequest("updateSchedule", {
+        AjaxController.genericAjaxRequest("admin", {
+            "updateSchedule": 1,
             "inputClassroomName": name,
-            "inputClasroomDescription": description,
-            "selectClasroomState": state,
+            "inputClassroomDescription": description,
+            "selectClassroomState": state,
         }, success);
     }
 
     static deleteSchedule(name, description, state, success) {
-        AjaxController.genericAjaxRequest("deleteSchedule", {
+        AjaxController.genericAjaxRequest("admin", {
+            "deleteSchedule": 1,
             "inputClassroomName": name,
-            "inputClasroomDescription": description,
-            "selectClasroomState": state,
+            "inputClassroomDescription": description,
+            "selectClassroomState": state,
         }, success);
     }
 
