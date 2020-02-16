@@ -83,13 +83,16 @@ class Controller
         $result = false;
         if (isset($_REQUEST["signin"])) {
             $result = ExceptionUtils::tryCatch("Controller", "signinFunctionality");
-        }
 
-        if ($result) {
-            //header("Location: ./index.php?ctl=calendar/");
-        } else {
-            require __DIR__ . '/../templates/signin.php';
+            if ($result) {
+                header("Location: ./index.php?ctl=classrooms/");
+            } else {
+                echo "<div class='p-3 m-5 mb-0 btn btn-danger rounded position-absolute fixed-bottom float-right' onclick='this.remove();'>";
+                echo "<p class='m-0'>Error: We couldn't sign you in.</p>\n";
+                echo "</div>";
+            }
         }
+        require __DIR__ . '/../templates/signin.php';
     }
 
     public function signinFunctionality()
@@ -174,14 +177,8 @@ class Controller
         $model = Model::getInstance();
         $validation = Validation::getInstance();
 
-        $file = FileUtils::validateFile("inputImage", "./img_usuarios/");
-        if ($file === false) {
-            return false;
-        }
-
         $_REQUEST["inputEmail"] = $_REQUEST["inputEmail"] . "@iesabastos.org";
 
-        $_REQUEST["inputImage"] = $file;
         $regla = array(
             array(
                 'name' => 'inputName',
@@ -199,20 +196,25 @@ class Controller
                 'name' => 'inputEmail',
                 'regla' => 'no-empty,email',
             ),
-            array(
-                'name' => 'inputImage',
-                'regla' => 'no-empty,image',
-            ),
         );
         $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
-            $signup = $model->signup(Utils::getCleanedData("inputName"), Utils::getCleanedData("inputUsername"), Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
+            $username = Utils::getCleanedData("inputUsername");
+            $file = FileUtils::validateFile("inputImage", "./img_usuarios/", $username);
+            if ($file === false) {
+                return false;
+            }
+
+            $signup = $model->signup(Utils::getCleanedData("inputName"), $username, Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
 
             if ($signup !== false) {
                 header("Location: index.php?ctl=signin");
             } else {
                 unlink($file);
+                echo "<div class='p-3 m-5 btn btn-danger rounded position-absolute fixed-bottom float-right' onclick='this.remove();'>";
+                echo "<p class='m-0'>Error: We couldn't sign you up.</p>\n";
+                echo "</div>";
             }
 
         }
