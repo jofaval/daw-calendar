@@ -220,20 +220,20 @@ class Validation
 
 // el uso de la clase es muy sencillo os dejo las pruebas que realice a la clase
 
-$_POST['campo1'] = "d";
+/* $_POST['campo1'] = "d";
 $_POST['campo2'] = "usuariohotmail.com";
 $datos = $_POST;
 $validacion = new Validation();
 $regla = array(
-    array(
-        'name' => 'campo2',
-        'regla' => 'no-empty,email',
-    ),
-    array(
-        'name' => 'campo1',
-        'regla' => 'no-empty,numeric',
-    ),
+array(
+'name' => 'campo2',
+'regla' => 'no-empty,email',
+),
+array(
+'name' => 'campo1',
+'regla' => 'no-empty,numeric',
+),
 
 );
-$validaciones = $validacion->rules($regla, $datos);
+$validaciones = $validacion->rules($regla, $datos); */
 //print_r($validaciones);
