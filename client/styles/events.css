@@ -16,3 +16,11 @@
     background: rgb(255, 178, 63) !important;
     color: #343a40 !important;
 }
+
+.card.yours *, .card.free * {
+    color: #343a40 !important;
+}
+
+.card.free #teacherName {
+    color: white !important;
+}
