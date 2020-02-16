@@ -96,8 +96,8 @@ class AjaxController {
 
     static getEventsFromWeek(startingDay, endingDay, success) {
         AjaxController.genericAjaxRequest("getEventsFromWeek", {
-            "startingDay": startingDay,
-            "endingDay": endingDay,
+            "startingDate": startingDay,
+            "endingDate": endingDay,
         }, success);
     }
 
