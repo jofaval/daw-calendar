@@ -1,4 +1,5 @@
 class Validator {
+    //Given input, rules pairs validates their content
     validate(validationParams, inputs) {
         if (!Array.isArray(validationParams)) {
             return false;

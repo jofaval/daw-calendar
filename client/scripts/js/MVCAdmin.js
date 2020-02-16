@@ -11,6 +11,7 @@ class Model {
 
     }
 
+    //AJAX CRUD for Teachers, Classrooms and Schedules
     loadTeachers(model, whenFinished) {
         model.teachers = [];
         AjaxController.getTeachers(function (data) {
@@ -324,6 +325,7 @@ class View {
         var calendarControls = new CalendarControls(calendar, [], new Date()); //For testing
     }
 
+    //Load events from month into calendar
     loadEventsFromMonth(date, calendar) {
         var view = this;
         var sampleEvents = [];
@@ -347,6 +349,7 @@ class View {
         });
     }
 
+    //Create a tab given a name
     createTab(tabName, container) {
         if ($("#tab" + tabName).length) {
             return false;
@@ -356,6 +359,7 @@ class View {
         this.createTabContainer(tabName, container);
     }
 
+    //Create tab header
     createTabHeader(tabName, container) {
         var $tabHeader = $("<span id='tab" + tabName + "' class='btn btn-warning w-25 text-dark p-4 col-xs col-md-10'></span>");
         $tabHeader.html(`<p class="my-auto">${tabName.substring(0,5)}<span class="d-none d-sm-inline">${tabName.substring(5,tabName.length)}</span></p>`);
@@ -370,6 +374,7 @@ class View {
         $tabHeaderContainer.append($tabHeader);
     }
 
+    //Create tab content container
     createTabContainer(tabName, container) {
         var $tabContainer = $("<div id='tabContainer' class='tabContainer w-auto py-2 col-md-12 mx-0 rounded bg-dark col-xs'></div>");
         $tabContainer.prop("id", "tabContainer" + tabName);
@@ -381,6 +386,7 @@ class View {
         $tabContainerContainer.append($tabContainer);
     }
 
+    //Fade out item
     fadeOutItem(item, miliseconds = 250) {
         item.fadeOut(250);
         setTimeout(() => {
@@ -388,11 +394,13 @@ class View {
         }, miliseconds);
     }
 
+    //Fade in item
     fadeInItem(item) {
         //item.show();
         item.fadeIn(250);
     }
 
+    //Event for displaying tabs
     tabDispalyEvent(controller) {
         var current = $(this);
         $("#tabContainer" + current.attr("tabContainer"));
@@ -402,6 +410,7 @@ class View {
         controller.fadeInItem(current);
     }
 
+    //Create datatable from table and limit rows to 5
     createDataTable(table) {
         table.DataTable({
             "paging": true,
@@ -424,6 +433,7 @@ class View {
         table.find('.dataTables_length').addClass('bs-select');
     }
 
+    //Load add JSON row to table
     addRowToTable(dataArray, table) {
         var row = $("<tr></tr>");
 
@@ -465,6 +475,7 @@ class View {
         }
     }
 
+    //Add JSON to table
     addRowsToTable(dataArray, table) {
         var parsedArray = JSON.parse(dataArray);
 
@@ -475,12 +486,13 @@ class View {
         }
     }
 
+    //Row selection event
     selectionEvent() {
-        /* var toggle = !$(this).hasClass("selected");
+        var toggle = !$(this).hasClass("selected");
         $('.selected').removeClass("selected");
         if (toggle) {
             $(this).addClass("selected");
-        } */
+        }
     }
 
     instance = null;
@@ -525,7 +537,10 @@ class AdminController {
             }
         });
 
+        //Tab teachers is selected by default
         $("#tabTeachers").trigger("click");
+
+        //Load all teachers into datatable
         model.loadTeachers(model, function (data) {
             var table = $("#dtTeachers");
             view.addRowsToTable(model.teachers, table);
@@ -542,6 +557,7 @@ class AdminController {
             });
         });
 
+        //Load all classrooms into datatable
         model.loadClassrooms(model, function (data) {
             var table = $("#dtClassrooms");
             view.addRowsToTable(model.classrooms, table);
@@ -558,6 +574,7 @@ class AdminController {
             });
         });
 
+        //Load all schedules into datatable
         model.loadSchedules(model, function (data) {
             view.addRowsToTable(model.schedules, view.tableSchedules);
             view.createDataTable(view.tableSchedules);
@@ -573,6 +590,7 @@ class AdminController {
             });
         });
 
+        //Load add teachers to database with modal
         $("#addTeachers").on("click", function () {
             Modal.genericModalWithForm("Teacher", false, function (modalContent) {
                 $("*[type=submit]").on("click", function (event) {
@@ -603,6 +621,7 @@ class AdminController {
             });
         });
 
+        //Load add classrooms to database with modal
         $("#addClassrooms").on("click", function () {
             Modal.genericModalWithForm("Classroom", false, function (modalContent) {
                 $("*[type=submit]").on("click", function (event) {
@@ -632,6 +651,7 @@ class AdminController {
             });
         });
 
+        //Load add schedules to database with modal
         $("#addSchedules").on("click", function () {
             Modal.genericModalWithForm("Schedule", false, function (modalContent) {
                 $("*[type=submit]").on("click", function (event) {

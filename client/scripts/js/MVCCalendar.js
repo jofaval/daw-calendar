@@ -28,13 +28,8 @@ class Model {
         return instance;
     }
 
-    /* Event
-    {
-        title: "Soulful sundays bay area",
-        date: new Date().setDate(new Date().getDate() - 7), // last week
-        link: "#"
-    }*/
 
+    //AJAX CRUD for calendar
     addEvent(title, startHour, date, success) {
         var instance = this.instance;
         AjaxController.createEvent(title, startHour, date, function (data) {
@@ -217,6 +212,7 @@ class Controller {
         this.updateWeekCalendar(startingWeekDates[0], startingWeekDates[startingWeekDates.length - 1])
     }
 
+    //When the week changes it triggers this event
     updateWeekCalendar(startingDate, endingDate, updateInput = true) {
         if (updateInput) {
             $("input[type=date]").val(printDateWithFormat(startingDate, "Y-m-d"));
@@ -236,6 +232,7 @@ class Controller {
         });
     }
 
+    //To start/restart the calendar
     start(controller) {
         //console.log(controller.model);
 
@@ -274,6 +271,7 @@ class Controller {
 
     }
 
+    //When a day is clicked
     onDayClick(current, controller) {
         var dayInNumber = parseInt(current.text());
 
@@ -317,6 +315,7 @@ class Controller {
         });
     }
 
+    //Remove an event from a day
     removeEvent() {
         var focused = $(".focused");
 
@@ -330,6 +329,7 @@ class Controller {
         }
     }
 
+    //Select and event from a day
     pickEvent() {
         var focused = $(".focused");
 
@@ -359,6 +359,7 @@ class Controller {
         }
     }
 
+    //When month changes
     onMonthChanged(month, year, controller) {
         controller.model.currentDate = new Date(year, month, 2);
         controller.calendarControls.setOnDayClick();

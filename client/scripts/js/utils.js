@@ -1,9 +1,11 @@
+//format number with certain number of 0
 function minNumberOfDigits(number, numberOfDigits = 2) {
     return number.toLocaleString("es", {
         minimumIntegerDigits: numberOfDigits,
     });
 }
 
+//get all dates from a week given a date
 function getWeekFromDate(dayDate) {
     var weekDates = [];
     var dayInNumber = dayDate.getDay();
@@ -24,9 +26,10 @@ function getWeekFromDate(dayDate) {
     return weekDates;
 }
 
-function sendNotification(message, error = false) {
+//function to send notificcation
+function sendNotification(message = "An error occurred", error = false) {
     setTimeout(() => {
-
+        modalError(message);
     }, 250);
     //alert(message);
 }
@@ -49,6 +52,7 @@ var schedule = [
     ["21:10", "22:05"]
 ];
 
+//print date with certain fromat
 function printDateWithFormat(givenDate, format = "d/m/Y") {
     format = format.replace("y", givenDate.getYear());
     format = format.replace("Y", givenDate.getFullYear());
@@ -62,6 +66,7 @@ function printDateWithFormat(givenDate, format = "d/m/Y") {
     return format;
 }
 
+//get academic year given a date
 function getAcademicYear(date) {
     month = date.getMonth() + 1;
 

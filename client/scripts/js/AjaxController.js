@@ -1,19 +1,3 @@
-/*function queryDatabase(requestLocation, success, message = "Ha surgido un error al realizar la operación") {
-    request(requestLocation, "POST", {
-            select: "",
-            from: "table",
-            where: "condition",
-            params: [
-                ["key", "value"],
-                ["key", "value"],
-                ["key", "value"],
-            ],
-        }, success,
-        function() {
-            sendNotification(message, true);
-        });
-}*/
-
 class AjaxController {
     static request(requestLocation, requestType = "POST", params = {}, success = AjaxController.defaultAjaxSuccessAction, error = AjaxController.defaultAjaxErrorAction, async = true) {
         $.ajax({
@@ -26,14 +10,17 @@ class AjaxController {
         });
     }
 
+    //When AJAX is succesful
     static defaultAjaxSuccessAction(data) {
         //var jsonData = JSON.parse(data);
     }
 
+    //When AJAX has some errors
     static defaultAjaxErrorAction(data) {
         sendNotification("Ha surgido un error al realizar la operación", true);
     }
 
+    //Generic request for AJAX
     static genericAjaxRequest(requestName, params, success, error = null) {
         if (error == null) {
             error = function (data) {

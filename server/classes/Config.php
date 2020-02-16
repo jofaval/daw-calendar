@@ -24,12 +24,12 @@ class Config
         "libs/bootstrap.min.js",
         "libs/bootstrap.bundle.min.js",
         "libs/jquery.sweet-modal.min.js",
+        "js/Modal.js",
         "js/utils.js",
         "js/inputs.js",
         "js/AjaxController.js",
         "js/Validator.js",
         "js/FormValidator.js",
-        "js/Modal.js",
         "js/preloader.js",
     ];
     public static $emailSender = "no-reply@iesabastos.org";

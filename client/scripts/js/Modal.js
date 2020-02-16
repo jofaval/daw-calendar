@@ -1,4 +1,5 @@
 class Modal {
+    //Modal with form
     static genericModalWithForm(formName, readonly = false, whenLoaded = null) {
         $("<div id='test'></div>").load("../server/templates/forms/form" + formName + ".html", {}, function () {
             var content = $(this);
@@ -18,6 +19,7 @@ class Modal {
         });
     }
 
+    //Modal with error message
     static modalError(message) {
         $.sweetModal({
             content: message,
@@ -25,6 +27,7 @@ class Modal {
         });
     }
 
+    //Modal with confirmation
     static confirmModal(actionAfterConfirm, buttonText = "Remove", title = "Are you sure?") {
         $.sweetModal({
             title: title,

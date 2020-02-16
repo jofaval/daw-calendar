@@ -1,4 +1,5 @@
 class FormValidator {
+    //Validate forms using validation class
     validateForm(formName, form) {
         var value = false;
 
