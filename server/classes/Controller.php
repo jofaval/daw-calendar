@@ -179,9 +179,9 @@ class Controller
             return false;
         }
 
-        $_POST["inputEmail"] = $_POST["inputEmail"] . "@iesabastos.org";
+        $_REQUEST["inputEmail"] = $_REQUEST["inputEmail"] . "@iesabastos.org";
 
-        $_POST["inputImage"] = $file;
+        $_REQUEST["inputImage"] = $file;
         $regla = array(
             array(
                 'name' => 'inputName',
@@ -204,7 +204,7 @@ class Controller
                 'regla' => 'no-empty,image',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             $signup = $model->signup(Utils::getCleanedData("inputName"), Utils::getCleanedData("inputUsername"), Utils::getCleanedData("inputPassword"), Utils::getCleanedData("inputEmail"), $file);
@@ -248,17 +248,17 @@ class Controller
     {
         //Teacher
         if (isset($_REQUEST["createTeacher"])) { //Create
-            $_POST["inputName"] = $_POST["inputTeacherName"];
-            unset($_POST["inputTeacherName"]);
+            $_REQUEST["inputName"] = $_REQUEST["inputTeacherName"];
+            unset($_REQUEST["inputTeacherName"]);
 
-            $_POST["inputUsername"] = $_POST["inputTeacherUsername"];
-            unset($_POST["inputTeacherUsername"]);
+            $_REQUEST["inputUsername"] = $_REQUEST["inputTeacherUsername"];
+            unset($_REQUEST["inputTeacherUsername"]);
 
-            $_POST["inputPassword"] = $_POST["inputTeacherPassword"];
-            unset($_POST["inputTeacherPassword"]);
+            $_REQUEST["inputPassword"] = $_REQUEST["inputTeacherPassword"];
+            unset($_REQUEST["inputTeacherPassword"]);
 
-            $_POST["inputEmail"] = $_POST["inputTeacherEmail"];
-            unset($_POST["inputTeacherEmail"]);
+            $_REQUEST["inputEmail"] = $_REQUEST["inputTeacherEmail"];
+            unset($_REQUEST["inputTeacherEmail"]);
 
             $result = ExceptionUtils::tryCatch("Controller", "signupFunctionality");
         } else if (isset($_REQUEST["updateTeacher"])) { //Update
@@ -311,7 +311,7 @@ class Controller
                 'regla' => 'no-empty,email',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->updateTeacher(Utils::getCleanedData("inputTeacherUsername"), Utils::getCleanedData("inputTeacherPassword"), Utils::getCleanedData("inputTeacherName"), Utils::getCleanedData("inputTeacherEmail"));
@@ -330,7 +330,7 @@ class Controller
                 'regla' => 'no-empty,email',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->deleteTeacher(Utils::getCleanedData("inputTeacherEmail"));
@@ -358,7 +358,7 @@ class Controller
                 'regla' => 'no-empty,state',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->createClassroom(Utils::getCleanedData("inputClassroomName"), Utils::getCleanedData("inputClasroomDescription"), Utils::getCleanedData("selectClasroomState"));
@@ -386,7 +386,7 @@ class Controller
                 'regla' => 'no-empty,state',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->updateClassroom(Utils::getCleanedData("inputClassroomName"), Utils::getCleanedData("inputClasroomDescription"), Utils::getCleanedData("selectClasroomState"));
@@ -406,7 +406,7 @@ class Controller
                 'regla' => 'no-empty',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->deleteClassroom(Utils::getCleanedData("inputClassroomName"));
@@ -434,7 +434,7 @@ class Controller
                 'regla' => 'no-empty,numeric',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->createSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("inputScheduleEndHour"), Utils::getCleanedData("year"));
@@ -462,7 +462,7 @@ class Controller
                 'regla' => 'no-empty,datetime',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->updateSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("inputScheduleEndHour"), Utils::getCleanedData("year"));
@@ -486,7 +486,7 @@ class Controller
                 'regla' => 'no-empty,datetime',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->deleteSchedule(Utils::getCleanedData("inputScheduleStartHour"), Utils::getCleanedData("year"));
@@ -510,7 +510,7 @@ class Controller
                 'regla' => 'no-empty,numeric',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->getEventsFromMonth(Utils::getCleanedData("month"), Utils::getCleanedData("year"));
@@ -563,7 +563,7 @@ class Controller
                 'regla' => 'no-empty',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->createEvent(Utils::getCleanedData("title"), Utils::getCleanedData("startHour"), Utils::getCleanedData("date"), Utils::getCleanedData("classroom"));
@@ -591,7 +591,7 @@ class Controller
                 'regla' => 'no-empty,date',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->updateEvent(Utils::getCleanedData("title"), Utils::getCleanedData("startHour"), Utils::getCleanedData("date"));
@@ -619,7 +619,7 @@ class Controller
                 'regla' => 'no-empty',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->deleteEvent(Utils::getCleanedData("startHour"), Utils::getCleanedData("date"), Utils::getCleanedData("classroom"));
@@ -639,7 +639,7 @@ class Controller
                 'regla' => 'no-empty,date',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->getSchedule(Utils::getCleanedData("selectedYear"));
@@ -663,7 +663,7 @@ class Controller
                 'regla' => 'no-empty',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return $model->getEventsFromDay(Utils::getCleanedData("selectedDay"), Utils::getCleanedData("classroom"));
@@ -680,22 +680,27 @@ class Controller
         $regla = array(
             array(
                 'name' => 'startingDate',
-                'regla' => 'no-empty,datetime',
+                'regla' => 'no-empty,date',
             ),
             array(
                 'name' => 'endingDate',
                 'regla' => 'no-empty,date',
             ),
+            array(
+                'name' => 'classroom',
+                'regla' => 'no-empty',
+            ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             $dates = DateUtils::getAllDatesFromInterval(Utils::getCleanedData("startingDate"), Utils::getCleanedData("endingDate"));
             $events = [];
-            foreach ($dates as $key => $value) {
+            $classroom = Utils::getCleanedData("classroom");
+            foreach ($dates as $selectedDay) {
                 $events[] = [
-                    "date" => $key,
-                    "events" => $model->getEventsFromDay($value),
+                    "date" => $selectedDay,
+                    "events" => $model->getEventsFromDay($selectedDay, $classroom),
                 ];
             }
 
@@ -715,8 +720,8 @@ class Controller
                 'regla' => 'no-empty,username',
             ),
         );
-        if ($validation->rules($regla, $_POST) === true) {
-            return count(Model::getInstance()->query("SELECT `username` FROM `users` WHERE `username`=:username", ["username" => $_POST["username"]])) > 0;
+        if ($validation->rules($regla, $_REQUEST) === true) {
+            return count(Model::getInstance()->query("SELECT `username` FROM `users` WHERE `username`=:username", ["username" => $_REQUEST["username"]])) > 0;
         }
 
         return true;
@@ -741,7 +746,7 @@ class Controller
                 'regla' => 'no-empty,date',
             ),
         );
-        $validation = $validation->rules($regla, $_POST);
+        $validation = $validation->rules($regla, $_REQUEST);
 
         if ($validation === true) {
             return Model::getInstance()->getMonthlyNonSchoolDays(Utils::getCleanedData("year"), Utils::getCleanedData("month"));

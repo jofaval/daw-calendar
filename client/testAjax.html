@@ -68,9 +68,13 @@
         console.log(JSON.parse(data));
     });*/
 
-    AjaxController.deleteEvent("7:55", "2020-02-14", "205", function success(data) {
+    /* AjaxController.deleteEvent("7:55", "2020-02-14", "205", function success(data) {
         console.log(data);
+    }); */
 
+    AjaxController.getEventsFromWeek("2020-02-09", "2020-02-16", "205", function (data) {
+        console.log("Respuesta", data);
+        console.log("Respuesta parseada", JSON.parse(data));
     });
 </script>
 
