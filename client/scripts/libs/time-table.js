@@ -1,6 +1,7 @@
 (function ($) {
     var timeTableTpl = $(`<div class="col-md timeTable"><div id="calTitle" class="text-center"><div id="monthYear" class="text-center"></div></div><div><div id="timeTbody" class="mt-3"></div></div></div>`);
     var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Saty"];
+    var onWeekChange;
 
     $.fn.timeTable = $.fn.TT = function (options) {
         var settings = $.extend({
@@ -9,7 +10,8 @@
                 day: new Date(),
                 showDate: true,
                 weekFormat: false,
-                showSchedule: true
+                showSchedule: true,
+                onWeekChange: null,
             },
             options
         );
@@ -57,29 +59,34 @@
     }
 
     function addMoveNextWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, weekTitle) {
-        var weekMoveNext = $(`<button type="button" class="month-mover next" style="transition: all 0.2s ease-in-out 0s;">
+        var weekMoveNext = $(`<button type="button" class="month-mover week-mover next" style="transition: all 0.2s ease-in-out 0s;">
     <svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg" style="transition: all 0.2s ease-in-out 0s;"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" style="transition: all 0.2s ease-in-out 0s;"></path></svg>
   </button>`);
         weekMoveNext.click(function name() {
             var tempDate = weekDates[weekDates.length - 1];
             tempDate.setDate(tempDate.getDate() + 1);
+            var newWeekDates = getWeekFromDate(tempDate);
             populateTimeTable(settings, getWeekFromDate(tempDate), timeTable, timeTableTpl, daysOfWeek);
+            if (settings.onWeekChange != null) {
+                settings.onWeekChange(newWeekDates[0], newWeekDates[newWeekDates.length - 1]);
+            }
         });
         weekTitle.append(weekMoveNext);
     }
 
     function addMovePrevWeek(weekDates, settings, timeTable, timeTableTpl, daysOfWeek, weekTitle) {
-        var weekMovePrev = $(`<button type="button" class="month-mover prev" style="transition: all 0.2s ease-in-out 0s;">
+        var weekMovePrev = $(`<button type="button" class="month-mover week-mover prev" style="transition: all 0.2s ease-in-out 0s;">
 				<svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg" style="transition: all 0.2s ease-in-out 0s;"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" style="transition: all 0.2s ease-in-out 0s;"></path></svg>
             </button>`);
 
-
-
         weekMovePrev.click(function name() {
-            console.log("funciona");
             var tempDate = weekDates[0];
             tempDate.setDate(tempDate.getDate() - 2);
+            var newWeekDates = getWeekFromDate(tempDate);
             populateTimeTable(settings, getWeekFromDate(tempDate), timeTable, timeTableTpl, daysOfWeek);
+            if (settings.onWeekChange != null) {
+                settings.onWeekChange(newWeekDates[0], newWeekDates[newWeekDates.length - 1]);
+            }
         });
         weekTitle.prepend(weekMovePrev);
     }
@@ -210,7 +217,8 @@
         var schedule = settings.schedule;
         var events = settings.events;
         var scheduleLength = schedule.length;
-        var weekTitle = "Week of " + printDateWithFormat(weekDates[0], "d/m/Y") + " - " + printDateWithFormat(weekDates[weekDates.length - 1], "d/m/Y");
+
+        var weekTitle = `Week of <span id="startingDate">${printDateWithFormat(weekDates[0], "Y-m-d")}</span> - <span id="endingDate">${printDateWithFormat(weekDates[weekDates.length - 1], "Y-m-d")}</span>`;
         timeTable.append(`
         <div id="calTitle" class="weekTitle col-12 font-big text-center">
             <div id="monthYear">${weekTitle}</div>

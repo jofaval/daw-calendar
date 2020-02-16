@@ -201,19 +201,35 @@ class Controller {
             controller.model.currentDate = new Date(Date.parse(value));
             controller.start(controller);
         });
+
+        controller.view.timeTableWeek.TT({
+            events: [],
+            schedule: controller.model.schedule,
+            day: controller.model.currentDate,
+            weekFormat: true,
+            onWeekChange: controller.updateWeekCalendar,
+        });
+        var startingWeekDates = getWeekFromDate(new Date());
+        this.updateWeekCalendar(startingWeekDates[0], startingWeekDates[startingWeekDates.length - 1])
+    }
+
+    updateWeekCalendar(startingDate, endingDate) {
+        AjaxController.getEventsFromWeek(startingDate, endingDate, $("#classroomId").text(), function (data) {
+            console.log(startingDate, endingDate, $("#classroomId").text());
+            calendarController.view.timeTableWeek.TT({
+                events: [],
+                schedule: calendarController.model.schedule,
+                day: calendarController.model.currentDate,
+                weekFormat: true,
+                onWeekChange: calendarController.updateWeekCalendar,
+            });
+        });
     }
 
     start(controller) {
         //console.log(controller.model);
 
         //getEventsFromWeek(date, days);
-
-        controller.view.timeTableWeek.TT({
-            events: controller.model.currentEvents,
-            schedule: controller.model.schedule,
-            day: controller.model.currentDate,
-            weekFormat: true
-        });
 
         controller.view.timeTableDay.TT({
             events: controller.model.getEventsFromDay(controller.model.currentDate.getUTCDate()),
