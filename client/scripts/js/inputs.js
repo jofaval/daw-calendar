@@ -1,16 +1,5 @@
 var $messageContainer = $("<span class='font-weight-class'></span>");
 
-whenUserDoneTypingInInput($("#inputUsername"), function () {
-    AjaxController.doesUsernameExist($input.val(), function (data) {
-        var jsonData = JSON.parse(data);
-        if (jsonData === true) {
-            $("#usernameHelp").html($messageContainer.clone().addClass("text-danger").html("✘ Isn't available."));
-        } else {
-            $("#usernameHelp").html($messageContainer.clone().addClass("text-success").html("✓ Is available."));
-        }
-    });
-});
-
 function whenUserDoneTypingInInput(input, action, interval = 250) {
     var typingTimeID = 0;
     input.on("keyup", function () {
@@ -25,67 +14,6 @@ function whenUserDoneTypingInInput(input, action, interval = 250) {
         clearTimeout(typingTimeID);
     });
 }
-
-var inputsWithRemoveOption = ["input[type=email]", "input[type=text]", "input[type=password]"];
-
-var removeContent = $("<span class='removeContent w-100 text-dark'><i class='fa fa-times'></i></span>");
-$(inputsWithRemoveOption.join(", ")).after(removeContent.clone().click(function () {
-    $(this).prev().val("");
-}));
-
-$("#show_hide_password .trigger").on("click", function (event) {
-    var event = event || window.event;
-    event.preventDefault();
-    if ($("#show_hide_password input").attr("type") == "text") {
-        $("#show_hide_password input").attr("type", "password");
-        $("#show_hide_password i").addClass("fa-eye-slash");
-        $("#show_hide_password i").removeClass("fa-eye");
-    } else if ($("#show_hide_password input").attr("type") == "password") {
-        $("#show_hide_password input").attr("type", "text");
-        $("#show_hide_password i").removeClass("fa-eye-slash");
-        $("#show_hide_password i").addClass("fa-eye");
-    }
-
-    return false;
-});
-
-var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-var mediumRegex = new RegExp(
-    "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
-
-$("#inputPassword").on("keyup", function () {
-    var current = $(this);
-
-    current.removeClass("border-success");
-    current.removeClass("border-warning");
-    current.removeClass("border-danger");
-
-    var value = current.val();
-    if (strongRegex.test(value)) {
-        current.addClass("border-success");
-    } else if (mediumRegex.test(value)) {
-        current.addClass("border-warning");
-    } else {
-        current.addClass("border-danger");
-    }
-});
-
-$("input:file").change(function () {
-    var fullPath = $(this).val();
-
-    var filename = "Choose file";
-
-    if (fullPath.length > 0) {
-        var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf(
-            '/'));
-        filename = fullPath.substring(startIndex);
-        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-            filename = filename.substring(1);
-        }
-    }
-
-    $(this).next().html(filename);
-});
 
 var FILTER_REGEX_NUMBERS = 0;
 var FILTER_REGEX_LETTERS = 1;
@@ -189,17 +117,92 @@ function addMessageToInput(input, messageId, message) {
 function removeMessageToInput(input, messageId) {
     input.siblings("small").find("#" + messageId).remove();
 }
-genericLengthMessages($("#inputPassword"));
-addErrorMessage($("#inputPassword"), /[a-z@$!%*?&A-Za-z\d@$!%*?&]/i, "Incorrecto");
-//FormValidations
+
+$(window).on("load", function () {
+    whenUserDoneTypingInInput($("#inputUsername"), function () {
+        AjaxController.doesUsernameExist($input.val(), function (data) {
+            var jsonData = JSON.parse(data);
+            if (jsonData === true) {
+                $("#usernameHelp").html($messageContainer.clone().addClass("text-danger").html("✘ Isn't available."));
+            } else {
+                $("#usernameHelp").html($messageContainer.clone().addClass("text-success").html("✓ Is available."));
+            }
+        });
+    });
+
+    var inputsWithRemoveOption = ["input[type=email]", "input[type=text]", "input[type=password]"];
+
+    var removeContent = $("<span class='removeContent w-100 text-dark'><i class='fa fa-times'></i></span>");
+    $(inputsWithRemoveOption.join(", ")).after(removeContent.clone().click(function () {
+        $(this).prev().val("");
+    }));
+
+    $("#show_hide_password .trigger").on("click", function (event) {
+        var event = event || window.event;
+        event.preventDefault();
+        if ($("#show_hide_password input").attr("type") == "text") {
+            $("#show_hide_password input").attr("type", "password");
+            $("#show_hide_password i").addClass("fa-eye-slash");
+            $("#show_hide_password i").removeClass("fa-eye");
+        } else if ($("#show_hide_password input").attr("type") == "password") {
+            $("#show_hide_password input").attr("type", "text");
+            $("#show_hide_password i").removeClass("fa-eye-slash");
+            $("#show_hide_password i").addClass("fa-eye");
+        }
+
+        return false;
+    });
+
+    var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    var mediumRegex = new RegExp(
+        "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+
+    $("#inputPassword").on("keyup", function () {
+        var current = $(this);
+
+        current.removeClass("border-success");
+        current.removeClass("border-warning");
+        current.removeClass("border-danger");
+
+        var value = current.val();
+        if (strongRegex.test(value)) {
+            current.addClass("border-success");
+        } else if (mediumRegex.test(value)) {
+            current.addClass("border-warning");
+        } else {
+            current.addClass("border-danger");
+        }
+    });
+
+    $("input:file").change(function () {
+        var fullPath = $(this).val();
+
+        var filename = "Choose file";
+
+        if (fullPath.length > 0) {
+            var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf(
+                '/'));
+            filename = fullPath.substring(startIndex);
+            if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                filename = filename.substring(1);
+            }
+        }
+
+        $(this).next().html(filename);
+    });
+
+    genericLengthMessages($("#inputPassword"));
+    addErrorMessage($("#inputPassword"), /[a-z@$!%*?&A-Za-z\d@$!%*?&]/i, "Incorrecto");
+    //FormValidations
 
 
-//Fix floating label bug
-$("input").on("focus", function () {
-    $(this).attr("data-placeholder", $(this).attr("placeholder"));
-    $(this).attr("placeholder", "");
-});
-$("input").on("blur", function () {
-    $(this).attr("placeholder", $(this).attr("data-placeholder"));
-    $(this).removeAttr("data-placeholder");
+    //Fix floating label bug
+    $("input").on("focus", function () {
+        $(this).attr("data-placeholder", $(this).attr("placeholder"));
+        $(this).attr("placeholder", "");
+    });
+    $("input").on("blur", function () {
+        $(this).attr("placeholder", $(this).attr("data-placeholder"));
+        $(this).removeAttr("data-placeholder");
+    });
 });
