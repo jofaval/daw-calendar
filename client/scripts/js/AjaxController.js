@@ -102,7 +102,7 @@ class AjaxController {
     }
 
     static getEventsFromDay(selectedDay, classroom, success) {
-        AjaxController.genericAjaxRequest("getEventsFromWeek", {
+        AjaxController.genericAjaxRequest("getEventsFromDay", {
             "selectedDay": selectedDay,
             "classroom": classroom,
         }, success);

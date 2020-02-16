@@ -89,7 +89,7 @@ class AjaxController
 
     public function getEventsFromDay()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["selectedDay"]);
+        $this->genericAjaxReturn(__FUNCTION__, ["selectedDay", "classroom"]);
     }
 
     public function getEventsFromWeek()

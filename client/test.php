@@ -68,14 +68,20 @@ $queryVar->execute();
 //$string = "SELECT * FROM `schedules`";
 //$string = "SELECT * FROM `specialDays` WHERE YEAR(specialDay)=2020 and MONTH(specialDay)=1";
 //$string = "DELETE FROM classrooms WHERE name='203'";
+$string = "SELECT startHour as 'event-start-hour', endHour as 'event-end-hour',
+title as 'event-title', users.email as 'teacher-email',
+users.fullname as 'teacher-name', users.username = 'teste' as 'show-schedule', 1 as 'show-schedule'
+FROM
+`schedules` join `events` on (schedules.year = events.year and schedules.orderId = events.orderId)
+join `users` using (username)";
 
 //var_dump(Model::getInstance()->createEvent("test", "7:55", "2020-02-13", "205"));
-$_POST["title"] = "test";
+/* $_POST["title"] = "test";
 $_POST["startHour"] = "7:55";
 $_POST["date"] = "2020-02-13";
 $_POST["classroom"] = "205";
-var_dump($controller->createEvent());
-//$queryVar = $conexion->prepare($string);
+var_dump($controller->createEvent()); */
+$queryVar = $conexion->prepare($string);
 
 $params = [
 //"username" => "teste",
@@ -86,5 +92,17 @@ $params = [
 ];
 
 echo "<br><br>";
-$queryVar->execute($params);
-var_dump($queryVar->fetchAll(PDO::FETCH_ASSOC));
+$queryVar->execute( /* $params */);
+
+echo "<table border='1'>";
+$queryResult = $queryVar->fetchAll(PDO::FETCH_ASSOC);
+foreach ($queryResult as $row) {
+    echo "<tr>";
+    foreach ($row as $column) {
+        echo "<td>";
+        var_dump($column);
+        echo "</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";

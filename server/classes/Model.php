@@ -333,13 +333,13 @@ class Model extends PDO
     {
         $params = [
             "selectedDay" => $selectedDay,
-            "classroom" => $classroom,
-            "username" => Sessions::getInstance()->getSession("username"),
+            "classRoomName" => $classroom,
+            //"username" => Sessions::getInstance()->getSession("username"),
         ];
 
         return $this->query("SELECT startHour as 'event-start-hour', endHour as 'event-end-hour',
         title as 'event-title', users.email as 'teacher-email',
-        users.fullname as 'teacher-name', users.username = :username as 'show-schedule', 1 as 'show-schedule'
+        users.fullname as 'teacher-name', 1 as 'show-schedule'
         FROM
         `schedules` join `events` on (schedules.year = events.year and schedules.orderId = events.orderId)
         join `users` using (username) WHERE selectedDay=:selectedDay and classRoomName=:classRoomName", $params);

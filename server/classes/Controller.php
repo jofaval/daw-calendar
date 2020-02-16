@@ -660,7 +660,7 @@ class Controller
             ),
             array(
                 'name' => 'classroom',
-                'regla' => 'no-empty,text',
+                'regla' => 'no-empty',
             ),
         );
         $validation = $validation->rules($regla, $_POST);
