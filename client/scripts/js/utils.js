@@ -61,3 +61,22 @@ function printDateWithFormat(givenDate, format = "d/m/Y") {
 
     return format;
 }
+
+function getAcademicYear(date) {
+    month = date.getMonth() + 1;
+
+    year = date.getFullYear();
+
+    switch (month) {
+        case '01':
+        case '02':
+        case '03':
+        case '04':
+        case '05':
+        case '06':
+            year--;
+            break;
+    }
+
+    return year;
+}

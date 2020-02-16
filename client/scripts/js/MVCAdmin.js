@@ -547,7 +547,7 @@ class AdminController {
             view.addRowsToTable(model.classrooms, table);
             view.createDataTable(table);
 
-            table.find(".btnRemove").on("click", function name(params) {
+            table.find(".btnRemove").on("click", function () {
                 var btn = $(this);
 
                 var row = btn.parent().parent();
@@ -562,6 +562,16 @@ class AdminController {
             //console.log(data);
             view.addRowsToTable(model.schedules, view.tableSchedules);
             view.createDataTable(view.tableSchedules);
+
+            table.find(".btnRemove").on("click", function () {
+                var btn = $(this);
+
+                var row = btn.parent().parent();
+                var columns = row.children();
+                AjaxController.deleteSchedule(columns.eq(1).text(), columns.eq(3).text(), function (data) {
+                    row.remove();
+                });
+            });
         });
 
         $("#addTeachers").on("click", function () {
