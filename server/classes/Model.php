@@ -238,7 +238,7 @@ class Model extends PDO
 
     public function getTeachers()
     {
-        return $this->query("SELECT username, fullname, type, email, enabled FROM users WHERE type>=2 and enabled=true");
+        return $this->query("SELECT username, fullname, type, email, enabled FROM users WHERE type <= 2 and enabled=true");
     }
 
     public function getClassrooms()
