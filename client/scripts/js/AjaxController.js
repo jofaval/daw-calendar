@@ -68,10 +68,11 @@ class AjaxController {
         }, success);
     }
 
-    static deleteEvent(startHour, date, success) {
+    static deleteEvent(startHour, date, classroom, success) {
         AjaxController.genericAjaxRequest("deleteEvent", {
             "startHour": startHour,
             "date": date,
+            "classroom": classroom
         }, success);
     }
 

@@ -296,14 +296,28 @@ class Model extends PDO
         return $this->cudOperation("UPDATE FROM events SET title=:title WHERE startHour=:startHour and date=:date", $params);
     }
 
-    public function deleteEvent($startHour, $date)
+    public function deleteEvent($startHour, $date, $classroom)
     {
+        $sessions = Sessions::getInstance();
+        $scheduleRow = $this->query("SELECT * FROM schedules WHERE startHour=:startHour", ["startHour" => $startHour]);
+        if (count($scheduleRow) == 0) {
+            return false;
+        }
+        $scheduleRow = $scheduleRow[0];
         $params = [
-            "startHour" => $startHour,
+            "orderId" => $scheduleRow["orderId"],
+            "year" => $scheduleRow["year"],
             "date" => $date,
+            "classroom" => $classroom,
         ];
 
-        return $this->cudOperation("DELETE FROM events WHERE startHour=:startHour and date=:date", $params);
+        $string = "DELETE FROM events WHERE orderId=:orderId and year=:year and date=:date and classroomName=:classroomName";
+
+        if (condition) {
+            $params["username"] = $sessions->getSession("username");
+        }
+
+        return $this->cudOperation($string, $params);
     }
 
     public function getSchedule()

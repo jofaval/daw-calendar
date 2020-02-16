@@ -79,7 +79,7 @@ class AjaxController
 
     public function deleteEvent()
     {
-        $this->genericAjaxReturn(__FUNCTION__, ["startHour", "date"]);
+        $this->genericAjaxReturn(__FUNCTION__, ["startHour", "date", "classroom"]);
     }
 
     public function getSchedule()

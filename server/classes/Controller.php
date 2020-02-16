@@ -614,11 +614,15 @@ class Controller
                 'name' => 'date',
                 'regla' => 'no-empty,date',
             ),
+            array(
+                'name' => 'classroom',
+                'regla' => 'no-empty',
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 
         if ($validation === true) {
-            return $model->deleteEvent(Utils::getCleanedData("startHour"), Utils::getCleanedData("date"));
+            return $model->deleteEvent(Utils::getCleanedData("startHour"), Utils::getCleanedData("date"), Utils::getCleanedData("classroom"));
         }
 
         return false;
