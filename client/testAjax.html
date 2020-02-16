@@ -72,9 +72,14 @@
         console.log(data);
     }); */
 
-    AjaxController.getEventsFromWeek("2020-02-09", "2020-02-16", "205", function (data) {
+    /* AjaxController.getEventsFromWeek("2020-02-09", "2020-02-16", "205", function (data) {
         console.log("Respuesta", data);
         console.log("Respuesta parseada", JSON.parse(data));
+    }); */
+
+    AjaxController.doesUsernameExist("efgewgw", function name(data) {
+        console.log(data);
+
     });
 </script>
 

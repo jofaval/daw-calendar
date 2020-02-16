@@ -182,9 +182,9 @@ class AjaxController {
         }, success);
     }
 
-    static doesUsernameExist(year, success) {
+    static doesUsernameExist(username, success) {
         AjaxController.genericAjaxRequest("doesUsernameExist", {
-            "year": year,
+            "username": username,
         }, success);
     }
 

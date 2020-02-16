@@ -713,6 +713,7 @@ class Controller
     public function doesUsernameExist()
     {
         $validation = Validation::getInstance();
+        $username = Utils::getCleanedData("username");
 
         $regla = array(
             array(
@@ -721,7 +722,7 @@ class Controller
             ),
         );
         if ($validation->rules($regla, $_REQUEST) === true) {
-            return count(Model::getInstance()->query("SELECT `username` FROM `users` WHERE `username`=:username", ["username" => $_REQUEST["username"]])) > 0;
+            return count(Model::getInstance()->query("SELECT `username` FROM `users` WHERE `username`=:username", ["username" => $username])) > 0;
         }
 
         return true;
