@@ -395,7 +395,6 @@ class View {
 
     tabDispalyEvent(controller) {
         var current = $(this);
-        console.log(current.attr("tabContainer"));
         $("#tabContainer" + current.attr("tabContainer"));
         $(".tabContainer").each(function () {
             controller.fadeOutItem($(this));
@@ -532,7 +531,7 @@ class AdminController {
             view.addRowsToTable(model.teachers, table);
             view.createDataTable(table);
 
-            table.find(".btnRemove").on("click", function name(params) {
+            $("#tabContainerTeachers .btnRemove").on("click", function name(params) {
                 var btn = $(this);
 
                 var row = btn.parent().parent();
@@ -548,7 +547,7 @@ class AdminController {
             view.addRowsToTable(model.classrooms, table);
             view.createDataTable(table);
 
-            table.find(".btnRemove").on("click", function () {
+            $("#tabContainerClassrooms .btnRemove").on("click", function () {
                 var btn = $(this);
 
                 var row = btn.parent().parent();
@@ -560,11 +559,10 @@ class AdminController {
         });
 
         model.loadSchedules(model, function (data) {
-            //console.log(data);
             view.addRowsToTable(model.schedules, view.tableSchedules);
             view.createDataTable(view.tableSchedules);
 
-            table.find(".btnRemove").on("click", function () {
+            $("#tabContainerSchedules .btnRemove").on("click", function () {
                 var btn = $(this);
 
                 var row = btn.parent().parent();
@@ -583,15 +581,24 @@ class AdminController {
                     modalContent.close();
                     return false;
                 });
-                var form = $("form .form");
+                var form = $("form");
                 form.find(":submit").on("click", function (event) {
                     var event = event || window.event;
                     event.preventDefault();
 
-                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
-                        focused.prev().trigger("click");
-                        focused.trigger("click");
-                    });
+                    var fd = new FormData();
+                    var files = $('#inputTeacherName')[0].files[0];
+                    fd.append('file', files);
+
+                    var teacherData = {
+                        "username": $("#inputTeacherUsername").val(),
+                        "password": $("#inputTeacherPassword").val(),
+                        "name": $("#inputTeacherName").val(),
+                        "image": $("#inputImage").val(),
+                        "email": $("#inputTeacherEmail").val(),
+                        "enabled": true,
+                    }
+                    AjaxController.createTeacher(teacherData.username, teacherData.password, teacherData.name, "default.png", teacherData.email, function success(data) {});
                 })
             });
         });
@@ -604,15 +611,23 @@ class AdminController {
                     modalContent.close();
                     return false;
                 });
-                var form = $("form .form");
-                form.find(":submit").on("click", function (event) {
+                var form = $("form");
+                form.find("*[type=submit]").on("click", function (event) {
                     var event = event || window.event;
                     event.preventDefault();
 
-                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
-                        focused.prev().trigger("click");
-                        focused.trigger("click");
-                    });
+                    var classroomData = {
+                        "name": form.find("#inputClassroomName").val(),
+                        "desc": form.find("#inputClasroomDescription").val(),
+                        "state": form.find("#selectClasroomState").val(),
+                        "enabled": true,
+                    };
+                    AjaxController.createClassroom(classroomData.name, classroomData.desc, classroomData.state,
+                        function (data) {
+                            adminController.view.addRowToTable({
+                                classroomData
+                            }, $("#dtClassrooms"));
+                        });
                 })
             });
         });
@@ -625,15 +640,12 @@ class AdminController {
                     modalContent.close();
                     return false;
                 });
-                var form = $("form .form");
+                var form = $("form");
                 form.find(":submit").on("click", function (event) {
                     var event = event || window.event;
                     event.preventDefault();
 
-                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {
-                        focused.prev().trigger("click");
-                        focused.trigger("click");
-                    });
+                    AjaxController.createEvent(form.find("#title").val(), form.find("#startHour").val(), form.find("#date").val(), form.find("#classroom").val(), function success(data) {});
                 })
             });
         });
@@ -648,5 +660,5 @@ class AdminController {
     }
 }
 
-calendarController = new AdminController(new Model(), new View());
+adminController = new AdminController(new Model(), new View());
 //controller = Controller.getInstance();

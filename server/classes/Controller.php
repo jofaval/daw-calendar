@@ -365,7 +365,6 @@ class Controller
         );
         $validation = $validation->rules($regla, $_REQUEST);
 
-        var_dump($validation);
         if ($validation === true) {
             return $model->createClassroom(Utils::getCleanedData("inputClassroomName"), Utils::getCleanedData("inputClassroomDescription"), Utils::getCleanedData("selectClassroomState"));
         }

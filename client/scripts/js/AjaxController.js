@@ -110,7 +110,7 @@ class AjaxController {
     }
 
     //Teacher
-    static signup(name, username, password, email, image, success) {
+    static createTeacher(name, username, password, email, image, success) {
         AjaxController.genericAjaxRequest("admin", {
             "createTeacher": 1,
             "inputName": name,
