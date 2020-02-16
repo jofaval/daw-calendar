@@ -11,8 +11,8 @@ class Classroom extends HTMLElement {
         <link rel="stylesheet" href="./styles/bootstrap.min.css">
         <div class="card m-3">
             <div class="card-body">
-                <h5 class="classroom-name card-title text-center">${this.getAttribute("classroom-name")}</h5>
-                <p class="classroom-description card-text">${this.getAttribute("classroom-description")}</p>
+                <h5 class="classroom-name card-title text-center text-dark">${this.getAttribute("classroom-name")}</h5>
+                <p class="classroom-description card-text text-dark">${this.getAttribute("classroom-description")}</p>
                 <a href="index.php?ctl=calendar&classroom=${this.getAttribute("classroom-name")}" class="classroom-href btn btn-primary w-100">Go to calendar</a>
             </div>
         </div>

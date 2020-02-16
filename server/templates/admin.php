@@ -1,6 +1,5 @@
 <!--Page configuration-->
 <?php $optionalCSS = [
-    "mdb.min.css",
     "datatables.min.css",
     "datatables-select.min.css",
     "mini-event-calendar.min.css",

@@ -40,14 +40,20 @@ main {
     border-width: 3px !important;
 }
 
+.btn-warning {
+    color: #343a40 !important;
+}
+
 @media screen and (prefer-color-scheme: light) {
     body {
         background-color: #dbdbdb;
         color: #1f1f22;
     }
+
     .navbar {
         background-color: #eeeeee !important;
     }
+
     .nav-link {
         color: rgba(0, 0, 0, 0.75) !important;
     }

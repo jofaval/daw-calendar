@@ -6,6 +6,13 @@
 <head>
     <title><?php echo $title; ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+    /*Avoid flashing the user with white background*/
+    html,
+    body {
+        background: #1f1f22 !important;
+    }
+    </style>
     <?php foreach (Config::$mvc_vis_css as $css_link): ?>
     <link rel="stylesheet" type="text/css" href="./styles/<?php echo $css_link ?>" />
     <?php endforeach;?>

@@ -10,6 +10,7 @@ class Config
     public static $mvc_vis_css = [
         "bootstrap.min.css",
         "jquery-ui.min.css",
+        "mdb.min.css",
         "main.css",
         "login.css",
         "loader.css",
