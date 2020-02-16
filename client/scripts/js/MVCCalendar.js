@@ -276,7 +276,14 @@ class Controller {
                         var focused = $(".focused");
 
                         if (focused.length == 1) {
-                            Modal.genericModalWithForm("Event", false, function () {
+                            Modal.genericModalWithForm("Event", false, function (modalContent) {
+                                $("*[type=submit]").on("click", function (event) {
+                                    var event = event || window.event
+                                    event.preventDefault();
+                                    modalContent.close();
+                                    return false;
+                                });
+
                                 var form = $("form .form");
                                 form.prepend("<input type='hidden' name='classroom' id='classroom' value='" + $("#classroomId").html() + "'>");
                                 form.prepend("<input type='hidden' name='date' id='date' value='" + printDateWithFormat(controller.model.currentDate, "Y-m-d") + "'>");
