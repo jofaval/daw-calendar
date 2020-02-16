@@ -558,6 +558,10 @@ class Controller
                 'name' => 'date',
                 'regla' => 'no-empty,date',
             ),
+            array(
+                'name' => 'classroom',
+                'regla' => 'no-empty',
+            ),
         );
         $validation = $validation->rules($regla, $_POST);
 

@@ -279,7 +279,7 @@ class Model extends PDO
             $params["title"] = $title;
             $params["year"] = $scheduleRow["year"];
             $params["username"] = $sessions->getSession("username");
-            return $this->query("INSERT INTO events (title, orderId, year, selectedDay, username, classroomName) VALUES (:title, :orderId, :year, :date, :username, :classroom)", $params);
+            return $this->cudOperation("INSERT INTO events (title, orderId, year, selectedDay, username, classroomName) VALUES (:title, :orderId, :year, :date, :username, :classroom)", $params);
         }
 
         return false;
