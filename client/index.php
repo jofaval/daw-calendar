@@ -58,7 +58,7 @@ $map = array(
     'getClassrooms' => array('controller' => 'AjaxController', 'action' => 'getClassrooms', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'getSchedules' => array('controller' => 'AjaxController', 'action' => 'getSchedules', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'getEventsFromDay' => array('controller' => 'AjaxController', 'action' => 'getEventsFromDay', 'access' => Config::$ACCESS_LEVEL_TEACHER),
-    'getEventsFromWeek' => array('controller' => 'AjaxController', 'action' => 'getEventsFromWeeks', 'access' => Config::$ACCESS_LEVEL_TEACHER),
+    'getEventsFromWeek' => array('controller' => 'AjaxController', 'action' => 'getEventsFromWeek', 'access' => Config::$ACCESS_LEVEL_TEACHER),
     'updateTeacher' => array('controller' => 'AjaxController', 'action' => 'updateTeacher', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'deleteTeacher' => array('controller' => 'AjaxController', 'action' => 'deleteTeacher', 'access' => Config::$ACCESS_LEVEL_ADMIN),
     'createClassroom' => array('controller' => 'AjaxController', 'action' => 'createClassroom', 'access' => Config::$ACCESS_LEVEL_ADMIN),
@@ -108,6 +108,6 @@ if (method_exists($controlador['controller'], $controlador['action'])) {
         header('Location: ./index.php?ctl=access');
     }
 } else {
-    header('Location: ./index.php?ctl=error&testse=ewgwehwgh');
+    //header('Location: ./index.php?ctl=error&testse=ewgwehwgh');
     exit;
 }
