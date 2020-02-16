@@ -108,6 +108,6 @@ if (method_exists($controlador['controller'], $controlador['action'])) {
         header('Location: ./index.php?ctl=access');
     }
 } else {
-    //header('Location: ./index.php?ctl=error&testse=ewgwehwgh');
+    header('Location: ./index.php?ctl=error&testse=ewgwehwgh');
     exit;
 }
