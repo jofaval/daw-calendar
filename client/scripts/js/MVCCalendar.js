@@ -121,15 +121,15 @@ class View {
         //Weekly calendar
         this.weeklyCalendarContainer = $('<section class="w-75"></section>');
         var weeklyRow = $("<div class='row'></div");
-        this.timeTableWeek = $('<div id="timeTableWeek" class="col-md mini-cal row"></div>');
+        this.timeTableWeek = $('<div id="timeTableWeek" class="col-md-12 mini-cal row"></div>');
         weeklyRow.append(this.timeTableWeek);
         this.weeklyCalendarContainer.append(weeklyRow);
 
         //Monthly calendar
         this.monthlyCalendarContainer = $('<section class="w-75"></section>');
         var monthlyRow = $("<div class='row'></div");
-        this.monthCalendar = $('<div id="calendar" class="col-md-8 px-0"></div>');
-        this.timeTableDay = $('<div id="timeTable" class="col-md ml-md-5 px-0"></div>');
+        this.monthCalendar = $('<div id="calendar" class="col-md-8 col-12 px-0"></div>');
+        this.timeTableDay = $('<div id="timeTable" class="col-md-4 col-12 px-0"></div>');
         monthlyRow.append(this.monthCalendar, this.timeTableDay);
         this.monthlyCalendarContainer.append(monthlyRow);
 
@@ -191,7 +191,6 @@ class Controller {
         this.view = view;
         var controller = this;
 
-        controller.start(this);
 
         $("input[type=date]").val(printDateWithFormat(new Date(), "Y-m-d"));
         $("input[type=date]").on("change", function () {
@@ -199,9 +198,13 @@ class Controller {
 
             $("input[type=date]").val(value);
             controller.model.currentDate = new Date(Date.parse(value));
-            controller.start(controller);
+            var newWeekDate = getWeekFromDate(controller.model.currentDate);
+            controller.updateWeekCalendar(newWeekDate[0], newWeekDate[newWeekDate.length - 1], false);
+            //controller.start(controller);
+
         });
 
+        controller.start(this);
         controller.view.timeTableWeek.TT({
             events: [],
             schedule: controller.model.schedule,
@@ -213,13 +216,19 @@ class Controller {
         this.updateWeekCalendar(startingWeekDates[0], startingWeekDates[startingWeekDates.length - 1])
     }
 
-    updateWeekCalendar(startingDate, endingDate) {
-        AjaxController.getEventsFromWeek(startingDate, endingDate, $("#classroomId").text(), function (data) {
-            console.log(startingDate, endingDate, $("#classroomId").text());
+    updateWeekCalendar(startingDate, endingDate, updateInput = true) {
+        if (updateInput) {
+            $("input[type=date]").val(printDateWithFormat(startingDate, "Y-m-d"));
+        }
+        AjaxController.getEventsFromWeek(printDateWithFormat(startingDate, "Y-m-d"), printDateWithFormat(endingDate, "Y-m-d"), $("#classroomId").text(), function (data) {
+            /* console.log("startingDate", printDateWithFormat(startingDate, "Y-m-d"),
+                "endingDate", printDateWithFormat(endingDate,
+                    "Y-m-d"),
+                "classroomId", $("#classroomId").text()); */
             calendarController.view.timeTableWeek.TT({
-                events: [],
+                events: JSON.parse(data),
                 schedule: calendarController.model.schedule,
-                day: calendarController.model.currentDate,
+                day: startingDate,
                 weekFormat: true,
                 onWeekChange: calendarController.updateWeekCalendar,
             });
@@ -239,7 +248,17 @@ class Controller {
         });
 
         controller.view.monthCalendar.html("");
-        controller.calendarControls = new CalendarControls(controller.view.monthCalendar, controller.model.currentEvents, controller.model.currentDate);
+        /*var inputDate = $("input[type=date]").first().val();
+        var parts = inputDate.split('-');
+        var newDate = new Date(parts[0], parts[1] - 1, parts[2]);
+        console.log(newDate);*/
+        console.log("new date", controller.model.currentDate);
+
+        controller.calendarControls = new CalendarControls(
+            controller.view.monthCalendar,
+            controller.model.currentEvents,
+            new Date(Date.parse($("*[type=date]").val()))
+        );
 
         controller.calendarControls.onDayClick = function () {
             controller.onDayClick($(this), controller);

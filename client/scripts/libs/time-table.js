@@ -186,7 +186,7 @@
 
     function addFiltering(container) {
         container.append(`
-                <div id="actions" class="d-flex justify-content-around btn-group">
+                <div id="actions" class="d-flex ml-sm-2 justify-content-around btn-group flex-wrap">
                     <span class="btn align-middle btn-sm btn-dark" id="picked">Picked</span>
                     <span class="btn align-middle btn-sm btn-primary" id="free">Free</span>
                     <span class="btn align-middle btn-sm btn-warning" id="yours">Yours</span>
