@@ -2,7 +2,7 @@
 Proyecto de desarrollar una aplicación web para controlar la reserva de eventos en distintas aules por los profesores con panel de admin
 
 # Gestión reserva de aulas
-Introducción:
+# Introducción:
 En el centro existen dos aulas (Salón de actos y aula 118) de uso común por todos losprofesores del centro. Para su gestión se utiliza un cuaderno (se guarda en conserjería)donde los profesores reservan el aula anotando su nombre en   la   fecha y hora seleccionadas
 
 Esto plantea algunos inconvenientes:
